@@ -1,0 +1,51 @@
+\select@language {english}
+\contentsline {chapter}{Preface}{iii}
+\contentsline {chapter}{Contents}{v}
+\contentsline {chapter}{List of Figures}{vii}
+\contentsline {chapter}{\chapternumberline {1}Introduction}{1}
+\contentsline {section}{\numberline {1.1}Motivation}{1}
+\contentsline {subsection}{\numberline {1.1.1}Research questions}{1}
+\contentsline {subsection}{\numberline {1.1.2}Contributions}{1}
+\contentsline {subsection}{\numberline {1.1.3}Organization of the work}{1}
+\contentsline {subsection}{\numberline {1.1.4}Organization of the thesis}{2}
+\contentsline {chapter}{\chapternumberline {2}System Requirements}{3}
+\contentsline {section}{\numberline {2.1}Requirements gathering}{3}
+\contentsline {subsection}{\numberline {2.1.1}Stakeholders}{3}
+\contentsline {subsection}{\numberline {2.1.2}Interviews}{3}
+\contentsline {subsection}{\numberline {2.1.3}Identified features}{3}
+\contentsline {section}{\numberline {2.2}Feature prioritization}{4}
+\contentsline {subsection}{\numberline {2.2.1}Requirements prioritization using the Cost-Value Approach}{5}
+\contentsline {subsubsection}{Value assessment}{5}
+\contentsline {subsubsection}{Cost assessment}{6}
+\contentsline {subsubsection}{Cost-Value analysis}{7}
+\contentsline {subsubsection}{Discussion}{7}
+\contentsline {chapter}{Bibliography}{9}
+\contentsline {chapter}{\chapternumberline {3}Plug-in Environment}{11}
+\contentsline {section}{\numberline {3.1}Requirements}{11}
+\contentsline {subsection}{\numberline {3.1.1}(}{11}
+\contentsline {section}{\numberline {3.2}User stories}{11}
+\contentsline {section}{\numberline {3.3}Background}{12}
+\contentsline {section}{\numberline {3.4}Design}{12}
+\contentsline {subsection}{\numberline {3.4.1}Environment}{12}
+\contentsline {subsubsection}{Plug-in Management}{13}
+\contentsline {subsubsection}{Plug-in Management endpoint}{13}
+\contentsline {subsubsection}{Plug-in Repositories}{13}
+\contentsline {subsection}{\numberline {3.4.2}Process modelling}{13}
+\contentsline {subsection}{\numberline {3.4.3}Functional viewpoint}{13}
+\contentsline {subsection}{\numberline {3.4.4}Deployment viewpoint}{13}
+\contentsline {section}{\numberline {3.5}Implementation}{13}
+\contentsline {section}{\numberline {3.6}Validation}{13}
+\contentsline {chapter}{Bibliography}{15}
+\contentsline {chapter}{\chapternumberline {4}Conclusions and Future Work}{17}
+\contentsline {section}{\numberline {4.1}Contributions}{17}
+\contentsline {section}{\numberline {4.2}Conclusions}{17}
+\contentsline {section}{\numberline {4.3}Discussion/Reflection}{17}
+\contentsline {section}{\numberline {4.4}Future work}{17}
+\contentsline {appendix}{\chapternumberline {A}Glossary}{19}
+\contentsline {appendix}{\chapternumberline {B}Requirements and Guidelines}{21}
+\contentsline {section}{\numberline {B.1}Requirements}{21}
+\contentsline {subsection}{\numberline {B.1.1}Layout}{21}
+\contentsline {subsection}{\numberline {B.1.2}Content}{21}
+\contentsline {subsection}{\numberline {B.1.3}Bibliography}{22}
+\contentsline {section}{\numberline {B.2}Guidelines}{22}
+\contentsline {appendix}{\chapternumberline {C}Prioritization questionnaire}{23}

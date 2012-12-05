@@ -1,0 +1,127 @@
+%% LyX 1.6.4.1 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[11pt,a4paper,english]{memoir}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{1}
+\usepackage{graphicx}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{amsthm}
+\newtheorem{definition}{Definition}
+\usepackage{a4}
+\usepackage{times}
+\usepackage{pslatex} 
+\usepackage{graphicx}
+\let\footruleskip\relax % for compatibility of memoir and fancyhdr
+\usepackage{fancyhdr} %\usepackage{fancyheadings}
+\usepackage{mscthesis} % determines the used style 
+\usepackage{lipsum} % standard filler text, only needed for demo
+\usepackage{url}
+
+% Include right (LaTeX/PDFLaTeX) graphics package
+% (doesn't work under cygwin apperently)
+%\ifx\pdftexversion\undefined
+
+\@ifundefined{definecolor}
+ {\usepackage{color}}{}
+
+%\else
+%\usepackage[pdftex]{graphicx}
+%\usepackage[pdftex]{color}
+%\fi
+
+%---------------------------------------------------------------------%
+%                     Options                                         %    
+%---------------------------------------------------------------------%
+
+\title{U-Sem, a framework for augmented user and context modeling} % CHANGE TO YOUR TITLE
+\subtitle{Versionof\today} 
+
+% The final version of your thesis should typically use a different
+% subtitle without the current date, for example \subtitle{Master's Thesis} 
+% overwrite the subtitle by using the following line: 
+
+\subtitle{Master's Thesis}
+
+\university{
+\hskip-10pt
+{
+\includegraphics[height=2cm]{img/TU_Delft_Logo.pdf}
+}\\
+[-8pt]
+Web Information Systems \\
+Department of Software Technology \\
+Faculty EEMCS, Delft University of Technology \\
+Delft, the Netherlands \\
+\url{http://wis.ewi.tudelft.nl}
+}
+
+
+\author{Borislav Todorov} % CHANGE TO YOUR NAME
+\birthplace{BIRTHPLACE} % CHANGE TO YOUR BIRTHPLACE
+\studentid{123456789} % CHANGE TO YOUR STUDENT ID
+\authoremail{\url{any@email.com}} % CHANGE TO YOUR EMAIL ADDRESS
+
+% Optional for work done at a company, put this in comments if you did
+% not do your thesis work at a company
+%\company{
+%\includegraphics[height=2cm]{img/hilbert.ps}\\
+%Some Company\\
+%With it's address\\
+%ThePlace, the Netherlands\\
+%\url{www.url.nl}
+%}
+% Optional (postscript) cover picture. Put this in comments when not needed.
+\coverpicture{\includegraphics[width=11cm]{img/usem-logo.png}}
+
+
+% A copyright notice and maybe something about the cover picture
+% Put in comments to get the default copyright notice
+\colophon{\noindent\copyright{} 2010 \theauthor. Coverpicture: some picture.}
+
+% thesis committee:
+\chair{Prof. dr. ir. A.B.C. Een, Faculty EEMCS, TUDelft}
+\supervisor{Dr. ir. A.B.C. Twee, Faculty EEMCS, TUDelft}
+
+% The following two are optional for LaTeX (current university regulations state that at least one of them should be assigned)
+
+\committeemember{Ir. A.B.C. Drie, Faculty EEMCS, TUDelft}
+%\externalsupervisor{Ir. H.J.A.M. Geers, Faculty EEMCS, TUDelft}
+
+
+\setsecnumdepth{subsection}\maxsecnumdepth{subsection}
+
+\makeatother
+
+\usepackage{babel}
+
+\begin{document}
+\frontmatter 
+
+\thispagestyle{empty}
+
+\maketitle % main title page
+
+\makeformaltitlepages{\input{abstract}} % formal title pages
+
+\cleardoublepage{}\include{preface}
+
+\cleardoublepage{}\tableofcontents{}\cleardoublepage{}\listoffigures
+\cleardoublepage{}
+
+\mainmatter
+
+\include{introduction/introduction} \include{requirements/system_requirements} \include{plug-in/plugin-env} \include{conclusions}
+
+\bibliographystyle{plain} \bibliographystyle{plain}
+\bibliography{thesis}
+
+
+\appendix
+%dummy comment inserted by tex2lyx to ensure that this paragraph is not empty
+\global\long\def\chaptername{Appendix}
+ \include{appendix} \include{requirements} \include{prioritization-questionare}
+\end{document}
