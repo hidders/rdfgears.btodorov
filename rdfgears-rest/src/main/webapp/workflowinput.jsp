@@ -53,7 +53,7 @@
 			
  			requiredInputNames = workflow.getRequiredInputNames();
  			
- 			formattedWorkflowName = "<span style=\"font-family: monospace\">"+workflowId+"</span>";
+ 			formattedWorkflowName = workflow.getName().trim();
 		}
 		catch (Exception e){
 			out.print("Error 1: "+e);
@@ -66,22 +66,14 @@
 
 <%--     	Provide workflow input parameters for workflow <%= workflow.getFullName() %> <br/> --%>
 		
-		
-		<img src="<%= request.getContextPath() %>/img/rdf-gears-logo-tiny.png" />
-		<b>RDF Gears workflow input form.</b> 
-		<br/>
-		<br/>
-		<br/>
-		<br/> 
-		
 		<form name="input" action="<%= request.getContextPath() %>/user/execute<%= workflowId %>" method="get">
 		
-		Workflow <%= formattedWorkflowName %> <br/>
+		<h3><%= formattedWorkflowName %></h3>
 		
-		<% if(workflow.getWorkflowDescription() != null){
+		<p><% if(workflow.getWorkflowDescription() != null){
 			out.print(workflow.getWorkflowDescription().trim());
 		}
-		%><br/>
+		%></p>
 		
 		<% if (requiredInputNames.size()==0) {	%>
 			The workflow has no inputs. <br/>

@@ -7,12 +7,11 @@
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
       body {
-        padding-top: 60px;
+        padding-top: 50px;
         padding-bottom: 40px;
       }
 	  #mydiv{
 		position:absolute;
-		overflow:hidden;
 		top:43px;
 		bottom:0px;
 		width:100%;
@@ -46,7 +45,7 @@
 				<hr>
 				<ul class="nav list">
 				<%
-					out.write(ServicesUIHandler.getServicesHTML());
+					out.write(new ServicesUIHandler().getServicesHTML());
 				%>
 				</ul>
 			</div>
@@ -54,8 +53,9 @@
 					<div id="mydiv">
 						<iframe id="myframe" 
 							height="100%" 
-							frameborder="0"
-							scrolling="no" 
+							src=""
+							frameborder="0" 
+							scrolling="no"
 							width="100%">
 						</iframe>
 					</div>

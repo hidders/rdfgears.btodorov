@@ -35,6 +35,7 @@ public class Workflow extends RGLFunction {
 	/* the row of input RGLValue objects. WorkflowInputPorts select their value and pass it to the reading processors */
 	private ValueRow currentInputRow; 
 	private TypeRow inputTypeRow;
+	private String workflowID;
 	private String workflowName;
 	private String workflowDescription;
 	
@@ -165,14 +166,19 @@ public class Workflow extends RGLFunction {
 		// nothing to initialize in a workflow 		
 	}
 	
-	public void setName(String workflowName){
-		this.workflowName = workflowName;
+	public void setID(String workflowName){
+		this.workflowID = workflowName;
 	}
-	public String getShortName() {
-		return workflowName;
+
+	public String getFullName() {
+		return workflowID;
 	}
 	
-	public String getFullName() {
+	public void setName(String workflowName) {
+		this.workflowName = workflowName;
+	}
+	
+	public String getName() {
 		return workflowName;
 	}
 	

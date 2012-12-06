@@ -143,7 +143,7 @@ public class FunctionProcessor extends ProcessorNode {
 						cachedResultValue = function.execute(inputRow);
 //						inputRow.setRecyclable(true);
 					} catch (RuntimeException e){
-						System.out.println("Problem executing function "+getFunction().getShortName()+" in processor "+getId());
+						System.out.println("Problem executing function "+getFunction().getFullName()+" in processor "+getId());
 						throw(e);
 					}	
 				}

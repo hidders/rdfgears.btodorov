@@ -158,9 +158,10 @@ public class WorkflowLoader {
 		/* we made it, no exceptions */
 		workflow = buildingWorkflow;
 
-		workflow.setName(this.workflowId);
-		
-		workflow.setDescription(getWorkflowDescriptionElement());
+		workflow.setID(this.workflowId);
+
+		workflow.setName(getWorkflowName());
+		workflow.setDescription(getWorkflowDescription());
 	}
 
 	/**
@@ -292,13 +293,25 @@ public class WorkflowLoader {
 		return null;
 	}
 	
-	private String getWorkflowDescriptionElement() {
+	private String getWorkflowDescription() {
 		Element workflowElem = XMLUtil.getFirstSubElementByName(
 				xmlDoc.getDocumentElement(), "metadata");
 		Element descrElem =  XMLUtil.getFirstSubElementByName(workflowElem,
 				"description");
 		if(descrElem != null){
 			return descrElem.getTextContent();
+		}
+		
+		return null;
+	}
+	
+	private String getWorkflowName() {
+		Element workflowElem = XMLUtil.getFirstSubElementByName(
+				xmlDoc.getDocumentElement(), "metadata");
+		Element nameElem =  XMLUtil.getFirstSubElementByName(workflowElem,
+				"name");
+		if(nameElem != null){
+			return nameElem.getTextContent();
 		}
 		
 		return null;
