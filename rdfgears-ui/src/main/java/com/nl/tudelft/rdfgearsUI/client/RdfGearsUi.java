@@ -33,7 +33,7 @@ public class RdfGearsUi implements EntryPoint {
    */
   public void onModuleLoad() {
 	  System.out.println("onModuleLoad");
-	  HTMLPanel menuContainer = HTMLPanel.wrap(Document.get().getElementById("menu-container"));
+	  final HTMLPanel menuContainer = HTMLPanel.wrap(Document.get().getElementById("menu-container"));
 	  final RGCanvas canvas = new RGCanvas("canvas");
 	  debugPanel = new RGLogger("debugger-panel");
 	  canvas.setRemoteService(getServiceInstance());
@@ -42,7 +42,22 @@ public class RdfGearsUi implements EntryPoint {
 	  
 	  canvas.showAppLoader("Loading application...");
 	  
-	  RGMenuBar menu = new RGMenuBar(canvas);
+	  RGService.initNewSession( new AsyncCallback <String>(){
+
+		public void onFailure(Throwable arg0) {
+			canvas.displayErrorMessage("Cannot start new Session.");
+		}
+
+		public void onSuccess(String arg0) {
+			  Log.debug("initNewSession: " + arg0);
+			  creteUI(menuContainer, canvas);
+		}
+		  
+	  });
+  }
+
+private void creteUI(HTMLPanel menuContainer, final RGCanvas canvas) {
+	RGMenuBar menu = new RGMenuBar(canvas);
 	  RGTabBar tabBar = new RGTabBar(canvas);
 	  rpanel = new RGNavigationPanel("navigation-panel", canvas);
 	  ppanel = new RGPropertyPanel("property-panel");
@@ -98,14 +113,14 @@ public class RdfGearsUi implements EntryPoint {
 		}
 		  
 	  });
-  }
+}
   
   RGServiceAsync getServiceInstance(){
-	  //if(RGService == null){
+	  if(RGService == null){
 		  RGService = (RGServiceAsync) GWT.create(RGService.class);
 		 // ((ServiceDefTarget)RGService).setServiceEntryPoint("RGService");
 		  Log.debug("serviceEntryPoint: " + ((ServiceDefTarget)RGService).getServiceEntryPoint());
-	  //}
+	  }
 	  return RGService;
   }
   

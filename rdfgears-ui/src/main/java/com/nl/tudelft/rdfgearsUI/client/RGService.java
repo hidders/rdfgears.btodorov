@@ -19,4 +19,5 @@ public interface RGService extends RemoteService{
 	public String doCopyWorkflowFile(String wfId, String newId, String newName, String newDesc, String newCat);
 	public String deleteWorkflow(String wfId);
 	public String getConfig(String confKey);
+	public String initNewSession(); 
 }

@@ -11,8 +11,4 @@ public class PluginAccessManagerFactory {
 			pluginAccessManager = new OSGIPluginAccessManager();
 		return pluginAccessManager;
 	}
-	
-	public static void refresh(){
-		pluginAccessManager.refresh();
-	}
 }

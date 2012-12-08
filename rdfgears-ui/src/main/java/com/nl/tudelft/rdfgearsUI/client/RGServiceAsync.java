@@ -17,4 +17,5 @@ public interface RGServiceAsync {
 	void deleteWorkflow(String wfId, AsyncCallback<String> async);
 	void getConfig(String confKey, AsyncCallback<String> async);
 	void getTemplateById(String wfId, AsyncCallback<String> asyncCallback);
+	void initNewSession(AsyncCallback<String> asyncCallback); 
 }

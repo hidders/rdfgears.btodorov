@@ -68,7 +68,7 @@
 		
 		<form name="input" action="<%= request.getContextPath() %>/user/execute<%= workflowId %>" method="get">
 		
-		<h3><%= formattedWorkflowName %></h3>
+		<h2><%= formattedWorkflowName %></h2>
 		
 		<p><% if(workflow.getWorkflowDescription() != null){
 			out.print(workflow.getWorkflowDescription().trim());

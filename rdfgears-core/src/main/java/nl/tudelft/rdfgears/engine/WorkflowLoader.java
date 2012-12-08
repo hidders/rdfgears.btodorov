@@ -60,6 +60,10 @@ public class WorkflowLoader {
 			throw new WorkflowLoadingException(
 					"No workflow was specified to load.");
 		}
+		
+		//Make sure any plugin changes are applied 
+		PluginAccessManagerFactory.getPluginManager().refresh();
+		
 		WorkflowLoader wLoader = new WorkflowLoader(workflowId);
 		return wLoader.getWorkflow();
 	}

@@ -23,19 +23,23 @@ public class OSGIPluginAccessManager implements PluginAccessManager {
 	public OSGIPluginAccessManager(){
 		System.out.println("OSGI plugin access framework started!");
 		try {
-			Map<String, String> config = new HashMap<String, String>();
-			config.put(
-					Constants.FRAMEWORK_SYSTEMPACKAGES_EXTRA,
-					"nl.tudelft.rdfgears.engine,nl.tudelft.rdfgears.rgl.datamodel.type,nl.tudelft.rdfgears.rgl.datamodel.value,nl.tudelft.rdfgears.rgl.function,nl.tudelft.rdfgears.util.row,nl.tudelft.rdfgears.plugin");
-			framework = Utils.startFramework(config);
-
-			BundleContext context = framework.getBundleContext();
-
-			for (Bundle bundle : context.getBundles()) {
-				bundle.start();
-			}
+			createFramework();
 		} catch (BundleException e) {
 			e.printStackTrace();
+		}
+	}
+
+	private void createFramework() throws BundleException {
+		Map<String, String> config = new HashMap<String, String>();
+		config.put(
+				Constants.FRAMEWORK_SYSTEMPACKAGES_EXTRA,
+				"nl.tudelft.rdfgears.engine,nl.tudelft.rdfgears.rgl.datamodel.type,nl.tudelft.rdfgears.rgl.datamodel.value,nl.tudelft.rdfgears.rgl.function,nl.tudelft.rdfgears.util.row,nl.tudelft.rdfgears.plugin");
+		framework = Utils.startFramework(config);
+
+		BundleContext context = framework.getBundleContext();
+
+		for (Bundle bundle : context.getBundles()) {
+			bundle.start();
 		}
 	}
 
@@ -67,8 +71,10 @@ public class OSGIPluginAccessManager implements PluginAccessManager {
 	@Override
 	public void refresh() {
 		try {
-			framework.update();
-		} catch (BundleException e) {
+			framework.stop();
+			framework.waitForStop(0);
+			createFramework();
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 

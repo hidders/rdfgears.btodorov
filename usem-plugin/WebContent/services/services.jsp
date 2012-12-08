@@ -12,7 +12,7 @@
       }
 	  #mydiv{
 		position:absolute;
-		top:43px;
+		top:41px;
 		bottom:0px;
 		width:100%;
 	  }
