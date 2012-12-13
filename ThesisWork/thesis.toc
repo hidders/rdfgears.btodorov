@@ -31,10 +31,11 @@
 \contentsline {subsubsection}{Plug-in Management endpoint}{13}
 \contentsline {subsubsection}{Plug-in Repositories}{13}
 \contentsline {subsection}{\numberline {3.4.2}Process modelling}{13}
-\contentsline {subsection}{\numberline {3.4.3}Functional viewpoint}{13}
-\contentsline {subsection}{\numberline {3.4.4}Deployment viewpoint}{13}
-\contentsline {section}{\numberline {3.5}Implementation}{13}
-\contentsline {section}{\numberline {3.6}Validation}{13}
+\contentsline {subsection}{\numberline {3.4.3}Plugin repository}{13}
+\contentsline {subsection}{\numberline {3.4.4}Functional viewpoint}{14}
+\contentsline {subsection}{\numberline {3.4.5}Deployment viewpoint}{14}
+\contentsline {section}{\numberline {3.5}Implementation}{14}
+\contentsline {section}{\numberline {3.6}Validation}{14}
 \contentsline {chapter}{Bibliography}{15}
 \contentsline {chapter}{\chapternumberline {4}Conclusions and Future Work}{17}
 \contentsline {section}{\numberline {4.1}Contributions}{17}
