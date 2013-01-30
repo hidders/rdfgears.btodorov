@@ -7,9 +7,13 @@
 \contentsline {figure}{\numberline {2.2}{\ignorespaces The cost distribution of the 5 requirements in the U-Sem project.}}{7}
 \contentsline {figure}{\numberline {2.3}{\ignorespaces This diagram shows the comparison of the value/cost ratio of the requirements.}}{8}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {3.1}{\ignorespaces The environment in which the system will operate. The components coloured in red build up the Plug-in feature. }}{12}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Business model describing the process for adding new plug-in to U-Sem}}{13}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Business model describing the process for adding existing plug-in from repository to U-Sem}}{14}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Component-based software development \textbf {cite 335} }}{14}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Component interfaces }}{14}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Components implementing interfaces }}{15}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces OSGi Service Registry \cite {Andre}}}{16}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Runtime environment in U-Sem }}{18}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Business model describing the process for adding new plug-in to U-Sem}}{20}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Business model describing the process for adding existing plug-in from repository to U-Sem}}{21}
 \addvspace {10pt}
 \addvspace {10pt}
 \addvspace {10pt}

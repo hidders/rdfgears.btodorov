@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2011.9.30)  12 DEC 2012 12:17
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2011.9.30)  30 JAN 2013 19:13
 entering extended mode
 **thesis.tex
 (E:\Repositories\rdfgears.btodorov\ThesisWork\thesis.tex
@@ -502,11 +502,8 @@ File: babel.def 2008/07/08 v3.8m Babel common definitions
 (E:\Repositories\rdfgears.btodorov\ThesisWork\preface.aux)
 (E:\Repositories\rdfgears.btodorov\ThesisWork\introduction/introduction.aux)
 (E:\Repositories\rdfgears.btodorov\ThesisWork\requirements/system_requirements.
-aux) (E:\Repositories\rdfgears.btodorov\ThesisWork\plug-in/plugin-env.aux
-
-LaTeX Warning: Label `Karlsson' multiply defined.
-
-) (E:\Repositories\rdfgears.btodorov\ThesisWork\conclusions.aux)
+aux) (E:\Repositories\rdfgears.btodorov\ThesisWork\plug-in/plugin-env.aux)
+(E:\Repositories\rdfgears.btodorov\ThesisWork\conclusions.aux)
 (E:\Repositories\rdfgears.btodorov\ThesisWork\appendix.aux)
 (E:\Repositories\rdfgears.btodorov\ThesisWork\requirements.aux)
 (E:\Repositories\rdfgears.btodorov\ThesisWork\prioritization-questionare.aux
@@ -622,13 +619,7 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <24.88> not available
 
 ]
 (E:\Repositories\rdfgears.btodorov\ThesisWork\thesis.toc [5]) [6]
-(E:\Repositories\rdfgears.btodorov\ThesisWork\thesis.lof
-Overfull \hbox (10.48698pt too wide) in paragraph at lines 10--10
- [][] []\T1/ptm/m/n/10.95 The en-vi-ron-ment in which the sys-tem will op-er-at
-e. The com-po-nents coloured 
- []
-
-) [7
+(E:\Repositories\rdfgears.btodorov\ThesisWork\thesis.lof) [7
 
 ] [8
 
@@ -739,72 +730,115 @@ bibitemlist
 
 
 
-] [11] <plug-in/Environment.png, id=93, 949.29657pt x 490.83376pt>
-File: plug-in/Environment.png Graphic file (type png)
+] [11] [12] <plug-in/component-based.png, id=96, 271.76532pt x 125.71968pt>
+File: plug-in/component-based.png Graphic file (type png)
 
-<use plug-in/Environment.png>
-Package pdftex.def Info: plug-in/Environment.png used on input line 68.
-(pdftex.def)             Requested size: 474.64713pt x 245.41628pt.
-
-Overfull \hbox (98.84335pt too wide) in paragraph at lines 68--69
- [][] 
- []
-
-[12 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/Environment.png>]
-<plug-in/AddNewPluginBusinessModel.jpg, id=97, 768.62157pt x 447.17062pt>
-File: plug-in/AddNewPluginBusinessModel.jpg Graphic file (type jpg)
-
-<use plug-in/AddNewPluginBusinessModel.jpg>
-Package pdftex.def Info: plug-in/AddNewPluginBusinessModel.jpg used on input li
-ne 91.
-(pdftex.def)             Requested size: 384.30984pt x 223.58476pt.
-
-Overfull \hbox (8.50607pt too wide) in paragraph at lines 91--92
- [][] 
- []
-
-
-<plug-in/AddPlugInFromRepoBusinessModel.jpg, id=98, 768.62157pt x 400.49625pt>
-File: plug-in/AddPlugInFromRepoBusinessModel.jpg Graphic file (type jpg)
-
-<use plug-in/AddPlugInFromRepoBusinessModel.jpg>
-Package pdftex.def Info: plug-in/AddPlugInFromRepoBusinessModel.jpg used on inp
-ut line 97.
-(pdftex.def)             Requested size: 384.30984pt x 200.24763pt.
-
-Overfull \hbox (8.50607pt too wide) in paragraph at lines 97--98
- [][] 
- []
+<use plug-in/component-based.png>
+Package pdftex.def Info: plug-in/component-based.png used on input line 80.
+(pdftex.def)             Requested size: 203.82349pt x 94.28952pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[13 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/AddNewPluginBusinessM
-odel.jpg>] [14 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/AddPlugInF
-romRepoBusinessModel.jpg>]
-bibitemlist
-) [15
+[13] <plug-in/component-interfaces.png, id=101, 129.48375pt x 39.14626pt>
+File: plug-in/component-interfaces.png Graphic file (type png)
 
-] (E:\Repositories\rdfgears.btodorov\ThesisWork\conclusions.tex [16
+<use plug-in/component-interfaces.png>
+Package pdftex.def Info: plug-in/component-interfaces.png used on input line 95
+.
+(pdftex.def)             Requested size: 97.11255pt x 29.3596pt.
+ [14 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/component-based.png>
+ <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/component-interfaces.png
+>]
+<plug-in/component-services.png, id=105, 239.39438pt x 98.61844pt>
+File: plug-in/component-services.png Graphic file (type png)
+
+<use plug-in/component-services.png>
+Package pdftex.def Info: plug-in/component-services.png used on input line 110.
+
+(pdftex.def)             Requested size: 179.54533pt x 73.96362pt.
+
+Overfull \hbox (3.24261pt too wide) in paragraph at lines 121--122
+[]\T1/ptm/m/n/10.95 [[]] sug-gests clas-si-fi-ca-tion of the com-po-nent model 
+im-ple-men-ta-tions based on which
+ []
+
+
+Overfull \hbox (2.23048pt too wide) in paragraph at lines 125--126
+[]\T1/ptm/m/n/10.95 Composition hap-pens dur-ing the de-ploy-ment phase. Com-po
+-nents are con-structed
+ []
+
+[15 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/component-services.pn
+g>] <plug-in/OSGI.png, id=109, 440.39531pt x 292.84406pt>
+File: plug-in/OSGI.png Graphic file (type png)
+
+<use plug-in/OSGI.png>
+Package pdftex.def Info: plug-in/OSGI.png used on input line 142.
+(pdftex.def)             Requested size: 264.23921pt x 175.70778pt.
+ [16 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/OSGI.png>] [17]
+<plug-in/environment/runtime_env.png, id=116, 441.14813pt x 456.20438pt>
+File: plug-in/environment/runtime_env.png Graphic file (type png)
+
+<use plug-in/environment/runtime_env.png>
+Package pdftex.def Info: plug-in/environment/runtime_env.png used on input line
+ 173.
+(pdftex.def)             Requested size: 220.57352pt x 228.10162pt.
+ [18 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/environment/runtime_
+env.png>]
+<plug-in/business_processes/CreatePlugInBusinessModel.jpg, id=120, 768.62157pt 
+x 447.17062pt>
+File: plug-in/business_processes/CreatePlugInBusinessModel.jpg Graphic file (ty
+pe jpg)
+ <use plug-in/business_processes/CreatePlugInBusinessModel.jpg>
+Package pdftex.def Info: plug-in/business_processes/CreatePlugInBusinessModel.j
+pg used on input line 193.
+(pdftex.def)             Requested size: 538.03143pt x 313.01729pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+<plug-in/business_processes/InstallPlugInFromRepoBusinessModel.jpg, id=121, 768
+.62157pt x 400.49625pt>
+File: plug-in/business_processes/InstallPlugInFromRepoBusinessModel.jpg Graphic
+ file (type jpg)
+
+<use plug-in/business_processes/InstallPlugInFromRepoBusinessModel.jpg>
+Package pdftex.def Info: plug-in/business_processes/InstallPlugInFromRepoBusine
+ssModel.jpg used on input line 199.
+(pdftex.def)             Requested size: 538.03143pt x 280.34546pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[19] [20 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/business_process
+es/CreatePlugInBusinessModel.jpg>] [21 <E:/Repositories/rdfgears.btodorov/Thesi
+sWork/plug-in/business_processes/InstallPlugInFromRepoBusinessModel.jpg>]
+[22
+
+]
+bibitemlist
+) [23] (E:\Repositories\rdfgears.btodorov\ThesisWork\conclusions.tex [24
 
 
 
 ])
-[17]
+[25]
 No file thesis.bbl.
-(E:\Repositories\rdfgears.btodorov\ThesisWork\appendix.tex [18
+(E:\Repositories\rdfgears.btodorov\ThesisWork\appendix.tex [26
 
 
 
-]) [19]
-(E:\Repositories\rdfgears.btodorov\ThesisWork\requirements.tex [20
+]) [27]
+(E:\Repositories\rdfgears.btodorov\ThesisWork\requirements.tex [28
 
 
 
-] [21])
-[22]
+] [29])
+[30]
 (E:\Repositories\rdfgears.btodorov\ThesisWork\prioritization-questionare.tex)
-[23
+[31
 
 
 
@@ -828,22 +862,22 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 6061 strings out of 494045
- 82919 string characters out of 3148378
- 260088 words of memory out of 3000000
- 9205 multiletter control sequences out of 15000+200000
+ 6095 strings out of 494045
+ 83844 string characters out of 3148378
+ 260156 words of memory out of 3000000
+ 9233 multiletter control sequences out of 15000+200000
  70589 words of font info for 90 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 36i,12n,43p,965b,344s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 40i,12n,43p,1371b,344s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program File
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
 1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8
 a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program
  Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on thesis.pdf (35 pages, 680218 bytes).
+Output written on thesis.pdf (43 pages, 693236 bytes).
 PDF statistics:
- 156 PDF objects out of 1000 (max. 8388607)
+ 188 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 46 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 66 words of extra memory for PDF output out of 10000 (max. 10000000)
 
