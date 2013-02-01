@@ -29,39 +29,33 @@ But this is not everything. This approach also introduces one big disadvantage f
 When designing the U-Sem architecture we considered all these pitfalls of the current approach. However, before going to the architecture description, for clarity and easier validation, in the next subsection, we provide a more formal representation of all user requirements.
 
 
-\subsection{User stories}
-In this section we are formally identify the functional requirements of the system presenting them into the form of user stories. \textbf{cite what are user stories} so that it is more clear and easy to validate.
+\subsection{Functional Scenarios}
+In this section we are formally identify the functional requirements which define the main interactions between the scientists and the system. This compact representation of the requirements also makes validation an evaluation clearer. 
 
 \begin{itemize}
-	\item Add
-	
-	As a user, I want to easily add custom functionality to U-Sem.
-	
-	As a user, I want to easily add custom functionality provided by other scientist to U-Sem.
-	
-	As a user, I don't want to be affected by other users adding new custom functionality.
-	
-	As a user, I don't want other users to be able to add, delete or modify my custom functionality.
-	
 
-	\item Management
+	\item \textbf{Creating custom functionality} - This is the main scenario regarding the dynamic component model. Scientists has to be able to extend U-Sem by adding custom functionality on demand. They has to be able to be able to compose the custom functionality independently from the system, add the produced functionality to U-Sem during the execution time of the system and/or if desired share it with other scientists.
 	
-	As a user, I want to see the list of the custom functionality that is added U-Sem.
+	\item \textbf{Use functionality shared by other scientists} - Scientists has to be able to reuse custom functionality provided by other scientist.
 	
-	As a user, I want to delete custom functionality that has been added to U-Sem.
+	\item \textbf{Manage loaded functionality} - Users has to able to manage all functionality already added to the system. This includes to be able to view a list of all added functionality. And secondly they have to be able to remove any functionality from the provided list.
+			
 	
-	As a user, I want to be notified about any new versions of the custom functionality provided by other scientists.
-	
-	As a user, I want to update existing custom functionality with the newest version provided by other scientists.
-	
-	How to edit workflows(configuration) from plug-in?
-	
-	\item Usage
-	
-	As a user, I want to use the added custom functionality in the workflow engine.
-	
-	As a user, I don't want other users to see what is my custom functionality and use them.
+\end{itemize}
 
+\subsection{Non-functional requirements}
+
+This section defines the main quality scenarios of the system that model how the system should react to a change in its environment.
+
+\begin{itemize}
+
+	\item Availability - adding custom functionality should not affect other users at all.
+	
+	\item Insulation - scientists not being affected by any future changes to the reused components.
+	
+	\item Privacy - As a user, I don't want other users to see what is my custom functionality and use them.
+	
+	\item Security
 	
 \end{itemize}
 
@@ -100,9 +94,9 @@ A component model is the architecture of a system or part of a system that is bu
 	are functional units providing functionality by implementing interfaces. As you can see on \textbf{figure} components provide  features by implementing the provided interface. One of the main question regarding building components is how to define the scope and characteristics for a component. According to \cite{Cai} there are no clear and well established standards or guidelines that define this. In general, however, a component has three main features: 
 
 \begin{itemize}
-	\item a component is an independent and replaceable part of a system that fulfils a clear function; 
-	\item a component works in the context of a well-defined architecture;
-	\item a component communicates with other components by its interfaces [1].
+	\item a component is an independent and replaceable part of a system that fulfils a clear function
+	\item a component works in the context of a well-defined architecture
+	\item a component communicates with other components by its interfaces 
 \end{itemize}
 
 	\begin{figure}[h!]
@@ -156,10 +150,7 @@ The OSGi standard also provides coordinator component which represents a runtime
 
 \section{Architecture}
 
-The component interfaces of U-Sem provide extension point where custom functionality provided by a component can be plugged in. Each component interface is represented by a java interface which defines the contract. \textbf{picture of socket}
 
-
-The list of interfaces that U-Sem provides includes: functions and function descriptors, workflow templates, authentication modules......
 
 \subsection{Runtime environment}
 
@@ -184,15 +175,25 @@ Using the Plug-in repository overcomes this problem. When a scientist releases n
 
 \subsection{Process modelling}
 
-Once we have already identified the new actors(scientists) in the runtime environment of U-Sem it is the place to define how they interact with U-Sem. This section uses \textbf{BPML} to model the most important use cases that regard the dynamic component model feature of U-Sem. In next section we define the process for adding new functionality to U-Sem. In the section after we addresses the component management use case.
+Once we have already identified the new actors(scientists) and external systems(plug-in repository) in the runtime environment of U-Sem we have to define how they interact between each other. In this section we will use the Business Process Management Notation(BPMN) \cite{BPMN} to model the business processes that defines the interactions needed in each of the use cases that regard the dynamic component model feature of U-Sem. It also enables to model activities, decision responsibilities, control and data flows. The decision to use BPMN to model the interactions is based on its relative suitability for interaction modelling and the fact that it is more popular compared to its alternatives \cite{Decker}. Next subsections describe each of the defined processes and expand them into Business Process Diagrams (BPD).
 
-\subsubsection{Adding functionality to U-Sem}
+\subsubsection{Create U-Sem Component process}
+
+Creating new functionality for U-Sem is the most important use case regarding the dynamic component model feature. We modelled this use case as the \textit{Loading new components} business process. \textbf{Figure} provides the business process model diagram that illustrates this process. 
+
+As illustrated in the diagram there are three participants in this process(U-Sem, Scientists and Plug-in repository) which are illustrated in separate BPMN pools. When a scientist wants to create new functionality for U-Sem, he/she firsts writes the source code, providing all required resources and implementing the desired U-Sem interfaces(the component interfaces discussed in previous sections). Then everything has to be build and encapsulated into a component. Once the component is ready, scientists can directly upload it to U-Sem if the component is only for private use. When U-Sem receives a component it is responsible to installed it into the scientist's component storage please and make available all functionality provided by the component. Finally, U-Sem sends confirmation message back to the scientist. Alternatively the scientist might also want to share the component with other scientists. In this case the component is sent to the plug-in repository. When received, the repository is responsible to store it and make it available to the other scientists. Again at the end confirmation message is send to the scientist.
 
 \begin{figure}[h!]
   \centering
   	\includegraphics[scale=0.7,angle=90]{plug-in/business_processes/CreatePlugInBusinessModel.jpg}
   \caption{Business model describing the process for adding new plug-in to U-Sem}
 \end{figure}
+
+\subsubsection{Reuse shared components}
+
+As already explained, U-Sem also enables scientists to reuse components shared by other scientist. This use case is modelled into the \textit{Reuse shared components} business process which is illustrated in \textbf{figure}. Again we have three participants in this process(U-Sem, Scientists and Plug-in repository) which are illustrated in separate BPMN pools. 
+
+The process consists of two main phases. First, the scientist contacts the plug-in repository in order to determine what are the currently available components. Secondly, he/she contacts U-Sem providing information about the desired component/s. U-Sem then contacts the plug-in repository in order to get the components. Finally, the provided components are stored into the private space of the scientist and a confirmation message is send back.
 
 \begin{figure}[h!]
   \centering
@@ -202,31 +203,70 @@ Once we have already identified the new actors(scientists) in the runtime enviro
 
 \subsubsection{Component Management}
 
+Managing components is also another important use case. Implementing it will enable scientists to view all components installed into U-Sem and if needed remove them. This use case was modelled into the \textit{Component Management process} which is illustrated on \textbf{Fugure}. In this case we have interaction only between the scientist and U-Sem.
+
+Scientists can monitor the currently installed components at any time by contacting U-Sem. When such request is received, U-Sem is responsible to send back detailed information about all the components. Having this lists, scientist are also able to remove components. In this case scientists have to submit request for removal providing detailed for the component that has to be removed. Upon receiving such request U-Sem is responsible to permanently remove the component form the private space of the scientists and when finished send back a confirmation message.
+
+\begin{figure}[h!]
+  \centering
+  	\includegraphics[scale=0.6]{plug-in/business_processes/PluginManagementBusinessModel.jpg}
+  \caption{Business model describing the process for managing plug-ins in U-Sem}
+\end{figure}
+
 \subsection{Organization of layers}
 
+After identifying all actors that that are part of the environment of U-Sem and the way they interact with other, it is now time to discuss the internal structure of U-Sem that accommodates all these interactions. This section addresses the high level organization of the system by identifying all layers which build up the system. Next sections address the low lever structure of each layer.
+
+\textbf{Figure} illustrates the layered organization of U-Sem. 
+
+\begin{figure}[h!]
+  \centering
+  	\includegraphics[scale=0.6]{plug-in/layers/layers.png}
+  \caption{Layer organization of U-Sem}
+\end{figure}
+
 \subsection{Functional viewpoint}
+
+\subsubsection{Main view}
+
+\subsubsection{Plug-in admin.}
 
 \subsubsection{Plug-in Management}
 
 This component is responsible to store and manage the access to all plug-ins.
 
-\subsubsection{Plug-in Management endpoint}
+\subsubsection{Plug-in access manager}
 
 This component is responsible to provide endpoint for the administrators to manage the plug-ins. They can install and delete plug-ins.
 
-\subsection{Security}
+\paragraph{Security}
 
 \section{Implementation}
 
 In order to prove the applicabilities and capabilities of the system we actually implemented it.
 osgi providers....
 
-\section{Evaluation}
+The component interfaces of U-Sem provide extension point where custom functionality provided by a component can be plugged in. Each component interface is represented by a java interface which defines the contract. \textbf{picture of socket}
 
-In order to make sure that the implemented feature satisfies the requirements we performed an experiment. We tried to extract outside as a plug-in a functionality that is currently hardcoded into the workflow engine outside
+The list of interfaces that U-Sem provides includes: functions and function descriptors, workflow templates, authentication modules......
+
+local repository implementation
+
+user interface
+
+\section{Validation}
+
+After successfully implementing the system we wanted to validate that the system complies with all functional and non-functional requirements discussed at the beginning of this chapter. In order to do this we performed an experiment. We tried to extract outside as a plug-in a functionality that is currently hardcoded into the workflow engine outside.
+
+\subsection{Functional requirements}
+
+\subsection{Non-functional requirements}
+
+
 
 \section{Limitations and Future Work}
 
+Most of the limitations and shortcomings of our approach are inherited from OSGI. 
 
 \begin{thebibliography}{99}
 
@@ -251,6 +291,10 @@ In order to make sure that the implemented feature satisfies the requirements we
 \bibitem{OSGI} OSGi Alliance. http://www.osgi.org 
 
 \bibitem{Andre} Andre L. C. Tavares, Marco Tulio Valente, A Gentle Introduction to OSGi
+
+\bibitem{BPMN} Business Process Modeling Notation (BPMN) Specification, Final Adopted Specification. Technical report, Object Management Group (OMG), February 2006.
+
+\bibitem{Decker} Decker, G. and Barros, A., Interaction modeling using BPMN, Business Process Management Workshops, 2008
 
 
 \end{thebibliography}
