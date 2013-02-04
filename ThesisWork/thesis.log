@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2011.9.30)  1 FEB 2013 19:34
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2011.9.30)  4 FEB 2013 17:41
 entering extended mode
 **thesis.tex
 (E:\Repositories\rdfgears.btodorov\ThesisWork\thesis.tex
@@ -839,38 +839,80 @@ Overfull \hbox (85.37273pt too wide) in paragraph at lines 212--213
  [][] 
  []
 
-<plug-in/layers/layers.png, id=133, 419.31656pt x 238.64156pt>
+<plug-in/layers/layers.png, id=133, 268.75406pt x 138.5175pt>
 File: plug-in/layers/layers.png Graphic file (type png)
 
 <use plug-in/layers/layers.png>
-Package pdftex.def Info: plug-in/layers/layers.png used on input line 224.
-(pdftex.def)             Requested size: 251.59186pt x 143.18602pt.
+Package pdftex.def Info: plug-in/layers/layers.png used on input line 225.
+(pdftex.def)             Requested size: 161.25368pt x 83.11113pt.
  [22 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/business_processes/P
 luginManagementBusinessModel.jpg> <E:/Repositories/rdfgears.btodorov/ThesisWork
-/plug-in/layers/layers.png>] [23] [24
+/plug-in/layers/layers.png>]
+<plug-in/layers/main-func.png, id=137, 466.8642pt x 417.9615pt>
+File: plug-in/layers/main-func.png Graphic file (type png)
+
+<use plug-in/layers/main-func.png>
+Package pdftex.def Info: plug-in/layers/main-func.png used on input line 241.
+(pdftex.def)             Requested size: 280.12067pt x 250.77882pt.
+ [23 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/layers/main-func.png
+>]
+<plug-in/layers/admin-func.png, id=141, 590.32545pt x 364.4817pt>
+File: plug-in/layers/admin-func.png Graphic file (type png)
+
+<use plug-in/layers/admin-func.png>
+Package pdftex.def Info: plug-in/layers/admin-func.png used on input line 266.
+(pdftex.def)             Requested size: 442.74301pt x 273.3606pt.
+
+Overfull \hbox (66.93924pt too wide) in paragraph at lines 266--267
+ [][] 
+ []
+
+[24 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/layers/admin-func.png
+>] <plug-in/layers/access-func.png, id=145, 335.0919pt x 222.23026pt>
+File: plug-in/layers/access-func.png Graphic file (type png)
+
+<use plug-in/layers/access-func.png>
+Package pdftex.def Info: plug-in/layers/access-func.png used on input line 298.
+
+(pdftex.def)             Requested size: 284.82945pt x 188.89659pt.
+ [25 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/layers/access-func.p
+ng>]
+<plug-in/layers/concur.png, id=150, 611.4042pt x 653.5617pt>
+File: plug-in/layers/concur.png Graphic file (type png)
+
+<use plug-in/layers/concur.png>
+Package pdftex.def Info: plug-in/layers/concur.png used on input line 324.
+(pdftex.def)             Requested size: 458.55202pt x 490.17007pt.
+
+Overfull \hbox (82.74825pt too wide) in paragraph at lines 324--325
+ [][] 
+ []
+
+[26 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/layers/concur.png>]
+[27] [28
 
 ]
 bibitemlist
-[25]) [26] (E:\Repositories\rdfgears.btodorov\ThesisWork\conclusions.tex)
-[27
+[29]) [30] (E:\Repositories\rdfgears.btodorov\ThesisWork\conclusions.tex)
+[31
 
 
 
 ]
 No file thesis.bbl.
-(E:\Repositories\rdfgears.btodorov\ThesisWork\appendix.tex [28
+(E:\Repositories\rdfgears.btodorov\ThesisWork\appendix.tex [32
 
 
 
-]) [29]
-(E:\Repositories\rdfgears.btodorov\ThesisWork\requirements.tex [30
+]) [33]
+(E:\Repositories\rdfgears.btodorov\ThesisWork\requirements.tex [34
 
 
 
-] [31])
-[32]
+] [35])
+[36]
 (E:\Repositories\rdfgears.btodorov\ThesisWork\prioritization-questionare.tex)
-[33
+[37
 
 
 
@@ -894,10 +936,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 6108 strings out of 494045
- 84294 string characters out of 3148378
- 260166 words of memory out of 3000000
- 9243 multiletter control sequences out of 15000+200000
+ 6128 strings out of 494045
+ 84870 string characters out of 3148378
+ 260167 words of memory out of 3000000
+ 9259 multiletter control sequences out of 15000+200000
  70589 words of font info for 90 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
  36i,12n,43p,1371b,356s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -907,9 +949,9 @@ s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX
 1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8
 a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program
  Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on thesis.pdf (45 pages, 750256 bytes).
+Output written on thesis.pdf (49 pages, 1588001 bytes).
 PDF statistics:
- 196 PDF objects out of 1000 (max. 8388607)
+ 213 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 76 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 96 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -213,11 +213,12 @@ Scientists can monitor the currently installed components at any time by contact
   \caption{Business model describing the process for managing plug-ins in U-Sem}
 \end{figure}
 
-\subsection{Organization of layers}
 
-After identifying all actors that that are part of the environment of U-Sem and the way they interact with other, it is now time to discuss the internal structure of U-Sem that accommodates all these interactions. This section addresses the high level organization of the system by identifying all layers which build up the system. Next sections address the low lever structure of each layer.
+\subsection{Functional organization}
 
-\textbf{Figure} illustrates the layered organization of U-Sem. 
+After identifying all actors that that are part of the environment of U-Sem and the way they interact with one another, it is now time to discuss the internal structure of U-Sem that accommodates all these interactions. This section defines the architectural elements that provide the functionality of the system. It describes the functional structure of the system including the key functional elements, their responsibilities, the interfaces they expose, and the interactions between them. Taken together, this demonstrates how the system will perform the required functions.
+
+All components that are take part in the dynamic component model functionality can be classified in layers. This three layered organization is illustrated in figure \textbf{Figure} and defines the following layers:
 
 \begin{figure}[h!]
   \centering
@@ -225,21 +226,104 @@ After identifying all actors that that are part of the environment of U-Sem and 
   \caption{Layer organization of U-Sem}
 \end{figure}
 
-\subsection{Functional viewpoint}
+\begin{itemize}
+	\item \textit{Plug-in storage layer} is responsible to provide storage functionality for plug-ins.
+	\item \textit{Plug-in access layer} provides functionality for plug-in management and provides access to services provided by the components. Components in this layer are responsible to enforce the security, privacy, etc. policies of the system.
+	\item \textit{Application layer} this layer consists of all components that are interested in using the services provided by the plug-ins. These applications are also responsible to provide functionality to the user for adding new plug-ins to the system or managing the existing once. 
+	\end{itemize}
 
-\subsubsection{Main view}
+\subsubsection{High-level organization}
 
-\subsubsection{Plug-in admin.}
+This section describes the internal structure of the layers and specifies the high level components that build up the feature. \textbf{Figure} illustrates this organization and shows how the components are organized into the layers. We have the following components starting from bottom up:\textbf{TODO better explanation is needed}
 
-\subsubsection{Plug-in Management}
+\begin{figure}[h!]
+  \centering
+  	\includegraphics[scale=0.6]{plug-in/layers/main-func.png}
+  \caption{Layer organization of U-Sem}
+\end{figure}
 
-This component is responsible to store and manage the access to all plug-ins.
+\begin{itemize}
+
+\item \textit{Plug-in Store} is responsible to store the installed plug-ins for each user. It should provide permanent store for the components so that after system restart they are still available. This component is also responsible to provide storage space for each component in case any data storage is required. Current implementation of OSGI can only operate with file store and therefore this component is represented by the file system of the operating system. For availability reasons this storage should be \textbf{replicated}.
+
+\item \textit{OSGI Implementation} - As we already discussed in previous sections, we chose OSGI as a standard for achieving the dynamic component model for U-Sem. It is responsible to keep track of plug-ins life cycle(create, store, ..) and provide access to the services implemented by the different components. It provides API which enables communication with the framework.
+
+\item \textit{Plug-in access manager} acts as a level of abstraction over the OSGI component. It is responsible to deal with the configuration ans start of the framework. It is also responsible to enforce the security policy and provide insulation between scientists. It provides API for the higher level components for dealing with services and management of plug-ins. Further decomposition of this component is provided in the next section.
+
+\item \textit{Plug-in admin.} is responsible to deal with the administration of the plug-ins. It provides the system's endpoint(UI) for interaction with the scientist scientists. Further decomposition of this component is provided in the next section. 
+
+\item \textit{Workflow engine} uses the interface provided by the \textit{Plugin access manager} to get list of the available services and when required execute them.
+	
+\end{itemize}
+
+
+\subsubsection{Plug-in admin. module}
+
+\textbf{Figure} shows the functional decomposition of the Plug-in admin. module. It consists of the following components:
+
+\begin{figure}[h!]
+  \centering
+  	\includegraphics[scale=0.75]{plug-in/layers/admin-func.png}
+  \caption{Layer organization of U-Sem}
+\end{figure}
+
+\begin{itemize}
+
+\item \textit{List Plug-ins} - 
+
+\item \textit{Plug-in removal} - 
+
+\item \textit{Management endpoint} - 
+
+\item \textit{Plug-in installer} - 
+
+\item \textit{Plug-in upload endpoint} - 
+
+\item \textit{Plug-in repository adaptor} - 
+
+\item \textit{Plug-in downloader} - 
+
+\item \textit{Plug-in repository endpoint} - 
+
+\end{itemize}
+
 
 \subsubsection{Plug-in access manager}
 
-This component is responsible to provide endpoint for the administrators to manage the plug-ins. They can install and delete plug-ins.
+This component is responsible to provide endpoint for the administrators to manage the plug-ins. They can install and delete plug-ins. This component is responsible to store and manage the access to all plug-ins. \textbf{Figure} shows the functional decomposition of the Plug-in access manager module. It consists of the following components:
+
+
+\begin{figure}[h!]
+  \centering
+  	\includegraphics[scale=0.85]{plug-in/layers/access-func.png}
+  \caption{Layer organization of U-Sem}
+\end{figure}
+
+\begin{itemize}
+
+\item \textit{OSGI Adaptor} - 
+
+\item \textit{Private space registry} - 
+
+\item \textit{Security policy} - 
+
+\item \textit{Plug-in manager} - 
+
+\item \textit{Service provider} - 
+
+\end{itemize}
 
 \paragraph{Security}
+
+\subsection{Concurent organization}
+
+This section describes the concurrency structure of U-Sem. We show how functional elements map to concurrency units in order to clearly identify the parts of the system that can execute. We also show how this parallel execution is coordinated and controlled.
+
+\begin{figure}[h!]
+  \centering
+  	\includegraphics[scale=0.70]{plug-in/layers/concur.png}
+  \caption{Layer organization of U-Sem}
+\end{figure}
 
 \section{Implementation}
 
