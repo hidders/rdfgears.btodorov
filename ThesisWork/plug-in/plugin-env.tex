@@ -34,7 +34,7 @@ In this section we are formally identify the functional requirements which defin
 
 \begin{itemize}
 
-	\item \textbf{Creating custom functionality} - This is the main scenario regarding the dynamic component model. Scientists has to be able to extend U-Sem by adding custom functionality on demand. They has to be able to be able to compose the custom functionality independently from the system, add the produced functionality to U-Sem during the execution time of the system and/or if desired share it with other scientists.
+	\item \textbf{Adding custom functionality} - This is the main scenario regarding the dynamic component model. Scientists has to be able to extend U-Sem by adding custom functionality on demand. They has to be able to be able to compose the custom functionality independently from the system, add the produced functionality to U-Sem during the execution time of the system and/or if desired share it with other scientists.
 	
 	\item \textbf{Use functionality shared by other scientists} - Scientists has to be able to reuse custom functionality provided by other scientist.
 	
@@ -150,9 +150,9 @@ The OSGi standard also provides coordinator component which represents a runtime
 
 \section{Architecture}
 
+This section describes the architecture of U-Sem regarding the dynamic component model. In order to provide more efficient description we have provided a set of interrelated views, which collectively illustrate the functional and non-functional features of the system from different perspectives and demonstrate that it meets the requirements.
 
-
-\subsection{Runtime environment}
+\subsection{Context View}
 
 This section discusses the runtime environment of U-Sem. As explained in the introduction section initially the system only communicated with providers of semantic content and the clients which execute the services. However, introducing the dynamic component model of U-Sem we bring to entities on the stage. \textbf{Figure} illustrates the updated runtime environment of U-Sem.
 
@@ -214,7 +214,7 @@ Scientists can monitor the currently installed components at any time by contact
 \end{figure}
 
 
-\subsection{Functional organization}
+\subsection{Functional view}
 
 After identifying all actors that that are part of the environment of U-Sem and the way they interact with one another, it is now time to discuss the internal structure of U-Sem that accommodates all these interactions. This section defines the architectural elements that provide the functionality of the system. It describes the functional structure of the system including the key functional elements, their responsibilities, the interfaces they expose, and the interactions between them. Taken together, this demonstrates how the system will perform the required functions.
 
@@ -227,14 +227,14 @@ All components that are take part in the dynamic component model functionality c
 \end{figure}
 
 \begin{itemize}
-	\item \textit{Plug-in storage layer} is responsible to provide storage functionality for plug-ins.
+	\item \textit{Plug-in storage layer} is responsible to provide storage functionality for storing the installed plug-ins. Additionally, it should provide place where plug-ins can store data during their execution.
 	\item \textit{Plug-in access layer} provides functionality for plug-in management and provides access to services provided by the components. Components in this layer are responsible to enforce the security, privacy, etc. policies of the system.
 	\item \textit{Application layer} this layer consists of all components that are interested in using the services provided by the plug-ins. These applications are also responsible to provide functionality to the user for adding new plug-ins to the system or managing the existing once. 
 	\end{itemize}
 
 \subsubsection{High-level organization}
 
-This section describes the internal structure of the layers and specifies the high level components that build up the feature. \textbf{Figure} illustrates this organization and shows how the components are organized into the layers. We have the following components starting from bottom up:\textbf{TODO better explanation is needed}
+This section describes the internal structure of the layers and specifies the high level components that build up the feature. \textbf{Figure} illustrates this organization and shows how the high-level components are organized into the layers. We have the following components starting from bottom up:\textbf{TODO better explanation is needed}
 
 \begin{figure}[h!]
   \centering
@@ -259,7 +259,7 @@ This section describes the internal structure of the layers and specifies the hi
 
 \subsubsection{Plug-in admin. module}
 
-\textbf{Figure} shows the functional decomposition of the Plug-in admin. module. It consists of the following components:
+This section defines the functional decomposition of the Plug-in admin. module which is illustrated in figure \textbf{fig}. It consists of the following components:
 
 \begin{figure}[h!]
   \centering
@@ -269,21 +269,21 @@ This section describes the internal structure of the layers and specifies the hi
 
 \begin{itemize}
 
-\item \textit{List Plug-ins} - 
+\item \textit{List Plug-ins} - This component is responsible to provide functionality that provides the list of all plug-ins that are installed for the particular user. This component has to provide detailed information for each plug-in: its id, name, vendor, etc.
 
-\item \textit{Plug-in removal} - 
+\item \textit{Plug-in removal} - This component should enable users to remove(uninstall) plug-ins.  
 
-\item \textit{Management endpoint} - 
+\item \textit{Management endpoint} - This component provides the user interface for the plug-in management functionality. It acts as a bridge between the user and the components that provide the actual functionality. 
 
-\item \textit{Plug-in installer} - 
+\item \textit{Plug-in installer} - This component receives a plug-in in the form of a \textit{jar} file and is responsible to install it to the storage space of a particular user.
 
-\item \textit{Plug-in upload endpoint} - 
+\item \textit{Plug-in upload endpoint} - This components provides the user interface needed for uploading plug-ins. It enables users to select a \textit{jar} file from their local file system and upload it for installation.
 
-\item \textit{Plug-in repository adaptor} - 
+\item \textit{Plug-in repository adaptor} - This component manages  the communication with the plug-in repository. It acts as a level of abstraction. U-Sem has to be able to use different repositories and this component is the only component to change if support for a new repository system is needed. 
 
-\item \textit{Plug-in downloader} - 
+\item \textit{Plug-in downloader} - This component is responsible to download the desired plug-ins from the repository and upon successful download notify the \textit{Plug-in installer} to continue with the  installation of the plug-in.
 
-\item \textit{Plug-in repository endpoint} - 
+\item \textit{Plug-in repository endpoint} - This component provides the user interface which enables users to browse the plug-in repository and indicate which plug-ins should be downloaded and installed on U-Sem.
 
 \end{itemize}
 
@@ -301,23 +301,23 @@ This component is responsible to provide endpoint for the administrators to mana
 
 \begin{itemize}
 
-\item \textit{OSGI Adaptor} - 
+\item \textit{OSGI Manager} - This component manages the communication with the OSGI engine. It is responsible start/stop the engine and monitor its lifecycle. It is also responsible to enforce the security policies by setting up the Security Manager options of the engine. It also acts as a level of abstraction over the component engine and in case any change in future is required this is the only component that will be affected. 
 
-\item \textit{Private space registry} - 
+\item \textit{Private space registry} - Keeps track for the storage space and settings for each user. It has to make sure that the storage places are not overlapping.  
 
-\item \textit{Security policy} - 
+\item \textit{Security policy} - Provides the security policy for each user. It defines the Java operations(file access \textbf{...}) that users are allowed to perform.
 
-\item \textit{Plug-in manager} - 
+\item \textit{Plug-in manager} - This component is responsible to provide an API that is used by high level components to perform plug-in management tasks.
 
-\item \textit{Service provider} - 
+\item \textit{Service provider} - This component is responsible to provide an API that is used by high level components to get the list of available services and load them.
 
 \end{itemize}
 
 \paragraph{Security}
 
-\subsection{Concurent organization}
+\subsection{Concurrency view}
 
-This section describes the concurrency structure of U-Sem. We show how functional elements map to concurrency units in order to clearly identify the parts of the system that can execute. We also show how this parallel execution is coordinated and controlled.
+This section describes the concurrency structure of U-Sem. We show how functional elements map to concurrency units(processes, process groups and threads) in order to clearly identify the parts of the system that can execute. We also show how this parallel execution is coordinated and controlled.
 
 \begin{figure}[h!]
   \centering
@@ -325,32 +325,100 @@ This section describes the concurrency structure of U-Sem. We show how functiona
   \caption{Layer organization of U-Sem}
 \end{figure}
 
+Figure \textbf{fig} illustrates the concurrency organization of U-Sem. The main functionality of the system is situated in the U-Sem process group. All U-Sem processes and all external processes(Plug-in repository) including the Database process operate concurrently. The main processes wait for requests from the user(web browsers and/or other systems). Each request is processed in separate thread depending on its type. As a result, multiple client requests can be handled simultaneously. Workflow execution initiated by U-Sem clients and plug-in manipulation by scientists can happen at the same time. However, the two processes does not communicate with each other and thus the synchronization on the installed plug-ins is achieved throw the storage process. Every time before executing a workflow, the process loads the isntalled plug-ins into the memory. This means any changes to the plug-ins during an execution of a workflow will not be applied and thus the execution will not be distrupted. All changes will take place the next time a workflow is executed.
+
+\subsection{Deployment View}
+
+This section describes the environment in which the system will be deployed. It defines where each of the processes defined in the previous section will run. 
+
+Due to the nature in which the system operates we had to consider flexibility and scalability. In order to test their work scientists has to be able to easily install and set up U-Sem. In this scenario scalability and performance is not critical however simplicity is crucial. In production mode the system will be used by many users and many services will be running simultaneously. Therefore, in this situation the performance and scalability issues are most important. As a result, we designed U-Sem to be flexible and be able to accommodate both scenarios.
+
+
+
+\subsubsection{Simple setup}
+
+This setup targets the scenarios where there is no need for high performance and scalability. The aim is to enable scientists to  setup the system fast on a single machine and little configuration. 
+
+\begin{figure}[h!]
+  \centering
+  	\includegraphics[scale=0.70]{plug-in/layers/simple_setup.png}
+  \caption{Layer organization of U-Sem}
+\end{figure}
+
+This deployment organization is illustrated on figure \textbf{fig}. As you can see all component are deployed in the same web server on the same physical machine. We recommend this setup only for development and test purposes since it does not satisfy the performance, availability and security requirements. For production setup we recommend the one described in the next section.
+
+\subsection{High Availability setup} 
+
+This setup aims to cover the scenarious requiring high performance and high availability.
+
+The architecture defines a typical three tier organization. The presentation tier is represented by the user's web browsers and other client systems, the logical tier by the U-Sem backend process and the data storage tier by the plug-in store. In order to satisfy the scalability and availability requirements the logical and data storage tiers are distributed on multiple physical
+devices. The backend process is replicated on several processing nodes to form a cluster. A load balancer situated between the cluster nodes and the client devices is responsible to distribute the load amongst the nodes. In case of a failure of a processing node, the load balancer no longer sends client request to it.
+
+The database is also distributed. The storage is divided in several pieces based on the owner of the installed plug-ins. Then a node is assigned to each piece of data. Each node is responsible to store and provide access to the data of the assigned pieces. For extra security each device can be accompanied by another one which serves as a backup \textbf{Not in picture}. These is also a balancer between the logical and data tier which is responsible to redirect requests to the data node that is responsible for the data for the required user. Additionally, in case of a failure of a data node the load balancer is responsible to start sending request to its backup node and thus cause little times of unavailability.
+
+In order to satisfy the security requirements, all communications are managed by firewalls placed before the load balancers. For clarity reasons they(the firewalls and load balancers) are displayed in the same components in the model but they can also be deployed on different processing units as well.
+
+
+\begin{figure}[h!]
+  \centering
+  	\includegraphics[scale=0.70]{plug-in/layers/high_setup.png}
+  \caption{Layer organization of U-Sem}
+\end{figure}
+
 \section{Implementation}
 
-In order to prove the applicabilities and capabilities of the system we actually implemented it.
-osgi providers....
+In order to prove the applicabilities and capabilities of the system we actually implemented it. This section covers the most interesting steps performed during the implementation of the system.
 
-The component interfaces of U-Sem provide extension point where custom functionality provided by a component can be plugged in. Each component interface is represented by a java interface which defines the contract. \textbf{picture of socket}
+First, we had to choose which OSGI implementation to use. Nowadays there are several vendors that provide implementations. The most popular are: Equinox, Felix and Knopflerfish. Theoretically, they all strictly implement the OSGI standard and therefore there should be little difference. However, we choose Equinox because it seemed more matured and more widely used then the others. Moreover, Equinox is highly integrated in the Eclipse IDE. This enables scientist to use the out-of-the box functionality for creating plug-ins in Eclipse.
 
-The list of interfaces that U-Sem provides includes: functions and function descriptors, workflow templates, authentication modules......
+Secondly, we had to decide the points where U-Sem can be extendend by providing custom functionality from plug-ins. At this point we identified that scientist has to be able to provide custom rdf gears functions and workflows. As explained earlier, in OSGI this points are represented as java interfaces. For custom functions we use the \textit{RGLFunction} class. The situation with the workflows was more complicated since they are represented as resource(xml) files. OSGI does not provide direct way for providing custom resource files from plug-ins. In order to overcome this problem we identified new class called \textit{WorkflowTemplate} which acts as a bridge and enables the workflow engine and other components to access workfow files provided by custom plug-ins.
 
-local repository implementation
+Next, we provided a very simple implementation of a plug-in repository. It represents a simple web application which stores the plug-in locally into the file system of the web server where it is deployed. The implementation provides resentful api for retrieving the list of available plug-ins and provide the contents of a selected plug-in. We also implemented very simple user interface which enables scientists to upload their plug-ins. 
 
-user interface
+We continued by implementing all the components described in the architecture of U-Sem. In order to implement the end points(user interface) we used the JQuery and Bootstrap. Figure \textbf{fig} represents the end point for viewing all installed plug-ins. Detailed information about all plug-ins is represented in the table. Each row has a "Delete" button which provides access to the functionality for removing plug-ins. At the bottom of the view there are two buttons that lead to the endpoints for uploading a plug-in illustrated in figure \textbf{fig} and the endpoint for browsing and installing functionality from the repository illustrated in figure \textbf{fig}.
+
+At the end we constructed a Maven build script that packs all source files into components(war files) that can be directly deployed to a web server. The entire system is composed in the following deployable files:
+\begin{itemize}
+	\item \textit{rdfgears.war} providing the workflow engine.
+	\item \textit{pluginmanagement.war} providing the functionality for managing plug-ins.
+	\item \textit{localPluginRepo.war} providing the implementation of the simple plug-in repository.
+\end{itemize}
 
 \section{Validation}
 
-After successfully implementing the system we wanted to validate that the system complies with all functional and non-functional requirements discussed at the beginning of this chapter. In order to do this we performed an experiment. We tried to extract outside as a plug-in a functionality that is currently hardcoded into the workflow engine outside.
+After successfully implementing the system we wanted to validate that the system complies with all functional and non-functional requirements discussed at the beginning of this chapter. 
 
 \subsection{Functional requirements}
 
+In order to validate the functional requirements we performed sevaral experiments and performed each of the defined scenarious.
+ 
+Initially we had to build a component that encapsulates all functionality needed to perform the "Sentiment analysis" service. This functionality is currently hardcoded into the workflow engine outside. We used the already existing tools in Eclipse IDE to create the new plug-in. We removed all functionality and resource files from the workflow engine and put them into the newly created plug-in. The only additional thing that we had to do was to register the provided functionality. In Equinox this is done in the \textbf{Application} class. At the end we exported the plug-in into a traditional java jar file.
+
+After we had built the plug-in we tried to execute each of the functional scenarios. Using the user interface we were able to plug in and use the components provided by the plug-in. We were able to view the installed plug-in in the management user interface and we were also able to successfully remove it from the system. At the end we were also able to share and install the plug in through the plug-in repository. All these proved that all functional requirements has been accomudated by the architecture and implementation of U-Sem.
+
+
 \subsection{Non-functional requirements}
 
+We believe that the proposed architecture will also satisfy the nonfunctional requirements of the system for the following reasons:
+
+\begin{itemize}
+
+\item \textit{Performance} - In each phase the user requests are distributed between several nodes which in the case of many users using the system makes it effective and reduces the response time.
+
+\item \textit{Availability} - All operations are performed by clusters which means that in case of hardware or software failure of a cluster node the other nodes will continue to operate and the entire system will continue to be available. Additionally, availability in case of a storage node failure is ensured by redirecting all requests to its backup. Cluster nodes can also be placed in different physical locations to handle situation where an accident(e.g. network or electrical failure) in one data center can cause all devices to fail. Additionally, load balancers can be considered as a single points of failure. In order to overcome this problem we provide also clusters of load balancers and enable DNS load balancing.\textbf{more about dns}
+
+\item \textit{Scalability} - One of the important requirements is that the system has to be able to gradually scale for supporting more users  by just adding new hardware components. This structure satisfies this requirement because in order to scale one should just add new nodes to the backend cluster, add new nodes to the database clusters. The system can be scaled up to the point where each workflow is executed by different node and the plug-ins for each scientist are stored on a different storage node.
+
+\item \textit{Security} - The connection between the user and the backend can be encrypted(HTTPS) so that data transition is protected. The system's communication channels are also secured by firewalls. Also each storage node is backed up in case a device fails.
+
+\end{itemize}
 
 
 \section{Limitations and Future Work}
 
 Most of the limitations and shortcomings of our approach are inherited from OSGI. 
+
+not loading every time plug-ins. use cashe or communication between processes.
 
 \begin{thebibliography}{99}
 
