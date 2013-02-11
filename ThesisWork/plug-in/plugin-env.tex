@@ -1,46 +1,53 @@
 
 \chapter{Dynamic Component Model}
 
-This chapter covers the architecture of the dynamic component model of U-Sem which enables scientists to dynamically load and use custom functionality.
+This chapter describes our solution to the problem of extending U-Sem by adding custom functionality. Section \ref{sec:problemDef} identifies the problem in details and describes all functional and non-functional requirements that a successful solution must satisfy. Section \ref{sec:approach} discusses that state of the art approaches and technologies that  can be used to solve the problem. Section \ref{sec:architecture} describes the extension of the architecture of U-Sem that we provide in order to solve the problem. Section \ref{sec:impl} briefly discusses the simple implementation that we provide in order to be able to verify the capabilities of the architecture we propose. Section \ref{sec:eval} discusses and verifies whether the proposed solution satisfies all of the requirements. Finally, in section \ref{sec:limits} we discuss the limitations of the proposed design and suggests aspects in which the design can be improved in the future.
 
 
 \section{Problem definition}
+\label{sec:problemDef}
 
-All of initial interviews with potential users of the system reviled that the nature of their work is extremely dynamic. The main responsibility of the scientists is to come up with new algorithms and approaches for user modelling. As a result they are continuously producing new software code that implements this algorithms. After each production cycle, this program code has to be put into U-Sem so that it is  available for testing, demonstration and evaluation purposes.
+During the initial interviews with the potential scientists that are going to use the system, we reviled that the nature of their work is very dynamic. In their day to day work they are expected to constantly improve and come up with new algorithms and approaches for user modelling. As a result, they are continuously producing new software code that implements these algorithms. After each production cycle, the program code has to be deployed into U-Sem so that it is available for testing, demonstration and evaluation purposes.
 
-We performed additional interviews with stakeholders in order to reveal how this process is currently done. Scientists reported that they have on their disposal only the capabilities of the workflow engine. However, it provides no functionality that enables to plug custom logic on demand into the system and as a result scientists are forced to "hardcode" their logic into the source code of the workflow engine. In this way the software code implementing the algorithms become part of the workflow engine. This approach is error prone and brings a lot of discomfort to the scientists working with the system. The most important disadvantages of this approach include:
+We then performed additional interviews with the scientist in order to reveal how this process is currently done, what are the problems they face with it and what are their expectations for the future system. Scientists reported that they have on their disposal only the capabilities of the workflow engine(RDFGears). However, it provides no functionality that enables to plug in custom logic on demand into the system and as a result scientists are forced to "hardcode" their logic into the source code of the workflow engine. In this way the software code implementing the algorithms becomes part of the workflow engine. We believe that this approach is error prone and brings a lot of discomfort to the scientists working with the system. The most important disadvantages of this approach include:
 
 \begin{itemize}
 
-	\item Adding new functionality requires a lot of time and knowledge. This is because in order to add the new functionality one has to alter the source code of the workflow engine and basically release a new version of it. This process requires advanced knowledge about each phase of the process: checking out the source code from the software repository, writing the new source code in the appropriate place, building the system and finally deploying it to the web server. Most of the time, all this knowledge is not required for the daily work of scientists and learning it creates a serious overhead and discomfort.
+	\item Adding new or modifying existing functionality requires a lot of time and knowledge since in order to do that one has to alter the source code of the workflow engine and basically release a new version of it. This process requires advanced knowledge about each phase of the release process: checking out the source code from the software repository, writing the new source code in the appropriate place, building the system and finally deploying it to the web server. Most of the time, all this knowledge is not required for the daily work of scientists and learning it creates a serious overhead and discomfort.
 	
-	\item In order to add new functionality to the system one has to stop the web server where the system is deployed, replace the program entities of the system and start the server again. The problem is that during the time the server is down all previously created services are unavailable. This is a major problem for everyone that is using the system during that time.
+	\item In order to add/modify functionality one has to stop the web server where the system is deployed, replace the deployment entities of the system and start the server again. The problem with this approach is that during the time the server is down all other running services are unavailable. This is a major problem for everyone that is using the system during that time.
 	
-	\item Another major disadvantage is that the training period for new scientist working with the system is significant because of all the additional knowledge required. This may easily cause project delays and missed deadlines.
+	\item Another major disadvantage is that as a result of all the additional knowledge required the training period for new scientists is significantly increased. This may easily cause project delays and missed deadlines.
 	
-	\item Multiple scientists adding functionality simultaneously result in missing functionality. \textbf{Figure 1} illustrates the problematic scenario. As stated earlier in order to add new functionality scientists must first check out the source code of the system, make the changes and deploy the new version on the web server. However, if two scientist perform this process simultaneously then the new functionality provided by the first scientists will be lost when the second deploys his version. 
+	\item Multiple scientists adding/modifying functionality simultaneously may result in loss of functionality. Figure \ref{fig_vers_prob} illustrates the problematic scenario. As stated earlier in order to add new functionality scientists must first check out the source code of the system, make the changes and deploy the new version on the web server. However, if two scientist perform this process simultaneously then the new functionality provided by the first scientist will be lost when the second one deploys his version. 
 	
-	\item It is hard to verify what additional functionality is added to the system and therefore, additional documentation is required. This problem becomes more serious when there are more people are working on the project simultaneously and it is hard to track the changes in functionality.
+	\begin{figure}[h!]
+  \centering
+  	\includegraphics[scale=0.75]{plug-in/version_problem.png}
+  \caption{State diagram illustrating the scenario where two scientists extend U-Sem simultaneously and the changes made by Scientist A are lost.  }
+  \label{fig_vers_prob}
+\end{figure}
+	
+	\item And last but not least, it is hard to verify what is the exact state of the system at any particular moment. Unless documented exclusively, it is not clear what additional functionality is added to the system. This problem becomes more serious when there are more people working on the project simultaneously and it is hard to track the changes in the system.
 		
 \end{itemize}
 
-But this is not everything. This approach also introduces one big disadvantage from software engineering perspective. The problem lies in the poor modularization of the system. In software engineering modularization is considered a key property for improving extensibility, comprehensibility, and reusability in software projects \cite{Parnas}. In this case, engineers can only rely on the modular functionality provided by the Java language. However, its information hiding principles are only applied on class level, but not to the level of packages and JAR files. For example, it is not possible to restrict access to certain public classes defined in a package. The absence of such visibility control can easily lead to highly coupled,"spaghetti-like" systems. The consequences of this will become more and more clear with the time when the system grows in size, complexity and the number of engineers working on it increases. The most probable consequences include high development costs, low productivity, unmanageable software quality and high risk to move to new technology \textbf{Cai}.
+This approach also introduces one big disadvantage from software engineering perspective. The problem lies in the poor modularization of the system. In software engineering, modularization is considered as a key property for improving extensibility, comprehensibility, and reusability in software projects \cite{Parnas}. The most important aspect of a successful modular system is its information hiding capabilities \cite{Srivastava}. In our case, scientists can only rely on the modularization functionality provided by the Java language. However, its information hiding principles are only applied on class level, but not to the level of packages and JAR files. For example, it is not possible to restrict access to certain public classes defined in a package. The absence of such visibility control can easily lead to highly coupled, "spaghetti-like" systems \cite{Eder}. The consequences of this will become more and more clear with the time when the system grows in size, complexity and the number of engineers working on it increases. The most probable consequences include high development costs, low productivity, unmanageable software quality and high risk to move to new technology \textbf{Cai}.
 
-When designing the U-Sem architecture we considered all these pitfalls of the current approach. However, before going to the architecture description, for clarity and easier validation, in the next subsection, we provide a more formal representation of all user requirements.
+Having all these considerations in mind, we devised a complete set of requirements that presents the functional scenarios(functional requirements) and system qualities(non-functional requirements) that the proposed architecture has to provide. These requirements are also referred to into the evaluation section where we discuss how and to what extend the architecture satisfies each of them.
 
 
 \subsection{Functional Scenarios}
-In this section we are formally identify the functional requirements which define the main interactions between the scientists and the system. This compact representation of the requirements also makes validation an evaluation clearer. 
+In this section we formally identify the functional requirements which define the main interactions between the scientists and the system. Each scenario is marked with a small code at the beginning which is used for easier identification during the validation and evaluation phase.
 
 \begin{itemize}
 
-	\item \textbf{Adding custom functionality} - This is the main scenario regarding the dynamic component model. Scientists has to be able to extend U-Sem by adding custom functionality on demand. They has to be able to be able to compose the custom functionality independently from the system, add the produced functionality to U-Sem during the execution time of the system and/or if desired share it with other scientists.
+	\item \textbf{UC1 - Adding custom functionality} - This is the main scenario regarding the feature we design in this chapter. Scientists has to be able to extend U-Sem by adding custom functionality on demand. They has to be able to compose the custom functionality independently from the system, add the produced functionality to U-Sem during the execution time of the system and/or if desired share it with other scientists.
 	
-	\item \textbf{Use functionality shared by other scientists} - Scientists has to be able to reuse custom functionality provided by other scientist.
+	\item \textbf{UC2 - Use functionality shared by other scientists} - Scientists has to be able to reuse custom functionality that is previously shared by other scientist.
 	
-	\item \textbf{Manage loaded functionality} - Users has to able to manage all functionality already added to the system. This includes to be able to view a list of all added functionality. And secondly they have to be able to remove any functionality from the provided list.
+	\item \textbf{UC3 - Manage loaded functionality} - Users has to able to manage all functionality already added to the system. This includes, firstly, that they have to be able to view a list of all added functionality. And secondly, they have to be able to remove any functionality from the provided list.
 			
-	
 \end{itemize}
 
 \subsection{Non-functional requirements}
@@ -49,25 +56,32 @@ This section defines the main quality scenarios of the system that model how the
 
 \begin{itemize}
 
-	\item Availability - adding custom functionality should not affect other users at all.
+	\item Availability - performing any of the functional scenarios defined in the previous section should not cause any kind of unavailability of the system. 
 	
-	\item Insulation - scientists not being affected by any future changes to the reused components.
+	\item Scalability - the architecture should enable scalability by supporting the default scalability approach discussed in the introduction section.
 	
-	\item Privacy - As a user, I don't want other users to see what is my custom functionality and use them.
+	\item Insulation - A scientist should not be affected by the work of the others. The only way of interaction between scientists has to be achieved through the sharing mechanism. Moreover, scientists should not be affected by any future changes to the reused components.
 	
-	\item Security
+	\item Privacy - Scientists should not be able to see and use each others functionality unless it is share through the sharing mechanism.
+	
+	\item Security - Although not critical, sometimes scientist might want to be insured that their custom functionality is protected and it cannot be accessed against their will. Therefore, the system has to provide secure transportation and access mechanism for the custom functionality.
+	
+Additionally, all installed functionality should be backuped. In case of failure of a storage device, the system should provide a quick and reliable method for recovering of all the data.
 	
 \end{itemize}
 
 \section{Approach}
+\label{sec:approach}
 
-After a detailed investigation of the requirements we reached the conclusion that the core of the problem lies firstly in the poor separations of concerns(modularization) and secondly the impossibility to manage(add, replace, remove) these concerns while the system is in operation. In order to solve these problems we investigated the scientific literature to find what are the available approaches and technologies that help to overcome these problems. The review showed that the topic about modularization of software systems is widely discussed and there is even a sub field in software engineering which addresses the problem of building a system out of different components \cite{Jifeng}. It is called Component-based software engineering. 
+This section discusses the currently available approaches and technologies that might be used in order to fulfil the requirements specified in the previous section. We also identify which of them we believe will be most helpful in the context of U-Sem.
 
-Next subsection discusses the basic idea and advantages that this approach brings. Then we discus what features a system needs to provide in order to enable Component-based software engineering. This is known as component model. At the end we also discuss the state of the art technologies that provide support for Component-based software engineering, enable dynamic management of the components and are useful in the context of U-Sem. 
+After a detailed investigation of the requirements, we reached the conclusion that the core of the problem lies, firstly, in the poor separation of concerns(modularization of the functionality) and secondly, in the impossibility to manage(add, replace, remove) these concerns while the system is in operation. In order to solve these problems, we investigated the scientific literature to find what are the available approaches and technologies that can help to overcome these problems. Our research relieved that the topic about modularization of software systems is widely discussed and there is even a sub field in software engineering which addresses the problem of building a system out of different components \cite{Jifeng}. This sub field is called Component-based software engineering. 
+
+In the next subsection we discuss the basic idea and advantages that this approach brings. We also discus what features a system needs to provide in order to enable Component-based software engineering. This is known as component model. At the end, we also discuss the state of the art technologies that provide support for Component-based software engineering, enable dynamic management of the components and are useful in the context of U-Sem. 
 
 \subsection{Component-based software engineering}
 
-Component-based software engineering is based on the idea to construct software systems by selecting appropriate off-the-shelf components and then to assemble them together with a well-defined software architecture \cite{Pour}. This software development approach improves on the traditional approach since applications no longer has to be implemented from scratch. Each component can be developed by different developers using different IDEs, languages and different platforms. This can be shown in Figure \ref{fig_cbsd}, where components can be checked out from a component repository, and assembled into the desired software system.
+Component-based software engineering is based on the idea to construct software systems by selecting appropriate off-the-shelf components and then to assemble them together with a well-defined software architecture \cite{Pour}. This software development approach improves on the traditional approach(building application as a single entity) since applications no longer has to be implemented from scratch. Each component can be developed by different developers using different IDEs, languages and different platforms. This can be shown in Figure \ref{fig_cbsd}, where components can be checked out from a component repository, and assembled into the desired software system. This completely complies with the idea behind U-Sem where each scientists is responsible to build only a peace of the system which provides certain service.
 
 \begin{figure}[h!]
   \centering
@@ -76,14 +90,14 @@ Component-based software engineering is based on the idea to construct software 
   \label{fig_cbsd}
 \end{figure}
 
-The main benefits that Component-based software development brings are: significant reduction of development cost and time-to-market, and also improvement on maintainability, reliability and overall qualities of software systems \cite{Pour1} \cite{Pour2}. Additionally, the applicability of this this approach is supported by the fact that is widely used in both the research community and in the software industry. There are many examples of technologies implementing this approach including: OMG's CORBA,  Microsoft's Component Object Model(COM) and Distributed COM (DCOM), Sun's(now Oracle) JavaBeans and Enterprise JavaBeans, OSGI.
+Other benefits that Component-based software development brings and we believe U-Sem will benefit from include: significant reduction of development cost and time-to-market, and also improvement on maintainability, reliability and overall qualities of software systems \cite{Pour1} \cite{Pour2}. Additionally, the applicability of this this approach is supported by the fact that is widely used in both the research community and in the software industry. There are many examples of technologies implementing this approach including: OMG's CORBA,  Microsoft's Component Object Model(COM) and Distributed COM (DCOM), Sun's(now Oracle) JavaBeans and Enterprise JavaBeans, OSGI.
 
 \subsection{Component model}
 
-A component model is the architecture of a system or part of a system that is built using components \cite{Cai}. It defines a set of  standards for component implementation, documentation and deployment. Usually, the main components that a component-based software system consists of are \cite{Chen}:
+Designing the component model of a system provides the specification defining the way that the system can be build by composing different components applying the component-based software engineering approach. More formally, it is the architecture of a system or part of a system that is built by combining different components \cite{Cai}. It defines a set of  standards for component implementation, documentation and deployment. Usually, the main components that a component-based software system consists of are \cite{Chen}:
 
 \paragraph{Interfaces}
-	determine the external behaviour and features of the components and allow the components to be used as a black box. They provide the contract which defines the means of communication between components. As illustrated on figure \ref{fig_intf} interfaces can be considered as points where custom functionality provided by another component can be plugged in. 
+	determine the external behaviour and features of the components and allow the components to be used as a black box. They provide the contract which defines the means of communication between components. As illustrated on figure \ref{fig_intf}, interfaces can be considered as points where custom functionality provided by another component can be plugged in. 
 	
 	\begin{figure}[h!]
   		\centering
@@ -93,7 +107,7 @@ A component model is the architecture of a system or part of a system that is bu
 	\end{figure}
 
 \paragraph{Components}
-	are functional units providing functionality by implementing interfaces. As you can see on figure \ref{fig_comp} components provide  features by implementing the provided interface. One of the main question regarding building components is how to define the scope and characteristics for a component. According to \cite{Cai} there are no clear and well established standards or guidelines that define this. In general, however, a component has three main features: 
+	are functional units providing functionality by implementing interfaces. As can be seen on figure \ref{fig_comp} components provide  features by implementing the interfaces provided by other components. One of the main question regarding building components is how to define the scope and characteristics for a component. According to \cite{Cai} there are no clear and well established standards or guidelines that define this. In general, however, a component has three main features: 
 
 \begin{itemize}
 	\item a component is an independent and replaceable part of a system that fulfils a clear function
@@ -113,7 +127,7 @@ A component model is the architecture of a system or part of a system that is bu
 
 \subsection{State of the art component model implementations}
 
-Previous sections clearly show that integrating component model in the architecture of U-Sem will solve the design problem of will fulfil the requirements of the customers. Nowadays, there are many implementation of component models and it might be wiser to reuse one of them instead of implementing everything from scratch. The reasons for doing that are because this implementations are developed for long time, they are popular and widely used. This suggests that they are heavily tested and thus provide higher quality. 
+In previous sections discussed that integrating a component model in the architecture of U-Sem is the scientifically proven approach that promises to solve the design problem and fulfil the requirements of the customers. However, before designing and implementing our own component model, we continued with the scientific research to discover if there are already existing technologies that can be reused. Reusing a popular and widely used solution might be beneficial because it is likely it is heavily tested(at least from the engineers using it) and thus provide higher quality. 
 
 \cite{Lau} suggests classification of the component model implementations based on which part of the life cycle of a system the composition of the components is done. They identify the following groups:
 
@@ -123,16 +137,16 @@ Previous sections clearly show that integrating component model in the architect
 	\item Composition happens during the runtime phase. Components are put together and executed in the running system.
 \end{itemize}
 
-For the architecture of U-Sem we are only interested in the last group since one of the main requirements is that scientists should be able to add, update and remove components while the system is running without restarting it. It is essential since the system is used by multiple scientists and any system restart will cause temporary unavailability of all services. 
+For the architecture of U-Sem we are only interested in the last group since one of the main requirements is that scientists should be able to add, update and remove components while the system is running, without restarting it. It is essential since the system is used by multiple scientists and any system restart will cause temporary unavailability of all services. 
 
-Apart form this, there is also another critical concern when choosing component model implementation for U-Sem. The implementation should support the Java language since it is the language in which all current services are implemented and also having to learn a new language is considered as a big disadvantage for the scientists.
+Apart form this, there is also another critical concern when choosing component model implementation for U-Sem. The implementation should support the Java language since it is the language in which all current services are implemented and most scientists are familiar with. Having to learn a new language and/or rewriting all source code in different language is considered as a big disadvantage for the scientists.
 
-We performed an investigation in order to find what are the current state of the art technologies that satisfy all requirements. It showed that currently there two standards that satisfy our needs: Fractal \cite{Bruneton} and Open Services Gateway initiative (OSGI) \cite{OSGI}. For U-Sem we chose to use OSGI since our impression is that it provides a simpler way of defining components(no component hierarchies) which will be beneficial for scientists that do not have so in depth knowledge of component-based engineering. OSGI is also widely used\cite{Andre} which may suggest that it is extensively tested and therefore is more stable. Next subsection focuses on how OSGI works and its features that are interesting for the architecture of U-Sem.
+We performed an investigation in order to find what are the current state of the art technologies that satisfy all requirements. It showed that currently there two standards that satisfy our needs: Fractal \cite{Bruneton} and Open Services Gateway initiative (OSGI) \cite{OSGI}. Both of them seemed quite popular and widely used and therefore we concluded that reusing them is more beneficial than implementing a component model from scratch. For the proposed architecture of U-Sem we chose to use OSGI since our impression is that it provides a simpler way of defining components(no component hierarchies) which will be beneficial for scientists that do not have so in depth knowledge of component-based engineering. OSGI is also widely used\cite{Andre} which may suggest that it is well tested and therefore is more stable. Next subsection focuses on how OSGI works and its features that are interesting for the architecture of U-Sem.
 
 
 \subsection{OSGI}
 
-Proposed first in 1998, OSGI represents is a set of specifications that implement the component model and defines a dynamic component system for Java. These specifications enable a development model where applications are dynamically composed of different independent components. Components can be loaded, updated and deleted on demand without having to restart the system. OSGI implements the main components of the standard component model which are discussed in the previous section as follows:
+Proposed first in 1998, OSGI represents a set of specifications that defines a component model which represents a dynamic component system for Java. These specifications enable a development model where applications are dynamically composed of different independent components. Components can be loaded, updated and deleted on demand without having to restart the system. OSGI implements the main components of the standard component model which are discussed in the previous section as follows:
 
 \begin{figure}[h!]
   \centering
@@ -146,13 +160,14 @@ Proposed first in 1998, OSGI represents is a set of specifications that implemen
 
 
 \paragraph{Components}
-  in OSGI are called bundles. Bundles are basically a regular Java JAR files that contain class files and other resources such as images, icons, required libraries. OSGI also provides facilities for better information hiding then the one provided by the Java language \cite{Andre}. Each bundle should provide a manifest file, which enables engineers to declare static information about the packages that are exported and therefore can be used by other bundles. Furthermore, bundles provide functionality to the rest of the system in the form of services. In the OSGi architecture, services are standard Java objects that implement the required  Interfaces explained in the previous paragraph.
+  in OSGI are called bundles. Bundles are basically a regular Java JAR files that contain class files and other resources such as images, icons, required libraries. One of the important benefits for U-Sem is that OSGI enables better modularization providing facilities for better information hiding then the one provided by the Java language \cite{Andre}. Each bundle should provide a manifest file, which enables engineers to declare static information about the packages that are exported and therefore can be used by other bundles. Furthermore, bundles provide functionality to the rest of the system in the form of services. In the OSGi architecture, services are standard Java objects that implement the interfaces described in the previous paragraph.
 
 \paragraph{Coordinator}
-The OSGi standard also provides coordinator component which represents a runtime infrastructure for controlling the life cycle of the bundles which includes adding, removing and replacing bundles at run-time, while preserving the relations and dependencies among them. Another key functionality that the coordinator component of OSGi provides is the management of the services provided by the bundles. This is provided by the Service Registry, which keeps track of the services registered within the framework. As illustrated in Figure \ref{fig_osgi} when a bundle is loaded it registers all the services that it implements(step 1). As soon as it is registered it can be retrieved by any other components that are interested in this functionality (step 2). Once a bundle has retrieved a service, it can invoke any method described by the interface of this service (step 3). Another interesting feature of the OSGi Service Registry is its dynamic nature. As soon as a one bundle publishes a service that another bundle is interested in, the registry will bind these two bundles. This feature is very important for U-Sem since it will enable scientists to plug in any new functionality dynamically when it is needed.
+The OSGi standard also provides coordinator component which represents a runtime infrastructure for controlling the life cycle of the bundles which includes adding, removing and replacing bundles at run-time, while preserving the relations and dependencies among them. Another key functionality that the coordinator component of OSGi provides is the management of the services provided by the bundles. This functionality is provided by the Service Registry, which keeps track of the services registered within the framework. As illustrated on Figure \ref{fig_osgi} when a bundle is loaded it registers all the services that it implements(step 1). As soon as a service is registered it can be retrieved by any other components that are interested in this functionality (step 2). Once a bundle has retrieved a service, it can invoke any method described by the interface of this service (step 3). Another interesting feature of the OSGi Service Registry is its dynamic nature. As soon as a one bundle publishes a service that another bundle is interested in, the registry will bind these two bundles. This feature is very important for U-Sem since it will enable scientists to plug in any new functionality dynamically when it is needed.
 
 
 \section{Architecture}
+\label{sec:architecture}
 
 This section describes the architecture of U-Sem regarding the dynamic component model. In order to provide more efficient description we have provided a set of interrelated views, which collectively illustrate the functional and non-functional features of the system from different perspectives and demonstrate that it meets the requirements.
 
@@ -381,6 +396,7 @@ In order to satisfy the security requirements, all communications are managed by
 \end{figure}
 
 \section{Implementation}
+\label{sec:impl}
 
 In order to prove the applicabilities and capabilities of the system we actually implemented it. This section covers the most interesting steps performed during the implementation of the system.
 
@@ -421,7 +437,8 @@ At the end we constructed a Maven build script that packs all source files into 
 	\item \textit{localPluginRepo.war} providing the implementation of the simple plug-in repository.
 \end{itemize}
 
-\section{Validation}
+\section{Evaluation}
+\label{sec:eval}
 
 After successfully implementing the system we wanted to validate that the system complies with all functional and non-functional requirements discussed at the beginning of this chapter. 
 
@@ -452,6 +469,7 @@ We believe that the proposed architecture will also satisfy the nonfunctional re
 
 
 \section{Limitations and Future Work}
+\label{sec:limits}
 
 We have identified two types of limitations concerning U-Sem. The first one are the limitation inharited from the usage of OSGI. The second one concerns the rest of the U-Sem's architecture.
 
@@ -517,6 +535,10 @@ Another limitation of the architecture is defined by the fact that all component
 
 \bibitem{Nikolov} Vladimir Nikolov, Rüdiger Kapitza, Recoverable Class Loaders for a Fast Restart of
 Java Applications
+
+\bibitem{Srivastava} S Srivastava, M Hicks, Modular information hiding and type-safe linking for C, Software Engineering, IEEE Transactions on 2008
+
+\bibitem{Eder} J Eder, G Kappel, M Schrefl, Coupling and cohesion in object-oriented systems, 1994
  
 
 \end{thebibliography}
