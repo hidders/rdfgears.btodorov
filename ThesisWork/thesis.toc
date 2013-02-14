@@ -35,28 +35,28 @@
 \contentsline {paragraph}{Interfaces}{17}
 \contentsline {paragraph}{Components}{17}
 \contentsline {paragraph}{Coordinator}{18}
+\contentsline {subsubsection}{Security}{18}
 \contentsline {section}{\numberline {3.3}Architecture}{18}
 \contentsline {subsection}{\numberline {3.3.1}Context View}{19}
 \contentsline {paragraph}{Scientists}{19}
-\contentsline {paragraph}{Plug-in repository}{19}
-\contentsline {subsection}{\numberline {3.3.2}Process modelling}{20}
-\contentsline {subsubsection}{Create U-Sem Component process}{20}
-\contentsline {subsubsection}{Reuse shared components}{22}
-\contentsline {subsubsection}{Component Management}{22}
-\contentsline {subsection}{\numberline {3.3.3}Functional view}{22}
-\contentsline {subsubsection}{High-level organization}{24}
-\contentsline {subsubsection}{Plug-in admin. module}{25}
-\contentsline {subsubsection}{Plug-in access manager}{27}
-\contentsline {paragraph}{Security}{27}
-\contentsline {subsection}{\numberline {3.3.4}Concurrency view}{27}
-\contentsline {subsection}{\numberline {3.3.5}Deployment View}{29}
-\contentsline {subsubsection}{Simple setup}{29}
-\contentsline {subsection}{\numberline {3.3.6}High Availability setup}{29}
-\contentsline {section}{\numberline {3.4}Implementation}{30}
-\contentsline {section}{\numberline {3.5}Evaluation}{32}
-\contentsline {subsection}{\numberline {3.5.1}Functional requirements}{33}
-\contentsline {subsection}{\numberline {3.5.2}Non-functional requirements}{33}
-\contentsline {section}{\numberline {3.6}Limitations and Future Work}{34}
+\contentsline {paragraph}{Plug-in repository}{20}
+\contentsline {subsection}{\numberline {3.3.2}Process modelling}{21}
+\contentsline {subsubsection}{Create U-Sem Component process}{21}
+\contentsline {subsubsection}{Reuse shared components}{21}
+\contentsline {subsubsection}{Component Management}{23}
+\contentsline {subsection}{\numberline {3.3.3}Functional view}{24}
+\contentsline {subsubsection}{High-level component organization}{25}
+\contentsline {subsubsection}{Plug-in admin}{26}
+\contentsline {subsubsection}{Plug-in access manager}{28}
+\contentsline {subsection}{\numberline {3.3.4}Concurrency view}{29}
+\contentsline {subsection}{\numberline {3.3.5}Deployment View}{30}
+\contentsline {subsubsection}{Simple setup}{30}
+\contentsline {subsection}{\numberline {3.3.6}High Availability setup}{31}
+\contentsline {section}{\numberline {3.4}Implementation}{31}
+\contentsline {section}{\numberline {3.5}Evaluation}{34}
+\contentsline {subsection}{\numberline {3.5.1}Functional requirements}{34}
+\contentsline {subsection}{\numberline {3.5.2}Non-functional requirements}{34}
+\contentsline {section}{\numberline {3.6}Limitations and Future Work}{35}
 \contentsline {chapter}{Bibliography}{37}
 \contentsline {chapter}{\chapternumberline {4}Conclusions and Future Work}{39}
 \contentsline {section}{\numberline {4.1}Contributions}{39}
