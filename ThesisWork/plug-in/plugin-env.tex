@@ -56,17 +56,24 @@ This section defines the main quality scenarios of the system that model how the
 
 \begin{itemize}
 
-	\item Availability - performing any of the functional scenarios defined in the previous section should not cause any kind of unavailability of the system. 
+	\item \textit{Availability} - It is expected that in future the system will be used by many users and therefore, any down time of the system is unacceptable. On one hand, performing any of the functional scenarios defined in the previous section should not cause any kind of unavailability of the system. On the other hands, the system has to be able to withstand failures of the computing units. There two types of failures that the system has to be able to deal with:
 	
-	\item Scalability - the architecture should enable scalability by supporting the default scalability approach discussed in the introduction section.
+	\begin{itemize}
+	\item Hardware failures are one of the main problems that may cause the entire system to fail. They might be caused by processing unit failure, network failure and electricity supply failure. In case of one or several failures of any type, the system has to be able to continue to operate normally. In the worst case, a decrease in performance is acceptable.
+	\item Software failures are also a common cause for system failures. In case of software failure in a part of the system, the system has to continue to operate normally. Again, in the worst case, a decrease in performance is acceptable. 
+	\end{itemize}
 	
-	\item Isolation - A scientist should not be affected by the work of the others. The only way of interaction between scientists has to be achieved through the sharing mechanism. Moreover, scientists should not be affected by any future changes to the reused components.
+	\item \textit{Scalability} - the architecture should enable scalability and should not affect the scalability capabilities of the workflow engine. The system has to be designed in such a way that allows to easily add new hardware processing units when it is required by increase in the number of users using the system.
 	
-	\item Privacy - Scientists should not be able to see and use each others functionality unless it is share through the sharing mechanism.
+	\item \textit{Isolation} - A scientist should not be affected by the work of the others. The only way of interaction between scientists has to be achieved through the sharing mechanism. Moreover, scientists should not be affected by any future changes to the reused components.
+		
+	\item \textit{Security} - This is a very important requirements since the system executes custom code and is vulnerable to deliberate or unintentional attacks. Therefore, the system should provide mechanism that enables administrators to enforce different restrictions on the executed custom code. For example, the administrators might want to forbid access to the file system or the network.
 	
-	\item Security - Although not critical, sometimes scientist might want to be insured that their custom functionality is protected and it cannot be accessed against their will. Therefore, the system has to provide secure transportation and access mechanism for the custom functionality.
+	Additionally, although not critical, sometimes scientist might want to be insured that their custom functionality is protected and it cannot be accessed against their will. Therefore, the system has to provide secure transportation and access mechanism for the custom functionality.
 	
-Additionally, all installed functionality should be backuped. In case of failure of a storage device, the system should provide a quick and reliable method for recovering of all the data.
+	Finally, all installed functionality should be backuped. In case of failure of a storage device, the system should provide a quick and reliable method for recovering of all the data.
+	
+	\item \textit{Modularization} - As we discussed in the previous section, modularization of components is crucial for the future of the system. Therefore, the architecture has to provide facilities that support and enforce strong modularization between components.
 	
 \end{itemize}
 
@@ -167,8 +174,11 @@ The OSGi standard also provides coordinator component which represents a runtime
 
 \subsubsection{Security}
 
-Loading custom code provided by a third party hides a lot of security risks. 
-\textbf{TODO discuss security}
+The security capabilities of OSGI are also very important for the U-Sem since a lot of custom code is being executed which poses a significant threat to the system. The OSGi platform is considered to be highly secure by its creators \cite{Parrend}. There are two main reasons in favour of this statement. Firstly, OSGi is executed on top of the JVM and inherits its security capabilities. Secondly, it has been designed to support a proper level of isolation between components.
+
+Since its introduction, the Java language and JVM have been widely used and subjected to extensive tests and validation \cite{Parrend}. The platform was designed to support the safe execution of fully untrusted code \cite{Felten}. In order to achieve this, it has introduced the following features \cite{Gong}: Type Safety of the language, Garbage Collection(no user-defined memory management), Bytecode verification ensuring that executed programs are compliant with the language specification, and Sandboxing, which can prevent the access to sensible resources like the network or file system. Additionally, the system provides secure class loaders, which enable loading of several modules that cannot interact with each other.
+
+On top of this, OSGI defines additional permissions that provides full control of the interactions between the components. It provides functionality that enables dependencies at the package level and at the service level to be allowed or prevented. Additionally, management capability from one component to the others can also be restricted \cite{Parrend}.
 
 
 \section{Architecture}
@@ -462,11 +472,11 @@ After successfully implementing the system, in this section we evaluate whether 
 
 \subsection{Functional requirements}
 
-In order to validate the functional requirements we performed several experiments and performed each of the defined scenarios.
+In order to verify that all functional requirements are fulfilled we performed experiments and executed each of the defined scenarios.
  
-Initially we had to build a component that encapsulates all functionality needed to perform the "Sentiment analysis" service. This functionality is currently hardcoded into the workflow engine outside. We used the already existing tools in Eclipse IDE to create the new plug-in. We removed all functionality and resource files from the workflow engine and put them into the newly created plug-in. The only additional thing that we had to do was to register the provided functionality. In Equinox this is done in the \textbf{Application} class. At the end we exported the plug-in into a traditional java jar file.
+However, in order to be able to test the scenarios we needed a sample component. We constructed a component that encapsulates all functionality needed to perform the "Sentiment analysis" service. This functionality was initially hardcoded into the workflow engine. We used the tools provided by the Eclipse IDE to create the new plug-in. We removed all functionality and resource files from the workflow engine and put them into the newly created plug-in. The only additional thing that we had to do was to register the provided functionality. In Equinox this is done in the \textit{Application} class which is executed every time the plug-in is loaded. At the end, we exported the plug-in into a traditional java jar file.
 
-After we had built the plug-in we tried to execute each of the functional scenarios. Using the user interface we were able to install the plug-in and use the components provided by it(UC1). We were able to view the installed plug-in in the management user interface and we were also able to successfully remove it from the system. At the end we were also able to share and install the plug in through the plug-in repository. All these proved that all functional requirements has been accomudated by the architecture and implementation of U-Sem.
+After we had the plug-in that will be used for the tests we tried to execute each of the functional scenarios. Using the user interface we were able to install the plug-in and use the components provided by it(UC1). We were then able to view the installed plug-in in the management user interface and we were also able to successfully remove it from the system(UC3). At the end, we tested the sharing functionality of U-Sem. We were able to successfully share and install the plug-in through the plug-in repository(UC2). All these experiments proved that all functional requirements has been accommodated by the proposed architecture and implementation of U-Sem.
 
 
 \subsection{Non-functional requirements}
@@ -475,17 +485,17 @@ We believe that the proposed architecture will also satisfy the nonfunctional re
 
 \begin{itemize}
 
-\item \textit{Performance} - In each phase the user requests are distributed between several nodes which in the case of many users using the system makes it effective and reduces the response time.
+\item \textit{Availability} - On one hand, the proposed architecture enables clients to load and manage their custom functionality dynamically. There is no need for the system to be restarted in order the changes to take place and thus, the availability of the system is not compromised. 
+On the other hand, all operations are performed by clusters which means that in case of hardware or software failure of a cluster node the other nodes will continue to operate and the entire system will continue to be available. Additionally, availability in case of a storage node failure is ensured by redirecting all requests to its backup. Cluster nodes can also be placed in different physical locations to handle situation where an accident(e.g. network or electrical failure) in one data center can cause all devices to fail. Load balancers can be considered as a single points of failure. However, we solve this problem by also providing clusters of load balancers and which are accessed through DNS load balancing \cite{Membrey}.
 
-\item \textit{Availability} - All operations are performed by clusters which means that in case of hardware or software failure of a cluster node the other nodes will continue to operate and the entire system will continue to be available. Additionally, availability in case of a storage node failure is ensured by redirecting all requests to its backup. Cluster nodes can also be placed in different physical locations to handle situation where an accident(e.g. network or electrical failure) in one data center can cause all devices to fail. Additionally, load balancers can be considered as a single points of failure. In order to overcome this problem we provide also clusters of load balancers and enable DNS load balancing.\textbf{more about dns}
+\item \textit{Scalability} - Another non-functional requirement for the system is to be able to gradually scale for supporting more users  by just adding new hardware components. The proposed architecture satisfies this requirement because in order to scale one should just add new nodes to the backend cluster and/or add new nodes to the data storage cluster. The system can be scaled up to the point where each workflow is executed by different processing node and the plug-ins for each scientist are stored on a different storage node.
 
-\item \textit{Scalability} - One of the important requirements is that the system has to be able to gradually scale for supporting more users  by just adding new hardware components. This structure satisfies this requirement because in order to scale one should just add new nodes to the backend cluster, add new nodes to the database clusters. The system can be scaled up to the point where each workflow is executed by different node and the plug-ins for each scientist are stored on a different storage node.
+\item \textit{Isolation} - All components of each users are stored at separate place. There system keeps track that there is no overlapping between the storage spaces. Components for each user are loaded by a separate instance of the OSGI framework which acts as a barrier and allows users to operate in isolation from one another. Additionally, the users have the full control on the components that are installed in their storage space. If a new version of a shared component is released the users have to install it manually from the plug-in repository and thus, exercise control over the version of the plug-in they are using. 
 
-\item \textit{Isolation} - 
 
-\item \textit{Privacy} - 
+\item \textit{Security} - Firstly, using the security infrastructure of Java and OSGI, the system ensures that the security policy specified by the administrators of the system is enforced on all custom code that is running in the system. Secondly, the architecture ensures that the custom functionality of the users' is protected from unauthorized access. All connections between the user and the backend can be encrypted through HTTPS and thus, protected against eavesdropping and man-in-the-middle attacks. The system's communication channels are also secured by firewalls. Finally, as required each storage node is backed up in case a device fails.
 
-\item \textit{Security} - The connection between the user and the backend can be encrypted(HTTPS) so that data transition is protected. The system's communication channels are also secured by firewalls. Also each storage node is backed up in case a device fails.
+\item \textit{Modularization} - This non-functional requirement is accommodated by the dynamic component model provided by OSGI. It address the limitations of the standard Java module system discussed in section \ref{sec:problemDef} and provides information hiding and cross component communication principles that enforce better component modularization \cite{Andre}.
 
 \end{itemize}
 
@@ -567,6 +577,12 @@ Java Applications
 \bibitem{Woods} E Woods, N Rozanski, The System Context Architectural Viewpoint, 2009
 
 \bibitem{Sun} Sun, Mengtao and Tan, Gang, JVM-Portable Sandboxing of Java's Native Libraries, Computer Security--ESORICS 2012
+
+\bibitem{Membrey} Membrey, Peter and Hows, David and Plugge, Eelco, DNS Load Balancing, Practical Load Balancing, 2012
+
+\bibitem{Felten} Dean D, Felten EW, Wallach DS. Java Security: From HotJava to Netscape and beyond. SP'96: Proceedings of the 1996 IEEE Symposium on Security and Privacy. IEEE Computer Society: Washington, DC, U.S.A., 1996; 190.
+
+\bibitem{Gong} Gong L, Ellison G, Dadgeforde M. Inside Java 2 Platform Security-Architecture, API Design, and Implementation (2nd edn). Addison-Wesley: Reading, MA, 2003.
  
 
 \end{thebibliography}

@@ -25,49 +25,49 @@
 \contentsline {subsection}{\numberline {3.1.1}Functional Scenarios}{13}
 \contentsline {subsection}{\numberline {3.1.2}Non-functional requirements}{13}
 \contentsline {section}{\numberline {3.2}Approach}{14}
-\contentsline {subsection}{\numberline {3.2.1}Component-based software engineering}{14}
-\contentsline {subsection}{\numberline {3.2.2}Component model}{15}
-\contentsline {paragraph}{Interfaces}{15}
+\contentsline {subsection}{\numberline {3.2.1}Component-based software engineering}{15}
+\contentsline {subsection}{\numberline {3.2.2}Component model}{16}
+\contentsline {paragraph}{Interfaces}{16}
 \contentsline {paragraph}{Components}{16}
-\contentsline {paragraph}{Coordinator}{16}
-\contentsline {subsection}{\numberline {3.2.3}State of the art component model implementations}{16}
-\contentsline {subsection}{\numberline {3.2.4}OSGI}{17}
-\contentsline {paragraph}{Interfaces}{17}
-\contentsline {paragraph}{Components}{17}
+\contentsline {paragraph}{Coordinator}{17}
+\contentsline {subsection}{\numberline {3.2.3}State of the art component model implementations}{17}
+\contentsline {subsection}{\numberline {3.2.4}OSGI}{18}
+\contentsline {paragraph}{Interfaces}{18}
+\contentsline {paragraph}{Components}{18}
 \contentsline {paragraph}{Coordinator}{18}
-\contentsline {subsubsection}{Security}{18}
-\contentsline {section}{\numberline {3.3}Architecture}{18}
-\contentsline {subsection}{\numberline {3.3.1}Context View}{19}
-\contentsline {paragraph}{Scientists}{19}
-\contentsline {paragraph}{Plug-in repository}{20}
-\contentsline {subsection}{\numberline {3.3.2}Process modelling}{21}
-\contentsline {subsubsection}{Create U-Sem Component process}{21}
-\contentsline {subsubsection}{Reuse shared components}{21}
+\contentsline {subsubsection}{Security}{19}
+\contentsline {section}{\numberline {3.3}Architecture}{19}
+\contentsline {subsection}{\numberline {3.3.1}Context View}{20}
+\contentsline {paragraph}{Scientists}{20}
+\contentsline {paragraph}{Plug-in repository}{21}
+\contentsline {subsection}{\numberline {3.3.2}Process modelling}{22}
+\contentsline {subsubsection}{Create U-Sem Component process}{22}
+\contentsline {subsubsection}{Reuse shared components}{22}
 \contentsline {subsubsection}{Component Management}{23}
-\contentsline {subsection}{\numberline {3.3.3}Functional view}{24}
-\contentsline {subsubsection}{High-level component organization}{25}
-\contentsline {subsubsection}{Plug-in admin}{26}
-\contentsline {subsubsection}{Plug-in access manager}{28}
-\contentsline {subsection}{\numberline {3.3.4}Concurrency view}{29}
-\contentsline {subsection}{\numberline {3.3.5}Deployment View}{30}
-\contentsline {subsubsection}{Simple setup}{30}
-\contentsline {subsection}{\numberline {3.3.6}High Availability setup}{31}
-\contentsline {section}{\numberline {3.4}Implementation}{31}
-\contentsline {section}{\numberline {3.5}Evaluation}{34}
-\contentsline {subsection}{\numberline {3.5.1}Functional requirements}{34}
-\contentsline {subsection}{\numberline {3.5.2}Non-functional requirements}{34}
-\contentsline {section}{\numberline {3.6}Limitations and Future Work}{35}
-\contentsline {chapter}{Bibliography}{37}
-\contentsline {chapter}{\chapternumberline {4}Conclusions and Future Work}{39}
-\contentsline {section}{\numberline {4.1}Contributions}{39}
-\contentsline {section}{\numberline {4.2}Conclusions}{39}
-\contentsline {section}{\numberline {4.3}Discussion/Reflection}{39}
-\contentsline {section}{\numberline {4.4}Future work}{39}
-\contentsline {appendix}{\chapternumberline {A}Glossary}{41}
-\contentsline {appendix}{\chapternumberline {B}Requirements and Guidelines}{43}
-\contentsline {section}{\numberline {B.1}Requirements}{43}
-\contentsline {subsection}{\numberline {B.1.1}Layout}{43}
-\contentsline {subsection}{\numberline {B.1.2}Content}{43}
-\contentsline {subsection}{\numberline {B.1.3}Bibliography}{44}
-\contentsline {section}{\numberline {B.2}Guidelines}{44}
-\contentsline {appendix}{\chapternumberline {C}Prioritization questionnaire}{45}
+\contentsline {subsection}{\numberline {3.3.3}Functional view}{25}
+\contentsline {subsubsection}{High-level component organization}{26}
+\contentsline {subsubsection}{Plug-in admin}{27}
+\contentsline {subsubsection}{Plug-in access manager}{29}
+\contentsline {subsection}{\numberline {3.3.4}Concurrency view}{30}
+\contentsline {subsection}{\numberline {3.3.5}Deployment View}{31}
+\contentsline {subsubsection}{Simple setup}{31}
+\contentsline {subsection}{\numberline {3.3.6}High Availability setup}{32}
+\contentsline {section}{\numberline {3.4}Implementation}{32}
+\contentsline {section}{\numberline {3.5}Evaluation}{35}
+\contentsline {subsection}{\numberline {3.5.1}Functional requirements}{35}
+\contentsline {subsection}{\numberline {3.5.2}Non-functional requirements}{35}
+\contentsline {section}{\numberline {3.6}Limitations and Future Work}{36}
+\contentsline {chapter}{Bibliography}{39}
+\contentsline {chapter}{\chapternumberline {4}Conclusions and Future Work}{41}
+\contentsline {section}{\numberline {4.1}Contributions}{41}
+\contentsline {section}{\numberline {4.2}Conclusions}{41}
+\contentsline {section}{\numberline {4.3}Discussion/Reflection}{41}
+\contentsline {section}{\numberline {4.4}Future work}{41}
+\contentsline {appendix}{\chapternumberline {A}Glossary}{43}
+\contentsline {appendix}{\chapternumberline {B}Requirements and Guidelines}{45}
+\contentsline {section}{\numberline {B.1}Requirements}{45}
+\contentsline {subsection}{\numberline {B.1.1}Layout}{45}
+\contentsline {subsection}{\numberline {B.1.2}Content}{45}
+\contentsline {subsection}{\numberline {B.1.3}Bibliography}{46}
+\contentsline {section}{\numberline {B.2}Guidelines}{46}
+\contentsline {appendix}{\chapternumberline {C}Prioritization questionnaire}{47}
