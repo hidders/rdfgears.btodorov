@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2011.9.30)  8 MAY 2013 13:30
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2011.9.30)  3 JUN 2013 19:18
 entering extended mode
 **DataManagementChapter.tex
 
@@ -72,6 +72,33 @@ Package: ltxcmds 2011/04/18 v1.20 LaTeX kernel commands for general use (HO)
 Package: wrapfig 2003/01/31  v 3.6
 )
 (E:\Repositories\rdfgears.btodorov\ThesisWork\storage\DataManagementChapter.aux
+
+LaTeX Warning: Label `fig_context' multiply defined.
+
+
+LaTeX Warning: Label `fig_context' multiply defined.
+
+
+LaTeX Warning: Label `fig_context' multiply defined.
+
+
+LaTeX Warning: Label `fig_context' multiply defined.
+
+
+LaTeX Warning: Label `fig_context' multiply defined.
+
+
+LaTeX Warning: Label `fig_context' multiply defined.
+
+
+LaTeX Warning: Label `fig_context' multiply defined.
+
+
+LaTeX Warning: Label `fig_context' multiply defined.
+
+
+LaTeX Warning: Label `fig_context' multiply defined.
+
 )
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
 LaTeX Font Info:    ... okay on input line 7.
@@ -109,49 +136,155 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 LaTeX Warning: No \author given.
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 19.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 20.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 19.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 20.
  [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] [2] [3] [4]
+<diagrams/RGLValues.png, id=21, 494.68816pt x 117.5592pt>
+File: diagrams/RGLValues.png Graphic file (type png)
+
+<use diagrams/RGLValues.png>
+Package pdftex.def Info: diagrams/RGLValues.png used on input line 99.
+(pdftex.def)             Requested size: 395.75107pt x 94.04747pt.
+
+Overfull \hbox (50.75107pt too wide) in paragraph at lines 99--100
+ [][] 
+ []
+
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 90.
+(Font)              <7> on input line 116.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 90.
- [3] [4]
-Overfull \hbox (1.25801pt too wide) in paragraph at lines 133--134
+(Font)              <5> on input line 116.
+[5 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/diagrams/RGLValues.png
+>] [6]
+Overfull \hbox (1.25801pt too wide) in paragraph at lines 176--177
  \OT1/cmr/bx/n/10 Database or-ga-ni-za-tion[] \OT1/cmr/m/n/10 There are three m
 ain ap-proaches for de-sign-ing multi-
  []
 
-[5] [6] [7]
-<environment/runtime_environment_storage.png, id=31, 441.14813pt x 456.20438pt>
+[7] [8] [9] [10]
+<environment/runtime_environment_storage.png, id=41, 441.14813pt x 456.20438pt>
 File: environment/runtime_environment_storage.png Graphic file (type png)
 <use environment/runtime_environment_storage.png>
 Package pdftex.def Info: environment/runtime_environment_storage.png used on in
-put line 205.
+put line 254.
 (pdftex.def)             Requested size: 176.45612pt x 182.4785pt.
- [8 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/environment/runtime_e
-nvironment_storage.png>]
-[9]
+
+<functional/layers.png, id=42, 268.1217pt x 137.91525pt>
+File: functional/layers.png Graphic file (type png)
+
+<use functional/layers.png>
+Package pdftex.def Info: functional/layers.png used on input line 265.
+(pdftex.def)             Requested size: 107.24678pt x 55.16512pt.
+ [11 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/environment/runtime_
+environment_storage.png> <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/
+functional/layers.png>]
+<functional/func_main.png, id=46, 304.2567pt x 369.7815pt>
+File: functional/func_main.png Graphic file (type png)
+
+<use functional/func_main.png>
+Package pdftex.def Info: functional/func_main.png used on input line 283.
+(pdftex.def)             Requested size: 182.55542pt x 221.87059pt.
+ [12 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/functional/func_main
+.png>]
+<functional/func_admin.png, id=50, 463.13025pt x 316.3017pt>
+File: functional/func_admin.png Graphic file (type png)
+
+<use functional/func_admin.png>
+Package pdftex.def Info: functional/func_admin.png used on input line 310.
+(pdftex.def)             Requested size: 277.8803pt x 189.78247pt.
+ [13 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/functional/func_admi
+n.png>]
+<functional/func_access.png, id=55, 335.0919pt x 222.23026pt>
+File: functional/func_access.png Graphic file (type png)
+
+<use functional/func_access.png>
+Package pdftex.def Info: functional/func_access.png used on input line 331.
+(pdftex.def)             Requested size: 234.56273pt x 155.5601pt.
+ [14 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/functional/func_acce
+ss.png>]
+<functional/func_manip.png, id=59, 335.0919pt x 222.23026pt>
+File: functional/func_manip.png Graphic file (type png)
+
+<use functional/func_manip.png>
+Package pdftex.def Info: functional/func_manip.png used on input line 354.
+(pdftex.def)             Requested size: 234.56273pt x 155.5601pt.
+
+Overfull \hbox (30.02835pt too wide) in paragraph at lines 364--365
+\OT1/cmr/m/n/10 files that tell the Hi-ber-nate frame-work how to map the U-Sem
+ en-ti-ties(represented
+ []
+
+<functional/concur.png, id=60, 701.7417pt x 649.82774pt>
+File: functional/concur.png Graphic file (type png)
+
+<use functional/concur.png>
+Package pdftex.def Info: functional/concur.png used on input line 374.
+(pdftex.def)             Requested size: 350.87pt x 324.91307pt.
+
+Overfull \hbox (5.87pt too wide) in paragraph at lines 374--375
+ [][] 
+ []
+
+[15 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/functional/func_manip
+.png>] [16 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/functional/con
+cur.png>] <ui/entityList.png, id=67, 456.20438pt x 288.3272pt>
+File: ui/entityList.png Graphic file (type png)
+
+<use ui/entityList.png>
+Package pdftex.def Info: ui/entityList.png used on input line 397.
+(pdftex.def)             Requested size: 228.10162pt x 144.16324pt.
+ <ui/entityPanel.png, id=68, 729.47531pt x 380.92313pt>
+File: ui/entityPanel.png Graphic file (type png)
+
+<use ui/entityPanel.png>
+Package pdftex.def Info: ui/entityPanel.png used on input line 406.
+(pdftex.def)             Requested size: 364.73676pt x 190.46109pt.
+
+Overfull \hbox (19.73676pt too wide) in paragraph at lines 406--407
+ [][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<ui/entityPreview.png, id=69, 758.08218pt x 307.90031pt>
+File: ui/entityPreview.png Graphic file (type png)
+
+<use ui/entityPreview.png>
+Package pdftex.def Info: ui/entityPreview.png used on input line 421.
+(pdftex.def)             Requested size: 379.04016pt x 153.94977pt.
+
+Overfull \hbox (34.04016pt too wide) in paragraph at lines 421--422
+ [][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[17 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/ui/entityList.png>]
+[18 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/ui/entityPanel.png> <
+E:/Repositories/rdfgears.btodorov/ThesisWork/storage/ui/entityPreview.png>]
+[19] [20]
 (E:\Repositories\rdfgears.btodorov\ThesisWork\storage\DataManagementChapter.aux
 )
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 1219 strings out of 494045
- 16349 string characters out of 3148378
- 69934 words of memory out of 3000000
- 4543 multiletter control sequences out of 15000+200000
+ 1275 strings out of 494045
+ 17602 string characters out of 3148378
+ 69989 words of memory out of 3000000
+ 4586 multiletter control sequences out of 15000+200000
  8241 words of font info for 29 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 27i,6n,21p,942b,212s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,7n,21p,942b,280s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTe
@@ -159,9 +292,9 @@ X 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fon
 ts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
 public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
 msfonts/cm/cmti10.pfb>
-Output written on DataManagementChapter.pdf (9 pages, 144894 bytes).
+Output written on DataManagementChapter.pdf (20 pages, 1385238 bytes).
 PDF statistics:
- 61 PDF objects out of 1000 (max. 8388607)
+ 106 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 56 words of extra memory for PDF output out of 10000 (max. 10000000)
 
