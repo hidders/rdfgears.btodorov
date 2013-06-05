@@ -54,6 +54,39 @@ In this thesis we aim to propose a solution that is capable to overcome these pr
 
 Having all concerns discussed in section \textbf{SSS} in mind, we devised a complete set of requirements that presents the functional scenarios(functional requirements) and system qualities(nonfunctional requirements) that the proposed architecture has to provide. These requirements are also referred to into the evaluation section where we discuss how and to what extend the architecture satisfies each of them.
 
+\subsection{Functional Scenarios}
+In this section we formally identify the functional requirements which define the main interactions between the scientists and the system. Each scenario is marked with a code at the beginning which is used for easier identification during the verification and evaluation phase.
+
+\begin{itemize}
+	\item \textbf{UC1 - Define data } - The system has to enable engineers to define, modify and delete the structure and the semantics of data that is going to be persisted. This information has to be presented to the engineers during the workflow design phase so that they can refer to it while defining components that interact with persistent data. 
+	
+	\item \textbf{UC2 - Insert data} - The system has to provide RDFGears component and also API that can be used to store data which format corresponds to a predefined data structure (\textit{UC1}).
+
+	\item \textbf{UC3 - Update data } - The system has to provide RDFGears component and also API that can be used to update existing data or part of it which format corresponds to a predefined data structure (\textit{UC1}).
+	
+	\item \textbf{UC4 - Delete data} - The system has to provide RDFGears component and also API that can be used to delete existing data or part of it.
+	
+	\item \textbf{UC5 - Query data} - The system has to provide RDFGears component and also API that can be used to query existing data.
+	
+	\item \textbf{UC6 - Collaboration} - The system has to enable engineers to collaborate on data level by accessing and manipulating each others data. The system has to enable engineers to manage the privacy of their data. They have to be able to define whether their data(or parts of it) can be accessed and manipulated by the other engineers.
+
+\end{itemize}
+
+\subsection{Non-functional requirements}
+This section identifies the main quality scenarios that a successful architecture has to accommodate.
+
+\begin{itemize}
+	\item \textit{Privacy} - the solution has to ensure the privacy of the stored data. The only way of interaction between scientists has to be achieved through the collaboration mechanism.
+	
+	\item \textit{Compliance} - the solution has to ensure that the newly introduced RDFGears components comply with the RDFGears specification. 
+	
+	\item \textit{Configuration management} - in order to simplify the configuration procedure of the system it should enable engineers to provide and install the information for the semantics and structure of the data with the installation of the plug-in that uses it. In this way, no additional manual configuration regarding the data definitions is needed.
+	
+	\item \textit{Backup} - all persisted data should be backuped. In case of failure of a storage device, the system should provide a reliable method for recovering of all the data. 
+	\textbf{not important remove it maybe}
+	
+\end{itemize}
+
 \section{Challenges}
 
 \begin{itemize}
@@ -144,6 +177,7 @@ Once we know how to map the RGL entities to JPA entities we should enable jpa to
 \end{center}
  
 \subsubsection{Entities are dynamic}
+\textbf{Discus no-sql vs sql}
 The problem that has to be solved concerns the dynamic nature of the entities. In our solutions we want to enable users to update them if this is required. Unfortunately, ORM frameworks are not good in dealing with such things. The problem is that whenever the structure changes not only the mapping xml file has to change but also the database schema. Some JPA providers provide simple tools for table generation problem(e.g. hibernate's hibernate.hbm2ddl.auto option) but they are not applicable(recreate the entire db) or not recommended in production mode(update). Therefore, in order to solve that problem reliably our solution provides implementation that is responsible to first update the mapping files and secondly update the structure of the database using JDBC statements.
 
 \begin{center}
@@ -378,10 +412,19 @@ This component is responsible to provide API which can be used by application la
 
 This section describes the concurrency structure of the feature. We show how functional elements map to concurrency units(processes, process groups and threads) in order to clearly identify the parts of the system that can work concurrently. We also show how this parallel execution is coordinated and controlled.
 
-Figure \textbf{fff} illustrates the concurrency organization. The main functionality of the system is situated in the U-Sem process group. All U-Sem processes including the storage processes operate concurrently. Workflow configuration and execution initiated by U-Sem clients and entity management by scientists can happen at the same time. However, the two processes does not communicate with each other and thus, the synchronization on the loaded entity definitions is a problem. \textbf{TODO solution}
+Figure \textbf{fff} illustrates the concurrency organization. The main functionality of the system is situated in the U-Sem process group. All U-Sem processes including the storage processes operate concurrently. Workflow configuration and execution initiated by U-Sem clients and entity management by scientists can happen at the same time. Therefore, if the workflow engine is the middle of execution and the structure of the data has been changed, this means that the workflow may fail unexpectedly and cause problems that are hard to detect and reproduce. We considered two ways for overcoming the problem. The first one is to indroduce a communication meachanism between the two processes so that they can communicate  However, the two processes does not communicate with each other and thus, the synchronization on the loaded entity definitions is a problem. \textbf{TODO solution}
 
 
 \subsection{Deployment view}
+
+\begin{figure}[h!]
+  \centering
+  	\includegraphics[scale=0.5]{functional/deployment.png}
+  \caption{Context diagram of U-Sem }
+  \label{fig_context}
+\end{figure}
+
+\textbf{TODO - DB backup}
 
 \section{Implementation}
 We implemented the proposed architecture in order to evaluate its applicability and capabilities. In this phase we basically implemented the system following the specification discussed in the previous section. Therefore, in this section we are discussing only on the most interesting parts of the implementation of the system.
@@ -399,7 +442,7 @@ In order to implement the endpoints(user interface) we used the jQuery UI, \text
   \label{fig_context}
 \end{figure}
 		
-		\item \textbf{Entity manipulation panel} - This panel is opened when an entity is created or updated.
+		\item \textbf{Entity manipulation panel} - The implementation also provide a panel that is responsible to automate the process of defining entities. Shown on figure \textbf{fig}, this panel is used when an entity is created or updated.
 		
 \begin{figure}[h!]
   \centering
@@ -449,9 +492,11 @@ In this section we identify the limitations of the proposed architecture and we 
 
 \item Most of the data manipulation components(except for the "Insert entity" component) require users to enter JPQL query. These queries can get quite complex and as a result users usually make some mistakes when writing them \textbf{cite}. Currently, the solution does not provide any facilities that can validate these queries. Users are notified abut the mistakes only when they try to execute the workflows and they fail. As a result, this process may cost a lot of time to users until they finally end up with the correct queries. Therefore, in future the system might be further improved by introducing functionality for autocomplition and validation of the JPQL queries.
 
-\item caching echecache and scalability
+\item \textbf{distributed transactions for filesystem and db}
 
-\item problems associated with multitenancy (load destribution, failure, backup)
+\item \textbf{currently the engine does not guarantee the order of the execution of branches. Therefore, delevoping an mechanism to control the execution order can be really helpful}
+
+\item Currently, the targeted to be used mainly as a research tool and there are no requirements for supporting large number of users and high loads. However, if the system is to be used in such demanding environment then it might be worth to research and improve the performance, scalability and availability properties of the solution. \textbf{maybe propose solutions like L2 cache and high availability db setups}. 
 
 \end{itemize}
 
