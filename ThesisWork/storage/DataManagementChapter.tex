@@ -412,19 +412,27 @@ This component is responsible to provide API which can be used by application la
 
 This section describes the concurrency structure of the feature. We show how functional elements map to concurrency units(processes, process groups and threads) in order to clearly identify the parts of the system that can work concurrently. We also show how this parallel execution is coordinated and controlled.
 
-Figure \textbf{fff} illustrates the concurrency organization. The main functionality of the system is situated in the U-Sem process group. All U-Sem processes including the storage processes operate concurrently. Workflow configuration and execution initiated by U-Sem clients and entity management by scientists can happen at the same time. Therefore, if the workflow engine is the middle of execution and the structure of the data has been changed, this means that the workflow may fail unexpectedly and cause problems that are hard to detect and reproduce. We considered two ways for overcoming the problem. The first one is to indroduce a communication meachanism between the two processes so that they can communicate  However, the two processes does not communicate with each other and thus, the synchronization on the loaded entity definitions is a problem. \textbf{TODO solution}
+Figure \textbf{fff} illustrates the concurrency organization. The main functionality of the system is situated in the U-Sem process group. All U-Sem processes including the storage processes operate concurrently. Workflow configuration and execution initiated by U-Sem clients and entity management by scientists can happen at the same time. This organization makes the solution flexible because if needed the \textbf{Workflow} process can be replicated independently from the \textbf{Administration}. However this organization also introduces some problems that has to be solved.
 
+\subsubsection{Problems}
+Firstly, if the workflow engine is the middle of execution and the structure of the database is changed, then the workflow may fail unexpectedly and cause problems that are hard to detect and reproduce. 
 
-\subsection{Deployment view}
+Secondly, every time the required resources for the data store interaction(entity definitions and mappings) are loaded the system has to make sure they are consistent with each other and also with the underling structure(schema) of the database. A problem can occur if the resources are loaded and modified simultaneously(simultaneous execution of workflows and entity definitions manipulations). It may happen that some of the files are loaded before the modification and others afterwards. This inconsistency can also lead to problems that are hard to detect and reproduce.
 
-\begin{figure}[h!]
-  \centering
-  	\includegraphics[scale=0.5]{functional/deployment.png}
-  \caption{Context diagram of U-Sem }
-  \label{fig_context}
-\end{figure}
+\subsubsection{Solution}
 
-\textbf{TODO - DB backup}
+In order to solve the problem we propose a solution that is based on synchronization between the processes. The solution is based on the \textit{Reader-Writer Lock} idea. It extends mutual exclusion locks by enabling concurrent read access to a shared resource but requires exclusive access for write operations \cite{Lev}.
+
+Our solution maps to the \textit{Reader-Writer Lock} idea as follows:
+\begin{itemize}
+	\item The shared resource is the combination of the entity definitions, mapping and the database schema.
+	\item The workflow engine acts as reader of the shared resource.
+	\item The entity administration acts as writer of the shared resource.
+\end{itemize}
+As a result, multiple workflows can be executed simultaneously but when a change to the entities is needed it is executed exclusively. Therefore, the workflow engine is protected against loading the resources while they are inconsistent.
+
+However, the standard \textit{Reader-Writer Lock} in Java works only within the virtual machine \cite{javadocs}. In our case we have to synchronize entire processes. Our research showed that there are already tools that provide functionality \cite{Hernane}. The tool that is used in the proposed solution is Terracotta \cite{terracotta}. As a result, we have a process that is responsible for the lock and the other processes communicate with it in order to obtain the lock and use the resources.
+
 
 \section{Implementation}
 We implemented the proposed architecture in order to evaluate its applicability and capabilities. In this phase we basically implemented the system following the specification discussed in the previous section. Therefore, in this section we are discussing only on the most interesting parts of the implementation of the system.
@@ -492,8 +500,6 @@ In this section we identify the limitations of the proposed architecture and we 
 
 \item Most of the data manipulation components(except for the "Insert entity" component) require users to enter JPQL query. These queries can get quite complex and as a result users usually make some mistakes when writing them \textbf{cite}. Currently, the solution does not provide any facilities that can validate these queries. Users are notified abut the mistakes only when they try to execute the workflows and they fail. As a result, this process may cost a lot of time to users until they finally end up with the correct queries. Therefore, in future the system might be further improved by introducing functionality for autocomplition and validation of the JPQL queries.
 
-\item \textbf{distributed transactions for filesystem and db}
-
 \item \textbf{currently the engine does not guarantee the order of the execution of branches. Therefore, delevoping an mechanism to control the execution order can be really helpful}
 
 \item Currently, the targeted to be used mainly as a research tool and there are no requirements for supporting large number of users and high loads. However, if the system is to be used in such demanding environment then it might be worth to research and improve the performance, scalability and availability properties of the solution. \textbf{maybe propose solutions like L2 cache and high availability db setups}. 
@@ -509,6 +515,14 @@ In this section we identify the limitations of the proposed architecture and we 
 \bibitem{Feliksik} Eric Feliksik, RDF Gears, a data integration framework for the Semantic Web
 
 \bibitem{Lu} Shiyong Lu, Jia Zhang, Collaborative Scientific Workflows, 2009
+
+\bibitem{Lev} Y Lev, V Luchangco, M Olszewski, Scalable Reader-Writer Locks, 2009
+
+\bibitem{terracotta} http://terracotta.org/
+
+\bibitem{javadocs} http://docs.oracle.com/
+
+\bibitem{Hernane} SL Hernane, J Gustedt, A Dynamic Distributed Algorithm for Read Write Locks . 2012
 
 \end{thebibliography}
 
