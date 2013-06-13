@@ -1,58 +1,10 @@
-\documentclass[a4paper, notitlepage]{article}
-%\usepackage[cm]{fullpage}
-\usepackage[pdftex]{graphicx}
-\usepackage{wrapfig}
+\chapter{Data Management} 
 
-
-\begin{document}
-
-\title{Data Management} 
-\date{\today}
-\maketitle
-
-
-\section{Problem definition}
-
-Our research showed that many of the services implemented by the engineers require data storage and retrieval in some form. The structure and semantics of the data varies greatly but we managed to classify the data in several groups:
-
-\begin{itemize}
-
-	\item \textit{Raw data} - Engineers reported that most of the analisys and modelling services they devised are based on the social media. Basically, they have to retrieve certain entries(e.g tweets from Twitter \textbf{cite} ) which are the basis for the analysis. In certain cases engineers have to store this "raw data" locally. Usually, this is as a result of the fact that the retrieving the entities requires time and also the some social media APIs limit the number of entities you can get in certain amount of time \textbf{cite}. This makes the execution of workflows slow(the system has to wait to get the needed entries every time). Therefore, engineers are forced to store these entries an only make sure they are up to data prior to the execution of a workflow.
-	
-	\item \textit{User provided data} - Some services require information that is not available from the social media and has to be provided by the users of the system. For example, in certain usecases users has to fill in questioners and the results from later analysis is adjusted based on the answers provided by the users. It is infeasible to ask the users for that information every time that is why it has to be stored within the system.
-	
-	\item \textit{Intermediate results} - Some services consist of two phases. The first phase continuously calculates some intermediate representation of the raw data. In the second phase, on user request the final result is calculated based on the intermediate data. For example, \textbf{twinder}. Therefore, between the two phases the intermediate results has to be stored and later retrieved back.
-	
-	\item \textit{Ready user profiles} - Some services require that users has to be able to monitor how the results evolve over time. For example, in e-learning systems users want to be able to see how the knowledge of a certain person has changed after following a certain course and thus measure how helpful the course was for that person. Therefore, every time a service is executed the results has to be stored so that they can be later further analysed.
-	
-	\item \textit{System data} - Finally, many of the features of the system need to store some kind of information. For example, the multy-user sport has to store all kind information about the users of the system: user names, passwords, privileges, etc. The scheduling feature has to store information about the time each workflow has to be executed. 
-	
-\end{itemize}
-
-Currently, the system does not provide any functionality to suport users in defining workflows that require data operations. Each scientist is forced to create custom components that serve the particular requirements. However, we argue that this process wastes a lot of time, suffers from many downsides and problems:
-
-\begin{itemize}
-	\item \textit{Knowledge required} - designing and implementing components for dealing with persistent data is not a trivial job. It requires specific type of knowledge(\textbf{database, administration}). Many of the engineers building services have mathematical, statistical background are likely not to have in depth knowledge in the database field. These engineers have to learn this which can cause significant overhead and waste of time. Additionally, the fact that they are not professionals in the field may lead to problems and shortcomings.
-	
-	\item \textit{Server administration} - Most of the storing solutions require setting up a dedicated database server. These serves has to be hosted somewhere, maintained, backuped, etc. All these require a lot of effort and if every user has to do it, it will result in large amount of duplicated work and overhead. If engineers decide to use a shared database server then appears the question of who is responsible to manage it and ensure its security and privacy.
-	
-	\item \textit{Dynamic data structure} - It is expected that the structure of the stored data might change over time. When a database with fixed schema is used (like SQL) then everytime the structure changes the engineers has to manually connect to the database and apply the changes manually. This can be really annoying, time consuming and error prone. Therefore, automating this process can save time to engineers and reduce the number of mistakes caused by carelessness. 
-	
-	\item \textit{Collaboration} - collaborations between engineers on data level is reported to be quite important and can save them a lot of time. Currently, there are no facilities available to support that requirement. Engineers have to organize this collaborations externally from the system. Additionally, this collaboration is hard to monitor and control.
-	
-	\item \textit{Low level queries} - Currently, most services use SQL databases. As a result, users have to deal with sql queries, which is considered as low level language \textbf{cite} and causes some overhead to the engineers especially the ones that are not familiar with it. Therefore users are for. Therefore, introducing some kind of higher level query language can be a big plus.
-	
-	\item \textit{RGL translation} - Genarally available database sollutions are not capable to deal with data in the RGL format introduces in RDFGears. Therefore, every single component that deals with persistant data has to translate the RGL values to values compatible with the databases solution and vice versa. Clearly, all this code is redundant and removing this responsibility from the engineers will save them time and efforts so that they can focus their attention to the core of their work.
-	
-	\item \textit{RDFGears and components with side effects} - Components that store data are components that have side affects. Generally, RDFGears is not designed to work with such components and some unexpected behaviour might be expected. Therefore, engineers building components with side effects and are not aware of the way RDFGears operate internally risk to introduce problems that are hard to detect.
-	
-\end{itemize}
-
-In this thesis we aim to propose a solution that is capable to overcome these problems and save engineers a lot of time, efforts and prevent mistakes while dealing with persistent data.
 
 \section{Requirements}
+\label{sec:storageReq}
 
-Having all concerns discussed in section \textbf{SSS} in mind, we devised a complete set of requirements that presents the functional scenarios(functional requirements) and system qualities(nonfunctional requirements) that the proposed architecture has to provide. These requirements are also referred to into the evaluation section where we discuss how and to what extend the architecture satisfies each of them.
+Having all concerns discussed in section \ref{sec:problemDefStorage} in mind, we devised a complete set of requirements that presents the functional scenarios(functional requirements) and system qualities(non-functional requirements) that the proposed architecture has to provide. These requirements are also referred to into the evaluation section where we discuss how and to what extend the architecture satisfies each of them.
 
 \subsection{Functional Scenarios}
 In this section we formally identify the functional requirements which define the main interactions between the scientists and the system. Each scenario is marked with a code at the beginning which is used for easier identification during the verification and evaluation phase.
@@ -92,10 +44,10 @@ This section identifies the main quality scenarios that a successful architectur
 \end{itemize}
 
 \section{Approach}
-In this chapter we device a framework that is responsible to provide the Data management functionality for U-Sem. By carefully analysing the requirements defined in the \textbf{requirements} section we concluded that the problem can be broken down into the following sub-problems:
+In this chapter we device a framework that is responsible to provide the Data management functionality for U-Sem. By carefully analysing the requirements defined in section \ref{sec:storageReq} we concluded that the problem can be broken down into the following sub-problems:
 \begin{itemize}
-	\item \textit{Data storage and retrieval} - enable nested relational(\textbf{or RGL}) data oriented workflow engines(in our case RDFGears) to hold their long-term data safely in a database and access it when needed.
-	\item \textit{Multitenancy} - enable multiple users to work simultaneously with the solution and enable them to collaborate together in a controlled and secure fashion.
+	\item \textit{Data storage and retrieval} - enable RGL oriented workflow engines(in our case RDFGears) to hold their long-term data safely in a database and access it when needed.
+	\item \textit{Multi-tenancy} - enable multiple users to work simultaneously with the solution and enable them to collaborate together in a controlled and secure fashion.
 	\item \textit{RDFGears extension} - ensure and if required extend the workflow engine so that it is able to deal with this new type of functionality correctly and efficiently.
 \end{itemize}
 
@@ -113,19 +65,19 @@ Once we have defined the way entity types are defined and the operations that ha
 
 Applying the same approach for our RGL entities seem to completely satisfy our requirements. However, in order to exploit that idea we have two options. The first one is to implement and ORM solution from scratch and the other one is to extend/adapt existing ORM solution so that it is able to deal with the RGL entities. In general, reusing a popular and widely used solution might be beneficial because it is likely it is heavily tested(at least from all the engineers using it) and thus, provide higher quality. 
 
-Our research reviled that the Java Persistence Architecture API (JPA) is the "de facto" leader in the field ORM solutions for Java. It represents a Java specification(JSR 317) for accessing, persisting, and managing data between Java objects / classes and a relational database. Making its way as a major standard has resulted in a lot of the big players in the field providing an implementation of it. The most popular include: Hibernate(JBoss), TopLink (Oracle), EclipseLink(IBM) and openJPA(Apache). 
+Our research reviled that the Java Persistence Architecture API (JPA) is the "de facto" leader in the field ORM solutions for Java. It represents a Java specification(JSR 317) for accessing, persisting, and managing data between Java objects / classes and a relational database. Making its way as a major standard has resulted in a lot of the big players in the field providing an implementation of it. The most popular include: Hibernate(JBoss), TopLink (Oracle), EclipseLink(IBM) and openJPA(Apache) \textbf{include footnotes}. 
 
 Because of its popularity, widely usage and formal standardization using JPA seems like the best option for our solution. However, in order to be able to use it we have to solve several major problems which are discussed in the next sections.
 
 
 \subsubsection{Model RGL entities in terms of JPA}
-RDFGears is already capable to map the RGL values to Java objects. Therefore, the challenge is to model these classes in JPA in a sensible and efficient way. \textbf{Fig shows the classes organization}. The naive approach would be to reuse this structure directly. In this way each of the classes is represented as a separate JPA entity. The main advantage of this approach is that the structure is fixed, it does not depend on the structure of the entities that we want to store. However, this approach also brings a lot of disadvantages: 
+RDFGears is already capable to map the RGL values to Java objects as illustrated on figure \ref{fig_rglValuesClassDiag}. Therefore, the challenge is to model these classes in JPA in a sensible and efficient way. The naive approach would be to reuse this structure directly. In this way each of the classes is represented as a separate JPA entity. The main advantage of this approach is that the structure is fixed, it does not depend on the structure of the entities that we want to store. However, this approach also brings a lot of disadvantages: 
 
 \begin{figure}[h!]
   \centering
-  	\includegraphics[scale=0.8]{diagrams/RGLValues.png}
-  \caption{RGL Values }
-  \label{fig_rglValues}
+  	\includegraphics[scale=0.8]{storage/diagrams/RGLValues.png}
+  \caption{Class diagram illustrating the RGL Values class hierarchy}
+  \label{fig_rglValuesClassDiag}
 \end{figure}
 
 \begin{itemize}
@@ -136,9 +88,9 @@ RDFGears is already capable to map the RGL values to Java objects. Therefore, th
 	\item hard to enforce access control
 \end{itemize}
 
-The alternative approach that we propose is to map each entity type into separate JPA entity which is named after the name of the entity which has to be unique. Table \textbf{tbl} proposes a methodology to map RGL values to JPA entities. \textbf{In JPA the root element has to be entity}
+The alternative approach that we propose is to map each entity type into separate JPA entity which is named after the name of the entity which has to be unique. Table \ref{tbl:rgl2gpa} proposes a methodology to map RGL values to JPA entities. \textbf{In JPA the root element has to be entity}
 
-\begin{center}
+\begin{table}[h]
     \begin{tabular}{ | l | l |}
     \hline
     RGL & JPA  \\ \hline
@@ -147,8 +99,11 @@ The alternative approach that we propose is to map each entity type into separat
     BooleanValue & Property of type boolean  \\ \hline
     RDFValue & Property of type string  \\ \hline
 	GraphValue & Property of type string  \\ \hline
+	
     \end{tabular}
-\end{center}
+     \caption{Table describing how RGL values are mapped to JPA}
+    \label{tbl:rgl2gpa}
+\end{table}
 
 * Our solution requires and ensures that the root element of all entity types is a RecordValue. When this value is mapped to a JPA class the name of the class is the name of the EntityType. Any nested RecordValues are mapped to JPA classes named after the name of the property of the ValueRow that points to them directly or indirectly in the case where the RecordValue is wrapped in a BagValue. 
 
@@ -157,9 +112,9 @@ This approach does not suffer from the problems of the first approach because da
 
 \subsubsection{Virtual entities}
 
-JPA expects that each entity will have its own class representing it but our entities are virtual and are no specific Java classes that represent each of them. One solution to this problem would be to generate these classes on runtime. However, this approach is complex and error prone. Therefore, investigating the capabilities of different engines implementing the JPA specification relieved a promising feature in Hibernate called "Dynamic models" \textbf{cite}. It basically allows engineers to define the mapping logic into a mapping xml file and on runtime present the entities in the form Java collections(Maps, Lists, Sets, etc.). Table \textbf{tbl RGL to collection} shows how U-Sem entities can be expressed in terms of Java collections. Therefore, when an entity is defined we have to build the xml mapping file and on runtime convert the rgl entities into java collections and use jpa to store them into the database.
+JPA expects that each entity will have its own class representing it but our entities are virtual and are no specific Java classes that represent each of them. One solution to this problem would be to generate these classes on runtime. However, this approach is complex and error prone. Therefore, investigating the capabilities of different engines implementing the JPA specification relieved a promising feature in Hibernate called "Dynamic models" \textbf{cite}. It basically allows engineers to define the mapping logic into a mapping XML file and on runtime present the entities in the form Java collections(Maps, Lists, Sets, etc.). Table \ref{tbl:rgl2java} shows how U-Sem entities can be expressed in terms of Java collections. Therefore, when an entity is defined we have to build the XML mapping file and on runtime convert the RGL entities into Java collections and use JPA to store them into the database.
 
-\begin{center}
+\begin{table}[h]
     \begin{tabular}{ | l | l |}
     \hline
     RGL & Java  \\ \hline
@@ -170,11 +125,13 @@ JPA expects that each entity will have its own class representing it but our ent
 	GraphValue & String  value in a collection  \\ \hline
 
     \end{tabular}
-\end{center}
+     \caption{Table describing how RGL values are mapped to Java collections}
+    \label{tbl:rgl2java}
+\end{table}
  
 \subsubsection{Dynamic entities}
 
-Another problem that has to be addressed concerns the dynamic nature of the entities. In our solution users has to be able to update the entity types if this is needed. Unfortunately, ORM frameworks are not good in dealing with such things. The problem is that whenever the entity type definitions changes not only the mapping xml file has to change but also the database schema. Hibernate provides a tool for table generation(hibernate.hbm2ddl.auto configuration) but we were not able to find any documentation specifying how it works and what are its limitations. Additionally, we conducted experiments that revieled that this tool is not suitable for our situation(eg. when an entity is renamed then new set of tables is generated and the old ones are left). Therefore, in order to solve that problem reliably our solution provides implementation that is responsible to first update the mapping files and secondly update the schema of the database so that it is consistent with the new entity type definition.
+Another problem that has to be addressed concerns the dynamic nature of the entities. In our solution users has to be able to update the entity types if this is needed. Unfortunately, ORM frameworks are not good in dealing with such things. The problem is that whenever the entity type definitions changes not only the mapping XML file has to change but also the database schema. Hibernate provides a tool for table generation(hibernate.hbm2ddl.auto configuration) but we were not able to find any documentation specifying how it works and what are its limitations. Additionally, we conducted experiments that reviled that this tool is not suitable for our situation(eg. when an entity is renamed then new set of tables is generated and the old ones are left). Therefore, in order to solve that problem reliably our solution provides implementation that is responsible to first update the mapping files and secondly update the schema of the database so that it is consistent with the new entity type definition.
 
 
 \subsubsection{Operations}
@@ -196,7 +153,7 @@ The second main challenges that we have to solve is to enable multiple users to 
 Designing the solution we have to take into account the following things: how to organize the data into the database, how to enable collaboration and how to manage access control.
 
 \subsubsection{Database Organization}
-There are three main approaches for designing multi-tennant solution \cite{Hui}:
+There are three main approaches for designing multi-tenant solution \cite{Hui}:
 
 \begin{itemize}
 	\item \textit{Independent Databases and Independent Database Instances (IDII)} - in this approach users share only the hardware(server). For each user an independent database instance is running. This approach provides good data isolation and security but maintenance cost is significantly increased as a result of the multiple running instances. Additionally, collaboration between engineers is problematic because of the difficulty to execute queries on data that is spread over several databases.  
@@ -227,7 +184,7 @@ The ability for engineers building workflows to collaborate and reuse each other
 The solution has to be able to enforce the sharing options of the entities and make sure that data is not accessed illegally. Therefore, the solution provides access control functionality that is responsible to enforce this policies. Basically, jpa is not good at doing this, it does not provide any access control functionality out of the box(\textbf{check that}). Therefore, there are two possible places to put the access control logic. 
 
 \begin{itemize}
-	\item \textit{above JPA} - our solution wraps arround the JPA engine and thus, we can control all the requests that it receives. We can provide functionality that validates if the user has the needed permissions to execute that functionality. However, from engineering perspective doing this will be hard since JPA(JPQL) allowes engineers to consrtuct relatively complex queries and building a functionality that pareses this queries is not a trivial job to do which significantly increases the risk of security wholes.
+	\item \textit{above JPA} - our solution wraps around the JPA engine and thus, we can control all the requests that it receives. We can provide functionality that validates if the user has the needed permissions to execute that functionality. However, from engineering perspective doing this will be hard since JPA(JPQL) allows engineers to construct relatively complex queries and building a functionality that pareses this queries is not a trivial job to do which significantly increases the risk of security wholes.
 	
 	\item \textit{underling DB} - the second option is to make the database enforce the security policies. We think that this approach is much easier because database already provide sophisticated fine grained access control mechanisms(\textbf{cite needed}). The only think that we have do is to translate the security policy of our solution to the database language(DDL) and set them when an entity is created or modified. As a result, the database will stop the JPA accessing data that it is not authorised to access.
 \end{itemize}
@@ -236,17 +193,17 @@ The solution has to be able to enforce the sharing options of the entities and m
 what are side effects
 
 To understand the problem this new components introduce we first have to understand how RDFGears work. 
-how rdfgears works
+how RDFGears works
 
-rdfgears does not have any or branching and therefore it is expected that all components are executed. However, in order to improve efficiency it introduces some optimizations:
+RDFGears does not have any or branching and therefore it is expected that all components are executed. However, in order to improve efficiency it introduces some optimizations:
 \begin{itemize}
-	\item the engine compiles the workflow into a datastructure which contains the output node and all components that the output directly or indirectly depends on. Therefore, components that do not have (indirect) connection to the output node are omitted. This makes sense because the assumption is that components do not have any side effects and if they do not contribute for the final result then there is no difference if they are executed or not.
+	\item the engine compiles the workflow into a data structure which contains the output node and all components that the output directly or indirectly depends on. Therefore, components that do not have (indirect) connection to the output node are omitted. This makes sense because the assumption is that components do not have any side effects and if they do not contribute for the final result then there is no difference if they are executed or not.
 	
 	\item the engine takes the output node and recursively executes all components which outputs are needed for the execution.
 	  
 	\item the results produced by a component are cached. Therefore, if their output is needed in several branches the value is calculated only once.
 	
-	\item iterations ...  
+	\item iterations ...  \textbf{TODO}
 \end{itemize}
 
 The problem is that our solution imposes on this optimizations is that the assumption that components do not have side affects is no longer correct. Therefore, the engine will not longer perform its tasks correctly. The trivial approach would be to simply remove all these optimizations but this is not a good idea because efficiency will suffer continuously. Therefore, we propose an alternative approach which aims to make the engine perform correctly but also keep the efficiency.
@@ -265,20 +222,20 @@ These steps ensure that all components with side effects are executed and the ex
 
 We implemented an additional special feature that aims to save save time to engineers. The idea of this feature is to integrate the data management feature with the plug-in environment feature. The benefit from this feature covers the situation when engineers create a certain kind of user modelling service which requires data interactions and  bundle it into plug-in. Since this feature interacts with data if will most probably require entity definitions is order to work. Therefore, every time this plug-in is deployed on a server the engineers has to manually define the needed entities through the user interface. Obviously, this operation may cost significant time and is error prone. Additionally, the problem becomes severe when an engineers wants to use a shared plug-in produced by someone else. In this case the two engineers need a way to somehow exchange the entity definitions.
 
-In order to solve that problem we have devised a mechanism that can deal with this issue automatically and thus safe time to the engineers. The idea is very simple. Each entity definition is stored in an xml file in the file system. Therefore, the first time an engineers creates an entity definition it can export it as an xml file. Then, he can include this file in the plug-in and register in in the \textbf{plug-in context}. When this plug-in is installed the system automatically detects the presence of this entities and installs them automatically so that the functionality of the plug-in can be used right away without any need for configuration.
+In order to solve that problem we have devised a mechanism that can deal with this issue automatically and thus safe time to the engineers. The idea is very simple. Each entity definition is stored in an XML file in the file system. Therefore, the first time an engineers creates an entity definition it can export it as an XML file. Then, he can include this file in the plug-in and register it within the \textit{Plug-in context}. When this plug-in is installed the system automatically detects the presence of this entities and installs them automatically so that the functionality of the plug-in can be used right away without any need for configuration.
 
 \section{Architecture}
 We have already discussed the main problems that our solution is facing and the approach we will use to solve each of them. In this chapter we discuss the architecture of the solution.
 
 \subsection{Functional View}
 
-All components that take part in the data management functionality can be classified in three layers. This organization is illustrated in figure Figure \textbf{fff} and consists of the following layers:
+All components that take part in the data management functionality can be classified in three layers. This organization is illustrated in figure Figure \ref{fig:storageLayers} and consists of the following layers:
 
 \begin{figure}[h!]
   \centering
-  	\includegraphics[scale=0.4]{functional/layers.png}
-  \caption{Context diagram of U-Sem }
-  \label{fig_context}
+  	\includegraphics[scale=0.4]{storage/functional/layers.png}
+  \caption{Layer organization of the feature}
+  \label{fig:storageLayers}
 \end{figure}
 
 \begin{itemize}
@@ -290,18 +247,18 @@ All components that take part in the data management functionality can be classi
 \end{itemize}
 
 \subsection{High-level component organization}
-This section describes the internal structure of the layers and identifies the high level components that build up the feature. Figure \textbf{3.11 ffff} illustrates this organization. It shows how the high-level components are organized into the layers and the way they depend on each other. We have identified the following high level components:
+This section describes the internal structure of the layers and identifies the high level components that build up the feature. Figure \ref{fig:storageFuncMain} illustrates this organization. It shows how the high-level components are organized into the layers and the way they depend on each other. We have identified the following high level components:
 
 \begin{figure}[h!]
   \centering
-  	\includegraphics[scale=0.6]{functional/func_main.png}
-  \caption{Context diagram of U-Sem }
-  \label{fig_context}
+  	\includegraphics[scale=0.6]{storage/functional/func_main.png}
+  \caption{Component diagram illustrating the high level functional organization of the feature }
+  \label{fig:storageFuncMain}
 \end{figure}
 
 \begin{itemize}
 	
-		\item \textit{Entity definitions store} - Provides functionality for storing the data describing the entity definitions. 
+	\item \textit{Entity definitions store} - Provides functionality for storing the data describing the entity definitions. 
 		
 	\item \textit{Mappings store} - Provides functionality for storing the data defining how entities are mapped to the database.  
 	
@@ -317,13 +274,13 @@ This section describes the internal structure of the layers and identifies the h
 \end{itemize}
 
 \subsection{Entities administration}
-This section defines the functional decomposition of the Entities administration component which is illustrated on figure \textbf{fff}. It consists of the following components:
+This section defines the functional decomposition of the Entities administration component which is illustrated on figure \ref{fig:storageFuncAdmin}. It consists of the following components:
 
 \begin{figure}[h!]
   \centering
-  	\includegraphics[scale=0.6]{functional/func_admin.png}
-  \caption{Context diagram of U-Sem }
-  \label{fig_context}
+  	\includegraphics[scale=0.6]{storage/functional/func_admin.png}
+  \caption{Functional decomposition of the Entities admin. module}
+  \label{fig:storageFuncAdmin}
 \end{figure}
 
 \begin{itemize}
@@ -338,17 +295,17 @@ This section defines the functional decomposition of the Entities administration
 \end{itemize}
 
 \subsection{Entity Definition Manager}
-This component is responsible to provide API which can be used by application layer components in order to manage the entity definitions. Figure \textbf{fff} shows the functional decomposition of the \textbf{Plug-in access manager} module. It consists of the following components:
+This component is responsible to provide API which can be used by application layer components in order to manage the entity definitions. Figure \ref{fig:storageFuncAccess} shows the functional decomposition of the \textit{Entity definition manager} module. It consists of the following components:
 
 \begin{figure}[h!]
   \centering
-  	\includegraphics[scale=0.7]{functional/func_access.png}
-  \caption{Context diagram of U-Sem }
-  \label{fig_context}
+  	\includegraphics[scale=0.7]{storage/functional/func_access.png}
+  \caption{Functional decomposition of the Entities definition manager module}
+  \label{fig:storageFuncAccess}
 \end{figure}
 
 \begin{itemize}
-	\item \textit{Facade} - this component provides the API for manipulating the entity definitions.
+	\item \textit{Façade} - this component provides the API for manipulating the entity definitions.
 	
 	\item \textit{DB Schema persister} - this component is responsible to make sure the database schema is always corresponding to the entity definitions. Any time the entities are changed the database schema is updated. Additionally, this component also defines the access permissions for each access table based on what the user creating the entity has specified.
 	
@@ -356,18 +313,18 @@ This component is responsible to provide API which can be used by application la
 	
 	\item \textit{Entity definition persister} - this component provides functionality for storing the entity definitions.
 	
-	\item \textit{XML Serializer} -  This component is responsible to store and retrieve the entity definitions. It provide a level of abstraction over the way the definitions are stored. As a result, this will be the only component that is affected in case of any change of the place and format of the data is required. The default implementation of this component stores the entity definition in the file system as xml files.
+	\item \textit{XML Serializer} -  This component is responsible to store and retrieve the entity definitions. It provide a level of abstraction over the way the definitions are stored. As a result, this will be the only component that is affected in case of any change of the place and format of the data is required. The default implementation of this component stores the entity definition in the file system as XML files.
 \end{itemize}
 
 \subsection{Entity Manipulation Manager}
 
-This component is responsible to provide API which can be used by application layer components in order to perform CRUD operations over the already defined entities. Figure \textbf{fff} shows the functional decomposition of the \textbf{Entity Manipulation Manager} module. It consists of the following components:
+This component is responsible to provide API which can be used by application layer components in order to perform CRUD operations over the already defined entities. Figure \ref{fig:storageFuncManip} shows the functional decomposition of the \textbf{Entity Manipulation Manager} module. It consists of the following components:
 
 \begin{figure}[h!]
   \centering
-  	\includegraphics[scale=0.7]{functional/func_manip.png}
-  \caption{Context diagram of U-Sem }
-  \label{fig_context}
+  	\includegraphics[scale=0.7]{storage/functional/func_manip.png}
+  \caption{Functional decomposition of the Entities manipulation manager module}
+  \label{fig:storageFuncManip}
 \end{figure}
 
 \begin{itemize}
@@ -375,7 +332,7 @@ This component is responsible to provide API which can be used by application la
 	
 	\item \textit{Properties provider} - Keeps track of all common and user related options that are required for the correct operation of the Hibernate framework. The main properties this component is responsible to provide are the database login configuration for each user. It has to make sure that each request to the database is executed with the correct database user so that the database can handle the access control properly.
 	
-	\item \textit{Mappings provider} - This component is responsible to provide the "hbm" files that tell the Hibernate framework how to map the U-Sem entities(represented as java collections) to the database.
+	\item \textit{Mappings provider} - This component is responsible to provide the "hbm" files that tell the Hibernate framework how to map the U-Sem entities(represented as Java collections) to the database.
 	
 	\item \textit{Hibernate} - This component represents the Hibernate framework which is responsible to perform the actual interaction with the database in order to serve CRUD requests.  
 \end{itemize}
@@ -384,14 +341,14 @@ This component is responsible to provide API which can be used by application la
 
 \begin{figure}[h!]
   \centering
-  	\includegraphics[scale=0.5]{functional/concur.png}
+  	\includegraphics[scale=0.5]{storage/functional/concur.png}
   \caption{Context diagram of U-Sem }
-  \label{fig_context}
+  \label{fig:storageConc}
 \end{figure}
 
 This section describes the concurrency structure of the feature. We show how functional elements map to concurrency units(processes, process groups and threads) in order to clearly identify the parts of the system that can work concurrently. We also show how this parallel execution is coordinated and controlled.
 
-Figure \textbf{fff} illustrates the concurrency organization. The main functionality of the system is situated in the U-Sem process group. All U-Sem processes including the storage processes operate concurrently. Workflow configuration and execution initiated by U-Sem clients and entity management by scientists can happen at the same time. This organization makes the solution flexible because if needed the \textbf{Workflow} process can be replicated independently from the \textbf{Administration}. However this organization also introduces some problems that has to be solved.
+Figure \ref{fig:storageConc} illustrates the concurrency organization. The main functionality of the system is situated in the U-Sem process group. All U-Sem processes including the storage processes operate concurrently. Workflow configuration and execution initiated by U-Sem clients and entity management by scientists can happen at the same time. This organization makes the solution flexible because if needed the \textbf{Workflow engine} process can be replicated independently from the \textbf{Administration}. However this organization also introduces some problems that has to be solved.
 
 \subsubsection{Problems}
 Firstly, if the workflow engine is the middle of execution and the structure of the database is changed, then the workflow may fail unexpectedly and cause problems that are hard to detect and reproduce. 
@@ -420,22 +377,22 @@ We implemented the proposed architecture in order to evaluate its applicability 
 In order to implement the endpoints(user interface) we used the jQuery UI, \textbf{Bootstrap and dynamic tree} technologies. The user interface consists of two main panels:
 	\begin{itemize}
 	
-		\item \textbf{Entities list} - Illustrated on picture \textbf{iii}, this is the initial view exposed to the user. It provides a list of available entity definitions and enables users to create, update and delete entities.
+		\item \textbf{Entities list} - Illustrated on picture \ref{fig:storageEntityList}, this is the initial view exposed to the user. It provides a list of available entity definitions and enables users to create, update and delete entities.
 		
 \begin{figure}[h!]
   \centering
-  	\includegraphics[scale=0.5]{ui/entityList.png}
-  \caption{Context diagram of U-Sem }
-  \label{fig_context}
+  	\includegraphics[scale=0.5]{storage/ui/entityList.png}
+  \caption{User interface for entity definitions management}
+  \label{fig:storageEntityList}
 \end{figure}
 		
-		\item \textbf{Entity manipulation panel} - The implementation also provide a panel that is responsible to automate the process of defining entities. Shown on figure \textbf{fig}, this panel is used when an entity is created or updated.
+		\item \textbf{Entity manipulation panel} - The implementation also provide a panel that is responsible to automate the process of defining entities. Shown on figure \ref{fig:storageEntityPanel}, this panel is used when an entity is created or updated.
 		
 \begin{figure}[h!]
   \centering
-  	\includegraphics[scale=0.5]{ui/entityPanel.png}
-  \caption{Context diagram of U-Sem }
-  \label{fig_context}
+  	\includegraphics[scale=0.5]{storage/ui/entityPanel.png}
+  \caption{User interface for constructing entity definitions}
+  \label{fig:storageEntityPanel}
 \end{figure}
 
 	\end{itemize}
@@ -444,15 +401,15 @@ In order to implement the endpoints(user interface) we used the jQuery UI, \text
 \subsection{RDFGeards workflow configuration}
 We have also implemented two features that aim to benefit engineers when configuring workflows in RDFGears.
 
-The first feature concerns the \textbf{Insert entity} component. According to the specification the engineer has to select and entity type that has to be stored and provide the corresponding data as inputs for the component. However, when selecting the entity type it is clear what are the inputs that will be required for the component because they have to correspond to the predefined entity structure. Therefore, instead of manually configuring the inputs of the component, the system automatically reads the entity type definition and sets up all the required inputs automatically. \textbf{Include screen shot}
+The first feature concerns the \textbf{Insert entity} component. According to the specification the engineer has to select and entity type that has to be stored and provide the corresponding data as inputs for the component. However, when selecting the entity type it is clear what are the inputs that will be required for the component because they have to correspond to the predefined entity structure. Therefore, instead of manually configuring the inputs of the component, the system automatically reads the entity type definition and sets up all the required inputs automatically.
 
-The second feature is the preview panel for entity types. It represents a small dialog panel in the user interface that can be opened every time the engineer defining workflows need to refer to the structure of an entity type. It presents the entity types in the form of a tree. \textbf{Include screenshot} This feature is particularly valuable when users have to write queries because they can easily refer to the entity types and therefore, they do not have to remember them. It is also likely to prevent mistakes connected to not reproducing the entity types correctly in the queries.
+The second feature is the preview panel for entity types. It represents a small dialog panel in the user interface that can be opened every time the engineer defining workflows need to refer to the structure of an entity type. As shown on figure \ref{fig:storageEntityPreview}, it presents the entity types in the form of a tree. This feature is particularly valuable when users have to write queries because they can easily refer to the entity types and therefore, they do not have to remember them. It is also likely to prevent mistakes connected to not reproducing the entity types correctly in the queries.
 
 \begin{figure}[h!]
   \centering
-  	\includegraphics[scale=0.5]{ui/entityPreview.png}
-  \caption{Context diagram of U-Sem }
-  \label{fig_context}
+  	\includegraphics[scale=0.5]{storage/ui/entityPreview.png}
+  \caption{User interface that provides a quick preview of the entity definitions}
+  \label{fig:storageEntityPreview}
 \end{figure}
 
 \subsection{Extended workflow compiler}
@@ -460,7 +417,7 @@ The second feature is the preview panel for entity types. It represents a small 
 We implemented the extension of the capabilities by extending some of the classes involved in the feature and keeping the original classes intact. In this way, in case of problem or if needed engineers can easily switch between the two implementations. We extended the following classes:
 
 \begin{itemize}
-	\item \textit{WorkflowNode} - the newly created node is responsible to act as a wrapper around the output node of the workflow. When executed it triggers the execution of not only the output not but also to all the nodes with side effects defined in the workflow. The result of the execution is still the result of the execution of the output node. In this way we make sure that all nodes with side affects are executed as expected from the user. The already existing cashing mechanism enshures that each component is executed at most once which prevents any duplicate executions of components.
+	\item \textit{WorkflowNode} - the newly created node is responsible to act as a wrapper around the output node of the workflow. When executed it triggers the execution of not only the output not but also to all the nodes with side effects defined in the workflow. The result of the execution is still the result of the execution of the output node. In this way we make sure that all nodes with side affects are executed as expected from the user. The already existing cashing mechanism ensures that each component is executed at most once which prevents any duplicate executions of components.
 	
 	\item \textit{WorkflowLoader} - the new child class extends the implementation in two directions. Firstly, when the workflow is compiled the resulted data structure contains not only the components needed for the execution of the output node but also the components with the side effects and their dependent components. Secondly, the output node implementations is replaced by the extended WorkflowNode, containing references to the output component and all components with side effects.
 \end{itemize}
@@ -474,12 +431,12 @@ For the experiment we used the already implemented service for building language
 
 \begin{figure}[h!]
   \centering
-  	\includegraphics[scale=0.5]{eval/before.png}
-  \caption{Context diagram of U-Sem }
-  \label{fig_context}
+  	\includegraphics[scale=0.5]{storage/eval/before.png}
+  \caption{Workflow defining the service for building language profiles before the introduction of the feature}
+  \label{fig:storageEvalBefore}
 \end{figure}
 
-Figure \textbf{fff} shows how the workflow looked like before the introduction of our solution. In order to implement that workflow scientists had to perform the following steps:
+Figure \ref{fig:storageEvalBefore} shows how the workflow looked like before the introduction of our solution. In order to implement that workflow scientists had to perform the following steps:
 \begin{itemize}
 	\item Install and set-up a database
 	\item Create the necessary tables manually
@@ -489,23 +446,23 @@ Figure \textbf{fff} shows how the workflow looked like before the introduction o
 
 \begin{figure}[h!]
   \centering
-  	\includegraphics[scale=0.5]{eval/entities.png}
-  \caption{Context diagram of U-Sem }
-  \label{fig_context}
+  	\includegraphics[scale=0.5]{storage/eval/entities.png}
+  \caption{The entity definitions needed for building the service for building language profiles}
+  \label{fig:storageEvalEntities}
 \end{figure}
 
-Figure \textbf{fff} shows how the workflow looks like after the introduction of our solution. In order to implement the workflow scientists had to perform the following steps:
+Figure \ref{fig:storageEvalAfter} shows how the workflow looks like after the introduction of our solution. In order to implement the workflow scientists had to perform the following steps:
 \begin{itemize}
-	\item Define the entity types using the user interface. Figure \textbf{fff}
+	\item Define the entity types using the user interface illustrated on Figure \ref{fig:storageEvalEntities}.
 	\item Reuse the components for quering and storing data by only providing the JPQL query and selecting the entity type for storing.
 	\item Indicate the store component to have side effects and put it in a separate branch.
 \end{itemize}
 
 \begin{figure}[h!]
   \centering
-  	\includegraphics[scale=0.5]{eval/after.png}
-  \caption{Context diagram of U-Sem }
-  \label{fig_context}
+  	\includegraphics[scale=0.5]{storage/eval/after.png}
+  \caption{Workflow defining the service for building language profiles after the introduction of the feature}
+  \label{fig:storageEvalAfter}
 \end{figure}
 
 We believe that using the proposed solution saves a lot of time and efforts to the engineers defining the service for the following reasons:
@@ -529,7 +486,7 @@ In this section we identify the limitations of the proposed architecture and we 
 
 \item The aim of this feature is to simplify the work with persistent data in U-Sem. However, introducing this abstraction over the storage functionality we also have reduced the flexibility to some extend. One of the side effects is the inflexibility in terms of transactions management(begin, commit, rollback). In the current situation users do not have any means to manage the database transactions and they are tied to the way the engine is configured. Currently, our research showed that this is not a problem but in future some users might need to have the power to control the transactions to the database. Therefore, introducing a mechanism that can enable that efficiently might be an interesting research topic.
 
-\item Most of the data manipulation components(except for the "Insert entity" component) require users to enter JPQL query. These queries can get quite complex and as a result users usually make some mistakes when writing them \textbf{cite}. Currently, the solution does not provide any facilities that can validate these queries. Users are notified abut the mistakes only when they try to execute the workflows and they fail. As a result, this process may cost a lot of time to users until they finally end up with the correct queries. Therefore, in future the system might be further improved by introducing functionality for autocomplition and validation of the JPQL queries.
+\item Most of the data manipulation components(except for the "Insert entity" component) require users to enter JPQL query. These queries can get quite complex and as a result users usually make some mistakes when writing them \textbf{cite}. Currently, the solution does not provide any facilities that can validate these queries. Users are notified abut the mistakes only when they try to execute the workflows and they fail. As a result, this process may cost a lot of time to users until they finally end up with the correct queries. Therefore, in future the system might be further improved by introducing functionality for auto-completion and validation of the JPQL queries.
 
 \item Currently, the RDF Gears engine does not provide any guarantees for the order of the execution of branches. This is not a problem for components that do not have side effects. However, with the introduction of the new components that interact with the database developing an mechanism to control the execution order of branches within a workflow makes sense and might be a helpful future addition to the solution.
 
@@ -558,5 +515,3 @@ In this section we identify the limitations of the proposed architecture and we 
 \bibitem{JPQL} J Linwood, D Minter, Searches and Queries, Beginning Hibernate, 2010 - Springer
 
 \end{thebibliography}
-
-\end{document}

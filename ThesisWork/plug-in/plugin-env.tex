@@ -16,7 +16,7 @@ In this section we formally identify the functional requirements which define th
 	
 	\item \textbf{UC2 - Use functionality shared by other scientists} - Scientists has to be able to reuse custom functionality that is previously shared by other scientist.
 	
-	\item \textbf{UC3 - Manage loaded functionality} - Users has to able to manage all functionality already added to the system. This includes, firstly, that they have to be able to view a list of all added functionality. And secondly, they have to be able to remove any of the functionality from the provided list.
+	\item \textbf{UC3 - Manage installed functionality} - Users has to able to manage all functionality already added to the system. This includes, firstly, that they have to be able to view a list of all added functionality. And secondly, they have to be able to remove any of the functionality from the provided list.
 			
 \end{itemize}
 
@@ -25,15 +25,6 @@ In this section we formally identify the functional requirements which define th
 This section identifies the main quality scenarios that a successful architecture has to accommodate. 
 
 \begin{itemize}
-
-	\item \textit{Availability} - It is expected that in future the system will be used by many users and therefore, any down time of the system is unacceptable. On one hand, performing any of the functional scenarios defined in the previous section should not cause any kind of unavailability of the system. On the other hands, the system has to be able to withstand failures of the computing units. There two types of failures that the system has to be able to deal with:
-	
-	\begin{itemize}
-	\item \textit{Hardware failures} are one of the main problems that may cause the entire system to fail. They might be caused by processing unit failure, network failure and electricity supply failure. In case of one or several failures of any type, the system has to be able to continue to operate normally. In the worst case, a decrease in performance is acceptable.
-	\item \textit{Software failures} are also a common cause for system failures. In case of software failure in a part of the system, the system has to continue to operate normally. Again, in the worst case, a decrease in performance is acceptable. 
-	\end{itemize}
-	
-	\item \textit{Scalability} - the architecture should enable scalability and should not affect the scalability capabilities of the workflow engine. The system has to be designed in such a way that allows to easily add new hardware processing units when it is required by increase in the number of users using the system.
 	
 	\item \textit{Isolation} - A scientist should not be affected by the work of the others. The only way of interaction between scientists has to be achieved through the sharing mechanism. Moreover, scientists should not be affected by any future changes to the reused components.
 		
@@ -43,7 +34,7 @@ This section identifies the main quality scenarios that a successful architectur
 	
 	Finally, all installed functionality should be backuped. In case of failure of a storage device, the system should provide a quick and reliable method for recovering of all the data.
 	
-	\item \textit{Modularization} - As we discussed in the previous section, modularization of components is crucial for the future of the system. Therefore, the architecture has to provide facilities that support and enforce strong modularization between components.
+	\item \textit{Modularization} - As we discussed in section \ref{sec:problemDefPlugin}, modularization of components is crucial for the future of the system. Therefore, the architecture has to provide facilities that support and enforce strong modularization between components.
 	
 \end{itemize}
 
@@ -148,6 +139,14 @@ Since its introduction, the Java language and JVM have been widely used and subj
 
 On top of this, OSGI defines additional permissions that provides full control of the interactions between the components. It provides functionality that enables dependencies at the package level and at the service level to be allowed or prevented. Additionally, management capability from one component to the others can also be restricted \cite{Parrend}.
 
+\subsection{Collaboration between users}
+
+Engineers have to be able to collaborate between each other by reusing each others functionality. In order to support this feature we propose the use of a Plug-in repository. It represents a storage location where plug-ins are stored and when needed, they can be retrieved and installed into the system. Scientists build and then publish their plug-ins there so that anyone interested can install and use them. 
+
+By using the Plug-in repository scientists are able to exchange components before they are installed into U-Sem. Alternative approach would have been enable scientists to share already installed components between each other. In this way, whenever a scientist creates a new version or an entirely new component it is installed to U-Sem, shared and then all other scientists are able to use it. However, that approach has one major disadvantage. When a new version of a component is installed then all scientists automatically start to use the new version. The version, though, might introduce a bug or it might not be completely compatible with the previous version. As a result, all other scientists' services and components that are using it are threatened to experience failures. 
+
+Using the Plug-in repository overcomes this problem. When a scientist releases new version of component, other scientists can decide whether or not to immediately adopt the new release. If they decide not to, they can simply continue using the old one. 
+Later, when they decide that are ready for the change, they install and use the new release. The benefit from this approach is that none of the scientists are at the mercy of the others. Changes made to one component do not need to have an immediate affect on other scientists that are using it. Each scientist can decide whether or when to move to the new releases of the components in use.
 
 \section{Architecture}
 \label{sec:architecturePlugin}
@@ -185,12 +184,7 @@ Apart from defining workflows, the role of the scientists is also to add new fun
 \end{figure}
 
 \paragraph{Plug-in repository}
-Another interesting addition to the environment is the Plug-in repository. It represents a storage location where plug-ins are stored and when needed, they can be retrieved and installed into the system. Scientists build and then publish their plug-ins there so that anyone interested can install and use them. The need for this approach emerges from the fact that scientists has to be able to share functionality with one another.
-
-By using the Plug-in repository scientists are able to exchange components before they are installed into U-Sem. Alternative approach would have been enable scientists to share already installed components between each other. In this way, whenever a scientist creates a new version or an entirely new component it is installed to U-Sem, shared and then all other scientists are able to use it. However, that approach has one major disadvantage. When a new version of a component is installed then all scientists automatically start to use the new version. The version, though, might introduce a bug or it might not be completely compatible with the previous version. As a result, all other scientists' services and components that are using it are threatened to experience failures. 
-
-Using the Plug-in repository overcomes this problem. When a scientist releases new version of component, other scientists can decide whether or not to immediately adopt the new release. If they decide not to, they can simply continue using the old one. 
-Later, when they decide that are ready for the change, they install and use the new release. The benefit from this approach is that none of the scientists are at the mercy of the others. Changes made to one component do not need to have an immediate affect on other scientists that are using it. Each scientist can decide whether or when to move to the new releases of the components in use.
+It represents a storage location where plug-ins are stored and when needed, they can be retrieved and installed into the system. Scientists build and then publish their plug-ins there so that anyone interested can install and use them. 
 
 
 \subsection{Process modelling}
@@ -355,14 +349,7 @@ Figure \ref{fig_conc} illustrates the concurrency organization of U-Sem. The mai
 
 \subsection{Deployment View}
 
-This section describes the environment in which the system will be deployed. It defines where each of the processes defined in the previous section will operate. 
-
-Due to the nature in which the system operates we had to consider scalability but also simplicity. On one hand, in order to test their work scientists has to be able to easily install and set up U-Sem. Usually, in this scenario scalability and performance are not critical, however, simplicity is crucial to enable scientist to concentrate entirely on their work rather then setting up the system. On the other hand, in production mode the system will be used by many users and many services will be running simultaneously. Therefore, in this situation the performance and scalability issues are important. As a result, we designed U-Sem to be flexible and be able to accommodate both scenarios.
-
-
-\subsubsection{Simple setup}
-
-This setup targets the scenarios where there is no need for high performance and scalability. The aim here is to enable scientists to setup the system fast, on a single machine and with little configuration effort. 
+This section describes the environment in which the system will be deployed. It defines where each of the processes defined in the previous section will operate. In order to test their work scientists has to be able to easily install and set up U-Sem so that they can concentrate entirely on their work rather then setting up the system. Therefore, aim here is to enable scientists to setup the system fast, on a single machine and with little configuration effort. 
 
 \begin{figure}[h!]
   \centering
@@ -371,26 +358,9 @@ This setup targets the scenarios where there is no need for high performance and
   \label{fig:simple_set}
 \end{figure}
 
-This deployment organization is illustrated on figure \ref{fig:simple_set}. As one can see, all components are deployed and run on the same web server and on the same physical machine. We recommend this setup only for development and test purposes since it does not satisfy the scalability, availability and security requirements. For production use, we recommend the setup described in the next section.
+This deployment organization is illustrated on figure \ref{fig:simple_set}. The benefit from this organization is that all components are deployed and run on the same web server, on the same physical machine, and as a result, the costs for maintenance and initial set-up are reduced.
 
-\subsection{High Availability setup} 
-
-This setup aims to cover the scenarios requiring scalability and high availability. Figure \ref{high_avail} provides the deployment diagram illustrating this setup.
-
-The architecture defines a typical three tier organization. The presentation tier is represented by the users' web browsers and other client systems, the logical tier by the U-Sem process group and the data storage tier by the plug-in store. In order to satisfy the scalability and availability requirements the logical and data storage tiers are distributed on multiple physical
-devices. U-Sem processes are replicated on several processing nodes to form a cluster. A load balancer situated between the cluster nodes and the client devices is responsible to distribute the load amongst the nodes. In case of a failure of a processing node, the load balancer no longer sends client request to it.
-
-The database is also distributed. The storage is divided in several pieces based on the owner of the installed plug-ins. Then, a node is assigned to each piece of data. Each node is responsible to store and provide access to the data of the assigned pieces. For extra security each device can be accompanied by another one which serves as a backup. There is also a load balancer between the logical and data tier which is responsible to redirect requests to the data node that is responsible to sore the data for the required user. Additionally, in case of a failure of a data node the load balancer is responsible to start sending request to its backup node and thus, shorten the time of unavailability.
-
-In order to satisfy the security requirements, all communications are managed by firewalls placed before the load balancers. For clarity reasons they(the firewalls and load balancers) are displayed in the same components in the model but they can also be deployed on different processing units as well.
-
-
-\begin{figure}[h!]
-  \centering
-  	\includegraphics[scale=0.7,angle=90]{plug-in/layers/high_setup.png}
-  \caption{Deployment diagram illustrating the high availability setup of U-Sem}
-  \label{high_avail}
-\end{figure}
+\textbf{TODO describe the distributed cache mechanism}
 
 \section{Implementation}
 \label{sec:implPlugin}
@@ -453,14 +423,6 @@ Once we had the plug-in needed for the experiments, we tried to execute each of 
 We believe that the proposed architecture will also satisfy the nonfunctional requirements of the system for the following reasons:
 
 \begin{itemize}
-
-\item \textit{Availability} - On one hand, the proposed architecture enables clients to load and manage their custom functionality dynamically. There is no need for the system to be restarted in order the changes to take place and thus, the availability of the system is not compromised.
-
-On the other hand, in production setup, all operations are performed by clusters which means that in case of hardware or software failure of a cluster node the other nodes will continue to operate and the entire system will continue to be available. Additionally, availability in case of a storage node failure is ensured by redirecting all requests to its backup. Cluster nodes can also be placed in different physical locations to handle situation where an accident(e.g. network or electrical failure) in one data center can cause all devices to fail. 
-
-Load balancers can be considered as a single points of failure. However, we solve this problem by also providing clusters of load balancers which are accessed through DNS load balancing \cite{Membrey}.
-
-\item \textit{Scalability} - Another non-functional requirement for the system is to be able to gradually scale for supporting more users  by just adding new hardware components. The proposed architecture satisfies this requirement because in order to scale one should just add new nodes to the backend cluster and/or add new nodes to the data storage cluster. The system can be scaled up to the point where each workflow is executed by different processing node and the plug-ins for each scientist are stored on a different storage node.
 
 \item \textit{Isolation} - All components of each users are stored at separate place in the file system. There system keeps track that there is no overlapping between the storage spaces. Plug-ins for each user are loaded by a separate instance of the OSGI framework which acts as a barrier and allows users to operate in isolation from one another. Additionally, the users have the full control on the plug-ins that are installed in their storage space. If a new version of a shared plug-in is released the users have to install it manually from the plug-in repository and thus, exercise control over the version of the plug-ins they are using. 
 

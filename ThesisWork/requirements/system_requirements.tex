@@ -129,7 +129,48 @@ This approach also introduces one big disadvantage from software engineering per
 Having all these considerations in mind, we devised a complete set of requirements that presents the functional scenarios(functional requirements) and system qualities(non-functional requirements) that the proposed architecture has to provide. These requirements are also referred to into the evaluation section where we discuss how and to what extend the architecture satisfies each of them.
 
 \section{Data Management}
+\label{sec:problemDefStorage}
 
+Our research showed that many of the services implemented by the engineers require data storage and retrieval in some form. The structure and semantics of the data varies greatly but we managed to classify the data in several groups:
+
+\begin{itemize}
+
+	\item \textit{Raw data} - Engineers reported that most of the analysis and modelling services they devised are based on the social media. Basically, they have to retrieve certain entries(e.g tweets from Twitter \textbf{foot note} ) which are the basis for the analysis. In certain cases engineers have to store this "raw data" locally. Usually, this is as a result of the fact that the retrieving the entities requires time and also the some social media APIs limit the number of entities you can get in certain amount of time \textbf{cite}. This makes the execution of workflows slow(the system has to wait to get the needed entries every time). Therefore, engineers are forced to store these entries an only make sure they are up to data prior to the execution of a workflow.
+	
+	\item \textit{User provided data} - Some services require information that is not available from the social media and has to be provided by the users of the system. For example, in certain usecases users has to fill in questioners and the results from later analysis is adjusted based on the answers provided by the users. It is infeasible to ask the users for that information every time that is why it has to be stored within the system.
+	
+	\item \textit{Intermediate results} - Some services consist of two phases. The first phase continuously calculates some intermediate representation of the raw data. In the second phase, on user request the final result is calculated based on the intermediate data. For example, \textbf{twinder}. Therefore, between the two phases the intermediate results has to be stored and later retrieved back.
+	
+	\item \textit{Ready user profiles} - Some services require that users has to be able to monitor how the results evolve over time. For example, in e-learning systems users want to be able to see how the knowledge of a certain person has changed after following a certain course and thus measure how helpful the course was for that person. Therefore, every time a service is executed the results has to be stored so that they can be later further analysed.
+	
+	\item \textit{System data} - Finally, many of the features of the system need to store some kind of information. For example, the multy-user sport has to store all kind information about the users of the system: user names, passwords, privileges, etc. The scheduling feature has to store information about the time each workflow has to be executed. 
+	
+\end{itemize}
+
+Currently, the system does not provide any functionality to support users in defining workflows that require data operations. Each scientist is forced to create custom components that serve the particular requirements. However, we argue that this process wastes a lot of time, suffers from many downsides and problems:
+
+\begin{itemize}
+	\item \textit{Knowledge required} - designing and implementing components for dealing with persistent data is not a trivial job. It requires specific type of knowledge(\textbf{database, administration}). Many of the engineers building services have mathematical, statistical background are likely not to have in depth knowledge in the database field. These engineers have to learn this which can cause significant overhead and waste of time. Additionally, the fact that they are not professionals in the field may lead to problems and shortcomings.
+	
+	\item \textit{Server administration} - Most of the storing solutions require setting up a dedicated database server. These serves has to be hosted somewhere, maintained, backuped, etc. All these require a lot of effort and if every user has to do it, it will result in large amount of duplicated work and overhead. If engineers decide to use a shared database server then appears the question of who is responsible to manage it and ensure its security and privacy.
+	
+	\item \textit{Dynamic data structure} - It is expected that the structure of the stored data might change over time. When a database with fixed schema is used (like SQL) then every time the structure changes the engineers has to manually connect to the database and apply the changes manually. This can be really annoying, time consuming and error prone. Therefore, automating this process can save time to engineers and reduce the number of mistakes caused by carelessness. 
+	
+	\item \textit{Collaboration} - collaborations between engineers on data level is reported to be quite important and can save them a lot of time. Currently, there are no facilities available to support that requirement. Engineers have to organize this collaborations externally from the system. Additionally, this collaboration is hard to monitor and control.
+	
+	\item \textit{Low level queries} - Currently, most services use SQL databases. As a result, users have to deal with sql queries, which is considered as low level language \textbf{cite} and causes some overhead to the engineers especially the ones that are not familiar with it. Therefore users are for. Therefore, introducing some kind of higher level query language can be a big plus.
+	
+	\item \textit{RGL translation} - Generally available database solutions are not capable to deal with data in the RGL format introduces in RDFGears. Therefore, every single component that deals with persistent data has to translate the RGL values to values compatible with the databases solution and vice versa. Clearly, all this code is redundant and removing this responsibility from the engineers will save them time and efforts so that they can focus their attention to the core of their work.
+	
+	\item \textit{RDFGears and components with side effects} - Components that store data are components that have side affects. Generally, RDFGears is not designed to work with such components and some unexpected behaviour might be expected. Therefore, engineers building components with side effects and are not aware of the way RDFGears operate internally risk to introduce problems that are hard to detect.
+	
+\end{itemize}
+
+In this thesis we aim to propose a solution that is capable to overcome these problems and save engineers a lot of time, efforts and prevent mistakes while dealing with persistent data.
+
+\section{Conclusion}
+
+\textbf{TODO}
 
 \begin{thebibliography}{99}
 
