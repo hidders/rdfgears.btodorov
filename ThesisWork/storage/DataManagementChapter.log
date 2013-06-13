@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2011.9.30)  5 JUN 2013 22:00
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2011.9.30)  7 JUN 2013 15:40
 entering extended mode
 **DataManagementChapter.tex
 
@@ -99,6 +99,15 @@ LaTeX Warning: Label `fig_context' multiply defined.
 
 LaTeX Warning: Label `fig_context' multiply defined.
 
+
+LaTeX Warning: Label `fig_context' multiply defined.
+
+
+LaTeX Warning: Label `fig_context' multiply defined.
+
+
+LaTeX Warning: Label `fig_context' multiply defined.
+
 )
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
 LaTeX Font Info:    ... okay on input line 7.
@@ -149,131 +158,146 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 File: diagrams/RGLValues.png Graphic file (type png)
 
 <use diagrams/RGLValues.png>
-Package pdftex.def Info: diagrams/RGLValues.png used on input line 132.
+Package pdftex.def Info: diagrams/RGLValues.png used on input line 126.
 (pdftex.def)             Requested size: 395.75107pt x 94.04747pt.
 
-Overfull \hbox (50.75107pt too wide) in paragraph at lines 132--133
+Overfull \hbox (50.75107pt too wide) in paragraph at lines 126--127
  [][] 
  []
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 149.
+(Font)              <7> on input line 142.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 149.
-[6 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/diagrams/RGLValues.png
->] [7]
-Overfull \hbox (1.25801pt too wide) in paragraph at lines 210--211
- \OT1/cmr/bx/n/10 Database or-ga-ni-za-tion[] \OT1/cmr/m/n/10 There are three m
-ain ap-proaches for de-sign-ing multi-
+(Font)              <5> on input line 142.
+
+Overfull \hbox (19.88943pt too wide) in paragraph at lines 142--151
+ [] 
  []
 
-[8] [9] [10] [11]
-<environment/runtime_environment_storage.png, id=44, 441.14813pt x 456.20438pt>
-File: environment/runtime_environment_storage.png Graphic file (type png)
-<use environment/runtime_environment_storage.png>
-Package pdftex.def Info: environment/runtime_environment_storage.png used on in
-put line 288.
-(pdftex.def)             Requested size: 176.45612pt x 182.4785pt.
-
-<functional/layers.png, id=45, 268.1217pt x 137.91525pt>
+[6 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/diagrams/RGLValues.png
+>] [7] [8] [9] [10] [11]
+<functional/layers.png, id=44, 268.1217pt x 137.91525pt>
 File: functional/layers.png Graphic file (type png)
 
 <use functional/layers.png>
-Package pdftex.def Info: functional/layers.png used on input line 299.
+Package pdftex.def Info: functional/layers.png used on input line 279.
 (pdftex.def)             Requested size: 107.24678pt x 55.16512pt.
- [12 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/environment/runtime_
-environment_storage.png> <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/
-functional/layers.png>]
-<functional/func_main.png, id=49, 304.2567pt x 369.7815pt>
+ [12 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/functional/layers.pn
+g>]
+<functional/func_main.png, id=48, 304.2567pt x 369.7815pt>
 File: functional/func_main.png Graphic file (type png)
 
 <use functional/func_main.png>
-Package pdftex.def Info: functional/func_main.png used on input line 317.
+Package pdftex.def Info: functional/func_main.png used on input line 297.
 (pdftex.def)             Requested size: 182.55542pt x 221.87059pt.
  [13 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/functional/func_main
 .png>]
-<functional/func_admin.png, id=54, 463.13025pt x 316.3017pt>
+<functional/func_admin.png, id=53, 463.13025pt x 316.3017pt>
 File: functional/func_admin.png Graphic file (type png)
 
 <use functional/func_admin.png>
-Package pdftex.def Info: functional/func_admin.png used on input line 344.
+Package pdftex.def Info: functional/func_admin.png used on input line 324.
 (pdftex.def)             Requested size: 277.8803pt x 189.78247pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[14] <functional/func_access.png, id=58, 335.0919pt x 222.23026pt>
+ [14 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/functional/func_admi
+n.png>]
+<functional/func_access.png, id=57, 335.0919pt x 222.23026pt>
 File: functional/func_access.png Graphic file (type png)
 
 <use functional/func_access.png>
-Package pdftex.def Info: functional/func_access.png used on input line 365.
+Package pdftex.def Info: functional/func_access.png used on input line 345.
 (pdftex.def)             Requested size: 234.56273pt x 155.5601pt.
- [15 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/functional/func_admi
-n.png> <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/functional/func_ac
-cess.png>]
-<functional/func_manip.png, id=62, 335.0919pt x 222.23026pt>
+ [15 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/functional/func_acce
+ss.png>]
+<functional/func_manip.png, id=61, 335.0919pt x 222.23026pt>
 File: functional/func_manip.png Graphic file (type png)
 
 <use functional/func_manip.png>
-Package pdftex.def Info: functional/func_manip.png used on input line 388.
+Package pdftex.def Info: functional/func_manip.png used on input line 368.
 (pdftex.def)             Requested size: 234.56273pt x 155.5601pt.
 
-Overfull \hbox (30.02835pt too wide) in paragraph at lines 398--399
+Overfull \hbox (30.02835pt too wide) in paragraph at lines 378--379
 \OT1/cmr/m/n/10 files that tell the Hi-ber-nate frame-work how to map the U-Sem
  en-ti-ties(represented
  []
 
-[16 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/functional/func_manip
-.png>] <functional/concur.png, id=66, 701.7417pt x 649.82774pt>
+<functional/concur.png, id=62, 701.7417pt x 649.82774pt>
 File: functional/concur.png Graphic file (type png)
 
 <use functional/concur.png>
-Package pdftex.def Info: functional/concur.png used on input line 408.
+Package pdftex.def Info: functional/concur.png used on input line 387.
 (pdftex.def)             Requested size: 350.87pt x 324.91307pt.
 
-Overfull \hbox (5.87pt too wide) in paragraph at lines 408--409
+Overfull \hbox (5.87pt too wide) in paragraph at lines 387--388
  [][] 
  []
 
-[17 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/functional/concur.png
->]
-Overfull \hbox (7.55609pt too wide) in paragraph at lines 420--421
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[16 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/functional/func_manip
+.png>] [17 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/functional/con
+cur.png>]
+Overfull \hbox (7.55609pt too wide) in paragraph at lines 399--400
 []\OT1/cmr/m/n/10 Secondly, ev-ery time the re-quired re-sources for the data s
 tore in-ter-ac-tion(entity
  []
 
-[18] <ui/entityList.png, id=73, 456.20438pt x 288.3272pt>
+<ui/entityList.png, id=69, 456.20438pt x 288.3272pt>
 File: ui/entityList.png Graphic file (type png)
-
-<use ui/entityList.png>
-Package pdftex.def Info: ui/entityList.png used on input line 448.
+ <use ui/entityList.png>
+Package pdftex.def Info: ui/entityList.png used on input line 427.
 (pdftex.def)             Requested size: 228.10162pt x 144.16324pt.
- <ui/entityPanel.png, id=74, 729.47531pt x 380.92313pt>
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[18] <ui/entityPanel.png, id=73, 729.47531pt x 380.92313pt>
 File: ui/entityPanel.png Graphic file (type png)
 
 <use ui/entityPanel.png>
-Package pdftex.def Info: ui/entityPanel.png used on input line 457.
+Package pdftex.def Info: ui/entityPanel.png used on input line 436.
 (pdftex.def)             Requested size: 364.73676pt x 190.46109pt.
 
-Overfull \hbox (19.73676pt too wide) in paragraph at lines 457--458
- [][] 
- []
-
-<ui/entityPreview.png, id=75, 758.08218pt x 307.90031pt>
-File: ui/entityPreview.png Graphic file (type png)
-
-<use ui/entityPreview.png>
-Package pdftex.def Info: ui/entityPreview.png used on input line 472.
-(pdftex.def)             Requested size: 379.04016pt x 153.94977pt.
-
-Overfull \hbox (34.04016pt too wide) in paragraph at lines 472--473
+Overfull \hbox (19.73676pt too wide) in paragraph at lines 436--437
  [][] 
  []
 
 [19 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/ui/entityList.png> <E
 :/Repositories/rdfgears.btodorov/ThesisWork/storage/ui/entityPanel.png>]
+<ui/entityPreview.png, id=78, 758.08218pt x 307.90031pt>
+File: ui/entityPreview.png Graphic file (type png)
+
+<use ui/entityPreview.png>
+Package pdftex.def Info: ui/entityPreview.png used on input line 453.
+(pdftex.def)             Requested size: 379.04016pt x 153.94977pt.
+
+Overfull \hbox (34.04016pt too wide) in paragraph at lines 453--454
+ [][] 
+ []
+
 [20 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/ui/entityPreview.png>
-] [21] [22]
+] <eval/before.png, id=82, 627.09282pt x 148.30406pt>
+File: eval/before.png Graphic file (type png)
+ <use eval/before.png>
+Package pdftex.def Info: eval/before.png used on input line 477.
+(pdftex.def)             Requested size: 313.54564pt x 74.15184pt.
+
+<eval/entities.png, id=83, 241.65282pt x 209.28188pt>
+File: eval/entities.png Graphic file (type png)
+ <use eval/entities.png>
+Package pdftex.def Info: eval/entities.png used on input line 492.
+(pdftex.def)             Requested size: 120.82611pt x 104.64067pt.
+
+[21 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/eval/before.png> <E:/
+Repositories/rdfgears.btodorov/ThesisWork/storage/eval/entities.png>]
+<eval/after.png, id=87, 498.36188pt x 195.73125pt>
+File: eval/after.png Graphic file (type png)
+ <use eval/after.png>
+Package pdftex.def Info: eval/after.png used on input line 506.
+(pdftex.def)             Requested size: 249.18033pt x 97.86537pt.
+
+[22 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/eval/after.png>]
+[23] [24]
 (E:\Repositories\rdfgears.btodorov\ThesisWork\storage\DataManagementChapter.aux
 )
 
@@ -281,13 +305,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 1279 strings out of 494045
- 17638 string characters out of 3148378
- 70001 words of memory out of 3000000
- 4590 multiletter control sequences out of 15000+200000
+ 1290 strings out of 494045
+ 17687 string characters out of 3148378
+ 70004 words of memory out of 3000000
+ 4599 multiletter control sequences out of 15000+200000
  8241 words of font info for 29 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 27i,7n,21p,942b,280s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,6n,21p,1041b,280s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTe
@@ -295,9 +319,9 @@ X 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fon
 ts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
 public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
 msfonts/cm/cmti10.pfb>
-Output written on DataManagementChapter.pdf (22 pages, 1393956 bytes).
+Output written on DataManagementChapter.pdf (24 pages, 1464166 bytes).
 PDF statistics:
- 112 PDF objects out of 1000 (max. 8388607)
+ 120 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 56 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 66 words of extra memory for PDF output out of 10000 (max. 10000000)
 

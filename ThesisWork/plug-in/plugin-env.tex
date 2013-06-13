@@ -1,41 +1,11 @@
 
-\chapter{Dynamic Component Model}
+\chapter{Plug-in Environment}
 
-This chapter proposes a solution to the problem of extending U-Sem by adding custom functionality. Section \ref{sec:problemDef} discusses the problem in details and describes all functional and non-functional requirements that a successful solution must satisfy. Section \ref{sec:approach} discusses that state of the art approaches and technologies that  can contribute to solving the problem. Section \ref{sec:architecture} describes the architecture of U-Sem that we propose in order to solve the problem. Section \ref{sec:impl} briefly discusses the simple implementation that we provide in order to be able to verify the capabilities of the proposed architecture. Section \ref{sec:eval} discusses and verifies whether the proposed solution satisfies all of the requirements. Finally, in section \ref{sec:limits} we discuss the limitations of the proposed design and suggest aspects in which the design can be improved in the future.
+This chapter proposes a solution to the problem of extending U-Sem by adding custom functionality. Section \ref{sec:requirementsPlugin} identifies all functional and non-functional requirements that a successful solution must satisfy based on the problems discussed in Section \ref{sec:problemDefPlugin}. Section \ref{sec:approachPlugin} discusses that state of the art approaches and technologies that  can contribute to solving the problem. Section \ref{sec:architecturePlugin} describes the architecture of U-Sem that we propose in order to solve the problem. Section \ref{sec:implPlugin} briefly discusses the simple implementation that we provide in order to be able to verify the capabilities of the proposed architecture. Section \ref{sec:evalPlugin} discusses and verifies whether the proposed solution satisfies all of the requirements. Finally, in section \ref{sec:limitsPlugin} we discuss the limitations of the proposed design and suggest aspects in which the design can be improved in the future.
 
 
-\section{Problem definition}
-\label{sec:problemDef}
-
-During the initial interviews with scientists that are going to potentially use the system, we reviled that the nature of their work is very dynamic. In their day to day work they are expected to constantly improve and come up with new algorithms and approaches for user modelling. As a result, they are continuously producing new software code that implements these algorithms. After each production cycle, the program code has to be deployed into U-Sem so that it is available for testing, demonstration and evaluation purposes.
-
-We also performed additional interviews with the scientist in order to reveal how this process is currently done, what are the problems they face with it and what are their expectations for the future system. Scientists reported that they have on their disposal only the capabilities of the workflow engine(RDFGears). However, it provides no functionality that enables to plug in custom logic on demand into the system and as a result, scientists are forced to "hardcode" their logic into the source code of the workflow engine. In this way, the software code implementing the algorithms becomes part of the workflow engine. We believe that this approach is error prone and brings a lot of discomfort to the scientists working with the system. The most important disadvantages of this approach include:
-
-\begin{itemize}
-
-	\item Adding new or modifying existing functionality requires a lot of time and knowledge since in order to do that one has to alter the source code of the workflow engine and basically, release a new version of it. This process requires advanced knowledge about each phase of the release process: checking out the source code from the software repository, putting the new source code in the appropriate place, building the system and finally, deploying it to the web server. Most of the time, all this knowledge is not required for the daily work of scientists and learning it may create a serious overhead and discomfort.
-	
-	\item In order to add/modify functionality one has to stop the web server where the system is deployed, replace the deployment entities of the system and start the server again. The problem with this approach is that during the time the server is down all other running services are unavailable. This is a major problem for everyone that is using the system during that time.
-	
-	\item Another major disadvantage is that, as a result of all the additional knowledge required, the training period for new scientists is significantly increased. This may easily cause project delays and missed deadlines.
-	
-	\item Multiple scientists adding/modifying functionality simultaneously may result in loss of functionality. Figure \ref{fig_vers_prob} illustrates the problematic scenario. As stated earlier, in order to add new functionality, scientists must first check out the source code of the system, make the changes and deploy the new version on the web server. However, if two scientist perform this process simultaneously then the new functionality provided by the first scientist will be lost when the second one deploys his version. 
-	
-	\begin{figure}[h!]
-  \centering
-  	\includegraphics[scale=0.75]{plug-in/version_problem.png}
-  \caption{State diagram illustrating the scenario where two scientists extend U-Sem simultaneously and the changes made by Scientist A are lost.  }
-  \label{fig_vers_prob}
-\end{figure}
-	
-	\item And last but not least, it is hard to verify what is the exact state of the system at any particular moment. Unless documented exclusively, it is not clear what additional functionality is added to the system. This problem becomes more serious when there are more people working on the project simultaneously and it is hard to track the changes in the system.
-		
-\end{itemize}
-
-This approach also introduces one big disadvantage from software engineering perspective. The problem lies in the poor modularization of the system. In software engineering, modularization is considered as a key property for improving extensibility, comprehensibility, and reusability in software projects \cite{Parnas}. The most important aspect of a successful modular system is its information hiding capabilities \cite{Srivastava}. In our case, scientists can only rely on the modularization functionality provided by the Java language. However, its information hiding principles are only applied on class level, but not to the level of packages and JAR files. For example, it is not possible to restrict access to certain public classes defined in a package. The absence of such visibility control can easily lead to highly coupled, "spaghetti-like" systems \cite{Eder}. The consequences of this will become more and more clear with the time when the system grows in size, complexity and the number of engineers working on it increases. The most probable consequences include high development costs, low productivity, unmanageable software quality and high risk to move to new technology \cite{Cai}.
-
-Having all these considerations in mind, we devised a complete set of requirements that presents the functional scenarios(functional requirements) and system qualities(non-functional requirements) that the proposed architecture has to provide. These requirements are also referred to into the evaluation section where we discuss how and to what extend the architecture satisfies each of them.
-
+\section{Requirements}
+\label{sec:requirementsPlugin}
 
 \subsection{Functional Scenarios}
 In this section we formally identify the functional requirements which define the main interactions between the scientists and the system. Each scenario is marked with a code at the beginning which is used for easier identification during the verification and evaluation phase.
@@ -78,7 +48,7 @@ This section identifies the main quality scenarios that a successful architectur
 \end{itemize}
 
 \section{Approach}
-\label{sec:approach}
+\label{sec:approachPlugin}
 
 This section discusses the currently available approaches and technologies that might be used in order to design a system that fulfils the requirements specified in the previous section. After a detailed investigation of the requirements, we reached the conclusion that the core of the problem lies, firstly, in the poor separation of concerns(modularization of the functionality) and secondly, in the impossibility to manage(add, replace, remove) these concerns while the system is in operation. In order to solve these problems, we investigated the scientific literature to find what are the available approaches and technologies that can help to overcome these problems. Our research relieved that the topic about modularization of software systems is widely discussed and there is even a sub field in software engineering which addresses the problem of building systems out of different components \cite{Jifeng}. This sub field is called \textit{Component-based software engineering}. 
 
@@ -180,7 +150,7 @@ On top of this, OSGI defines additional permissions that provides full control o
 
 
 \section{Architecture}
-\label{sec:architecture}
+\label{sec:architecturePlugin}
 
 This section describes the proposed architecture for the dynamic component model feature of U-Sem. It focuses on the four aspects of typical for a software architecture \cite{Rozanski}: its static structure, its dynamic structure, its externally visible behaviour, and its quality properties.
 
@@ -249,7 +219,7 @@ As illustrated in the diagram, there are three participants in this process(U-Se
   \label{fig_repo_bpm}
 \end{figure}
 
-As defined in section \ref{sec:problemDef}, U-Sem also enables scientists to reuse plug-ins shared by other scientist(UC2). This use case is also modelled as a separate business process which is illustrated in Figure \ref{fig_repo_bpm}. Again, we have three participants in this process(U-Sem, Scientists and the Plug-in repository) which are illustrated in separate BPMN pools. 
+As defined in section \ref{sec:problemDefPlugin}, U-Sem also enables scientists to reuse plug-ins shared by other scientist(UC2). This use case is also modelled as a separate business process which is illustrated in Figure \ref{fig_repo_bpm}. Again, we have three participants in this process(U-Sem, Scientists and the Plug-in repository) which are illustrated in separate BPMN pools. 
 
 The process consists of two main phases. First, the scientist contacts the plug-in repository in order to determine what are the currently available plug-ins and then, he/she contacts U-Sem providing information about the desired plug-ins. Upon receiving the request, U-Sem is responsible to contact the plug-in repository and retrieve the requested plug-ins which are, at the end, installed into the private space of the scientist and a confirmation message is send back.
 
@@ -423,7 +393,7 @@ In order to satisfy the security requirements, all communications are managed by
 \end{figure}
 
 \section{Implementation}
-\label{sec:impl}
+\label{sec:implPlugin}
 
 We implemented the proposed architecture in order to evaluate its applicability and capabilities. This section describes the main steps we performed during the implementation of the system.
 
@@ -465,7 +435,7 @@ Finally, we constructed a Maven build script that packs all source files into de
 \end{itemize}
 
 \section{Evaluation}
-\label{sec:eval}
+\label{sec:evalPlugin}
 
 After successfully implementing the system, in this section we evaluate whether the system complies with all functional and non-functional requirements defined at the beginning of this chapter. 
 
@@ -497,13 +467,13 @@ Load balancers can be considered as a single points of failure. However, we solv
 
 \item \textit{Security} - Firstly, using the security infrastructure of Java and OSGI, the system ensures that the security policy specified by the administrators of the system is enforced on all custom code that is running in the system. Secondly, the architecture ensures that the custom functionality of the users' is protected from unauthorized access. All connections between the user and the backend can be encrypted through HTTPS and thus, protected against eavesdropping and man-in-the-middle attacks. The system's communication channels are also secured by firewalls. Finally, as required each storage node is backed up in case a device fails.
 
-\item \textit{Modularization} - This non-functional requirement is accommodated by the dynamic component model provided by OSGI. It address the limitations of the standard Java module system discussed in section \ref{sec:problemDef} and provides information hiding and cross component communication capabilities that enforce better component modularization \cite{Andre}.
+\item \textit{Modularization} - This non-functional requirement is accommodated by the dynamic component model provided by OSGI. It address the limitations of the standard Java module system discussed in section \ref{sec:problemDefPlugin} and provides information hiding and cross component communication capabilities that enforce better component modularization \cite{Andre}.
 
 \end{itemize}
 
 
 \section{Limitations and Future Work}
-\label{sec:limits}
+\label{sec:limitsPlugin}
 
 In this section we identify the limitations of the proposed architecture and we also suggest approaches that can be used to overcome these limitation in the future. We have identified two groups of limitations concerning U-Sem. The first group represents the limitations that are inherited from the usage of OSGI. The second one consists of the limitations concerning the rest of the U-Sem's architecture.
 

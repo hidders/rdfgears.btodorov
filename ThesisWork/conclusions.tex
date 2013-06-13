@@ -5,12 +5,29 @@ This chapter gives an overview of the project's contributions.
 
 
 \section{Contributions}
+This thesis provides the following contributions:
+
+The first group of contributions concern the Plug-in environment feature.
+\begin{itemize}
+	\item Design and implementation of the dynamic component model for RDFGears based on OSGi.
+	\item Design and implementation of the plug-in collaboration system.
+	\item Design and implementation of a plug-in template that simplifies the creation of U-Sem plug-ins under Eclipse.
+\end{itemize}
+
+The second group concern the Data Management feature.
+\begin{itemize}
+	\item Design and implementation of the multi-tenant ORM framework for dynamic, virtual entities based on Hibernate.
+	\item Designing a mechanism that enables scientists to collaborate on data level.
+	\item Extension for the RGL language and RDFGears engine that enables the system to deal with components that have side effects.
+	\item Integration with the Plug-in environment feature that enables simplified deployment of services to U-Sem.
+\end{itemize}
 
 
 \section{Conclusions}
 
 
 \section{Discussion/Reflection}
-
+Apart for user modelling, the system can also be considered as an extension of RDFGears that can benefit engineers working in other fields \textbf{cite}. Additionally, because the features are designed to be loosely coupled from the rest of the system(implemented as separate sub-systems providing APIs) they may be used to extend and provide the functionality for other workflow engines.
 
 \section{Future work}
+The future work can be discussed from two perspectives. The first one addresses how each of the implemented features can be improved in the future. We already discussed these in the sections dedicated for each of the features. From the higher level perspective an obvious future work is the implementation of the other features that engineers indicated to bring important improvements for their everyday job. These features are \textbf{...}

@@ -2,29 +2,28 @@
 \addvspace {10pt}
 \addvspace {10pt}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {2.1}{\ignorespaces The value distribution of the 5 requirements in the U-Sem project.}}{6}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces The cost distribution of the 5 requirements in the U-Sem project.}}{7}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces This diagram shows the comparison of the value/cost ratio of the requirements.}}{8}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {3.1}{\ignorespaces State diagram illustrating the scenario where two scientists extend U-Sem simultaneously and the changes made by Scientist A are lost. }}{12}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Component-based software development \cite {Pour} }}{15}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Component interfaces }}{16}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Components implementing interfaces }}{16}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces OSGi Service Registry \cite {Andre}}}{18}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Context diagram of U-Sem }}{21}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Business model describing the process for creating a new plug-in for U-Sem}}{23}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Business model describing the process for installing a shared plug-in/s to U-Sem}}{24}
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Business model describing the process for managing plug-ins in U-Sem}}{25}
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Layer organization of U-Sem}}{26}
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Component diagram illustrating the functional organization of U-Sem}}{27}
-\contentsline {figure}{\numberline {3.12}{\ignorespaces Functional decomposition of the \textit {Plug-in admin.} module}}{28}
-\contentsline {figure}{\numberline {3.13}{\ignorespaces Functional decomposition of the \textit {Plug-in access manager} component}}{29}
-\contentsline {figure}{\numberline {3.14}{\ignorespaces Diagram illustrating the concurrency model of U-Sem}}{31}
-\contentsline {figure}{\numberline {3.15}{\ignorespaces Deployment diagram illustrating the simple setup of U-Sem}}{32}
-\contentsline {figure}{\numberline {3.16}{\ignorespaces Deployment diagram illustrating the high availability setup of U-Sem}}{33}
-\contentsline {figure}{\numberline {3.17}{\ignorespaces User interface for plug-in management.}}{34}
-\contentsline {figure}{\numberline {3.18}{\ignorespaces User interface for uploading and installing plug-ins in U-Sem.}}{35}
-\contentsline {figure}{\numberline {3.19}{\ignorespaces User interface for browsing and installing plug-ins from the plug-in repository.}}{35}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces The value distribution of the 5 requirements in the U-Sem project.}}{12}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces State diagram illustrating the scenario where two scientists extend U-Sem simultaneously and the changes made by Scientist A are lost. }}{14}
+\addvspace {10pt}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Component-based software development \cite {Pour} }}{19}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Component interfaces }}{20}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Components implementing interfaces }}{21}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces OSGi Service Registry \cite {Andre}}}{22}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Context diagram of U-Sem }}{25}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Business model describing the process for creating a new plug-in for U-Sem}}{27}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Business model describing the process for installing a shared plug-in/s to U-Sem}}{28}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Business model describing the process for managing plug-ins in U-Sem}}{30}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Layer organization of U-Sem}}{31}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Component diagram illustrating the functional organization of U-Sem}}{31}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Functional decomposition of the \textit {Plug-in admin.} module}}{32}
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Functional decomposition of the \textit {Plug-in access manager} component}}{34}
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Diagram illustrating the concurrency model of U-Sem}}{35}
+\contentsline {figure}{\numberline {4.14}{\ignorespaces Deployment diagram illustrating the simple setup of U-Sem}}{36}
+\contentsline {figure}{\numberline {4.15}{\ignorespaces Deployment diagram illustrating the high availability setup of U-Sem}}{38}
+\contentsline {figure}{\numberline {4.16}{\ignorespaces User interface for plug-in management.}}{39}
+\contentsline {figure}{\numberline {4.17}{\ignorespaces User interface for uploading and installing plug-ins in U-Sem.}}{39}
+\contentsline {figure}{\numberline {4.18}{\ignorespaces User interface for browsing and installing plug-ins from the plug-in repository.}}{40}
 \addvspace {10pt}
 \addvspace {10pt}
 \addvspace {10pt}

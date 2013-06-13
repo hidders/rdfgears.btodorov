@@ -1,18 +1,16 @@
 
 \chapter{\label{cha:intro}Introduction}
 
-Nowadays, there are hundreds of millions of Internet users all over the world that use the social media sites \cite{On social Web sites}. Every day they are sharing more and more content on the Web. This sharing is facilitated by many different systems: microblogging systems like Twitter, picture sharing like Flickr, professional profile sharing like LinkedIn, etc. As a result, there are a lot of user traces on the Web [2] which can be used for different applications such as adaptation and personalization[6].
+Nowadays, there are hundreds of millions of Internet users all over the world that use the internet for work, leasure time, etc.... Every day they are sharing more and more content on the Web especially through the social media sites \cite{On social Web sites}. This sharing is facilitated by many different systems: microblogging systems like Twitter, picture sharing like Flickr, professional profile sharing like LinkedIn, etc. As a result, there are a lot of user traces on the Web [2].
 
-Secondly, user modelling has become a really hot topic lately. Scientists are continuously coming up with new algorithms and approaches for analizing data and building user profiles. Most of the time, scientists are interested to easily make their work popular and available to a large auditory.
+A lot of business and fields are staring to understand how valuable this information can be and how they can benefit by extracting the certain kinds of knowledge out of it. There are many areas that can benefit from this including recommender systems, advertisements, e-learning, etc. As a result of the many possible applications there is a high demand for approaches and mechanisms for analysing this information and extracting the needed knowledge from it. 
 
+The field of user modelling and analysis is one of the fields that covers this area. The fields is getting a lot of potential \textbf{cite fabian 6} and therefore, engineers are constantly required to implement systems that provide new or adapt existing algorithms so that they can meet the requirements of the customer. \textit{Cite fabien} provides promising approach for building such systems based on orchestrating different functional components and services. However, the process focuses mainly on the organization and semantics of the building blocks and pay little attention on how the system is actually constructed. As a result, engineers are required to do a lot of tasks that are not part of the core of their job. Such tasks include setting up web servers and databases, implementing functionality that supports the interaction with the databases, communicating with fellow scientist in order to arrange reusing some of their work, etc. 
 
-And finally, as a result of the increasing amounts of data available on the social web and the continuous advancements in the scientific approaches for user modeling the producese models has become interesting for many componies in variate of fields(recommender systems, advertisements, e-learning). However, because of the increased complexity of the modeling approaches and the continues inovations and improvements in the fields it has become infeasible for many organization(especially small companies) to implement and maintain user modelling functionality themselves. Therefore, many organizations are looking for ways to outsource the user modelling functionality to third parties.
-
-
-In this thesis we are investigating how to bridge the gap between semantic web which provides the raw information needed for user modelling, scientists who want to popularize and provide access to their user modelling algorithms and clients which need the user models. 
+We believe that the current approach that engineers use for constructing the systems that provide user modelling and analysis  costs them a lot of time and efforts and requires them to spread their attention on a lot of things many of which are not part of their speciality which may influence negatively the quality of the final result. Therefore, in this thesis work we extend the U-Sem idea by proposing a user modelling platform that aims to facilitate the work of the engineers and improve their productivity by reducing the amount of the overhead work they have to perform and focus on devising the modelling services which is also their main expertise.
 
 
-\subsection{Research questions}
+\section{Research questions}
 
 The main research question is the following:
 
@@ -21,36 +19,24 @@ The main research question is the following:
 The following sub-questions articulate the problem:
 
 \begin{enumerate}
-\item \textbf{How to enable users to add custom functionality and change system's behaviour?} (plug-ins)
+\item \textbf{How to enable engineers to extend and modify the services provided by the system without affecting the other users using the system?}
 
-\item \textbf{Is it possible to develop a component that enables users to store and retrieve information in arbitrary data formats?} (Universal datastore)
+\item \textbf{How to enable engineers to collaborate by reusing each others functionality?}
 
-\item \textbf{How to enable users to maintain their results up-to-date?}  (Scheduling)
+\item \textbf{How to enable engineers to work with persistent data without having to deal with issues connected to where and how it is stored?}
 
-
-\item \textbf{How to enable multiple users to use the system simultaneously without interfering with each other and keeping their work and results protected?} (Multi User and privacy)
-
+\item \textbf{How to enable engineers to collaborate on data level?}
 
 \item \textbf{How can real-world use cases benefit from this system?}
 
 \end{enumerate}
 
-\subsection{Contributions}
-This research provides the following contributions:
 
-The first group of contributions concern the Plug-in environment feature.
-\begin{itemize}
-	\item Design and implementation of the dynamic component model for RDFGears based on OSGi.
-	\item Design and implementation of the plug-in collaboration system.
-	\item Design and implementation of a plug-in template that simplifies the creation of U-Sem plug-ins under Eclipse.
-\end{itemize}
+\section{Outline}
+The structure of this document is as follows. First, chapter 2 introduces the background information that is needed in order to be able to understand and articulate the problem.
 
-The second group concern the Data Management feature.
-\begin{itemize}
-	\item Design and implementation of the multi-tenant ORM framework for dynamic, virtual entities based on Hibernate.
-	\item Extension for the RGL language and RDFGears engine that enables the system to deal with components that have side effects.
-\end{itemize}
+In chapter 3 we define the problem that has to be solved and further decompose it in two separate sub problems. We also discuss the relevance of each of the sub-problems.
 
-\subsection{Outline}
+In chapter 4 and 5 we address each of the sub-problems. This requires the identification of the formal requirements that has to be satisfied in order to solve the problems. We devise an approach for solving each of the problems that is based on the state of the art developments in the field. Then, we discuss the actual architecture of the solution and the way it is implemented. Finally, we evaluate the benefits that each of the solutions brings and propose some directions for future work. 
 
-
+Chapter 6 concludes this thesis. It provides a summary with conclusions and discusses future work.

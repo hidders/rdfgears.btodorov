@@ -58,17 +58,16 @@ Having all concerns discussed in section \textbf{SSS} in mind, we devised a comp
 In this section we formally identify the functional requirements which define the main interactions between the scientists and the system. Each scenario is marked with a code at the beginning which is used for easier identification during the verification and evaluation phase.
 
 \begin{itemize}
-	\item \textbf{UC1 - Define data } - The system has to enable engineers to define, modify and delete the structure and the semantics of data that is going to be persisted. This information has to be presented to the engineers during the workflow design phase so that they can refer to it while defining components that interact with persistent data. 
-	
-	\item \textbf{UC2 - Insert data} - The system has to provide RDFGears component and also API that can be used to store data which format corresponds to a predefined data structure (\textit{UC1}).
 
-	\item \textbf{UC3 - Update data } - The system has to provide RDFGears component and also API that can be used to update existing data or part of it which format corresponds to a predefined data structure (\textit{UC1}).
+	\item \textbf{UC1 - Insert data} - The system has to provide RDFGears component and also API that can be used to store data.
+
+	\item \textbf{UC2 - Update data } - The system has to provide RDFGears component and also API that can be used to update existing data or part of it.
 	
-	\item \textbf{UC4 - Delete data} - The system has to provide RDFGears component and also API that can be used to delete existing data or part of it.
+	\item \textbf{UC3 - Delete data} - The system has to provide RDFGears component and also API that can be used to delete existing data or part of it.
 	
-	\item \textbf{UC5 - Query data} - The system has to provide RDFGears component and also API that can be used to query existing data.
+	\item \textbf{UC4 - Query data} - The system has to provide RDFGears component and also API that can be used to query existing data.
 	
-	\item \textbf{UC6 - Collaboration} - The system has to enable engineers to collaborate on data level by accessing and manipulating each others data. The system has to enable engineers to manage the privacy of their data. They have to be able to define whether their data(or parts of it) can be accessed and manipulated by the other engineers.
+	\item \textbf{UC5 - Collaboration} - The system has to enable engineers to collaborate on data level by accessing and manipulating each others data. The system has to enable engineers to manage the privacy of their data. They have to be able to define whether their data(or parts of it) can be accessed and manipulated by the other engineers.
 
 \end{itemize}
 
@@ -82,9 +81,6 @@ This section identifies the main quality scenarios that a successful architectur
 	
 	\item \textit{Configuration management} - in order to simplify the configuration procedure of the system it should enable engineers to provide and install the information for the semantics and structure of the data with the installation of the plug-in that uses it. In this way, no additional manual configuration regarding the data definitions is needed.
 	
-	\item \textit{Backup} - all persisted data should be backuped. In case of failure of a storage device, the system should provide a reliable method for recovering of all the data. 
-	\textbf{not important remove it maybe}
-	
 \end{itemize}
 
 \section{Challenges}
@@ -96,36 +92,34 @@ This section identifies the main quality scenarios that a successful architectur
 \end{itemize}
 
 \section{Approach}
-In this chapter we device a framework that is responsible to solve the Data management problem defined in the \textbf{requirements} section. By carefully analysing the requirements we concluded that the problem can be broken down into the following sub-problems:
+In this chapter we device a framework that is responsible to provide the Data management functionality for U-Sem. By carefully analysing the requirements defined in the \textbf{requirements} section we concluded that the problem can be broken down into the following sub-problems:
 \begin{itemize}
-	\item \textit{Data storage and retrieval} - enable nested relational data oriented systems to hold their long-term data safely in a database and access it when needed.
-	\item \textit{Multitenancy} - enable multiple users to work simultaniously with the solution and enable them to collaborate together in secure fashion.
-	\item \textit{RDFGears extension} - extend the rgl engine and execution engine so that the system is able to deal with this new type of functionality correctly and efficiently.
+	\item \textit{Data storage and retrieval} - enable nested relational(\textbf{or RGL}) data oriented workflow engines(in our case RDFGears) to hold their long-term data safely in a database and access it when needed.
+	\item \textit{Multitenancy} - enable multiple users to work simultaneously with the solution and enable them to collaborate together in a controlled and secure fashion.
+	\item \textit{RDFGears extension} - ensure and if required extend the workflow engine so that it is able to deal with this new type of functionality correctly and efficiently.
 \end{itemize}
 
-Next subsections explain how each of the sub-problem is approached and solved.
+Next subsections explain how each of the sub-problems is approached and solved.
 
-\subsection{What do we want to store?}
+\subsection{Data storage and retrieval}
 
-\textbf{Define what is entity}
+Section \textbf{problem def} makes clear that users' needs vary greatly and are likely to change in future. It is next to impossible to predict and define the structure and semantics of all data that users might like to store. Therefore, a more generic solution is needed. Users should be able to define the semantics and structure of the data they want to store on demand. This structure has to be able to be adapted over time if/when users' needs change. In this work we refer to each data entry as \textit{entity}, each group of entities that have the same semantics and structure as \textit{entity types} and the information that defines the structure and semantics of each entity type as \textit{entity definition}.
 
-From section \textbf{problem def} makes clear that users' needs vary greatly and are likely to change in future. It is next to impossible to predict and define the structure and semantics of all data that users might like to store. Therefore, a more generic solution is needed. Users should be able to define the semantics and structure of the data they want to store on demand. This structure has to be able to be adapted over time if/when users' needs change. The solution has to be able to deal with all defined "entities" in uniform and predictable manner.   
+All data in RDF Gears is presented in the RGL format and therefore, the intuitive approach is to provide users functionality that enables them to define these entity types in terms of RGL values. Once, these entity types are defined the system should provide components that enable users to perform the needed operations over the data(CRUD) without any need for the users to know how the data is stored internally.
 
-All data in RDF Gears is presented in the RGL format and therefore the best approach is to provide users functionality that enables them to define these data entities in terms of RGL values. Once, this entities are defined the system should provide components that enable users to perform the needed operations over the data(CRUD) without any need for the users to know how the data is stored internally.
+\subsubsection{Existing approaches}
 
-\subsection{Data storage and retrieval - How are we going to store and retrieve it? }
+Once we have defined the way entity types are defined and the operations that has to be performed over the them(all CRUD operations) we have to provide a solution that is capable to cope with that. After rigorous research we did not find any existing solutions that can solve our requirements. However, we discovered that Object/Relational Mapping (ORM) frameworks provide similar functionality to what we are looking for. Basically, they provide a methodology and mechanism for object-oriented systems to hold their long-term data(expressed as programming objects) in a relational database and later have it back to objects when it is needed \cite{Neil}. ORM frameworks provide a level of abstraction over the process of storing data and in this way users can interact with the data in the form of objects and they are not required to know details about the underling representation of the data. 
 
-Once we have defined the structure of the data(predefined entities described in RGL) and the operations that has to be performed over the data(all CRUD operations) we have to provide solution that can cope with that. After rigorous research we did not find any existing solutions that can perform this operation. However, we discovered that Object/Relational Mapping (ORM) frameworks provide similar functionality to what we are looking for. Basically, they provide a methodology and mechanism for object-oriented systems to hold their long-term data(expressed as objects) in a relational database and later have it back in program objects when it is needed \cite{Neil}. ORM frameworks provide a level of abstraction over the process of storing data and in this way users can think(store, query) of the data as objects and they are not require to know details about the underling representation of the data. 
-
-Therefore, applying the same approach for our RGL entities will completely satisfy our requirements for simplicity(users do not have to care about how data is stored). However, in order to do that we have two options. The first one is to implement and ORM solution from scratch and the other one is to extend/adapt existing ORM solution so that it is able to deal if RGL entities. In general, reusing a popular and widely used solution might be beneficial because it is likely it is heavily tested(at least from the engineers using it) and thus provide higher quality. 
+Applying the same approach for our RGL entities seem to completely satisfy our requirements. However, in order to exploit that idea we have two options. The first one is to implement and ORM solution from scratch and the other one is to extend/adapt existing ORM solution so that it is able to deal with the RGL entities. In general, reusing a popular and widely used solution might be beneficial because it is likely it is heavily tested(at least from all the engineers using it) and thus, provide higher quality. 
 
 Our research reviled that the Java Persistence Architecture API (JPA) is the "de facto" leader in the field ORM solutions for Java. It represents a Java specification(JSR 317) for accessing, persisting, and managing data between Java objects / classes and a relational database. Making its way as a major standard has resulted in a lot of the big players in the field providing an implementation of it. The most popular include: Hibernate(JBoss), TopLink (Oracle), EclipseLink(IBM) and openJPA(Apache). 
 
-Because of its popularity, widely usage and formal standardization using the jpa  seems like the best option for our solution. However, in order to be able to use jpa we have to solve several major problems which are discussed in next sections.
+Because of its popularity, widely usage and formal standardization using JPA seems like the best option for our solution. However, in order to be able to use it we have to solve several major problems which are discussed in the next sections.
 
 
-\subsubsection{Express RGL in terms of JPA}
-RDFGears already maps the RGL values to java objects. So the challenge is to map these classes to JPA in a sensible and efficient way. \textbf{Fig shows the classes organization}. The naive approach would be to reuse this structure directly. In this way each of the classes is represented as a separate entity. The main advantage of this approach is that the structure is fixed and it does not depend on the structure of the entities that we want to store. However, this approach also brings a lot of disadvantages. 
+\subsubsection{Model RGL entities in terms of JPA}
+RDFGears is already capable to map the RGL values to Java objects. Therefore, the challenge is to model these classes in JPA in a sensible and efficient way. \textbf{Fig shows the classes organization}. The naive approach would be to reuse this structure directly. In this way each of the classes is represented as a separate JPA entity. The main advantage of this approach is that the structure is fixed, it does not depend on the structure of the entities that we want to store. However, this approach also brings a lot of disadvantages: 
 
 \begin{figure}[h!]
   \centering
@@ -135,33 +129,35 @@ RDFGears already maps the RGL values to java objects. So the challenge is to map
 \end{figure}
 
 \begin{itemize}
-	\item all data is in just several tables. This is inefficient and hard to scale.
-	\item entities do not have names and they are hard to locate and query
-	\item structure of the data/queries is not enforced and has to be explicitly validated
-	\item changing structure may leave the db in inconsistent state
-	\item hard to apply access control
-	\item locks and transactions
+	\item all data resides in just several database tables. This makes the solution inefficient and hard to scale.
+	\item all entities are stored in the same database tables and it is hard to distinguish between each other. For example if one wants to query only one type of entities
+	\item structure of the data/queries is not enforced by the database and has to be explicitly validated
+	\item changing the entities structure may easily leave the db in inconsistent state
+	\item hard to enforce access control
 \end{itemize}
 
-The alternative approach that we propose is to map each entity into separate JPA entity which is named after the name of the entity(has to be unique). Table \textbf{tbl} proposes a methodology to map RGL values to JPA entities. \textbf{In JPA the root element has to be entity}
+The alternative approach that we propose is to map each entity type into separate JPA entity which is named after the name of the entity which has to be unique. Table \textbf{tbl} proposes a methodology to map RGL values to JPA entities. \textbf{In JPA the root element has to be entity}
 
 \begin{center}
     \begin{tabular}{ | l | l |}
     \hline
     RGL & JPA  \\ \hline
-    RecordValue/ValueRow & class (with properties)  \\ \hline
-    BagValue & bag  \\ \hline
+    RecordValue and its corresponding ValueRow & Class with multiple properties \textbf{*}  \\ \hline
+    BagValue & Bag  \\ \hline
     BooleanValue & Property of type boolean  \\ \hline
     RDFValue & Property of type string  \\ \hline
 	GraphValue & Property of type string  \\ \hline
     \end{tabular}
 \end{center}
 
-This approach does not suffer from the problems of the first approach. However, it exposes several issues. The first thing is that each time the structure of an entity changes the JPA mapping and the schema of the underling db has to be changed. Our solution to this problem is discussed in the next section. The second thing is that JPA requires that each entity has distinct id but RGL does not provide such properties. We solve that problem by introducing auto generated ids for each entity which are made transparent to the client system(RDF Gears). Finally, entities must have distinct names. We solve this problem by making sure that each user defined entity has a unique name, and all record properties have distinct names. In order to make the names of sub-entities(records) distinct we append to the front of their name the full path from the root entity separated by "\_".
+* Our solution requires and ensures that the root element of all entity types is a RecordValue. When this value is mapped to a JPA class the name of the class is the name of the EntityType. Any nested RecordValues are mapped to JPA classes named after the name of the property of the ValueRow that points to them directly or indirectly in the case where the RecordValue is wrapped in a BagValue. 
+
+This approach does not suffer from the problems of the first approach because data is distributed over many tables. However, it exposes several issues. The first thing is that each time the structure of an entity changes the JPA mapping information and the schema of the underling database has to be updated as well. Our solution to this problem is discussed in the next section. The second thing is that JPA requires that each entity has distinct id but RGL does not provide such term. We solve that problem by introducing auto generated ids for each entity which are made transparent to the client system(RDF Gears). Finally, JPA classes must have distinct names. We solve this problem by making sure that each user defined entity type has an unique name, and all record properties have distinct names. In order to make the names of sub-entities(records) distinct we append to the front of their name the full path from the root JPA class separated by "\_".
 
 
-\subsubsection{Entities are virtual}
-Once we know how to map the RGL entities to JPA entities we should enable jpa to deal with this RGL entities. However, JPA expects that each entity will have its own class representing it but our entities are virtual and are no java classes that represent them. One solution to this problem would be to generate this classes on runtime. However, this approach is complex and error prone. Therefore, we continued our research for simpler approach. We discovered a promising feature in hibernate called "Dynamic models". It basically allows to define the orm logic into a mapping xml file and in run time present the data as java collections(Maps, Lists, Sets, etc.)\textbf{tbl RGL to collection}. Therefore, when an entity is defined we have to build the xml mapping file and on runtime convert the rgl entities into java collections and use jpa to store them into the database.
+\subsubsection{Virtual entities}
+
+JPA expects that each entity will have its own class representing it but our entities are virtual and are no specific Java classes that represent each of them. One solution to this problem would be to generate these classes on runtime. However, this approach is complex and error prone. Therefore, investigating the capabilities of different engines implementing the JPA specification relieved a promising feature in Hibernate called "Dynamic models" \textbf{cite}. It basically allows engineers to define the mapping logic into a mapping xml file and on runtime present the entities in the form Java collections(Maps, Lists, Sets, etc.). Table \textbf{tbl RGL to collection} shows how U-Sem entities can be expressed in terms of Java collections. Therefore, when an entity is defined we have to build the xml mapping file and on runtime convert the rgl entities into java collections and use jpa to store them into the database.
 
 \begin{center}
     \begin{tabular}{ | l | l |}
@@ -169,36 +165,29 @@ Once we know how to map the RGL entities to JPA entities we should enable jpa to
     RGL & Java  \\ \hline
     RecordValue/ValueRow & Map  \\ \hline
     BagValue & List  \\ \hline
-    BooleanValue & boolean  \\ \hline
-    RDFValue & String  \\ \hline
-	GraphValue & String  \\ \hline
+    BooleanValue & boolean value in a collection  \\ \hline
+    RDFValue & String value in a collection  \\ \hline
+	GraphValue & String  value in a collection  \\ \hline
 
     \end{tabular}
 \end{center}
  
-\subsubsection{Entities are dynamic}
-\textbf{Discus no-sql vs sql}
-The problem that has to be solved concerns the dynamic nature of the entities. In our solutions we want to enable users to update them if this is required. Unfortunately, ORM frameworks are not good in dealing with such things. The problem is that whenever the structure changes not only the mapping xml file has to change but also the database schema. Some JPA providers provide simple tools for table generation problem(e.g. hibernate's hibernate.hbm2ddl.auto option) but they are not applicable(recreate the entire db) or not recommended in production mode(update). Therefore, in order to solve that problem reliably our solution provides implementation that is responsible to first update the mapping files and secondly update the structure of the database using JDBC statements.
+\subsubsection{Dynamic entities}
 
-\begin{center}
-    \begin{tabular}{ | l | l |}
-    \hline
-    JPA & SQL  \\ \hline
-    Class & Table( + fk to owner ) \\ \hline
-    BagValue & -  \\ \hline
-    BooleanValue & Column of type boolean  \\ \hline
-    RDFValue & Column of type VARCHAR  \\ \hline
-	GraphValue & Column of type VARCHAR  \\ \hline
-    \end{tabular}
-\end{center}
+Another problem that has to be addressed concerns the dynamic nature of the entities. In our solution users has to be able to update the entity types if this is needed. Unfortunately, ORM frameworks are not good in dealing with such things. The problem is that whenever the entity type definitions changes not only the mapping xml file has to change but also the database schema. Hibernate provides a tool for table generation(hibernate.hbm2ddl.auto configuration) but we were not able to find any documentation specifying how it works and what are its limitations. Additionally, we conducted experiments that revieled that this tool is not suitable for our situation(eg. when an entity is renamed then new set of tables is generated and the old ones are left). Therefore, in order to solve that problem reliably our solution provides implementation that is responsible to first update the mapping files and secondly update the schema of the database so that it is consistent with the new entity type definition.
+
 
 \subsubsection{Operations}
-We have to identify how each of the CRUD operations is performed. The solution provides a RDF Gears component that is responsible to enable the user to configure and execute each type of the supported operations and convert RGL to JPA and vice versa.
+Finally, we have to identify how each of the CRUD operations is executed. The solution provides RDF Gears component that is responsible to enable the user to configure and execute each type of the supported data operations. The components are also capable to automatically convert the data from RGL to the JPA compatible format and vice versa. The solution provides the following RDFGears components:
+
 \begin{itemize}
-	\item create - this is operations inserts and entity into the database. The user has to provide the name of the entity that has to be stored and the data itself.
-	\item read - JPA provides a special high level query language which ommits details about the internal representation of the stored data. Because of the direct mapping from rgl to jpa all possible operation on the predifiened entities makes sense. The only exception are the additional id field. In order to make it transparent to the users we will name it "\$id\$"(hibernate uses this notation to identify service fields) and using this field in queries will be forbidden.
-	\item delete - normally in jpa is based on id, but since we do not have this in the semantics we provide an alternative approach. In this case users write a read query and all results(entities or sub entities) from the query are deleted. Users are responsible to make sure that the query will produce only the needed results
-	\item update - like delete, update in jpa is also based on ids. So we approach the problem similarly the user writes a query that selects all entities(sub entities ) that will be updated. However, here we distinct two types of updates. The first one is to replace the value of a field(simple type, record or bag). The second one is responsible to add element into a bag.
+	\item \textit{Insert} - this component is responsible to insert an entity into the database. The user has to provide the name of the entity that has to be stored and the data itself.
+	
+	\item \textit{Query} - this component is responsible to enable engineers to query data. JPA provides a special high level query language which omits details about the internal representation of the stored data \cite{JPQL}. Because of the direct mapping from RGL to JPA entities all possible operation on the predefined entities makes sense. The only exception is the additional \textit{id} field. In order to make it transparent to the users we will name it "\$id\$"(hibernate uses this notation to identify service fields) and using this field in queries is forbidden.
+	
+	\item \textit{Delete} - this component is responsible to delete data from the database. Normally in JPA delete functionality relies on ids, but since we do not have this in the semantics we provide an alternative approach. In this case, users have to provide a query that selects all entities/sub-entities that have to be deleted. Users are responsible to make sure that the query will produce only the needed results.
+	
+	\item \textit{Update} - this component is responsible  enable engineers to update entities or part of them. Like the delete operation, updates in JPA are also based on ids. So we approach the problem similarly the user writes a query that selects all entities(sub entities ) that will be updated. The users has to also state the field of the selected entities that has to be updated and provide the values. The system distincts between two types of updates. The first one is replacing the value of a field(simple type, record or bag). The second one is aimed for appending an element to a bag.
 \end{itemize}
 
 \subsection{Multitenancy - How to enable multiple users to use the solution and collaborate?}
@@ -206,7 +195,7 @@ The second main challenges that we have to solve is to enable multiple users to 
 
 Designing the solution we have to take into account the following things: how to organize the data into the database, how to enable collaboration and how to manage access control.
 
-\paragraph{Database organization}
+\subsubsection{Database Organization}
 There are three main approaches for designing multi-tennant solution \cite{Hui}:
 
 \begin{itemize}
@@ -220,7 +209,7 @@ There are three main approaches for designing multi-tennant solution \cite{Hui}:
 
 Discussing the advantages and disadvantages of all the approaches above, we decided to use the STSI because it is easy to map to JPA, enables collaboration, simplifies querying and is easier to maintain.    
 
-\paragraph{Collaboration}
+\subsubsection{Collaboration}
 The ability for engineers building workflows to collaborate and reuse each others data is essential \cite{Lu}. Choosing STSI organization makes it easy for engineers to work with the data of the others. However, there are several issues that has to be discussed and addressed:
 
 \begin{itemize}
@@ -233,7 +222,7 @@ The ability for engineers building workflows to collaborate and reuse each other
 \end{itemize}
 
 
-\paragraph{Access control}
+\subsubsection{Access control}
 
 The solution has to be able to enforce the sharing options of the entities and make sure that data is not accessed illegally. Therefore, the solution provides access control functionality that is responsible to enforce this policies. Basically, jpa is not good at doing this, it does not provide any access control functionality out of the box(\textbf{check that}). Therefore, there are two possible places to put the access control logic. 
 
@@ -265,30 +254,21 @@ The problem is that our solution imposes on this optimizations is that the assum
 Our solution consists of the following steps:
 \begin{itemize}
 	\item extend the function description notation so that the engine knows if a component has side effects or not
-	\item when the datastcutrure of the functions is built we also include the components that have side effects and recusivly all the components that they depend on.
+	\item when the data structure of the functions is built we also include the components that have side effects and recursively all the components that they depend on.
 	\item we perform all the optimizations to the output node(as it is currently done) as well as to all components with side effects. 
 	\item when the workflow is executed we execute it for the output node and for all components with side effects. The caching mechanism prevents components to execute several times. The output of the workflow is still the output of the output node.
 \end{itemize}
 
 These steps ensure that all components with side effects are executed and the execution is efficient because all the optimizations are applied.
 
-\subsection{Integration with the plugin environment}
+\subsection{Integration with the plug-in environment}
 
-We implemented an additional special feature that aims to save save time to engineers. The idea of this feature is to integrate the datamanagement feature with the plugin environment feature. The benefit from this feature covers the situation when engineers create a certain kind of user modeleing service which requires data interactions and  bundle it into plug-in. Since this feature interacts with data if will most probably require entity deffinitions is order to work. Therefore, every time this plug-in is deployed on a server the engineers has to manually define the needed entities through the user interface. Obviously, this operation may cost signlificant time and is error prone. Additionally, the problem becomes severe when an engineers wants to use a shared plug-in produced by someone else. In this case the two engineers need a way to somehow exchange the entity definitions.
+We implemented an additional special feature that aims to save save time to engineers. The idea of this feature is to integrate the data management feature with the plug-in environment feature. The benefit from this feature covers the situation when engineers create a certain kind of user modelling service which requires data interactions and  bundle it into plug-in. Since this feature interacts with data if will most probably require entity definitions is order to work. Therefore, every time this plug-in is deployed on a server the engineers has to manually define the needed entities through the user interface. Obviously, this operation may cost significant time and is error prone. Additionally, the problem becomes severe when an engineers wants to use a shared plug-in produced by someone else. In this case the two engineers need a way to somehow exchange the entity definitions.
 
-In order to solve that problem we have devised a mechanism that can deal with this issue automatically and thus safe time to the engineers. The idea is very simple. Each entity definition is stored in an xml file in the file system. Therefore, the first time an engineers creates an entity definition it can export it as an xml file. Then, he can include this file in the plugin and register in in the \textbf{plugin context}. When this plug-in is installed the system automatically detects the presense of this entities and installs them automatically so that the functionality of the plug-in can be used right away without any need for configuration.
+In order to solve that problem we have devised a mechanism that can deal with this issue automatically and thus safe time to the engineers. The idea is very simple. Each entity definition is stored in an xml file in the file system. Therefore, the first time an engineers creates an entity definition it can export it as an xml file. Then, he can include this file in the plug-in and register in in the \textbf{plug-in context}. When this plug-in is installed the system automatically detects the presence of this entities and installs them automatically so that the functionality of the plug-in can be used right away without any need for configuration.
 
 \section{Architecture}
 We have already discussed the main problems that our solution is facing and the approach we will use to solve each of them. In this chapter we discuss the architecture of the solution.
-
-\subsection{Context View}
-\textbf{po skoro ne tazi sekciq}
-\begin{figure}[h!]
-  \centering
-  	\includegraphics[scale=0.4]{environment/runtime_environment_storage.png}
-  \caption{Context diagram of U-Sem }
-  \label{fig_context}
-\end{figure}
 
 \subsection{Functional View}
 
@@ -401,7 +381,6 @@ This component is responsible to provide API which can be used by application la
 \end{itemize}
 
 \subsection{Concurrency View}
-\textbf{echache problem for types}
 
 \begin{figure}[h!]
   \centering
@@ -462,10 +441,12 @@ In order to implement the endpoints(user interface) we used the jQuery UI, \text
 	\end{itemize}
 
 
-\subsection{RDFGeards data manipulation components}
-+ preview panel
+\subsection{RDFGeards workflow configuration}
+We have also implemented two features that aim to benefit engineers when configuring workflows in RDFGears.
 
-input ports are set automatically to save time
+The first feature concerns the \textbf{Insert entity} component. According to the specification the engineer has to select and entity type that has to be stored and provide the corresponding data as inputs for the component. However, when selecting the entity type it is clear what are the inputs that will be required for the component because they have to correspond to the predefined entity structure. Therefore, instead of manually configuring the inputs of the component, the system automatically reads the entity type definition and sets up all the required inputs automatically. \textbf{Include screen shot}
+
+The second feature is the preview panel for entity types. It represents a small dialog panel in the user interface that can be opened every time the engineer defining workflows need to refer to the structure of an entity type. It presents the entity types in the form of a tree. \textbf{Include screenshot} This feature is particularly valuable when users have to write queries because they can easily refer to the entity types and therefore, they do not have to remember them. It is also likely to prevent mistakes connected to not reproducing the entity types correctly in the queries.
 
 \begin{figure}[h!]
   \centering
@@ -487,7 +468,57 @@ We implemented the extension of the capabilities by extending some of the classe
 
 \section{Evaluation} 
 
-After successfully implementing the system, in this section we evaluate whether the system complies with all functional and non-functional requirements defined at the beginning of this chapter.
+In the problem definition section we discussed the issues solving which will theoretically save users time and efforts. However,  in this section we want to evaluate how engineers benefit from the solution in a real world situation. In order to do that, we took an already existing user modelling service, implemented it using the newly proposed solution and at the end, discuss the improvement. 
+
+For the experiment we used the already implemented service for building language profiles based on Twitter. The basic idea of the workflow is to read all tweets for a particular user form the database, infer the languages(and level of knowledge) that the user knows, store the generated profile in the database and finally, provide it as a result of the execution of the service.
+
+\begin{figure}[h!]
+  \centering
+  	\includegraphics[scale=0.5]{eval/before.png}
+  \caption{Context diagram of U-Sem }
+  \label{fig_context}
+\end{figure}
+
+Figure \textbf{fff} shows how the workflow looked like before the introduction of our solution. In order to implement that workflow scientists had to perform the following steps:
+\begin{itemize}
+	\item Install and set-up a database
+	\item Create the necessary tables manually
+	\item Implement specific components for queering the tweets and storing the generated profiles
+	\item Make the store component return a copy of its input because it has to be part of the main branch otherwise it is optimized by the engine and not executed.
+\end{itemize}
+
+\begin{figure}[h!]
+  \centering
+  	\includegraphics[scale=0.5]{eval/entities.png}
+  \caption{Context diagram of U-Sem }
+  \label{fig_context}
+\end{figure}
+
+Figure \textbf{fff} shows how the workflow looks like after the introduction of our solution. In order to implement the workflow scientists had to perform the following steps:
+\begin{itemize}
+	\item Define the entity types using the user interface. Figure \textbf{fff}
+	\item Reuse the components for quering and storing data by only providing the JPQL query and selecting the entity type for storing.
+	\item Indicate the store component to have side effects and put it in a separate branch.
+\end{itemize}
+
+\begin{figure}[h!]
+  \centering
+  	\includegraphics[scale=0.5]{eval/after.png}
+  \caption{Context diagram of U-Sem }
+  \label{fig_context}
+\end{figure}
+
+We believe that using the proposed solution saves a lot of time and efforts to the engineers defining the service for the following reasons:
+
+\begin{itemize}
+	\item No installation and configuration of the database required
+	\item No need to create the database schema manually. It is done automatically by the user interface
+	\item No programming required for implementing storage and query components
+	\item No need to convert RGL values so that they can fit into the database
+	\item Queries are written in JPQL which is a higher level language compared to SQL and queries are likely to be faster and easier to write. Additionally, the user interface that shows the structure of the entities at any time makes writing queries easier(engineers do not have to know it by heart) and prevents mistakes that come from not knowing the structure of the entities. 
+	\item The workflow looks more intuitive because the knows how to deal with components with side affects and the \textbf{Store} component can be left in a separate branch and does not have to return a copy of the input data like in the initial situation.
+\end{itemize}
+
 
 \section{Limitations and Future work}
 
@@ -500,9 +531,9 @@ In this section we identify the limitations of the proposed architecture and we 
 
 \item Most of the data manipulation components(except for the "Insert entity" component) require users to enter JPQL query. These queries can get quite complex and as a result users usually make some mistakes when writing them \textbf{cite}. Currently, the solution does not provide any facilities that can validate these queries. Users are notified abut the mistakes only when they try to execute the workflows and they fail. As a result, this process may cost a lot of time to users until they finally end up with the correct queries. Therefore, in future the system might be further improved by introducing functionality for autocomplition and validation of the JPQL queries.
 
-\item \textbf{currently the engine does not guarantee the order of the execution of branches. Therefore, delevoping an mechanism to control the execution order can be really helpful}
+\item Currently, the RDF Gears engine does not provide any guarantees for the order of the execution of branches. This is not a problem for components that do not have side effects. However, with the introduction of the new components that interact with the database developing an mechanism to control the execution order of branches within a workflow makes sense and might be a helpful future addition to the solution.
 
-\item Currently, the targeted to be used mainly as a research tool and there are no requirements for supporting large number of users and high loads. However, if the system is to be used in such demanding environment then it might be worth to research and improve the performance, scalability and availability properties of the solution. \textbf{maybe propose solutions like L2 cache and high availability db setups}. 
+\item Currently, the targeted to be used mainly as a research tool and there are no requirements for supporting large number of users and high loads. However, if the system is to be used in such demanding environment then it might be worth to investigate and if needed improve the performance, scalability and availability properties of the solution. \textbf{maybe propose solutions like L2 cache and high availability db setups}. 
 
 \end{itemize}
 
@@ -523,6 +554,8 @@ In this section we identify the limitations of the proposed architecture and we 
 \bibitem{javadocs} http://docs.oracle.com/
 
 \bibitem{Hernane} SL Hernane, J Gustedt, A Dynamic Distributed Algorithm for Read Write Locks . 2012
+
+\bibitem{JPQL} J Linwood, D Minter, Searches and Queries, Beginning Hibernate, 2010 - Springer
 
 \end{thebibliography}
 
