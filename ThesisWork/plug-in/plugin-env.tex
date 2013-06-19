@@ -43,28 +43,28 @@ This section identifies the main quality scenarios that a successful architectur
 \section{Approach}
 \label{sec:approachPlugin}
 
-This section discusses the currently available approaches and technologies that might be used in order to design a system that fulfils the requirements specified in the previous section. After a detailed investigation of the requirements, we reached the conclusion that the core of the problem lies, firstly, in the poor separation of concerns (modularization of the functionality) and secondly, in the impossibility to manage (add, replace, remove) these concerns while the system is in operation. In order to solve these problems, we investigated the scientific literature to find what are the available approaches and technologies that can help to overcome these problems. Our research relieved that the topic about modularization of software systems is widely discussed and there is even a sub field in software engineering which addresses the problem of building systems out of different components \cite{Jifeng}. This sub field is called \textit{Component-based software engineering}. 
+This section discusses the currently available approaches and technologies that might be used in order to design a system that fulfils the requirements specified in the previous section. After a detailed investigation of the requirements, we reached the conclusion that the core of the problem lies, firstly, in the poor separation of concerns (modularization of the functionality) and secondly, in the impossibility to manage (add, replace, remove) these concerns while the system is in operation. In order to solve these problems, we investigated the scientific literature to find what are the available approaches and technologies that can help to overcome these problems. Our research relieved that the topic about modularization of software systems is widely discussed and there is even a sub field in software engineering which addresses the problem of building systems out of different components \cite{jifeng2005component}. This sub field is called \textit{Component-based software engineering}. 
 
 In the next subsection we discuss the basic idea and the advantages that this approach brings. We also discus what features a system needs to provide in order to enable Component-based software engineering. This is known as component model. At the end, we also discuss the state of the art technologies that provide support for Component-based software engineering, enable dynamic management of the components and are useful in the context of U-Sem. 
 
 \subsection{Component-based software engineering}
 
-Component-based software engineering is based on the idea to construct software systems by selecting appropriate off-the-shelf components and then, assemble them together with a well-defined software architecture \cite{Pour}. This software development approach improves on the traditional approach(building application as a single entity) since applications no longer have to be implemented from scratch. Each component can be developed by different developers using different IDEs, languages and different platforms. This can be shown in Figure \ref{fig_cbsd}, where components can be checked out from a component repository, and assembled into the desired software system. This completely complies with the idea behind U-Sem where each scientists is responsible to build only a peace of the system which provides certain service.
+Component-based software engineering is based on the idea to construct software systems by selecting appropriate off-the-shelf components and then, assemble them together with a well-defined software architecture \cite{pour1998component}. This software development approach improves on the traditional approach(building application as a single entity) since applications no longer have to be implemented from scratch. Each component can be developed by different developers using different IDEs, languages and different platforms. This can be shown in Figure \ref{fig_cbsd}, where components can be checked out from a component repository, and assembled into the desired software system. This completely complies with the idea behind U-Sem where each scientists is responsible to build only a peace of the system which provides certain service.
 
 \begin{figure}[h!]
   \centering
   	\includegraphics[scale=0.75]{plug-in/component-based.png}
-  \caption{Component-based software development \cite{Pour} }
+  \caption{Component-based software development \cite{pour1998component} }
   \label{fig_cbsd}
 \end{figure}
 
-Other benefits that Component-based software development brings and we believe U-Sem will benefit from include: significant reduction of development cost and time-to-market, and also improvement on maintainability, reliability and overall qualities of software systems \cite{Pour1} \cite{Pour2}. Additionally, the applicability of this approach is supported by the fact that it is widely used in both the research community and in the software industry. There are many examples of technologies implementing this approach including: OMG's CORBA,  Microsoft's Component Object Model (COM) and Distributed COM (DCOM), Sun's(now Oracle) JavaBeans and Enterprise JavaBeans, OSGI.
+Other benefits that Component-based software development brings and we believe U-Sem will benefit from include: significant reduction of development cost and time-to-market, and also improvement on maintainability, reliability and overall qualities of software systems \cite{pour1999enterprise} \cite{pour1999making}. Additionally, the applicability of this approach is supported by the fact that it is widely used in both the research community and in the software industry. There are many examples of technologies implementing this approach including: OMG's CORBA,  Microsoft's Component Object Model (COM) and Distributed COM (DCOM), Sun's(now Oracle) JavaBeans and Enterprise JavaBeans, OSGI.
 
 \textbf{TODO Add refs}
 
 \subsection{Component model}
 
-Designing the component model of a system provides the specification defining the way that the system can be build by composing different components applying the component-based software engineering approach. More formally, it is the architecture of a system or part of a system that is built by combining different components \cite{Cai}. It defines a set of  standards for component implementation, documentation and deployment. Usually, the main components that a component-based software system consists of are \cite{Chen}:
+Designing the component model of a system provides the specification defining the way that the system can be build by composing different components applying the component-based software engineering approach. More formally, it is the architecture of a system or part of a system that is built by combining different components \cite{cai2000component}. It defines a set of  standards for component implementation, documentation and deployment. Usually, the main components that a component-based software system consists of are \cite{chen2009refinement}:
 
 \paragraph{Interfaces}
 	determine the external behaviour and features of the components and allow the components to be used as a black box. They provide the contract which defines the means of communication between components. As illustrated on figure \ref{fig_intf}, interfaces can be considered as points where custom functionality provided by another component can be plugged in. 
@@ -77,7 +77,7 @@ Designing the component model of a system provides the specification defining th
 	\end{figure}
 
 \paragraph{Components}
-	are functional units providing functionality by implementing interfaces. As can be seen on figure \ref{fig_comp}, components provide  features by implementing the interfaces provided by other components. One of the main question regarding building components is how to define the scope and characteristics for a component. According to \cite{Cai} there are no clear and well established standards or guidelines that define this. In general, however, a component has three main features: 
+	are functional units providing functionality by implementing interfaces. As can be seen on figure \ref{fig_comp}, components provide  features by implementing the interfaces provided by other components. One of the main question regarding building components is how to define the scope and characteristics for a component. According to \cite{cai2000component} there are no clear and well established standards or guidelines that define this. In general, however, a component has three main features: 
 
 \begin{itemize}
 	\item a component is an independent and replaceable part of a system that fulfils a clear function
@@ -99,7 +99,7 @@ Designing the component model of a system provides the specification defining th
 
 In previous sections, we discussed that integrating a component model in the architecture of U-Sem is the scientifically proven approach that promises to solve the design problem and fulfil the requirements of the customers. However, we had to decide whether to design and implement our own custom component model or we can reuse an existing one. Reusing a popular and widely used solution might be beneficial because it is likely it is heavily tested (at least from the engineers using it) and thus provide higher quality. 
 
-\cite{Lau} suggests classification of the component model implementations based on which part of the life cycle of a system the composition of the components is done. They identify the following groups:
+\cite{lau2007software} suggests classification of the component model implementations based on which part of the life cycle of a system the composition of the components is done. They identify the following groups:
 
 \begin{itemize}
 	\item  Composition happens during the design phase of the system. Components are designed and implemented in the source code of the system.
@@ -111,7 +111,7 @@ For the architecture of U-Sem we are only interested in the last group since one
 
 Apart form this, there is also another critical concern when choosing component model implementation for U-Sem. The implementation should support the Java language since it is the language in which all current services are implemented and most scientists are familiar with. Having to learn a new language and/or rewriting all source code in different language is considered as a big disadvantage for the scientists.
 
-We performed further investigation in order to find what are the current state of the art technologies that satisfy all requirements. It showed that currently there two standards that satisfy our needs: Fractal \cite{Bruneton} and Open Services Gateway initiative (OSGI) \cite{OSGI}. Both of them seemed quite popular and widely used and therefore we concluded that reusing them is more beneficial than implementing a component model from scratch. For the proposed architecture of U-Sem we chose to use OSGI since our impression is that it provides a simpler way of defining components(no component hierarchies) which will be beneficial for scientists that do not have so in depth knowledge of component-based engineering. OSGI is also widely used \cite{Andre} which may suggest that it is well tested and therefore is more stable. The next subsection focuses on how OSGI works and its features that are interesting for the architecture of U-Sem.
+We performed further investigation in order to find what are the current state of the art technologies that satisfy all requirements. It showed that currently there two standards that satisfy our needs: Fractal \cite{bruneton2006fractal} and Open Services Gateway initiative (OSGI) \footnote{OSGi Alliance. http://www.osgi.org}. Both of them seemed quite popular and widely used and therefore we concluded that reusing them is more beneficial than implementing a component model from scratch. For the proposed architecture of U-Sem we chose to use OSGI since our impression is that it provides a simpler way of defining components(no component hierarchies) which will be beneficial for scientists that do not have so in depth knowledge of component-based engineering. OSGI is also widely used \cite{tavares2008gentle} which may suggest that it is well tested and therefore is more stable. The next subsection focuses on how OSGI works and its features that are interesting for the architecture of U-Sem.
 
 
 \subsection{OSGI}
@@ -121,7 +121,7 @@ Proposed first in 1998, OSGI represents a set of specifications that defines a c
 \begin{figure}[h!]
   \centering
   	\includegraphics[scale=0.6]{plug-in/OSGI.png}
-  \caption{OSGi Service Registry \cite{Andre}}
+  \caption{OSGi Service Registry \cite{tavares2008gentle}}
   \label{fig_osgi}
 \end{figure}
 
@@ -130,18 +130,18 @@ Proposed first in 1998, OSGI represents a set of specifications that defines a c
 
 
 \paragraph{Components}
-  in OSGI are called bundles. Bundles are basically a regular Java JAR files that contain class files and other resources such as images, icons, required libraries. One of the important benefits for U-Sem is that OSGI enables better modularization providing facilities for better information hiding then the one provided by the Java language \cite{Andre}. Each bundle should provide a manifest file, which enables engineers to declare static information about the packages that are exported and therefore can be used by other bundles. Furthermore, bundles provide functionality to the rest of the system in the form of services. In the OSGi architecture, services are standard Java objects that implement the interfaces described in the previous paragraph.
+  in OSGI are called bundles. Bundles are basically a regular Java JAR files that contain class files and other resources such as images, icons, required libraries. One of the important benefits for U-Sem is that OSGI enables better modularization providing facilities for better information hiding then the one provided by the Java language \cite{tavares2008gentle}. Each bundle should provide a manifest file, which enables engineers to declare static information about the packages that are exported and therefore can be used by other bundles. Furthermore, bundles provide functionality to the rest of the system in the form of services. In the OSGi architecture, services are standard Java objects that implement the interfaces described in the previous paragraph.
 
 \paragraph{Coordinator}
 The OSGi standard also provides coordinator component which represents a runtime infrastructure for controlling the life cycle of the bundles which includes adding, removing and replacing bundles at run-time, while preserving the relations and dependencies among them. Another key functionality that the coordinator component of OSGi provides is the management of the services provided by the bundles. This functionality is provided by the Service Registry, which keeps track of the services registered within the framework. As illustrated on Figure \ref{fig_osgi}, when a bundle is loaded it registers all the services that it implements(step 1). As soon as a service is registered, it can be retrieved by any other components that are interested in this functionality (step 2). Once a bundle has retrieved a service, it can invoke any method described by the interface of this service (step 3). Another interesting feature of the OSGi Service Registry is its dynamic nature. As soon as a one bundle publishes a service that another bundle is interested in, the registry will bind these two bundles. This feature is very important for U-Sem since it will enable scientists to plug in any new functionality dynamically when it is needed.
 
 \subsubsection{Security}
 
-The security capabilities of OSGI are also very important for U-Sem since a lot of custom code is being executed which poses a significant threat to the system. The OSGi platform is considered to be highly secure by its creators \cite{Parrend}. There are two main reasons in favour of this statement. Firstly, OSGi is executed on top of the JVM and inherits its security capabilities. Secondly, it has been designed to support a proper level of isolation between components.
+The security capabilities of OSGI are also very important for U-Sem since a lot of custom code is being executed which poses a significant threat to the system. The OSGi platform is considered to be highly secure by its creators \cite{parrend2009security}. There are two main reasons in favour of this statement. Firstly, OSGi is executed on top of the JVM and inherits its security capabilities. Secondly, it has been designed to support a proper level of isolation between components.
 
-Since its introduction, the Java language and JVM have been widely used and subjected to extensive tests and validation \cite{Parrend}. The platform was designed to support the safe execution of fully untrusted code \cite{Felten}. In order to achieve this, it has introduced the following features \cite{Gong}: Type Safety of the language, Garbage Collection(no user-defined memory management), Bytecode verification ensuring that executed programs are compliant with the language specification, and Sandboxing, which can prevent the access to sensible resources like the network or file system. Additionally, the system provides secure class loaders, which enable loading of several modules that cannot interact with each other.
+Since its introduction, the Java language and JVM have been widely used and subjected to extensive tests and validation \cite{parrend2009security}. The platform was designed to support the safe execution of fully untrusted code \cite{dean1996java}. In order to achieve this, it has introduced the following features \cite{gong2003inside}: Type Safety of the language, Garbage Collection(no user-defined memory management), Bytecode verification ensuring that executed programs are compliant with the language specification, and Sandboxing, which can prevent the access to sensible resources like the network or file system. Additionally, the system provides secure class loaders, which enable loading of several modules that cannot interact with each other.
 
-On top of this, OSGI defines additional permissions that provides full control of the interactions between the components. It provides functionality that enables dependencies at the package level and at the service level to be allowed or prevented. Additionally, management capability from one component to the others can also be restricted \cite{Parrend}.
+On top of this, OSGI defines additional permissions that provides full control of the interactions between the components. It provides functionality that enables dependencies at the package level and at the service level to be allowed or prevented. Additionally, management capability from one component to the others can also be restricted \cite{parrend2009security}.
 
 \subsection{Collaboration between users}
 
@@ -163,13 +163,13 @@ In order to create a plug-in engineers have to create and configure a plug-in pr
 
 Based on the approach devised in the previous section we designed the software architecture for the \textit{Plugin Environment} feature of U-Sem. In this section we provide the description of the proposed architecture focusing on the static and dynamic structures of the solution and its externally visible behaviour.
 
-One of the critical things when describing a software architecture is to manage complexity of the description so that it is clear and understandable by the stakeholders. \cite{Rozanski} suggests that capturing the essence and all details of the whole architecture in a single model is only possible for very simple systems. Doing this for a more complex system is likely to end up as a model that is unmanageable and does not adequately represent the system to you or any of the stakeholders. \cite{Rozanski} also claims that the best way to deal with the complexity of the architecture description is to break it into a number of different representations of all or part of the architecture, each of which focuses on certain aspects of the system, showing how it addresses some of the stakeholder concerns. These representations are called views.
+One of the critical things when describing a software architecture is to manage complexity of the description so that it is clear and understandable by the stakeholders. \cite{rozanski2011software} suggests that capturing the essence and all details of the whole architecture in a single model is only possible for very simple systems. Doing this for a more complex system is likely to end up as a model that is unmanageable and does not adequately represent the system to you or any of the stakeholders. \cite{rozanski2011software} also claims that the best way to deal with the complexity of the architecture description is to break it into a number of different representations of all or part of the architecture, each of which focuses on certain aspects of the system, showing how it addresses some of the stakeholder concerns. These representations are called views.
 
 In next sections, we provide a set of interrelated views, which collectively illustrate the functional and non-functional features of the system from different perspectives and demonstrate that it meets the requirements. Note that in the reminder of this chapter we use the term \textit{plug-in} for the components containing the custom functionality provided by scientists. In this way they are easily distinguished from the architectural components. 
 
 \subsection{Context View}
 
-The Context view aims to define the environment in which the system operates and more specifically the technical relationships that the system has with the various elements of this environment \cite{Woods}. \cite{Woods} also identifies the concerns that the view has to address:
+The Context view aims to define the environment in which the system operates and more specifically the technical relationships that the system has with the various elements of this environment \cite{woods2009system}. \cite{woods2009system} also identifies the concerns that the view has to address:
 
 \begin{itemize}
 	\item Identify which are the external entities and what are the responsibilities of each of them.
@@ -199,7 +199,7 @@ It represents a storage location where plug-ins are stored and when needed, they
 
 \subsection{Interactions}
 
-After we have identified the new actors(scientists) and external systems(plug-in repository) in the environment of U-Sem we have to define how they interact with each other. In this section we use the Business Process Management Notation(BPMN) \cite{BPMN} to define the business processes that describe the interactions needed for each of the use cases regarding the dynamic component model feature of U-Sem. The notation enables us to model activities, decision responsibilities, control and data flows. The decision to use BPMN to define the interactions is based on its suitability for interaction modelling and the fact that it is more popular compared to its alternatives \cite{Decker}. Next subsections describe each of the defined processes and expand them into Business Process Diagrams (BPD).
+After we have identified the new actors(scientists) and external systems(plug-in repository) in the environment of U-Sem we have to define how they interact with each other. In this section we use the Business Process Management Notation(BPMN) \cite{wohed2006suitability} to define the business processes that describe the interactions needed for each of the use cases regarding the dynamic component model feature of U-Sem. The notation enables us to model activities, decision responsibilities, control and data flows. The decision to use BPMN to define the interactions is based on its suitability for interaction modelling and the fact that it is more popular compared to its alternatives \cite{decker2008interaction}. Next subsections describe each of the defined processes and expand them into Business Process Diagrams (BPD).
 
 \subsubsection{Create U-Sem Plug-in process}
 
@@ -243,7 +243,7 @@ Scientists can monitor the currently installed plug-ins at any time by contactin
 
 \subsection{Functional view}
 
-After identifying all actors that are part of the environment of U-Sem and the way they interact with one another, in this section, we define the internal structure of U-Sem that is responsible to accommodate all these interactions. The functional structure of the system includes the key functional elements, their responsibilities, the interfaces they expose, and the interactions between them \cite{Rozanski}. All these together demonstrate how the system will perform the required functions.
+After identifying all actors that are part of the environment of U-Sem and the way they interact with one another, in this section, we define the internal structure of U-Sem that is responsible to accommodate all these interactions. The functional structure of the system includes the key functional elements, their responsibilities, the interfaces they expose, and the interactions between them \cite{rozanski2011software}. All these together demonstrate how the system will perform the required functions.
 
 All components that take part in the dynamic component model functionality can be classified in three layers. This organization is illustrated in figure Figure \ref{fig_layer} and consists of the following layers:
 
@@ -377,7 +377,7 @@ This deployment organization is illustrated on figure \ref{fig:simple_set}. The 
 
 We implemented the proposed architecture in order to evaluate its applicability and capabilities. This section describes the main steps we performed during the implementation of the system.
 
-First, we had to choose which OSGI implementation to use. Nowadays there are several vendors that provide implementations. The most popular are: Equinox, Felix and Knopflerfish \cite{OSGI}. Theoretically, they all strictly implement the OSGI standard and therefore, there should be little difference. However, we choose Equinox because it seemed more matured and more widely used compared to the others. Moreover, Equinox is highly integrated in the popular Eclipse IDE. This enables scientist to use the out-of-the box functionality for creating plug-ins in Eclipse.
+First, we had to choose which OSGI implementation to use. Nowadays there are several vendors that provide implementations. The most popular are: Equinox\footnote{Equinox. http://www.eclipse.org/equinox}, Felix\footnote{Apache felix. http://felix.apache.org} and Knopflerfish\footnote{Knopflerfish. http://www.knopflerfish.org} \cite{tavares2008gentle}. Theoretically, they all strictly implement the OSGI standard and therefore, there should be little difference. However, we choose Equinox because it seemed more matured and more widely used compared to the others. Moreover, Equinox is highly integrated in the popular Eclipse IDE. This enables scientist to use the out-of-the box functionality for creating plug-ins in Eclipse.
 
 Secondly, we had to decide the points where U-Sem can be extended by providing custom functionality from plug-ins. Looking at the requirements, we identified that scientist has to be able to provide custom workflow functions and entire workflow definitions. As explained earlier, in OSGI this points for extension are represented as java interfaces or classes. For providing custom workflow functions scientists have to use the \textit{RGLFunction} class. The situation with the workflows was more complicated since they are represented as resource(xml) files. OSGI does not provide direct way for providing custom resource files from plug-ins. In order to overcome this problem, we defined a new class called \textit{WorkflowTemplate} which acts as a bridge and enables the workflow engine and other components to access workfow definition files provided by custom plug-ins.
 
@@ -440,7 +440,7 @@ We believe that the proposed architecture will also satisfy the nonfunctional re
 
 \item \textit{Security} - Firstly, using the security infrastructure of Java and OSGI, the system ensures that the security policy specified by the administrators of the system is enforced on all custom code that is running in the system. Secondly, the architecture ensures that the custom functionality of the users' is protected from unauthorized access. All connections between the user and the backend can be encrypted through HTTPS and thus, protected against eavesdropping and man-in-the-middle attacks. The system's communication channels are also secured by firewalls. Finally, as required each storage node is backed up in case a device fails.
 
-\item \textit{Modularization} - This non-functional requirement is accommodated by the dynamic component model provided by OSGI. It address the limitations of the standard Java module system discussed in section \ref{sec:problemDefPlugin} and provides information hiding and cross component communication capabilities that enforce better component modularization \cite{Andre}.
+\item \textit{Modularization} - This non-functional requirement is accommodated by the dynamic component model provided by OSGI. It address the limitations of the standard Java module system discussed in section \ref{sec:problemDefPlugin} and provides information hiding and cross component communication capabilities that enforce better component modularization \cite{tavares2008gentle}.
 
 \end{itemize}
 
@@ -450,15 +450,15 @@ We believe that the proposed architecture will also satisfy the nonfunctional re
 
 In this section we identify the limitations of the proposed architecture and we also suggest approaches that can be used to overcome these limitation in the future. We have identified two groups of limitations concerning U-Sem. The first group represents the limitations that are inherited from the usage of OSGI. The second one consists of the limitations concerning the rest of the U-Sem's architecture.
 
-Most of the limitations concerning OSGI originate from the potential vulnerabilities of running external code which the security mechanism fails to fully address. The authors of \cite{Parrend} have studied in details the potential vulnerabilities of OSGI. These vulnerabilities can be grouped into the following categories:
+Most of the limitations concerning OSGI originate from the potential vulnerabilities of running external code which the security mechanism fails to fully address. The authors of \cite{parrend2009security} have studied in details the potential vulnerabilities of OSGI. These vulnerabilities can be grouped into the following categories:
 
 \begin{itemize}
 
-	\item \textit{Vulnerabilities on operating system level} - This kind of vulnerabilities result from the fact that it is possible that a plug-in runs malicious native code using the Java JNI. Native code is not managed by the JVM and thus, the security policy is not applied. \cite{Sun} proposes a portable solution for sandboxing of Java's Native Libraries without modifying the JVM's internals which might be used for overcoming these vulnerabilities.
+	\item \textit{Vulnerabilities on operating system level} - This kind of vulnerabilities result from the fact that it is possible that a plug-in runs malicious native code using the Java JNI. Native code is not managed by the JVM and thus, the security policy is not applied. \cite{sun2012jvm} proposes a portable solution for sandboxing of Java's Native Libraries without modifying the JVM's internals which might be used for overcoming these vulnerabilities.
 	
-	\item \textit{Vulnarabilities on OSGi platform level} - This kind of vulnerabilities are related to weaknesses in the OSGi run-time. \cite{Parrend} suggests an approach for overcoming them by adding additional security checks in the OSGi implementation.
+	\item \textit{Vulnarabilities on OSGi platform level} - This kind of vulnerabilities are related to weaknesses in the OSGi run-time. \cite{parrend2009security} suggests an approach for overcoming them by adding additional security checks in the OSGi implementation.
 	
-	\item \textit{Vulnarabilities on JVM level} - This vulnerabilities can be further divided into categories \cite{Geoffray}: 
+	\item \textit{Vulnarabilities on JVM level} - This vulnerabilities can be further divided into categories \cite{geoffray2009jvm}: 
 	
 	\begin{itemize}
 		\item \textit{lack of isolation} - Even though components for each user are loaded through separate OSGI instances, on JVM level \textit{java.lang.Class} objects and static variables are shared by all plug-ins. A malicious bundle can interfere with the execution of other bundles by altering static variables or obtaining lock on shared objects.
@@ -470,63 +470,10 @@ execution it might fail if methods of the bundle are being executed at that poin
 		
 	\end{itemize}
 	
-	\cite{Geoffray} proposed and approach for overcoming these vulnerabilities. They have designed I-JVM, an extension of the Java Virtual Machine which provides functionality for component isolation and termination in OSGi.
+	\cite{geoffray2009jvm} proposed and approach for overcoming these vulnerabilities. They have designed I-JVM, an extension of the Java Virtual Machine which provides functionality for component isolation and termination in OSGi.
 	
 \end{itemize}
 
 At this point, U-Sem is aimed to be used by scientists from a single organization. Therefore, the components will only be reused within the organization which limits the possibility for any external person adding plug-ins into the system. Therefore, exploitation of the discussed vulnerabilities on purpose is not so likely. Therefore, we believe that this limitations does not pose a significant threat for U-Sem. However, all these vulnerabilities has to be addressed if in future the system is to be extended to enable access from unverified scientists. 
 
-Apart from the inherited limitations from OSGI, another limitation of the architecture comes from the fact that all plug-ins are reloaded before each execution of a workflow. This is done in case the installed plug-ins are changed between two workflow executions. The consequence is the caused delay for reloading the components before each workflow execution. Even though this delay might be considered minute for most scenarios it can cause reduced performance in the case where large number of workflows with short execution time has to be executed in a short amount of time. In future, this limitation can be addressed by establishing communication mechanism between the workfow engine and the plug-in management component. In this way when a change is made to the plug-ins, the workflow engine marks them as dirty and only then it finds a suitable moment to reload and apply the changes. Additionally, \cite{Nikolov} also proposes approach for reducing the time needed to reload the components in OSGI.
-
-\begin{thebibliography}{99}
-
-\bibitem{Pour} G. Pour, Component-Based Software Development Approach: New Opportunities and Challenges, Proceedings Technology of Object-Oriented Languages, 1998. TOOLS 26., pp. 375-383.
-
-\bibitem{Pour1}  G. Pour,  Enterprise JavaBeans,  JavaBeans and XML Expanding the Possibilities for Web-Based Enterprise Application Development,  Proceedings Technology of Object-Oriented Languages and Systems, 1999, TOOLS 31, pp.282-291.
-
-\bibitem{Pour2} G.Pour, M. Griss, J. Favaro, Making the Transition to Component-Based Enterprise Software Development: Overcoming the Obstacles - Patterns for Success, Proceedings of Technology of Object-Oriented Languages and systems, 1999, pp.419 - 419.
-
-\bibitem{Parnas} D. L. Parnas. On the criteria to be used in decomposing systems into modules. Communications of the ACM, 15(12):1053-1058, 1972.
-
-\bibitem{Jifeng} H Jifeng, X Li, Z Liu, Component-based software engineering, Theoretical Aspects of Computing-ICTAC 2005
-
-\bibitem{Cai} Cai, X. and Lyu, M.R. and Wong, K.F. and Ko, R, Component-based software engineering: technologies, development frameworks, and quality assurance schemes, Software Engineering Conference, 2000. APSEC 2000. Proceedings. Seventh Asia-Pacific
-
-\bibitem{Chen} Z Chen, Z Liu et al, Refinement and Verification in Component-Based Model Driven Design, Report of International Institute for Software Technology, 2007
-
-\bibitem{Lau} Kung-Kiu Lau and Zheng Wang, Software Component Models, Software Engineering, IEEE Transactions on, 2007
-
-\bibitem{Bruneton} E. Bruneton, T. Coupaye, and J. Stefani, The Fractal Component Model, ObjectWeb Consortium, Technical Report Specification V2, 2003
-
-\bibitem{OSGI} OSGi Alliance. http://www.osgi.org 
-
-\bibitem{Andre} Andre L. C. Tavares, Marco Tulio Valente, A Gentle Introduction to OSGi, ACM SIGSOFT Software Engineering Notes, 2008
-
-\bibitem{BPMN} Business Process Modeling Notation (BPMN) Specification, Final Adopted Specification. Technical report, Object Management Group (OMG), February 2006.
-
-\bibitem{Decker} Decker, G. and Barros, A., Interaction modeling using BPMN, Business Process Management Workshops, 2008
-
-\bibitem{Parrend} P. Parrend and S. Frenot. Security benchmarks of OSGi platforms: toward hardened OSGi. Software: Practice and Experience, 39(5):471-499, April 2009
-
-\bibitem{Geoffray} Nicolas Geoffray, Gael Thomas, Gilles Muller, Pierre Parrend, Stephane Frenot, and Bertil Folliot: I-JVM: A Java Virtual Machine for Component Isolation in OSGi. In: DSN 2009
-
-\bibitem{Nikolov} Vladimir Nikolov, Rudiger Kapitza, Recoverable Class Loaders for a Fast Restart of Java Applications, Mobile Networks and Applications, 2009
-
-\bibitem{Srivastava} S Srivastava, M Hicks, Modular information hiding and type-safe linking for C, Software Engineering, IEEE Transactions on 2008
-
-\bibitem{Eder} J Eder, G Kappel, M Schrefl, Coupling and cohesion in object-oriented systems, 1994
-
-\bibitem{Rozanski} Rozanski, Nick and Woods, Software systems architecture: working with stakeholders using viewpoints and perspectives, Addison-Wesley Professional, 2011
-
-\bibitem{Woods} E Woods, N Rozanski, The System Context Architectural Viewpoint, 2009
-
-\bibitem{Sun} Sun, Mengtao and Tan, Gang, JVM-Portable Sandboxing of Java's Native Libraries, Computer Security--ESORICS 2012
-
-\bibitem{Membrey} Membrey, Peter and Hows, David and Plugge, Eelco, DNS Load Balancing, Practical Load Balancing, 2012
-
-\bibitem{Felten} Dean D, Felten EW, Wallach DS. Java Security: From HotJava to Netscape and beyond. SP'96: Proceedings of the 1996 IEEE Symposium on Security and Privacy. IEEE Computer Society: Washington, DC, U.S.A., 1996; 190.
-
-\bibitem{Gong} Gong L, Ellison G, Dadgeforde M. Inside Java 2 Platform Security-Architecture, API Design, and Implementation (2nd edn). Addison-Wesley: Reading, MA, 2003.
- 
-
-\end{thebibliography}
+Apart from the inherited limitations from OSGI, another limitation of the architecture comes from the fact that all plug-ins are reloaded before each execution of a workflow. This is done in case the installed plug-ins are changed between two workflow executions. The consequence is the caused delay for reloading the components before each workflow execution. Even though this delay might be considered minute for most scenarios it can cause reduced performance in the case where large number of workflows with short execution time has to be executed in a short amount of time. In future, this limitation can be addressed by establishing communication mechanism between the workfow engine and the plug-in management component. In this way when a change is made to the plug-ins, the workflow engine marks them as dirty and only then it finds a suitable moment to reload and apply the changes. Additionally, \cite{nikolov2009recoverable} also proposes approach for reducing the time needed to reload the components in OSGI.

@@ -65,7 +65,7 @@ All data in RDF Gears is presented in the RGL format and therefore, the intuitiv
 
 \subsubsection{Existing approaches}
 
-After rigorous research we did not find any existing solutions that can solve our requirements. However, we discovered that Object/Relational Mapping (ORM) frameworks provide similar functionality to what we are looking for. Basically, they provide a methodology and mechanism for object-oriented systems to hold their long-term data(expressed as programming objects) in a relational database and later have it back to objects when it is needed \cite{Neil}. ORM frameworks provide a level of abstraction over the process of storing data and in this way users can interact with the data in the form of objects and they are not required to know details about the underling representation of the data. 
+After rigorous research we did not find any existing solutions that can solve our requirements. However, we discovered that Object/Relational Mapping (ORM) frameworks provide similar functionality to what we are looking for. Basically, they provide a methodology and mechanism for object-oriented systems to hold their long-term data(expressed as programming objects) in a relational database and later have it back to objects when it is needed \cite{o2008object}. ORM frameworks provide a level of abstraction over the process of storing data and in this way users can interact with the data in the form of objects and they are not required to know details about the underling representation of the data. 
 
 Applying the same approach for our RGL entities seem to completely satisfy our requirements. However, in order to exploit that idea we have two options. The first one is to implement and ORM solution from scratch and the other one is to extend/adapt existing ORM solution so that it is able to deal with the RGL entities. In general, reusing a popular and widely used solution might be beneficial because it is likely it is heavily tested(at least from all the engineers using it) and thus, provide higher quality. 
 
@@ -116,7 +116,7 @@ This approach does not suffer from the problems of the first approach because da
 
 \subsubsection{Virtual entities}
 
-JPA expects that each entity will have its own class representing it but our entities are virtual and there are no specific Java classes that represent each of them. One solution to this problem would be to generate these classes on runtime. However, this approach is complex and error prone. Therefore, investigating the capabilities of different engines implementing the JPA specification relieved a promising feature in Hibernate called "Dynamic models" \cite{King10}. It basically allows engineers to define the mapping logic into a special mapping XML file and on runtime present the entities in the form Java collections(Maps, Lists, Sets, etc.). Table \ref{tbl:rgl2java} shows how U-Sem entities can be expressed in terms of Java collections. This approach requires that every time when an entity is defined we have to build the XML mapping file and on runtime convert the RGL entities into Java collections and use JPA to store them into the database.
+JPA expects that each entity will have its own class representing it but our entities are virtual and there are no specific Java classes that represent each of them. One solution to this problem would be to generate these classes on runtime. However, this approach is complex and error prone. Therefore, investigating the capabilities of different engines implementing the JPA specification relieved a promising feature in Hibernate called "Dynamic models" \cite{king2010hibernate}. It basically allows engineers to define the mapping logic into a special mapping XML file and on runtime present the entities in the form Java collections(Maps, Lists, Sets, etc.). Table \ref{tbl:rgl2java} shows how U-Sem entities can be expressed in terms of Java collections. This approach requires that every time when an entity is defined we have to build the XML mapping file and on runtime convert the RGL entities into Java collections and use JPA to store them into the database.
 
 \begin{table}[h]
     \begin{tabular}{ | l | l |}
@@ -144,7 +144,7 @@ Finally, we have to identify how each of the required data manipulation operatio
 \begin{itemize}
 	\item \textit{Insert} - this component is responsible to insert an entity into the database. The user has to provide the name of the entity that has to be stored and the data itself.
 	
-	\item \textit{Query} - this component is responsible to enable engineers to query data. JPA provides JPQL, a special high level query language which omits details about the internal representation of the stored data \cite{JPQL}. Because of the direct mapping from RGL to JPA entities all possible JPQL query operations on the predefined entities are supported. The only exception is the additional \textit{id} field. In order to make it transparent to the users it is named "\$id\$"(hibernate uses this notation to identify service fields) and using this field in queries is forbidden.
+	\item \textit{Query} - this component is responsible to enable engineers to query data. JPA provides JPQL, a special high level query language which omits details about the internal representation of the stored data \cite{linwood2010beginning}. Because of the direct mapping from RGL to JPA entities all possible JPQL query operations on the predefined entities are supported. The only exception is the additional \textit{id} field. In order to make it transparent to the users it is named "\$id\$"(hibernate uses this notation to identify service fields) and using this field in queries is forbidden.
 	
 	\item \textit{Delete} - this component is responsible to delete data from the database. Normally in JPA delete functionality relies on ids, but since we do not have this in the semantics we provide an alternative approach. In this case, users have to provide a query that selects all entities/sub-entities that have to be deleted. Users are responsible to make sure that the query will produce only the needed results.
 	
@@ -152,17 +152,17 @@ Finally, we have to identify how each of the required data manipulation operatio
 \end{itemize}
 
 \subsection{Multi-tenancy}
-The second main challenge that we have to solve is to enable multiple engineers to work with the solution simultaneously. In literature this is referred to as multi-tenancy. It has significantly increased its popularity in recent years as a results of the advancements in cloud computing and database as a service in particular \cite{Hui}. 
+The second main challenge that we have to solve is to enable multiple engineers to work with the solution simultaneously. In literature this is referred to as multi-tenancy. It has significantly increased its popularity in recent years as a results of the advancements in cloud computing and database as a service in particular \cite{hui2009supporting}. 
 
 Designing the solution we have to take into account the following things: how to organize the data into the database, how to enable collaboration and how to manage access control.
 
 \subsubsection{Database Organization}
-There are three main approaches for designing multi-tenant solution \cite{Hui}:
+There are three main approaches for designing multi-tenant solution \cite{hui2009supporting}:
 
 \begin{itemize}
 	\item \textit{Independent Databases and Independent Database Instances (IDII)} - in this approach users share only the hardware(server). For each user an independent database instance is running. This approach provides good data isolation and security but maintenance cost is significantly increased as a result of the multiple running instances. Additionally, collaboration between engineers is problematic because of the difficulty to execute queries on data that is spread over several databases.  
 	
-	\item \textit{Independent Tables and Shared Database Instances (ITSI)} - in this approach users share the hardware but also the database instance. Each user has private tables(user id is usually appended at the beginning of the table name \cite{Hui}). This approach reduces the maintenance cost but still the number of tables increases linearly with the number of users. Collaboration is possible but querying data relating to all users he has to be done by uniting the data from the tables of each user. Another disadvantage of this approach is that because the table names are different for each user we also need a separate JPA mapping for each user with increases complexity additionally.
+	\item \textit{Independent Tables and Shared Database Instances (ITSI)} - in this approach users share the hardware but also the database instance. Each user has private tables(user id is usually appended at the beginning of the table name \cite{hui2009supporting}). This approach reduces the maintenance cost but still the number of tables increases linearly with the number of users. Collaboration is possible but querying data relating to all users he has to be done by uniting the data from the tables of each user. Another disadvantage of this approach is that because the table names are different for each user we also need a separate JPA mapping for each user with increases complexity additionally.
 	
 	\item \textit{Shared Tables and Shared Database Instances (STSI)} - in this approach, all users share the db instances as well as the tables. In this approach the number of tables does not increase when the number of users increase. As a result the maintenance cost is reduced, queering is simplified(no unions required) and JPA mapping is straight forward. However, this approach has some disadvantages. First, engineers are responsible to maintain the required level of isolation between different users(usually a column indicating the owner of the data is required and additional where clause when querying for particular user). Second, tables contain the data for all users which may lead to decrease in performance.
 	
@@ -171,7 +171,7 @@ There are three main approaches for designing multi-tenant solution \cite{Hui}:
 Discussing the advantages and disadvantages of all the approaches above, we decided to use the STSI because it is easy to map to JPA, enables collaboration, simplifies querying and is easier to maintain.    
 
 \subsubsection{Collaboration}
-The ability for engineers building workflows to collaborate and reuse each others data is essential \cite{Lu}. Choosing STSI organization makes it easy for engineers to work with the data of the others. However, there are several issues that has to be discussed and addressed:
+The ability for engineers building workflows to collaborate and reuse each others data is essential \cite{lu2009collaborative}. Choosing STSI organization makes it easy for engineers to work with the data of the others. However, there are several issues that has to be discussed and addressed:
 
 \begin{itemize}
 
@@ -190,7 +190,7 @@ The solution has to be able to enforce the sharing options of the entities and m
 \begin{itemize}
 	\item \textit{Above JPA} - our solution wraps around the JPA engine and thus, we can control all the requests that it receives. We can provide functionality that validates if the user has the needed permissions to execute that functionality. However, from engineering perspective doing this will be hard since JPA(JPQL) allows engineers to construct relatively complex queries and building a functionality that pareses this queries is not a trivial job to do and significantly increases the risk of security wholes.
 	
-	\item \textit{Database level} - the second option is to make the database enforce the security policies. We think that this approach is much easier because databases already provide well established access control mechanisms \cite{Olson08}. The only think that we have do is to translate the security policy of our solution to the database language and set them when an entity is created or modified. As a result, the database will stop the JPA accessing data that it is not authorised to access.
+	\item \textit{Database level} - the second option is to make the database enforce the security policies. We think that this approach is much easier because databases already provide well established access control mechanisms \cite{olson2008formal}. The only think that we have do is to translate the security policy of our solution to the database language and set them when an entity is created or modified. As a result, the database will stop the JPA accessing data that it is not authorised to access.
 \end{itemize}
 
 \subsection{Components with side effects in RDF Gears}
@@ -349,7 +349,7 @@ Secondly, every time the required resources for the data store interaction(entit
 
 \subsubsection{Solution}
 
-In order to solve the problem we propose a solution that is based on synchronization between the processes. The solution is based on the \textit{Reader-Writer Lock} idea. It extends mutual exclusion locks by enabling concurrent read access to a shared resource but requires exclusive access for write operations \cite{Lev}.
+In order to solve the problem we propose a solution that is based on synchronization between the processes. The solution is based on the \textit{Reader-Writer Lock} idea. It extends mutual exclusion locks by enabling concurrent read access to a shared resource but requires exclusive access for write operations \cite{lev2009scalable}.
 
 Our solution maps to the \textit{Reader-Writer Lock} idea as follows:
 \begin{itemize}
@@ -359,7 +359,7 @@ Our solution maps to the \textit{Reader-Writer Lock} idea as follows:
 \end{itemize}
 As a result, multiple workflows can be executed simultaneously but when a change to the entities is needed it is executed exclusively. Therefore, the workflow engine is protected against loading the resources while they are inconsistent.
 
-However, the standard \textit{Reader-Writer Lock} in Java works only within the virtual machine \cite{javadocs}. In our case we have to synchronize entire processes. Our research showed that there are already existing tools that provide this functionality \cite{Hernane}. The tool that is used in the proposed solution is Terracotta \cite{terracotta}. It introduces a process that is responsible for the lock and the other processes communicate with it in order to obtain the lock and use the resources.
+However, the standard \textit{Reader-Writer Lock} in Java works only within the virtual machine \footnote{http://docs.oracle.com/}. In our case we have to synchronize entire processes. Our research showed that there are already existing tools that provide this functionality \cite{hernane2012dynamic}. The tool that is used in the proposed solution is Terracotta \footnote{http://terracotta.org/}. It introduces a process that is responsible for the lock and the other processes communicate with it in order to obtain the lock and use the resources.
 
 
 \section{Implementation}
@@ -492,28 +492,3 @@ In this section we identify the limitations of the proposed architecture and we 
 
 \end{itemize}
 
-\begin{thebibliography}{99}
-
-\bibitem{Neil} Object/Relational Mapping 2008: Hibernate and the Entity Data Model (EDM)
-
-\bibitem{Hui} Supporting Database Applications as a Service
-
-\bibitem{Feliksik} Eric Feliksik, RDF Gears, a data integration framework for the Semantic Web
-
-\bibitem{Lu} Shiyong Lu, Jia Zhang, Collaborative Scientific Workflows, 2009
-
-\bibitem{Lev} Y Lev, V Luchangco, M Olszewski, Scalable Reader-Writer Locks, 2009
-
-\bibitem{terracotta} http://terracotta.org/
-
-\bibitem{javadocs} http://docs.oracle.com/
-
-\bibitem{Hernane} SL Hernane, J Gustedt, A Dynamic Distributed Algorithm for Read Write Locks . 2012
-
-\bibitem{JPQL} J Linwood, D Minter, Searches and Queries, Beginning Hibernate, 2010 - Springer
-
-\bibitem{King10} King, Gavin and Bauer, Hibernate: Relational Persistence For Idiomatic Java ,2010
-
-\bibitem{Olson08} Olson, Lars E and Gunter, A formal framework for reflective database access control policies, 2008
-
-\end{thebibliography}

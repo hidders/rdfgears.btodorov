@@ -15,99 +15,96 @@
 \contentsline {paragraph}{RDF Gears Engine}{5}
 \contentsline {subsubsection}{Type System}{6}
 \contentsline {subsubsection}{Optimizations}{6}
-\contentsline {chapter}{Bibliography}{9}
-\contentsline {chapter}{\chapternumberline {3}Problem definition}{11}
-\contentsline {section}{\numberline {3.1}Requirements gathering}{11}
-\contentsline {subsection}{\numberline {3.1.1}Interviews}{11}
-\contentsline {subsection}{\numberline {3.1.2}Identified features}{12}
-\contentsline {section}{\numberline {3.2}Feature prioritization}{13}
-\contentsline {subsection}{\numberline {3.2.1}Features prioritization using AHP}{13}
-\contentsline {section}{\numberline {3.3}Plug-in Environment}{14}
-\contentsline {section}{\numberline {3.4}Data Management}{16}
-\contentsline {section}{\numberline {3.5}Conclusion}{18}
-\contentsline {chapter}{Bibliography}{19}
-\contentsline {chapter}{\chapternumberline {4}Plug-in Environment}{21}
-\contentsline {section}{\numberline {4.1}Requirements}{21}
-\contentsline {subsection}{\numberline {4.1.1}Functional Scenarios}{21}
-\contentsline {subsection}{\numberline {4.1.2}Non-functional requirements}{22}
-\contentsline {section}{\numberline {4.2}Approach}{22}
-\contentsline {subsection}{\numberline {4.2.1}Component-based software engineering}{23}
-\contentsline {subsection}{\numberline {4.2.2}Component model}{23}
-\contentsline {paragraph}{Interfaces}{24}
-\contentsline {paragraph}{Components}{24}
-\contentsline {paragraph}{Coordinator}{24}
-\contentsline {subsection}{\numberline {4.2.3}State of the art component model implementations}{25}
-\contentsline {subsection}{\numberline {4.2.4}OSGI}{25}
-\contentsline {paragraph}{Interfaces}{26}
-\contentsline {paragraph}{Components}{26}
-\contentsline {paragraph}{Coordinator}{26}
-\contentsline {subsubsection}{Security}{27}
-\contentsline {subsection}{\numberline {4.2.5}Collaboration between users}{27}
-\contentsline {subsection}{\numberline {4.2.6}Software development kit}{28}
-\contentsline {section}{\numberline {4.3}Architecture}{28}
-\contentsline {subsection}{\numberline {4.3.1}Context View}{29}
-\contentsline {paragraph}{Scientists}{29}
-\contentsline {paragraph}{Plug-in repository}{29}
-\contentsline {subsection}{\numberline {4.3.2}Interactions}{29}
-\contentsline {subsubsection}{Create U-Sem Plug-in process}{30}
-\contentsline {subsubsection}{Reuse shared plug-ins}{31}
-\contentsline {subsubsection}{Plug-in Management}{33}
-\contentsline {subsection}{\numberline {4.3.3}Functional view}{33}
-\contentsline {subsubsection}{High-level component organization}{34}
-\contentsline {subsubsection}{Plug-in admin}{36}
-\contentsline {subsubsection}{Plug-in access manager}{37}
-\contentsline {subsection}{\numberline {4.3.4}Concurrency view}{38}
-\contentsline {subsection}{\numberline {4.3.5}Deployment View}{40}
-\contentsline {section}{\numberline {4.4}Implementation}{40}
-\contentsline {section}{\numberline {4.5}Evaluation}{42}
-\contentsline {subsection}{\numberline {4.5.1}Functional requirements}{42}
-\contentsline {subsection}{\numberline {4.5.2}Non-functional requirements}{43}
-\contentsline {section}{\numberline {4.6}Limitations and Future Work}{44}
-\contentsline {chapter}{Bibliography}{47}
-\contentsline {chapter}{\chapternumberline {5}Data Management}{49}
-\contentsline {section}{\numberline {5.1}Requirements}{49}
-\contentsline {subsection}{\numberline {5.1.1}Functional Scenarios}{49}
-\contentsline {subsection}{\numberline {5.1.2}Non-functional requirements}{50}
-\contentsline {section}{\numberline {5.2}Challenges}{50}
-\contentsline {section}{\numberline {5.3}Approach}{50}
-\contentsline {subsection}{\numberline {5.3.1}Data storage and retrieval}{51}
-\contentsline {subsubsection}{Existing approaches}{51}
-\contentsline {subsubsection}{Model RGL entities in terms of JPA}{52}
-\contentsline {subsubsection}{Virtual entities}{53}
-\contentsline {subsubsection}{Dynamic entities}{54}
-\contentsline {subsubsection}{Operations}{54}
-\contentsline {subsection}{\numberline {5.3.2}Multi-tenancy}{55}
-\contentsline {subsubsection}{Database Organization}{55}
-\contentsline {subsubsection}{Collaboration}{56}
-\contentsline {subsubsection}{Access control}{56}
-\contentsline {subsection}{\numberline {5.3.3}Components with side effects in RDF Gears}{57}
-\contentsline {subsection}{\numberline {5.3.4}Integration with the plug-in environment}{57}
-\contentsline {section}{\numberline {5.4}Architecture}{58}
-\contentsline {subsection}{\numberline {5.4.1}Functional View}{58}
-\contentsline {subsection}{\numberline {5.4.2}High-level component organization}{58}
-\contentsline {subsection}{\numberline {5.4.3}Entities administration}{60}
-\contentsline {subsection}{\numberline {5.4.4}Entity Definition Manager}{61}
-\contentsline {subsection}{\numberline {5.4.5}Entity Manipulation Manager}{61}
-\contentsline {subsection}{\numberline {5.4.6}Concurrency View}{62}
-\contentsline {subsubsection}{Problems}{63}
-\contentsline {subsubsection}{Solution}{64}
-\contentsline {section}{\numberline {5.5}Implementation}{64}
-\contentsline {subsection}{\numberline {5.5.1}Entities definition admin UI}{64}
-\contentsline {subsection}{\numberline {5.5.2}RDFGeards workflow configuration}{64}
-\contentsline {subsection}{\numberline {5.5.3}Extended workflow compiler}{66}
-\contentsline {section}{\numberline {5.6}Evaluation}{66}
-\contentsline {section}{\numberline {5.7}Limitations and Future work}{68}
-\contentsline {chapter}{Bibliography}{71}
-\contentsline {chapter}{\chapternumberline {6}Conclusions and Future Work}{73}
-\contentsline {section}{\numberline {6.1}Contributions}{73}
-\contentsline {section}{\numberline {6.2}Conclusions}{73}
-\contentsline {section}{\numberline {6.3}Discussion/Reflection}{73}
-\contentsline {section}{\numberline {6.4}Future work}{74}
-\contentsline {appendix}{\chapternumberline {A}Glossary}{75}
-\contentsline {appendix}{\chapternumberline {B}Requirements and Guidelines}{77}
-\contentsline {section}{\numberline {B.1}Requirements}{77}
-\contentsline {subsection}{\numberline {B.1.1}Layout}{77}
-\contentsline {subsection}{\numberline {B.1.2}Content}{77}
-\contentsline {subsection}{\numberline {B.1.3}Bibliography}{78}
-\contentsline {section}{\numberline {B.2}Guidelines}{78}
-\contentsline {appendix}{\chapternumberline {C}Prioritization questionnaire}{79}
+\contentsline {chapter}{\chapternumberline {3}Problem definition}{9}
+\contentsline {section}{\numberline {3.1}Requirements gathering}{9}
+\contentsline {subsection}{\numberline {3.1.1}Interviews}{9}
+\contentsline {subsection}{\numberline {3.1.2}Identified features}{10}
+\contentsline {section}{\numberline {3.2}Feature prioritization}{11}
+\contentsline {subsection}{\numberline {3.2.1}Features prioritization using AHP}{11}
+\contentsline {section}{\numberline {3.3}Plug-in Environment}{12}
+\contentsline {section}{\numberline {3.4}Data Management}{14}
+\contentsline {section}{\numberline {3.5}Conclusion}{16}
+\contentsline {chapter}{\chapternumberline {4}Plug-in Environment}{17}
+\contentsline {section}{\numberline {4.1}Requirements}{17}
+\contentsline {subsection}{\numberline {4.1.1}Functional Scenarios}{17}
+\contentsline {subsection}{\numberline {4.1.2}Non-functional requirements}{18}
+\contentsline {section}{\numberline {4.2}Approach}{18}
+\contentsline {subsection}{\numberline {4.2.1}Component-based software engineering}{19}
+\contentsline {subsection}{\numberline {4.2.2}Component model}{19}
+\contentsline {paragraph}{Interfaces}{20}
+\contentsline {paragraph}{Components}{20}
+\contentsline {paragraph}{Coordinator}{20}
+\contentsline {subsection}{\numberline {4.2.3}State of the art component model implementations}{21}
+\contentsline {subsection}{\numberline {4.2.4}OSGI}{22}
+\contentsline {paragraph}{Interfaces}{22}
+\contentsline {paragraph}{Components}{22}
+\contentsline {paragraph}{Coordinator}{22}
+\contentsline {subsubsection}{Security}{23}
+\contentsline {subsection}{\numberline {4.2.5}Collaboration between users}{23}
+\contentsline {subsection}{\numberline {4.2.6}Software development kit}{24}
+\contentsline {section}{\numberline {4.3}Architecture}{24}
+\contentsline {subsection}{\numberline {4.3.1}Context View}{25}
+\contentsline {paragraph}{Scientists}{25}
+\contentsline {paragraph}{Plug-in repository}{25}
+\contentsline {subsection}{\numberline {4.3.2}Interactions}{26}
+\contentsline {subsubsection}{Create U-Sem Plug-in process}{26}
+\contentsline {subsubsection}{Reuse shared plug-ins}{28}
+\contentsline {subsubsection}{Plug-in Management}{28}
+\contentsline {subsection}{\numberline {4.3.3}Functional view}{28}
+\contentsline {subsubsection}{High-level component organization}{31}
+\contentsline {subsubsection}{Plug-in admin}{32}
+\contentsline {subsubsection}{Plug-in access manager}{34}
+\contentsline {subsection}{\numberline {4.3.4}Concurrency view}{35}
+\contentsline {subsection}{\numberline {4.3.5}Deployment View}{36}
+\contentsline {section}{\numberline {4.4}Implementation}{36}
+\contentsline {section}{\numberline {4.5}Evaluation}{39}
+\contentsline {subsection}{\numberline {4.5.1}Functional requirements}{39}
+\contentsline {subsection}{\numberline {4.5.2}Non-functional requirements}{39}
+\contentsline {section}{\numberline {4.6}Limitations and Future Work}{40}
+\contentsline {chapter}{\chapternumberline {5}Data Management}{43}
+\contentsline {section}{\numberline {5.1}Requirements}{43}
+\contentsline {subsection}{\numberline {5.1.1}Functional Scenarios}{43}
+\contentsline {subsection}{\numberline {5.1.2}Non-functional requirements}{44}
+\contentsline {section}{\numberline {5.2}Challenges}{44}
+\contentsline {section}{\numberline {5.3}Approach}{44}
+\contentsline {subsection}{\numberline {5.3.1}Data storage and retrieval}{45}
+\contentsline {subsubsection}{Existing approaches}{45}
+\contentsline {subsubsection}{Model RGL entities in terms of JPA}{46}
+\contentsline {subsubsection}{Virtual entities}{47}
+\contentsline {subsubsection}{Dynamic entities}{48}
+\contentsline {subsubsection}{Operations}{48}
+\contentsline {subsection}{\numberline {5.3.2}Multi-tenancy}{49}
+\contentsline {subsubsection}{Database Organization}{49}
+\contentsline {subsubsection}{Collaboration}{50}
+\contentsline {subsubsection}{Access control}{50}
+\contentsline {subsection}{\numberline {5.3.3}Components with side effects in RDF Gears}{51}
+\contentsline {subsection}{\numberline {5.3.4}Integration with the plug-in environment}{51}
+\contentsline {section}{\numberline {5.4}Architecture}{52}
+\contentsline {subsection}{\numberline {5.4.1}Functional View}{52}
+\contentsline {subsection}{\numberline {5.4.2}High-level component organization}{52}
+\contentsline {subsection}{\numberline {5.4.3}Entities administration}{54}
+\contentsline {subsection}{\numberline {5.4.4}Entity Definition Manager}{55}
+\contentsline {subsection}{\numberline {5.4.5}Entity Manipulation Manager}{55}
+\contentsline {subsection}{\numberline {5.4.6}Concurrency View}{56}
+\contentsline {subsubsection}{Problems}{57}
+\contentsline {subsubsection}{Solution}{58}
+\contentsline {section}{\numberline {5.5}Implementation}{58}
+\contentsline {subsection}{\numberline {5.5.1}Entities definition admin UI}{58}
+\contentsline {subsection}{\numberline {5.5.2}RDFGeards workflow configuration}{59}
+\contentsline {subsection}{\numberline {5.5.3}Extended workflow compiler}{60}
+\contentsline {section}{\numberline {5.6}Evaluation}{60}
+\contentsline {section}{\numberline {5.7}Limitations and Future work}{63}
+\contentsline {chapter}{\chapternumberline {6}Conclusions and Future Work}{65}
+\contentsline {section}{\numberline {6.1}Contributions}{65}
+\contentsline {section}{\numberline {6.2}Conclusions}{65}
+\contentsline {section}{\numberline {6.3}Discussion/Reflection}{65}
+\contentsline {section}{\numberline {6.4}Future work}{66}
+\contentsline {chapter}{Bibliography}{67}
+\contentsline {appendix}{\chapternumberline {A}Glossary}{73}
+\contentsline {appendix}{\chapternumberline {B}Requirements and Guidelines}{75}
+\contentsline {section}{\numberline {B.1}Requirements}{75}
+\contentsline {subsection}{\numberline {B.1.1}Layout}{75}
+\contentsline {subsection}{\numberline {B.1.2}Content}{75}
+\contentsline {subsection}{\numberline {B.1.3}Bibliography}{76}
+\contentsline {section}{\numberline {B.2}Guidelines}{76}
+\contentsline {appendix}{\chapternumberline {C}Prioritization questionnaire}{77}

@@ -1,0 +1,343 @@
+\begin{thebibliography}{10}
+
+\bibitem{abel2011u}
+Fabian Abel, Ilknur Celik, Claudia Hauff, Laura Hollink, and Geert-Jan Houben.
+\newblock U-sem: Semantic enrichment, user modeling and mining of usage data on
+  the social web.
+\newblock {\em In 1st International Workshop on Usage Analysis and the Web of
+  Data (USEWOD2011) at the 20th International World Wide Web Conference (WWW
+  2011), Hydebarabad, India}, 2011.
+
+\bibitem{abel2010interweaving}
+Fabian Abel, Nicola Henze, Eelco Herder, and Daniel Krause.
+\newblock Interweaving public user profiles on the web.
+\newblock In {\em User Modeling, Adaptation, and Personalization}, pages
+  16--27. Springer, 2010.
+
+\bibitem{allen1979plan}
+James~Frederick Allen.
+\newblock A plan-based approach to speech act recognition.
+\newblock Technical report, Dept. of Computer Science, University of Toronto,
+  Canada, 1979.
+
+\bibitem{assad2007personisad}
+Mark Assad, David~J Carmichael, Judy Kay, and Bob Kummerfeld.
+\newblock Personisad: Distributed, active, scrutable model framework for
+  context-aware services.
+\newblock In {\em Pervasive Computing}, pages 55--72. Springer, 2007.
+
+\bibitem{bruneton2006fractal}
+Eric Bruneton, Thierry Coupaye, Matthieu Leclercq, Vivien Qu{\'e}ma, and
+  Jean-Bernard Stefani.
+\newblock The fractal component model and its support in java.
+\newblock {\em Software: Practice and Experience}, 36(11-12):1257--1284, 2006.
+
+\bibitem{brusilovsky2004knowledgetree}
+Peter Brusilovsky.
+\newblock Knowledgetree: A distributed architecture for adaptive e-learning.
+\newblock In {\em Proceedings of the 13th international World Wide Web
+  conference on Alternate track papers \& posters}, pages 104--113. ACM, 2004.
+
+\bibitem{brusilovsky2007adaptive}
+Peter Brusilovsky, Alfred Kobsa, and Wolfgang Nejdl.
+\newblock {\em The adaptive web: methods and strategies of web
+  personalization}, volume 4321.
+\newblock Springer-Verlag New York Incorporated, 2007.
+
+\bibitem{cai2000component}
+Xia Cai, Michael~R Lyu, Kam-Fai Wong, and Roy Ko.
+\newblock Component-based software engineering: technologies, development
+  frameworks, and quality assurance schemes.
+\newblock In {\em Software Engineering Conference, 2000. APSEC 2000.
+  Proceedings. Seventh Asia-Pacific}, pages 372--379. IEEE, 2000.
+
+\bibitem{chen2009refinement}
+Zhenbang Chen, Zhiming Liu, Anders~P Ravn, Volker Stolz, and Naijun Zhan.
+\newblock Refinement and verification in component-based model-driven design.
+\newblock {\em Science of Computer Programming}, 74(4):168--196, 2009.
+
+\bibitem{cheong2009integrating}
+Marc Cheong and Vincent Lee.
+\newblock Integrating web-based intelligence retrieval and decision-making from
+  the twitter trends knowledge base.
+\newblock In {\em Proceedings of the 2nd ACM workshop on Social web search and
+  mining}, pages 1--8. ACM, 2009.
+
+\bibitem{cohen1979elements}
+Philip~R Cohen and C~Raymond Perrault.
+\newblock Elements of a plan-based theory of speech acts.
+\newblock {\em Cognitive science}, 3(3):177--212, 1979.
+
+\bibitem{dean1996java}
+Drew Dean, Edward~W Felten, and Dan~S Wallach.
+\newblock Java security: From hotjava to netscape and beyond.
+\newblock In {\em Security and Privacy, 1996. Proceedings., 1996 IEEE Symposium
+  on}, pages 190--200. IEEE, 1996.
+
+\bibitem{decker2008interaction}
+Gero Decker and Alistair Barros.
+\newblock Interaction modeling using bpmn.
+\newblock In {\em Business Process Management Workshops}, pages 208--219.
+  Springer, 2008.
+
+\bibitem{dieste2008understanding}
+Oscar Dieste, Natalia Juristo, and Forrest Shull.
+\newblock Understanding the customer: what do we know about requirements
+  elicitation?
+\newblock {\em Software, IEEE}, 25(2):11--13, 2008.
+
+\bibitem{eder1994coupling}
+Johann Eder, Gerti Kappel, and Michael Schrefl.
+\newblock Coupling and cohesion in object-oriented systems.
+\newblock {\em Technical Reprot, University of Klagenfurt, Austria}, 1994.
+
+\bibitem{feliksik2011}
+E.Feliksik.
+\newblock Rdf gears, a data integration framework for the semantic web.
+\newblock Master's thesis, TU Delft, Netherlands, 2011.
+
+\bibitem{geoffray2009jvm}
+Nicolas Geoffray, Ga{\"e}l Thomas, Gilles Muller, Pierre Parrend, St{\'e}phane
+  Fr{\'e}not, and Bertil Folliot.
+\newblock I-jvm: a java virtual machine for component isolation in osgi.
+\newblock In {\em Dependable Systems \& Networks, 2009. DSN'09. IEEE/IFIP
+  International Conference on}, pages 544--553. IEEE, 2009.
+
+\bibitem{gong2003inside}
+Li~Gong, Gary~W Ellison, and Mary Dageforde.
+\newblock {\em Inside Java 2 platform security: architecture, API design, and
+  implementation}.
+\newblock Addison-Wesley Professional, 2003.
+
+\bibitem{hernane2012dynamic}
+Soumeya~Leila Hernane, Jens Gustedt, and Mohamed Benyettou.
+\newblock A dynamic distributed algorithm for read write locks.
+\newblock In {\em Parallel, Distributed and Network-Based Processing (PDP),
+  2012 20th Euromicro International Conference on}, pages 180--184. IEEE, 2012.
+
+\bibitem{hickey2004unified}
+Ann~M Hickey and Alan~M Davis.
+\newblock A unified model of requirements elicitation.
+\newblock {\em Journal of Management Information Systems}, 20(4):65--84, 2004.
+
+\bibitem{hui2009supporting}
+Mei Hui, Dawei Jiang, Guoliang Li, and Yuan Zhou.
+\newblock Supporting database applications as a service.
+\newblock In {\em Data Engineering, 2009. ICDE'09. IEEE 25th International
+  Conference on}, pages 832--843. IEEE, 2009.
+
+\bibitem{hull2006taverna}
+Duncan Hull, Katy Wolstencroft, Robert Stevens, Carole Goble, Mathew~R Pocock,
+  Peter Li, and Tom Oinn.
+\newblock Taverna: a tool for building and running workflows of services.
+\newblock {\em Nucleic acids research}, 34(suppl 2):W729--W732, 2006.
+
+\bibitem{jifeng2005component}
+He~Jifeng, Xiaoshan Li, and Zhiming Liu.
+\newblock Component-based software engineering.
+\newblock In {\em Theoretical Aspects of Computing--ICTAC 2005}, pages 70--95.
+  Springer, 2005.
+
+\bibitem{kaplan2010users}
+Andreas~M Kaplan and Michael Haenlein.
+\newblock Users of the world, unite! the challenges and opportunities of social
+  media.
+\newblock {\em Business horizons}, 53(1):59--68, 2010.
+
+\bibitem{karlsson1997cost}
+Joachim Karlsson and Kevin Ryan.
+\newblock A cost-value approach for prioritizing requirements.
+\newblock {\em Software, IEEE}, 14(5):67--74, 1997.
+
+\bibitem{karlsson1998evaluation}
+Joachim Karlsson, Claes Wohlin, and Bj{\"o}rn Regnell.
+\newblock An evaluation of methods for prioritizing software requirements.
+\newblock {\em Information and Software Technology}, 39(14):939--947, 1998.
+
+\bibitem{king2010hibernate}
+Gavin King, Christian Bauer, M~Rydahl, Emmanuel Bernard, Steve Ebersole, and
+  H~FERENTSCHIK.
+\newblock Hibernate: Relational persistence for idiomatic java.
+\newblock Technical report, Technical Report, Available online at: http://www.
+  hibernate. org/hib\_docs/v3/reference/en/html\_sin gle, 2010.
+
+\bibitem{kobsa2001generic}
+Alfred Kobsa.
+\newblock Generic user modeling systems.
+\newblock {\em User modeling and user-adapted interaction}, 11(1-2):49--63,
+  2001.
+
+\bibitem{kobsa2006ldap}
+Alfred Kobsa and Josef Fink.
+\newblock An ldap-based user modeling server and its evaluation.
+\newblock {\em User Modeling and User-Adapted Interaction}, 16(2):129--169,
+  2006.
+
+\bibitem{lau2007software}
+Kung-Kiu Lau and Zheng Wang.
+\newblock Software component models.
+\newblock {\em Software Engineering, IEEE Transactions on}, 33(10):709--724,
+  2007.
+
+\bibitem{lev2009scalable}
+Yossi Lev, Victor Luchangco, and Marek Olszewski.
+\newblock Scalable reader-writer locks.
+\newblock In {\em Proceedings of the twenty-first annual symposium on
+  Parallelism in algorithms and architectures}, pages 101--110. ACM, 2009.
+
+\bibitem{linwood2010beginning}
+Jeff Linwood and Dave Minter.
+\newblock {\em Beginning Hibernate}.
+\newblock Apress, 2010.
+
+\bibitem{lu2009collaborative}
+Shiyong Lu and Jia Zhang.
+\newblock Collaborative scientific workflows.
+\newblock In {\em Web Services, 2009. ICWS 2009. IEEE International Conference
+  on}, pages 527--534. IEEE, 2009.
+
+\bibitem{ludascher2006scientific}
+Bertram Ludascher, Ilkay Altintas, Chad Berkley, Dan Higgins, Efrat Jaeger,
+  Matthew Jones, Edward~A Lee, Jing Tao, and Yang Zhao.
+\newblock Scientific workflow management and the kepler system.
+\newblock {\em Concurrency and Computation: Practice and Experience},
+  18(10):1039--1065, 2006.
+
+\bibitem{miller1998introduction}
+Eric Miller.
+\newblock An introduction to the resource description framework.
+\newblock {\em Bulletin of the American Society for Information Science and
+  Technology}, 25(1):15--19, 1998.
+
+\bibitem{moisiadis2002fundamentals}
+Frank Moisiadis.
+\newblock The fundamentals of prioritising requirements.
+\newblock In {\em Proc Systems Engineering, Test \& Evaluation Conf, Sydney,
+  Australia}, pages 108--119. Citeseer, 2002.
+
+\bibitem{nikolov2009recoverable}
+Vladimir Nikolov, R{\"u}diger Kapitza, and Franz~J Hauck.
+\newblock Recoverable class loaders for a fast restart of java applications.
+\newblock {\em Mobile Networks and Applications}, 14(1):53--64, 2009.
+
+\bibitem{olson2008formal}
+Lars~E Olson, Carl~A Gunter, and P~Madhusudan.
+\newblock A formal framework for reflective database access control policies.
+\newblock In {\em Proceedings of the 15th ACM conference on Computer and
+  communications security}, pages 289--298. ACM, 2008.
+
+\bibitem{o2008object}
+Elizabeth~J O'Neil.
+\newblock Object/relational mapping 2008: hibernate and the entity data model
+  (edm).
+\newblock In {\em Proceedings of the 2008 ACM SIGMOD international conference
+  on Management of data}, pages 1351--1356. ACM, 2008.
+
+\bibitem{orwant1994heterogeneous}
+Jon Orwant.
+\newblock Heterogeneous learning in the doppelg{\"a}nger user modeling system.
+\newblock {\em User Modeling and User-Adapted Interaction}, 4(2):107--130,
+  1994.
+
+\bibitem{parnas1972criteria}
+David~Lorge Parnas.
+\newblock On the criteria to be used in decomposing systems into modules.
+\newblock {\em Communications of the ACM}, 15(12):1053--1058, 1972.
+
+\bibitem{parrend2009security}
+Pierre Parrend and St{\'e}phane Fr{\'e}not.
+\newblock Security benchmarks of osgi platforms: toward hardened osgi.
+\newblock {\em Software: Practice and Experience}, 39(5):471--499, 2009.
+
+\bibitem{pour1998component}
+Gilda Pour.
+\newblock Component-based software development approach: new opportunities and
+  challenges.
+\newblock In {\em Technology of Object-Oriented Languages, 1998. TOOLS 26.
+  Proceedings}, pages 376--383. IEEE, 1998.
+
+\bibitem{pour1999enterprise}
+Gilda Pour.
+\newblock Enterprise javabeans, javabeans and xml expanding the possibilities
+  for web-based enterprise application development.
+\newblock In {\em Technology of Object-Oriented Languages and Systems, 1999.
+  TOOLS 31. Proceedings}, pages 282--291. IEEE, 1999.
+
+\bibitem{pour1999making}
+Gilda Pour, Martin Griss, and John Favaro.
+\newblock Making the transition to component-based enterprise software
+  development: Overcoming the obstacles-patterns for success.
+\newblock In {\em Technology of Object-Oriented Languages and Systems, 1999.
+  Proceedings of}, pages 419--419. IEEE, 1999.
+
+\bibitem{rich1979building}
+Elaine Rich.
+\newblock Building and exploiting user models.
+\newblock In {\em Proceedings of the 6th international joint conference on
+  Artificial intelligence-Volume 2}, pages 720--722. Morgan Kaufmann Publishers
+  Inc., 1979.
+
+\bibitem{rich1979user}
+Elaine Rich.
+\newblock User modeling via stereotypes.
+\newblock {\em Cognitive science}, 3(4):329--354, 1979.
+
+\bibitem{roper1990analytic}
+Gr~C Roper-Lowe and JA~Sharp.
+\newblock The analytic hierarchy process and its application to an information
+  technology decision.
+\newblock {\em Journal of the Operational Research Society}, pages 49--59,
+  1990.
+
+\bibitem{rozanski2011software}
+Nick Rozanski and E{\'o}in Woods.
+\newblock {\em Software systems architecture: working with stakeholders using
+  viewpoints and perspectives}.
+\newblock Addison-Wesley Professional, 2011.
+
+\bibitem{maro2011}
+Marojahan Sigiro.
+\newblock Dynamic user interface supporting type analysis for rdfgears.
+\newblock Master's thesis, TU Delft, Netherlands, 2011.
+
+\bibitem{srivastava2008modular}
+Saurabh Srivastava, Michael Hicks, Jeffrey~S Foster, and Patrick Jenkins.
+\newblock Modular information hiding and type-safe linking for c.
+\newblock {\em Software Engineering, IEEE Transactions on}, 34(3):357--376,
+  2008.
+
+\bibitem{sun2012jvm}
+Mengtao Sun and Gang Tan.
+\newblock Jvm-portable sandboxing of java's native libraries.
+\newblock In {\em Computer Security--ESORICS 2012}, pages 842--858. Springer,
+  2012.
+
+\bibitem{tao2012twinder}
+Ke~Tao, Fabian Abel, Claudia Hauff, and Geert-Jan Houben.
+\newblock Twinder: a search engine for twitter streams.
+\newblock In {\em Web Engineering}, pages 153--168. Springer, 2012.
+
+\bibitem{tavares2008gentle}
+Andre~LC Tavares and Marco~Tulio Valente.
+\newblock A gentle introduction to osgi.
+\newblock {\em ACM SIGSOFT Software Engineering Notes}, 33(5):8, 2008.
+
+\bibitem{wahlster1989user}
+Wolfgang Wahlster and Alfred Kobsa.
+\newblock {\em User models in dialog systems}.
+\newblock Springer, 1989.
+
+\bibitem{wohed2006suitability}
+Petia Wohed, Wil~MP van~der Aalst, Marlon Dumas, Arthur~HM ter Hofstede, and
+  Nick Russell.
+\newblock On the suitability of bpmn for business process modelling.
+\newblock In {\em Business Process Management}, pages 161--176. Springer, 2006.
+
+\bibitem{woods2009system}
+Eoin Woods and Nick Rozanski.
+\newblock The system context architectural viewpoint.
+\newblock In {\em Software Architecture, 2009 \& European Conference on
+  Software Architecture. WICSA/ECSA 2009. Joint Working IEEE/IFIP Conference
+  on}, pages 333--336. IEEE, 2009.
+
+\end{thebibliography}

@@ -1,0 +1,677 @@
+% This file was created with JabRef 2.9.2.
+% Encoding: Cp1252
+
+@ARTICLE{abel2011u,
+  author = {Abel, Fabian and Celik, Ilknur and Hauff, Claudia and Hollink, Laura
+	and Houben, Geert-Jan},
+  title = {U-sem: Semantic enrichment, user modeling and mining of usage data
+	on the social web},
+  journal = {In 1st International Workshop
+	
+	on Usage Analysis and the Web of Data (USEWOD2011) at the 20th International
+	
+	World Wide Web Conference (WWW 2011), Hydebarabad, India},
+  year = {2011},
+  owner = {btodorov},
+  timestamp = {2013.06.19}
+}
+
+@INCOLLECTION{abel2010interweaving,
+  author = {Abel, Fabian and Henze, Nicola and Herder, Eelco and Krause, Daniel},
+  title = {Interweaving public user profiles on the web},
+  booktitle = {User Modeling, Adaptation, and Personalization},
+  publisher = {Springer},
+  year = {2010},
+  pages = {16--27},
+  owner = {btodorov},
+  timestamp = {2013.06.19}
+}
+
+@TECHREPORT{allen1979plan,
+  author = {Allen, James Frederick},
+  title = {A plan-based approach to speech act recognition},
+  institution = {Dept. of Computer Science, University of Toronto, Canada},
+  year = {1979},
+  owner = {btodorov},
+  timestamp = {2013.06.19}
+}
+
+@INCOLLECTION{assad2007personisad,
+  author = {Assad, Mark and Carmichael, David J and Kay, Judy and Kummerfeld,
+	Bob},
+  title = {PersonisAD: Distributed, active, scrutable model framework for context-aware
+	services},
+  booktitle = {Pervasive Computing},
+  publisher = {Springer},
+  year = {2007},
+  pages = {55--72},
+  owner = {btodorov},
+  timestamp = {2013.06.19}
+}
+
+@ARTICLE{bruneton2006fractal,
+  author = {Bruneton, Eric and Coupaye, Thierry and Leclercq, Matthieu and Qu{\'e}ma,
+	Vivien and Stefani, Jean-Bernard},
+  title = {The fractal component model and its support in java},
+  journal = {Software: Practice and Experience},
+  year = {2006},
+  volume = {36},
+  pages = {1257--1284},
+  number = {11-12},
+  owner = {btodorov},
+  publisher = {Wiley Online Library},
+  timestamp = {2013.06.19}
+}
+
+@INPROCEEDINGS{brusilovsky2004knowledgetree,
+  author = {Brusilovsky, Peter},
+  title = {KnowledgeTree: A distributed architecture for adaptive e-learning},
+  booktitle = {Proceedings of the 13th international World Wide Web conference on
+	Alternate track papers \& posters},
+  year = {2004},
+  pages = {104--113},
+  organization = {ACM},
+  owner = {btodorov},
+  timestamp = {2013.06.19}
+}
+
+@BOOK{brusilovsky2007adaptive,
+  title = {The adaptive web: methods and strategies of web personalization},
+  publisher = {Springer-Verlag New York Incorporated},
+  year = {2007},
+  author = {Brusilovsky, Peter and Kobsa, Alfred and Nejdl, Wolfgang},
+  volume = {4321},
+  owner = {btodorov},
+  timestamp = {2013.06.19}
+}
+
+@INPROCEEDINGS{cai2000component,
+  author = {Cai, Xia and Lyu, Michael R and Wong, Kam-Fai and Ko, Roy},
+  title = {Component-based software engineering: technologies, development frameworks,
+	and quality assurance schemes},
+  booktitle = {Software Engineering Conference, 2000. APSEC 2000. Proceedings. Seventh
+	Asia-Pacific},
+  year = {2000},
+  pages = {372--379},
+  organization = {IEEE},
+  owner = {btodorov},
+  timestamp = {2013.06.19}
+}
+
+@ARTICLE{chen2009refinement,
+  author = {Chen, Zhenbang and Liu, Zhiming and Ravn, Anders P and Stolz, Volker
+	and Zhan, Naijun},
+  title = {Refinement and verification in component-based model-driven design},
+  journal = {Science of Computer Programming},
+  year = {2009},
+  volume = {74},
+  pages = {168--196},
+  number = {4},
+  owner = {btodorov},
+  publisher = {Elsevier},
+  timestamp = {2013.06.19}
+}
+
+@INPROCEEDINGS{cheong2009integrating,
+  author = {Cheong, Marc and Lee, Vincent},
+  title = {Integrating web-based intelligence retrieval and decision-making
+	from the twitter trends knowledge base},
+  booktitle = {Proceedings of the 2nd ACM workshop on Social web search and mining},
+  year = {2009},
+  pages = {1--8},
+  organization = {ACM},
+  owner = {btodorov},
+  timestamp = {2013.06.19}
+}
+
+@ARTICLE{cohen1979elements,
+  author = {Cohen, Philip R and Perrault, C Raymond},
+  title = {Elements of a plan-based theory of speech acts},
+  journal = {Cognitive science},
+  year = {1979},
+  volume = {3},
+  pages = {177--212},
+  number = {3},
+  owner = {btodorov},
+  publisher = {Elsevier},
+  timestamp = {2013.06.19}
+}
+
+@INPROCEEDINGS{dean1996java,
+  author = {Dean, Drew and Felten, Edward W and Wallach, Dan S},
+  title = {Java security: From HotJava to Netscape and beyond},
+  booktitle = {Security and Privacy, 1996. Proceedings., 1996 IEEE Symposium on},
+  year = {1996},
+  pages = {190--200},
+  organization = {IEEE},
+  owner = {btodorov},
+  timestamp = {2013.06.19}
+}
+
+@INPROCEEDINGS{decker2008interaction,
+  author = {Decker, Gero and Barros, Alistair},
+  title = {Interaction modeling using BPMN},
+  booktitle = {Business Process Management Workshops},
+  year = {2008},
+  pages = {208--219},
+  organization = {Springer},
+  owner = {btodorov},
+  timestamp = {2013.06.19}
+}
+
+@ARTICLE{dieste2008understanding,
+  author = {Dieste, Oscar and Juristo, Natalia and Shull, Forrest},
+  title = {Understanding the customer: what do we know about requirements elicitation?},
+  journal = {Software, IEEE},
+  year = {2008},
+  volume = {25},
+  pages = {11--13},
+  number = {2},
+  owner = {btodorov},
+  publisher = {IEEE},
+  timestamp = {2013.06.19}
+}
+
+@MASTERSTHESIS{feliksik2011,
+  author = {E.Feliksik},
+  title = {RDF Gears, a data integration framework for the Semantic Web},
+  school = {TU Delft, Netherlands},
+  year = {2011},
+  owner = {btodorov},
+  timestamp = {2013.06.19}
+}
+
+@ARTICLE{eder1994coupling,
+  author = {Eder, Johann and Kappel, Gerti and Schrefl, Michael},
+  title = {Coupling and cohesion in object-oriented systems},
+  journal = {Technical Reprot, University of Klagenfurt, Austria},
+  year = {1994},
+  owner = {btodorov},
+  publisher = {Citeseer},
+  timestamp = {2013.06.19}
+}
+
+@INPROCEEDINGS{geoffray2009jvm,
+  author = {Geoffray, Nicolas and Thomas, Ga{\"e}l and Muller, Gilles and Parrend,
+	Pierre and Fr{\'e}not, St{\'e}phane and Folliot, Bertil},
+  title = {I-JVM: a Java virtual machine for component isolation in OSGi},
+  booktitle = {Dependable Systems \& Networks, 2009. DSN'09. IEEE/IFIP International
+	Conference on},
+  year = {2009},
+  pages = {544--553},
+  organization = {IEEE},
+  owner = {btodorov},
+  timestamp = {2013.06.19}
+}
+
+@BOOK{gong2003inside,
+  title = {Inside Java 2 platform security: architecture, API design, and implementation},
+  publisher = {Addison-Wesley Professional},
+  year = {2003},
+  author = {Gong, Li and Ellison, Gary W and Dageforde, Mary},
+  owner = {btodorov},
+  timestamp = {2013.06.19}
+}
+
+@INPROCEEDINGS{hernane2012dynamic,
+  author = {Hernane, Soumeya Leila and Gustedt, Jens and Benyettou, Mohamed},
+  title = {A Dynamic Distributed Algorithm for Read Write Locks},
+  booktitle = {Parallel, Distributed and Network-Based Processing (PDP), 2012 20th
+	Euromicro International Conference on},
+  year = {2012},
+  pages = {180--184},
+  organization = {IEEE},
+  owner = {btodorov},
+  timestamp = {2013.06.19}
+}
+
+@ARTICLE{hickey2004unified,
+  author = {Hickey, Ann M and Davis, Alan M},
+  title = {A unified model of requirements elicitation},
+  journal = {Journal of Management Information Systems},
+  year = {2004},
+  volume = {20},
+  pages = {65--84},
+  number = {4},
+  owner = {btodorov},
+  publisher = {ME Sharpe},
+  timestamp = {2013.06.19}
+}
+
+@INPROCEEDINGS{hui2009supporting,
+  author = {Hui, Mei and Jiang, Dawei and Li, Guoliang and Zhou, Yuan},
+  title = {Supporting database applications as a service},
+  booktitle = {Data Engineering, 2009. ICDE'09. IEEE 25th International Conference
+	on},
+  year = {2009},
+  pages = {832--843},
+  organization = {IEEE},
+  owner = {btodorov},
+  timestamp = {2013.06.19}
+}
+
+@ARTICLE{hull2006taverna,
+  author = {Hull, Duncan and Wolstencroft, Katy and Stevens, Robert and Goble,
+	Carole and Pocock, Mathew R and Li, Peter and Oinn, Tom},
+  title = {Taverna: a tool for building and running workflows of services},
+  journal = {Nucleic acids research},
+  year = {2006},
+  volume = {34},
+  pages = {W729--W732},
+  number = {suppl 2},
+  owner = {btodorov},
+  publisher = {Oxford Univ Press},
+  timestamp = {2013.06.19}
+}
+
+@INCOLLECTION{jifeng2005component,
+  author = {Jifeng, He and Li, Xiaoshan and Liu, Zhiming},
+  title = {Component-based software engineering},
+  booktitle = {Theoretical Aspects of Computing--ICTAC 2005},
+  publisher = {Springer},
+  year = {2005},
+  pages = {70--95},
+  owner = {btodorov},
+  timestamp = {2013.06.19}
+}
+
+@ARTICLE{kaplan2010users,
+  author = {Kaplan, Andreas M and Haenlein, Michael},
+  title = {Users of the world, unite! The challenges and opportunities of Social
+	Media},
+  journal = {Business horizons},
+  year = {2010},
+  volume = {53},
+  pages = {59--68},
+  number = {1},
+  owner = {btodorov},
+  publisher = {Elsevier},
+  timestamp = {2013.06.19}
+}
+
+@ARTICLE{karlsson1997cost,
+  author = {Karlsson, Joachim and Ryan, Kevin},
+  title = {A cost-value approach for prioritizing requirements},
+  journal = {Software, IEEE},
+  year = {1997},
+  volume = {14},
+  pages = {67--74},
+  number = {5},
+  owner = {btodorov},
+  publisher = {IEEE},
+  timestamp = {2013.06.19}
+}
+
+@ARTICLE{karlsson1998evaluation,
+  author = {Karlsson, Joachim and Wohlin, Claes and Regnell, Bj{\"o}rn},
+  title = {An evaluation of methods for prioritizing software requirements},
+  journal = {Information and Software Technology},
+  year = {1998},
+  volume = {39},
+  pages = {939--947},
+  number = {14},
+  owner = {btodorov},
+  publisher = {Elsevier},
+  timestamp = {2013.06.19}
+}
+
+@TECHREPORT{king2010hibernate,
+  author = {King, Gavin and Bauer, Christian and Rydahl, M and Bernard, Emmanuel
+	and Ebersole, Steve and FERENTSCHIK, H},
+  title = {Hibernate: Relational Persistence For Idiomatic Java},
+  institution = {Technical Report, Available online at: http://www. hibernate. org/hib\_docs/v3/reference/en/html\_sin
+	gle},
+  year = {2010},
+  owner = {btodorov},
+  timestamp = {2013.06.19}
+}
+
+@ARTICLE{kobsa2001generic,
+  author = {Kobsa, Alfred},
+  title = {Generic user modeling systems},
+  journal = {User modeling and user-adapted interaction},
+  year = {2001},
+  volume = {11},
+  pages = {49--63},
+  number = {1-2},
+  owner = {btodorov},
+  publisher = {Springer},
+  timestamp = {2013.06.19}
+}
+
+@ARTICLE{kobsa2006ldap,
+  author = {Kobsa, Alfred and Fink, Josef},
+  title = {An LDAP-based user modeling server and its evaluation},
+  journal = {User Modeling and User-Adapted Interaction},
+  year = {2006},
+  volume = {16},
+  pages = {129--169},
+  number = {2},
+  owner = {btodorov},
+  publisher = {Springer},
+  timestamp = {2013.06.19}
+}
+
+@ARTICLE{lau2007software,
+  author = {Lau, Kung-Kiu and Wang, Zheng},
+  title = {Software component models},
+  journal = {Software Engineering, IEEE Transactions on},
+  year = {2007},
+  volume = {33},
+  pages = {709--724},
+  number = {10},
+  owner = {btodorov},
+  publisher = {IEEE},
+  timestamp = {2013.06.19}
+}
+
+@INPROCEEDINGS{lev2009scalable,
+  author = {Lev, Yossi and Luchangco, Victor and Olszewski, Marek},
+  title = {Scalable reader-writer locks},
+  booktitle = {Proceedings of the twenty-first annual symposium on Parallelism in
+	algorithms and architectures},
+  year = {2009},
+  pages = {101--110},
+  organization = {ACM},
+  owner = {btodorov},
+  timestamp = {2013.06.19}
+}
+
+@BOOK{linwood2010beginning,
+  title = {Beginning Hibernate},
+  publisher = {Apress},
+  year = {2010},
+  author = {Linwood, Jeff and Minter, Dave},
+  owner = {btodorov},
+  timestamp = {2013.06.19}
+}
+
+@INPROCEEDINGS{lu2009collaborative,
+  author = {Lu, Shiyong and Zhang, Jia},
+  title = {Collaborative scientific workflows},
+  booktitle = {Web Services, 2009. ICWS 2009. IEEE International Conference on},
+  year = {2009},
+  pages = {527--534},
+  organization = {IEEE},
+  owner = {btodorov},
+  timestamp = {2013.06.19}
+}
+
+@ARTICLE{ludascher2006scientific,
+  author = {Ludascher, Bertram and Altintas, Ilkay and Berkley, Chad and Higgins,
+	Dan and Jaeger, Efrat and Jones, Matthew and Lee, Edward A and Tao,
+	Jing and Zhao, Yang},
+  title = {Scientific workflow management and the Kepler system},
+  journal = {Concurrency and Computation: Practice and Experience},
+  year = {2006},
+  volume = {18},
+  pages = {1039--1065},
+  number = {10},
+  owner = {btodorov},
+  publisher = {Wiley Online Library},
+  timestamp = {2013.06.19}
+}
+
+@ARTICLE{miller1998introduction,
+  author = {Miller, Eric},
+  title = {An introduction to the resource description framework},
+  journal = {Bulletin of the American Society for Information Science and Technology},
+  year = {1998},
+  volume = {25},
+  pages = {15--19},
+  number = {1},
+  owner = {btodorov},
+  publisher = {Wiley Online Library},
+  timestamp = {2013.06.19}
+}
+
+@INPROCEEDINGS{moisiadis2002fundamentals,
+  author = {Moisiadis, Frank},
+  title = {The fundamentals of prioritising requirements},
+  booktitle = {Proc Systems Engineering, Test \& Evaluation Conf, Sydney, Australia},
+  year = {2002},
+  pages = {108--119},
+  organization = {Citeseer},
+  owner = {btodorov},
+  timestamp = {2013.06.19}
+}
+
+@ARTICLE{nikolov2009recoverable,
+  author = {Nikolov, Vladimir and Kapitza, R{\"u}diger and Hauck, Franz J},
+  title = {Recoverable class loaders for a fast restart of Java applications},
+  journal = {Mobile Networks and Applications},
+  year = {2009},
+  volume = {14},
+  pages = {53--64},
+  number = {1},
+  owner = {btodorov},
+  publisher = {Springer},
+  timestamp = {2013.06.19}
+}
+
+@INPROCEEDINGS{o2008object,
+  author = {O'Neil, Elizabeth J},
+  title = {Object/relational mapping 2008: hibernate and the entity data model
+	(edm)},
+  booktitle = {Proceedings of the 2008 ACM SIGMOD international conference on Management
+	of data},
+  year = {2008},
+  pages = {1351--1356},
+  organization = {ACM},
+  owner = {btodorov},
+  timestamp = {2013.06.19}
+}
+
+@INPROCEEDINGS{olson2008formal,
+  author = {Olson, Lars E and Gunter, Carl A and Madhusudan, P},
+  title = {A formal framework for reflective database access control policies},
+  booktitle = {Proceedings of the 15th ACM conference on Computer and communications
+	security},
+  year = {2008},
+  pages = {289--298},
+  organization = {ACM},
+  owner = {btodorov},
+  timestamp = {2013.06.19}
+}
+
+@ARTICLE{orwant1994heterogeneous,
+  author = {Orwant, Jon},
+  title = {Heterogeneous learning in the Doppelg{\"a}nger user modeling system},
+  journal = {User Modeling and User-Adapted Interaction},
+  year = {1994},
+  volume = {4},
+  pages = {107--130},
+  number = {2},
+  owner = {btodorov},
+  publisher = {Springer},
+  timestamp = {2013.06.19}
+}
+
+@ARTICLE{parnas1972criteria,
+  author = {Parnas, David Lorge},
+  title = {On the criteria to be used in decomposing systems into modules},
+  journal = {Communications of the ACM},
+  year = {1972},
+  volume = {15},
+  pages = {1053--1058},
+  number = {12},
+  owner = {btodorov},
+  publisher = {ACM},
+  timestamp = {2013.06.19}
+}
+
+@ARTICLE{parrend2009security,
+  author = {Parrend, Pierre and Fr{\'e}not, St{\'e}phane},
+  title = {Security benchmarks of OSGi platforms: toward hardened OSGi},
+  journal = {Software: Practice and Experience},
+  year = {2009},
+  volume = {39},
+  pages = {471--499},
+  number = {5},
+  owner = {btodorov},
+  publisher = {Wiley Online Library},
+  timestamp = {2013.06.19}
+}
+
+@INPROCEEDINGS{pour1999enterprise,
+  author = {Pour, Gilda},
+  title = {Enterprise JavaBeans, JavaBeans and XML expanding the possibilities
+	for Web-based enterprise application development},
+  booktitle = {Technology of Object-Oriented Languages and Systems, 1999. TOOLS
+	31. Proceedings},
+  year = {1999},
+  pages = {282--291},
+  organization = {IEEE},
+  owner = {btodorov},
+  timestamp = {2013.06.19}
+}
+
+@INPROCEEDINGS{pour1998component,
+  author = {Pour, Gilda},
+  title = {Component-based software development approach: new opportunities
+	and challenges},
+  booktitle = {Technology of Object-Oriented Languages, 1998. TOOLS 26. Proceedings},
+  year = {1998},
+  pages = {376--383},
+  organization = {IEEE},
+  owner = {btodorov},
+  timestamp = {2013.06.19}
+}
+
+@INPROCEEDINGS{pour1999making,
+  author = {Pour, Gilda and Griss, Martin and Favaro, John},
+  title = {Making the transition to component-based enterprise software development:
+	Overcoming the obstacles-patterns for success},
+  booktitle = {Technology of Object-Oriented Languages and Systems, 1999. Proceedings
+	of},
+  year = {1999},
+  pages = {419--419},
+  organization = {IEEE},
+  owner = {btodorov},
+  timestamp = {2013.06.19}
+}
+
+@INPROCEEDINGS{rich1979building,
+  author = {Rich, Elaine},
+  title = {Building and exploiting user models},
+  booktitle = {Proceedings of the 6th international joint conference on Artificial
+	intelligence-Volume 2},
+  year = {1979},
+  pages = {720--722},
+  organization = {Morgan Kaufmann Publishers Inc.},
+  owner = {btodorov},
+  timestamp = {2013.06.19}
+}
+
+@ARTICLE{rich1979user,
+  author = {Rich, Elaine},
+  title = {User modeling via stereotypes},
+  journal = {Cognitive science},
+  year = {1979},
+  volume = {3},
+  pages = {329--354},
+  number = {4},
+  owner = {btodorov},
+  publisher = {Elsevier},
+  timestamp = {2013.06.19}
+}
+
+@ARTICLE{roper1990analytic,
+  author = {Roper-Lowe, Gr C and Sharp, JA},
+  title = {The analytic hierarchy process and its application to an information
+	technology decision},
+  journal = {Journal of the Operational Research Society},
+  year = {1990},
+  pages = {49--59},
+  owner = {btodorov},
+  publisher = {JSTOR},
+  timestamp = {2013.06.19}
+}
+
+@BOOK{rozanski2011software,
+  title = {Software systems architecture: working with stakeholders using viewpoints
+	and perspectives},
+  publisher = {Addison-Wesley Professional},
+  year = {2011},
+  author = {Rozanski, Nick and Woods, E{\'o}in},
+  owner = {btodorov},
+  timestamp = {2013.06.19}
+}
+
+@MASTERSTHESIS{maro2011,
+  author = {Marojahan Sigiro},
+  title = {Dynamic User Interface Supporting Type Analysis for RDFGears},
+  school = {TU Delft, Netherlands},
+  year = {2011},
+  owner = {btodorov},
+  timestamp = {2013.06.19}
+}
+
+@INCOLLECTION{sun2012jvm,
+  author = {Sun, Mengtao and Tan, Gang},
+  title = {JVM-Portable Sandboxing of Java's Native Libraries},
+  booktitle = {Computer Security--ESORICS 2012},
+  publisher = {Springer},
+  year = {2012},
+  pages = {842--858},
+  owner = {btodorov},
+  timestamp = {2013.06.19}
+}
+
+@INCOLLECTION{tao2012twinder,
+  author = {Tao, Ke and Abel, Fabian and Hauff, Claudia and Houben, Geert-Jan},
+  title = {Twinder: a search engine for twitter streams},
+  booktitle = {Web Engineering},
+  publisher = {Springer},
+  year = {2012},
+  pages = {153--168},
+  owner = {btodorov},
+  timestamp = {2013.06.19}
+}
+
+@ARTICLE{tavares2008gentle,
+  author = {Tavares, Andre LC and Valente, Marco Tulio},
+  title = {A gentle introduction to OSGi},
+  journal = {ACM SIGSOFT Software Engineering Notes},
+  year = {2008},
+  volume = {33},
+  pages = {8},
+  number = {5},
+  owner = {btodorov},
+  publisher = {ACM},
+  timestamp = {2013.06.19}
+}
+
+@BOOK{wahlster1989user,
+  title = {User models in dialog systems},
+  publisher = {Springer},
+  year = {1989},
+  author = {Wahlster, Wolfgang and Kobsa, Alfred},
+  owner = {btodorov},
+  timestamp = {2013.06.19}
+}
+
+@INCOLLECTION{wohed2006suitability,
+  author = {Wohed, Petia and van der Aalst, Wil MP and Dumas, Marlon and ter
+	Hofstede, Arthur HM and Russell, Nick},
+  title = {On the suitability of BPMN for business process modelling},
+  booktitle = {Business Process Management},
+  publisher = {Springer},
+  year = {2006},
+  pages = {161--176},
+  owner = {btodorov},
+  timestamp = {2013.06.19}
+}
+
+@INPROCEEDINGS{woods2009system,
+  author = {Woods, Eoin and Rozanski, Nick},
+  title = {The system context architectural viewpoint},
+  booktitle = {Software Architecture, 2009 \& European Conference on Software Architecture.
+	WICSA/ECSA 2009. Joint Working IEEE/IFIP Conference on},
+  year = {2009},
+  pages = {333--336},
+  organization = {IEEE},
+  owner = {btodorov},
+  timestamp = {2013.06.19}
+}
+

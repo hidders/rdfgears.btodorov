@@ -4,20 +4,20 @@ This chapter discusses background concepts that lay behind the problem.
 
 \section{User Modelling Systems}
 
-User modelling is usually considered to originate from the work of Allen, Cohen and Perrault (\cite{Allen}, \cite{Cohen}) and Elaine Rich (\cite{Rich1}, \cite{Rich2}) \cite{Kobsa}. Their work had inspired many engineers and scientists to build systems that collect information about their users and adapt specifically for each them \cite{Kobsa89}. Initially, the user modelling functionality is integrated within the systems and there is little separation between the core and the user modeling functionality \cite{Kobsa}. However, in the late 80s an effort is made to decouple the user modelling functionality from the rest of the user-adaptive systems and define it as separate components that can be reused \cite{Kobsa}. 
+User modelling is usually considered to originate from the work of Allen, Cohen and Perrault (\cite{allen1979plan}, \cite{cohen1979elements}) and Elaine Rich (\cite{rich1979building}, \cite{rich1979user}) \cite{kobsa2001generic}. Their work had inspired many engineers and scientists to build systems that collect information about their users and adapt specifically for each them \cite{wahlster1989user}. Initially, the user modelling functionality is integrated within the systems and there is little separation between the core and the user modelling functionality \cite{kobsa2001generic}. However, in the late 80s an effort is made to decouple the user modelling functionality from the rest of the user-adaptive systems and define it as separate components that can be reused \cite{kobsa2001generic}. 
 
-In his work \cite{Kobsa} classifies the user modelling components in two categories:
+In his work \cite{kobsa2001generic} classifies the user modelling components in two categories:
 \begin{itemize}
-	\item \textit{User Modeling Shell Systems} - they are part of the system that makes use of the user modelling functionality. During the development phase of the system, they have to be integrated and configured specifically for the application they are used for.
-	\item \textit{User Modeling Servers} - they are not a part of an system but rather independent from it. Usually, they are "centralized", reside in the local area network or a wide area network and serve more than one applications at the same time. The main advantages of this approach lie in the fact that the information resides in a single place (no duplication and easier access control) and the functionality can be used by multiple applications which can also collaborate (information acquired by one application can be used by others).
+	\item \textit{User Modelling Shell Systems} - they are part of the system that makes use of the user modelling functionality. During the development phase of the system, they have to be integrated and configured specifically for the application they are used for.
+	\item \textit{User Modelling Servers} - they are not a part of an system but rather independent from it. Usually, they are "centralized", reside in the local area network or a wide area network and serve more than one applications at the same time. The main advantages of this approach lie in the fact that the information resides in a single place (no duplication and easier access control) and the functionality can be used by multiple applications which can also collaborate (information acquired by one application can be used by others).
 \end{itemize}
 
-A large number of user modelling servers have been developed over the time. Some of them are simple academic prototypes others are more sophisticated and commercially used. Examples of the foremost generic user modelling servers include DOPPELANGER \cite{Orwant95}, PersonisAD \cite{Assad07}, Cumulate \cite{Brusilovsky04}, UMS \cite{Kobsa06}.
+A large number of user modelling servers have been developed over the time. Some of them are simple academic prototypes others are more sophisticated and commercially used. Examples of the foremost generic user modelling servers include DOPPELANGER \cite{orwant1994heterogeneous}, PersonisAD \cite{assad2007personisad}, Cumulate \cite{brusilovsky2004knowledgetree}, UMS \cite{kobsa2006ldap}.
 
-However, with the increasing popularity of Social Web applications and the increasing amount of data that is published on the Web everyday there is a demand for a new type of user modeling servers that are specifically designed to take advantage of the available data on the Web \cite{Kobsa07}. In \cite{Fabian} the authors address this issue and propose a special kind of framework for building user modeling servers based on various types of services. Next section discuses the idea behind it.
+However, with the increasing popularity of Social Web applications and the increasing amount of data that is published on the Web everyday there is a demand for a new type of user modelling servers that are specifically designed to take advantage of the available data on the Web \cite{brusilovsky2007adaptive}. In \cite{abel2011u} the authors address this issue and propose a special kind of framework for building user modelling servers based on various types of services. Next section discuses the idea behind it.
 
 \section{The U-Sem framework}
-U-Seam represents a framework for semantic enrichment and mining of people's profiles from usage data on the Social Web. It provides methodology for designing services for user modelling and semantically augmenting user profiles. Its idea lies on the assumption that user modelling in today's Social Web sphere relies mainly on three types of input data \cite{Fabian} that can be modelled in RDF format \cite{Miller98}:
+U-Seam represents a framework for semantic enrichment and mining of people's profiles from usage data on the Social Web. It provides methodology for designing services for user modelling and semantically augmenting user profiles. Its idea lies on the assumption that user modelling in today's Social Web sphere relies mainly on three types of input data \cite{abel2011u} that can be modelled in RDF format \cite{miller1998introduction}:
 
 \begin{itemize}
 	\item \textit{Observations} - usage data or events such as clicks, tagging activities, bookmarking actions or posts in social media.
@@ -38,17 +38,17 @@ Based on these types of input data the authors propose that the user modelling s
 Services are build by orchestrating these components into workflows that provide the required functionality. The process of creating and executing workflows is usually automated using workflow management systems which are discussed in the next section.
 
 \section{Workflow Management Systems}
-Workflow Management Systems are systems that allow a set of high level operators that all do a single well-defined specific task to be composed in a larger whole - the workflow. Depending on the desired application some systems are specifically concerned with  timing, concurrency, synchronization, data management aspects of a complex process. They may also imply special domain specific languages for defining the workflows. Literature provides a lot of examples of workflow management systems that are currently available: \textit{Taverna} \cite{Hull06}, \textit{Kepler}, RDFGears \cite{Feliksik11}, etc.
+Workflow Management Systems are systems that allow a set of high level operators that all do a single well-defined specific task to be composed in a larger whole - the workflow. Depending on the desired application some systems are specifically concerned with  timing, concurrency, synchronization, data management aspects of a complex process. They may also imply special domain specific languages for defining the workflows. Literature provides a lot of examples of workflow management systems that are currently available: \textit{Taverna} \cite{hull2006taverna}, Kepler \cite{ludascher2006scientific}, RDFGears \cite{feliksik2011}, etc.
 
 RDF Gears seems the best option for engineers applying the U-Sem framework because, firstly, it is specifically designed to deal with RDF data which is how all the user modelling inputs are modelled according to the specification of the U-Sem framework. Secondly, it already being used by the engineers and it has proved to be suitable for the situation. Therefore, we will discuss how RDF Gears works and what are its features in the next section.
 
 \subsection{RDF Gears}
 
-RDF Gears is a workflow management system designed specifically for building workflows for integration and transformation of RDF data \cite{Feliksik11}. It aims to provide a data integration framework that allows expressing and executing complex algorithms. RDF Gears consists of three main components: RDF Gears Language, RDF Gears Engine and RDF Gears graphical user interface \cite{Feliksik11}:
+RDF Gears is a workflow management system designed specifically for building workflows for integration and transformation of RDF data \cite{feliksik2011}. It aims to provide a data integration framework that allows expressing and executing complex algorithms. RDF Gears consists of three main components: RDF Gears Language, RDF Gears Engine and RDF Gears graphical user interface \cite{feliksik2011}:
 
 \paragraph{RDF Gears Language (RGL)} is a workflow language that is used to define the workflows as a combination of functional components. Each functional component has zero or more inputs and one output and defines certain operation that is performed on its inputs. The result of the operation is provided as the output of the component. The inputs are defined as input ports and can be connected with a particular output port of another component. All ports are associated with data type. The type system of the language is discussed in the next subsection. The connections between the components represent the flow of data between them. Components and the connections between them form an acyclic directed graph which is the actual workflow. 
 
-\paragraph{RDF Gears graphical user interface} represents a web application that facilitates the construction of workflows in order to make the construction of complex RGL expression easier. It provides drag and drop operation for editing worklfows and visualizing the connection between components as a visual directed graph \cite{Marojahan}. The GUI builds the defined workflows as XML files which are the workflow source code that represent the RGL expressions and are executed by the RDF Gears Engine.
+\paragraph{RDF Gears graphical user interface} represents a web application that facilitates the construction of workflows in order to make the construction of complex RGL expression easier. It provides drag and drop operation for editing worklfows and visualizing the connection between components as a visual directed graph \cite{maro2011}. The GUI builds the defined workflows as XML files which are the workflow source code that represent the RGL expressions and are executed by the RDF Gears Engine.
 
 \paragraph{RDF Gears Engine} represents an application that is responsible for the execution of the predefined workflows by evaluation of the RGL expressions. Discussed in the next sub-section, it also provides optimizations for efficient execution of workflows. RDF Gears expects as an input XML files the define the workflows and provides graphical and RESTful interfaces that enable users to execute the workflows. 
 
@@ -56,7 +56,7 @@ RDF Gears comes with a set of built-in components that can be used for creating 
 
 \subsubsection{Type System}
 
-The RGL language defines values and type system. The values of RGL combine the value system of the Names Nested Relational Calculus (NNRC) with the RDF data model \cite{Feliksik11}. The RGL values can be defined as follows:
+The RGL language defines values and type system. The values of RGL combine the value system of the Names Nested Relational Calculus (NNRC) with the RDF data model \cite{feliksik2011}. The RGL values can be defined as follows:
 
 \begin{itemize}
 	\item Every RDF value (URI, literal or graph) is a value in RGL.
@@ -83,48 +83,4 @@ The way RDF Gears engine applies some of the optimizations is based on the assum
 		\item \textit{Wokflow compilation} - workflows are compiled into a data structure which represents directed graph and contains the output node and all components that the output directly or indirectly depends on. Therefore, if there is no path in the graph from a component to the output node then the component is removed. The removed components are never executed.
 		
 		\item \textit{Workflow evaluation} - the engine provides functionality that performs lazy evaluation of the compiled workflows. The engine takes the output node and recursively executes all components which outputs are needed for the execution. As a result, components which output is not requested are not executed at all(eg. when the If/Then/Else component is used). Additionally, when a component's output is required by several components then the first time it is executed it cashes the result and directly provides it for the next request. Therefore, RDF Gears guarantees that each component is executed at most once.
-	\end{itemize}
-\begin{thebibliography}{99}
-
-\bibitem{Kobsa07} P. Brusilovsky, A. Kobsa, and W. Nejdl, editors. The Adaptive Web, Methods and Strategies of Web Personalization, volume 4321 of Lecture Notes in Computer Science. Springer, 2007.
-
-\bibitem{Fabian} Fabian Abel, Ilknur Celik, Claudia Hauff, Laura Hollink, Geert-Jan Houben. U-Sem: Semantic Enrichment, User Modeling and Mining Usage Data on the Social Web. In Proceedings of International Workshop on Usage Analysis and the Web of Data (USEWOD), co-located with WWW '11, Hyderabad, India, March 2011
-
-\bibitem{Abel10} F. Abel, N. Henze, E. Herder, and D. Krause. Interweaving public user profiles on the Web. In Proc. of Int. Conf. on User Modeling, Adaptation, and Personalization, pages 16-27. Springer, 2010
-
-\bibitem{Kobsa} Alfred Kobsa, Generic User Modeling Systems 
-
-\bibitem{Rich1} Rich, E.: Building and Exploiting User Models. PhD. Thesis, Department of Computer Science. Pittsburgh, PA: Carnegie-Mellon University (1979). 
-
-\bibitem{Rich2} Rich, E.: User Modeling via Stereotypes. Cognitive Science 3, (1979) 329-354.
-
-\bibitem{Allen} Allen, J. F.: A Plan-Based Approach to Speech Act Recognition. Dept. of Computer Science, University of Toronto, Canada, Technical Report 131/79, (1979).
-
-\bibitem{Cohen} Cohen, P. R. and Perrault, C. R.: Elements of a Plan-Based Theory of Speech Acts. Cognitive Science 3, (1979) 177-212, DOI 10.1016/S0364-0213(79)80006-3
-
-\bibitem{Kobsa89} Wahlster, W. and Kobsa, A.: User Models in Dialog Systems. In: User Models in Dialog Systems, Kobsa, A. and Wahlster, W., Eds. Heidelberg: Springer (1989)
-
-\bibitem{Orwant95} Orwant, J.: Heterogeneous learning in the doppelganger user modeling system. User Model. User-Adap. Inter. 4(2), 107-130 (1995)
-
-\bibitem{Assad07} Assad, M., Carmichael, D.J., Kay, J., Kummerfeld, B.: PersonisAD: distributed, active, scrutable model
-framework for context-aware services. In: LaMarca, A., Langheinrich, M., Truong, K.N. (eds.) Pervasive. Lecture Notes in Computer Science, vol. 4480, pp. 55-72, ISBN 978-3-540-72036-2. Springer,
-New York (2007)
-
-\bibitem{Brusilovsky04} Brusilovsky, P.: KnowledgeTree: a distributed architecture for adaptive e-learning. In: Feldman, S.I.,
-Uretsky, M., Najork, M., Wills, C.E. (eds.) WWW, International World Wide Web Conferences,
-pp. 104-113, ISBN 1-58113-912-8. ACM, New York (2004)
-
-\bibitem{Kobsa06} Kobsa, A., Fink, J.: An ldap-based user modeling server and its evaluation. User Model. User-Adap.
-Inter. 16(2), 129-169 (2006)
-
-\bibitem{Hull06} D. Hull, K.Wolstencroft, R. Stevens, C. Goble, M. R. Pocock, P. Li, and T. Oinn.
-Taverna: a tool for building and running workflows of services. Nucleic acids
-research, 34(suppl 2), 2006.
-
-\bibitem{Feliksik11} E.Feliksik, RDF Gears, a data integration framework for the Semantic Web, 2011.
-
-\bibitem{Marojahan} Marojahan Sigiro, Dynamic User Interface Supporting Type Analysis for RDFGears, 2011.
-
-\bibitem{Miller98} Miller, Eric, An introduction to the resource description framework, 1998
-
-\end{thebibliography}
+\end{itemize}

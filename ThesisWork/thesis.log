@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2011.9.30)  19 JUN 2013 13:43
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2011.9.30)  19 JUN 2013 17:34
 entering extended mode
 **thesis.tex
 (E:\Repositories\rdfgears.btodorov\ThesisWork\thesis.tex
@@ -469,6 +469,11 @@ Package: lipsum 2011/04/14 v1.2 150 paragraphs of Lorem Ipsum dummy text
 \Urlmuskip=\muskip10
 Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 )
+("C:\Program Files\MiKTeX 2.9\tex\latex\cite\cite.sty"
+LaTeX Info: Redefining \cite on input line 302.
+LaTeX Info: Redefining \nocite on input line 373.
+Package: cite 2010/09/10  v 5.3
+)
 ("C:\Program Files\MiKTeX 2.9\tex\latex\wrapfig\wrapfig.sty"
 \wrapoverhang=\dimen149
 \WF@size=\dimen150
@@ -525,23 +530,23 @@ LaTeX Warning: Label `fig_comp' multiply defined.
 LaTeX Warning: Label `cha:glossary' multiply defined.
 
 ))
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 103.
-LaTeX Font Info:    ... okay on input line 103.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 103.
-LaTeX Font Info:    ... okay on input line 103.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 103.
-LaTeX Font Info:    ... okay on input line 103.
-LaTeX Font Info:    Checking defaults for OMS/pzccm/m/n on input line 103.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for OMS/pzccm/m/n on input line 104.
 LaTeX Font Info:    Try loading font information for OMS+pzccm on input line 10
-3.
+4.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omspzccm.fd"
 File: omspzccm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/pzccm.
 )
-LaTeX Font Info:    ... okay on input line 103.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 103.
-LaTeX Font Info:    ... okay on input line 103.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 103.
-LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
 
 ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -559,7 +564,7 @@ LaTeX Font Info:    ... okay on input line 103.
 ) <img/usem-logo.png, id=1, 487.0998pt x 291.9708pt>
 File: img/usem-logo.png Graphic file (type png)
  <use img/usem-logo.png>
-Package pdftex.def Info: img/usem-logo.png used on input line 108.
+Package pdftex.def Info: img/usem-logo.png used on input line 109.
 (pdftex.def)             Requested size: 312.9803pt x 187.6002pt.
 
 [1
@@ -570,49 +575,49 @@ btodorov/ThesisWork/img/usem-logo.png>] [2
 
 ]
 LaTeX Font Info:    Try loading font information for OT1+ptmcm on input line 11
-0.
+1.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1ptmcm.fd"
 File: ot1ptmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ptmcm.
 )
 LaTeX Font Info:    Try loading font information for OML+ptmcm on input line 11
-0.
+1.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omlptmcm.fd"
 File: omlptmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ptmcm.
 )
 LaTeX Font Info:    Try loading font information for OMX+psycm on input line 11
-0.
+1.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omxpsycm.fd"
 File: omxpsycm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/psycm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 110.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 111.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 110.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 111.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 110.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 111.
 
 <img/TU_Delft_Logo.pdf, id=11, 227.21355pt x 88.03502pt>
 File: img/TU_Delft_Logo.pdf Graphic file (type pdf)
 
 <use img/TU_Delft_Logo.pdf>
-Package pdftex.def Info: img/TU_Delft_Logo.pdf used on input line 110.
+Package pdftex.def Info: img/TU_Delft_Logo.pdf used on input line 111.
 (pdftex.def)             Requested size: 146.87576pt x 56.9055pt.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 110.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 111.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 110.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 111.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 110.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 111.
  [1 <E:/Repositories/rdfgears.btodorov/ThesisWork/img/TU_Delft_Logo.pdf>]
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/pzccm/m/n' tried instead on input line 110.
+(Font)              Font shape `OMS/pzccm/m/n' tried instead on input line 111.
 
  [2]
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 110.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 111.
 
 (E:\Repositories\rdfgears.btodorov\ThesisWork\abstract.tex) [1
 
@@ -639,15 +644,8 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <24.88> not available
 (E:\Repositories\rdfgears.btodorov\ThesisWork\introduction/introduction.tex
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <20.74> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 2.
-
-
-LaTeX Warning: Citation `On social Web sites' on page 1 undefined on input line
- 4.
-
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 4.
-
-LaTeX Warning: Citation `Fabien' on page 1 undefined on input line 8.
 
 [1
 
@@ -670,25 +668,55 @@ Underfull \hbox (badness 10000) in paragraph at lines 17--18
 ] [4]
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 45.
- [5] [6] [7] [8
-
-]
-bibitemlist
-[9]) [10]
+ [5] [6]) [7]
 (E:\Repositories\rdfgears.btodorov\ThesisWork\requirements/system_requirements.
-tex
-
-LaTeX Warning: Citation `Brusilovsky07' on page 11 undefined on input line 6.
-
-[11
+tex [8
 
 
 
-] [12]
+] [9]
+
+LaTeX Warning: Citation `hickey2004unified' on page 10 undefined on input line 
+18.
+
+
+LaTeX Warning: Citation `dieste2008understanding' on page 10 undefined on input
+ line 19.
+
+[10]
+
+LaTeX Warning: Citation `moisiadis2002fundamentals' on page 11 undefined on inp
+ut line 46.
+
+
+LaTeX Warning: Citation `roper1990analytic' on page 11 undefined on input line 
+48.
+
+
+LaTeX Warning: Citation `karlsson1997cost' on page 11 undefined on input line 4
+8.
+
+
+LaTeX Warning: Citation `karlsson1998evaluation' on page 11 undefined on input 
+line 48.
+
+
+LaTeX Warning: Citation `roper1990analytic' on page 11 undefined on input line 
+48.
+
+
 Overfull \hbox (1.26582pt too wide) in paragraph at lines 52--53
 \T1/ptm/m/n/10.95 In the Re-quire-ments gath-er-ing sec-tion we iden-ti-fied 5 
 high-level re-quire-ments(features)
  []
+
+
+LaTeX Warning: Citation `karlsson1997cost' on page 11 undefined on input line 5
+4.
+
+
+LaTeX Warning: Citation `karlsson1997cost' on page 11 undefined on input line 5
+4.
 
 
 Overfull \hbox (4.41656pt too wide) in paragraph at lines 58--64
@@ -706,7 +734,7 @@ Overfull \hbox (4.41656pt too wide) in paragraph at lines 72--78
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[13] <requirements/value_diagram.png, id=96, 413.29407pt x 219.06844pt>
+[11] <requirements/value_diagram.png, id=89, 413.29407pt x 219.06844pt>
 File: requirements/value_diagram.png Graphic file (type png)
 
 <use requirements/value_diagram.png>
@@ -717,8 +745,8 @@ Overfull \hbox (37.48927pt too wide) in paragraph at lines 87--88
  [][] 
  []
 
-[14 <E:/Repositories/rdfgears.btodorov/ThesisWork/requirements/value_diagram.pn
-g>] <plug-in/version_problem.png, id=100, 412.6617pt x 163.45065pt>
+[12 <E:/Repositories/rdfgears.btodorov/ThesisWork/requirements/value_diagram.pn
+g>] <plug-in/version_problem.png, id=93, 412.6617pt x 163.45065pt>
 File: plug-in/version_problem.png Graphic file (type png)
 
 <use plug-in/version_problem.png>
@@ -728,32 +756,48 @@ Package pdftex.def Info: plug-in/version_problem.png used on input line 114.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[15] [16 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/version_problem.
-png>]
+
+LaTeX Warning: Citation `parnas1972criteria' on page 13 undefined on input line
+ 123.
+
+
+LaTeX Warning: Citation `srivastava2008modular' on page 13 undefined on input l
+ine 123.
+
+
+LaTeX Warning: Citation `eder1994coupling' on page 13 undefined on input line 1
+23.
+
+[13]
+
+LaTeX Warning: Citation `cheong2009integrating' on page 14 undefined on input l
+ine 134.
+
+[14 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/version_problem.png>]
+
+LaTeX Warning: Citation `tao2012twinder' on page 15 undefined on input line 138
+.
+
+
 Overfull \hbox (5.09862pt too wide) in paragraph at lines 149--150
 \T1/ptm/m/n/10.95 per-sis-tent data is not a triv-ial job. It re-quires spe-cif
 ic type of knowl-edge(\T1/ptm/b/n/10.95 database,
  []
 
-[17] [18]
-bibitemlist
-) [19
-
-] (E:\Repositories\rdfgears.btodorov\ThesisWork\plug-in/plugin-env.tex
-[20
+[15]) [16] (E:\Repositories\rdfgears.btodorov\ThesisWork\plug-in/plugin-env.tex
+[17
 
 
 
-] [21] [22]
-<plug-in/component-based.png, id=126, 271.76532pt x 125.71968pt>
+] [18] <plug-in/component-based.png, id=113, 271.76532pt x 125.71968pt>
 File: plug-in/component-based.png Graphic file (type png)
 
 <use plug-in/component-based.png>
 Package pdftex.def Info: plug-in/component-based.png used on input line 56.
 (pdftex.def)             Requested size: 203.82349pt x 94.28952pt.
- [23 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/component-based.png>
+ [19 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/component-based.png>
 ]
-<plug-in/component-interfaces.png, id=130, 129.48375pt x 39.14626pt>
+<plug-in/component-interfaces.png, id=118, 129.48375pt x 39.14626pt>
 File: plug-in/component-interfaces.png Graphic file (type png)
 
 <use plug-in/component-interfaces.png>
@@ -761,35 +805,29 @@ Package pdftex.def Info: plug-in/component-interfaces.png used on input line 74
 .
 (pdftex.def)             Requested size: 97.11255pt x 29.3596pt.
 
-<plug-in/component-services.png, id=131, 239.39438pt x 98.61844pt>
+<plug-in/component-services.png, id=119, 239.39438pt x 98.61844pt>
 File: plug-in/component-services.png Graphic file (type png)
 
 <use plug-in/component-services.png>
 Package pdftex.def Info: plug-in/component-services.png used on input line 90.
 (pdftex.def)             Requested size: 179.54533pt x 73.96362pt.
- [24 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/component-interfaces
+ [20 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/component-interfaces
 .png> <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/component-services.
 png>]
-Overfull \hbox (3.24261pt too wide) in paragraph at lines 102--103
-[]\T1/ptm/m/n/10.95 [[]] sug-gests clas-si-fi-ca-tion of the com-po-nent model 
-im-ple-men-ta-tions based on which
- []
-
-
 Overfull \hbox (2.23048pt too wide) in paragraph at lines 106--107
 []\T1/ptm/m/n/10.95 Composition hap-pens dur-ing the de-ploy-ment phase. Com-po
 -nents are con-structed
  []
 
-[25] <plug-in/OSGI.png, id=139, 440.39531pt x 292.84406pt>
+[21] <plug-in/OSGI.png, id=126, 440.39531pt x 292.84406pt>
 File: plug-in/OSGI.png Graphic file (type png)
 
 <use plug-in/OSGI.png>
 Package pdftex.def Info: plug-in/OSGI.png used on input line 123.
 (pdftex.def)             Requested size: 264.23921pt x 175.70778pt.
- [26 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/OSGI.png>] [27] [28]
+ [22 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/OSGI.png>] [23] [24]
 
-<plug-in/environment/runtime_env.png, id=149, 441.14813pt x 456.20438pt>
+<plug-in/environment/runtime_env.png, id=136, 441.14813pt x 456.20438pt>
 File: plug-in/environment/runtime_env.png Graphic file (type png)
 
 <use plug-in/environment/runtime_env.png>
@@ -800,8 +838,8 @@ Package pdftex.def Info: plug-in/environment/runtime_env.png used on input line
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[29]
-<plug-in/business_processes/CreatePlugInBusinessModel.jpg, id=154, 768.62157pt 
+[25]
+<plug-in/business_processes/CreatePlugInBusinessModel.jpg, id=142, 768.62157pt 
 x 447.17062pt>
 File: plug-in/business_processes/CreatePlugInBusinessModel.jpg Graphic file (ty
 pe jpg)
@@ -813,8 +851,13 @@ pg used on input line 208.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
+[26 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/environment/runtime_e
+nv.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-<plug-in/business_processes/InstallPlugInFromRepoBusinessModel.jpg, id=155, 767
+ [27 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/business_processes/C
+reatePlugInBusinessModel.jpg>]
+<plug-in/business_processes/InstallPlugInFromRepoBusinessModel.jpg, id=150, 767
 .9892pt x 399.894pt>
 File: plug-in/business_processes/InstallPlugInFromRepoBusinessModel.jpg Graphic
  file (type jpg)
@@ -824,24 +867,11 @@ Package pdftex.def Info: plug-in/business_processes/InstallPlugInFromRepoBusine
 ssModel.jpg used on input line 221.
 (pdftex.def)             Requested size: 537.58878pt x 279.92387pt.
 
-Underfull \vbox (badness 2020) has occurred while \output is active []
-
- [30 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/environment/runtime_
-env.png>]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Overfull \vbox (3.61244pt too high) has occurred while \output is active []
-
-
-[31 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/business_processes/Cr
-eatePlugInBusinessModel.jpg>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [32 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/business_processes/I
-nstallPlugInFromRepoBusinessModel.jpg>]
-<plug-in/business_processes/PluginManagementBusinessModel.jpg, id=167, 767.9892
+<plug-in/business_processes/PluginManagementBusinessModel.jpg, id=151, 767.9892
 pt x 282.45525pt>
 File: plug-in/business_processes/PluginManagementBusinessModel.jpg Graphic file
  (type jpg)
@@ -854,7 +884,7 @@ el.jpg used on input line 234.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<plug-in/layers/layers.png, id=168, 268.75406pt x 138.5175pt>
+<plug-in/layers/layers.png, id=152, 268.75406pt x 138.5175pt>
 File: plug-in/layers/layers.png Graphic file (type png)
 
 <use plug-in/layers/layers.png>
@@ -864,17 +894,21 @@ Package pdftex.def Info: plug-in/layers/layers.png used on input line 252.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[33] [34 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/business_process
-es/PluginManagementBusinessModel.jpg>]
-<plug-in/layers/main-func.png, id=175, 466.8642pt x 417.9615pt>
+[28]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [29 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/business_processes/I
+nstallPlugInFromRepoBusinessModel.jpg>] [30 <E:/Repositories/rdfgears.btodorov/
+ThesisWork/plug-in/business_processes/PluginManagementBusinessModel.jpg>]
+<plug-in/layers/main-func.png, id=162, 466.8642pt x 417.9615pt>
 File: plug-in/layers/main-func.png Graphic file (type png)
 
 <use plug-in/layers/main-func.png>
 Package pdftex.def Info: plug-in/layers/main-func.png used on input line 269.
 (pdftex.def)             Requested size: 280.12067pt x 250.77882pt.
- [35 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/layers/layers.png> <
+ [31 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/layers/layers.png> <
 E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/layers/main-func.png>]
-<plug-in/layers/admin-func.png, id=179, 590.32545pt x 364.4817pt>
+<plug-in/layers/admin-func.png, id=167, 590.32545pt x 364.4817pt>
 File: plug-in/layers/admin-func.png Graphic file (type png)
 
 <use plug-in/layers/admin-func.png>
@@ -885,25 +919,30 @@ Overfull \hbox (66.93924pt too wide) in paragraph at lines 295--296
  [][] 
  []
 
-[36 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/layers/admin-func.png
->]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[32]
 Overfull \hbox (1.41992pt too wide) in paragraph at lines 316--317
 \T1/ptm/m/n/10.95 en-ables users to browse the plug-in repos-i-tory and in-di-c
 ate which plug-ins should
  []
 
-<plug-in/layers/access-func.png, id=183, 335.0919pt x 222.23026pt>
+
+Underfull \vbox (badness 1412) has occurred while \output is active []
+
+ [33 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/layers/admin-func.pn
+g>]
+<plug-in/layers/access-func.png, id=174, 335.0919pt x 222.23026pt>
 File: plug-in/layers/access-func.png Graphic file (type png)
 
 <use plug-in/layers/access-func.png>
 Package pdftex.def Info: plug-in/layers/access-func.png used on input line 328.
 
 (pdftex.def)             Requested size: 284.82945pt x 188.89659pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[37] <plug-in/layers/concur.png, id=188, 611.4042pt x 653.5617pt>
+ [34 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/layers/access-func.p
+ng>]
+<plug-in/layers/concur.png, id=178, 611.4042pt x 653.5617pt>
 File: plug-in/layers/concur.png Graphic file (type png)
 
 <use plug-in/layers/concur.png>
@@ -914,62 +953,55 @@ Overfull \hbox (52.17624pt too wide) in paragraph at lines 353--354
  [][] 
  []
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[38 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/layers/access-func.pn
-g>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [39 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/layers/concur.png>]
-<plug-in/layers/simple_setup.png, id=195, 392.30565pt x 168.75044pt>
+[35 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/layers/concur.png>]
+<plug-in/layers/simple_setup.png, id=182, 392.30565pt x 168.75044pt>
 File: plug-in/layers/simple_setup.png Graphic file (type png)
 
 <use plug-in/layers/simple_setup.png>
 Package pdftex.def Info: plug-in/layers/simple_setup.png used on input line 366
 .
 (pdftex.def)             Requested size: 274.61208pt x 118.1245pt.
- [40 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/layers/simple_setup.
+ [36 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/layers/simple_setup.
 png>]
-<plug-in/ui/list.png, id=199, 416.30531pt x 222.07968pt>
+<plug-in/ui/list.png, id=186, 416.30531pt x 222.07968pt>
 File: plug-in/ui/list.png Graphic file (type png)
 
 <use plug-in/ui/list.png>
 Package pdftex.def Info: plug-in/ui/list.png used on input line 386.
 (pdftex.def)             Requested size: 291.41173pt x 155.45471pt.
 
-<plug-in/ui/upload.png, id=200, 269.50688pt x 214.55156pt>
+<plug-in/ui/upload.png, id=187, 269.50688pt x 214.55156pt>
 File: plug-in/ui/upload.png Graphic file (type png)
 
 <use plug-in/ui/upload.png>
 Package pdftex.def Info: plug-in/ui/upload.png used on input line 396.
 (pdftex.def)             Requested size: 161.70537pt x 128.73192pt.
- [41 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/ui/list.png> <E:/Rep
-ositories/rdfgears.btodorov/ThesisWork/plug-in/ui/upload.png>] <plug-in/ui/repo
-.png, id=204, 292.84406pt x 304.13625pt>
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[37 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/ui/list.png>]
+<plug-in/ui/repo.png, id=192, 292.84406pt x 304.13625pt>
 File: plug-in/ui/repo.png Graphic file (type png)
 
 <use plug-in/ui/repo.png>
 Package pdftex.def Info: plug-in/ui/repo.png used on input line 405.
 (pdftex.def)             Requested size: 175.70778pt x 182.48315pt.
- [42 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/ui/repo.png>] [43]
+ [38 <E:/Repositories/rdfgears.btodorov/ThesisWork/plug-in/ui/upload.png> <E:/R
+epositories/rdfgears.btodorov/ThesisWork/plug-in/ui/repo.png>] [39]
 Overfull \hbox (2.52686pt too wide) in paragraph at lines 464--465
 []\T1/ptm/m/it/10.95 lack of iso-la-tion \T1/ptm/m/n/10.95 - Even though com-po
 -nents for each user are loaded through
  []
 
-[44] [45] [46
-
-]
-bibitemlist
-[47]) [48]
+[40]) [41]
 (E:\Repositories\rdfgears.btodorov\ThesisWork\storage/DataManagementChapter.tex
-[49
+[42
 
 
 
-] [50] [51]
-<storage/diagrams/RGLValues.png, id=237, 494.68816pt x 117.5592pt>
+] [43] [44] [45]
+<storage/diagrams/RGLValues.png, id=218, 494.68816pt x 117.5592pt>
 File: storage/diagrams/RGLValues.png Graphic file (type png)
 
 <use storage/diagrams/RGLValues.png>
@@ -983,16 +1015,16 @@ Overfull \hbox (19.9473pt too wide) in paragraph at lines 82--83
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[52 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/diagrams/RGLValues.pn
-g>] [53] [54] [55] [56] [57]
-<storage/functional/layers.png, id=257, 268.1217pt x 137.91525pt>
+[46 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/diagrams/RGLValues.pn
+g>] [47] [48] [49] [50] [51]
+<storage/functional/layers.png, id=238, 268.1217pt x 137.91525pt>
 File: storage/functional/layers.png Graphic file (type png)
 
 <use storage/functional/layers.png>
 Package pdftex.def Info: storage/functional/layers.png used on input line 228.
 (pdftex.def)             Requested size: 107.24678pt x 55.16512pt.
 
-<storage/functional/func_main.png, id=258, 304.2567pt x 369.7815pt>
+<storage/functional/func_main.png, id=239, 304.2567pt x 369.7815pt>
 File: storage/functional/func_main.png Graphic file (type png)
 
 <use storage/functional/func_main.png>
@@ -1003,27 +1035,27 @@ Package pdftex.def Info: storage/functional/func_main.png used on input line 24
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[58 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/functional/layers.png
->] [59 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/functional/func_ma
-in.png>] <storage/functional/func_admin.png, id=265, 463.13025pt x 316.3017pt>
+[52 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/functional/layers.png
+>] [53 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/functional/func_ma
+in.png>] <storage/functional/func_admin.png, id=246, 463.13025pt x 316.3017pt>
 File: storage/functional/func_admin.png Graphic file (type png)
 
 <use storage/functional/func_admin.png>
 Package pdftex.def Info: storage/functional/func_admin.png used on input line 2
 73.
 (pdftex.def)             Requested size: 277.8803pt x 189.78247pt.
- [60 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/functional/func_admi
+ [54 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/functional/func_admi
 n.png>]
-<storage/functional/func_access.png, id=269, 335.0919pt x 222.23026pt>
+<storage/functional/func_access.png, id=250, 335.0919pt x 222.23026pt>
 File: storage/functional/func_access.png Graphic file (type png)
 
 <use storage/functional/func_access.png>
 Package pdftex.def Info: storage/functional/func_access.png used on input line 
 294.
 (pdftex.def)             Requested size: 234.56273pt x 155.5601pt.
- [61 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/functional/func_acce
+ [55 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/functional/func_acce
 ss.png>]
-<storage/functional/func_manip.png, id=274, 335.0919pt x 222.23026pt>
+<storage/functional/func_manip.png, id=255, 335.0919pt x 222.23026pt>
 File: storage/functional/func_manip.png Graphic file (type png)
 
 <use storage/functional/func_manip.png>
@@ -1031,7 +1063,7 @@ Package pdftex.def Info: storage/functional/func_manip.png used on input line 3
 17.
 (pdftex.def)             Requested size: 234.56273pt x 155.5601pt.
 
-<storage/functional/concur.png, id=275, 701.7417pt x 649.82774pt>
+<storage/functional/concur.png, id=256, 701.7417pt x 649.82774pt>
 File: storage/functional/concur.png Graphic file (type png)
 
 <use storage/functional/concur.png>
@@ -1041,13 +1073,13 @@ Package pdftex.def Info: storage/functional/concur.png used on input line 336.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[62 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/functional/func_manip
+[56 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/functional/func_manip
 .png>]
 Underfull \vbox (badness 1675) has occurred while \output is active []
 
- [63 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/functional/concur.pn
+ [57 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/functional/concur.pn
 g>]
-<storage/ui/entityList.png, id=282, 456.20438pt x 288.3272pt>
+<storage/ui/entityList.png, id=263, 456.20438pt x 288.3272pt>
 File: storage/ui/entityList.png Graphic file (type png)
 
 <use storage/ui/entityList.png>
@@ -1057,7 +1089,7 @@ Package pdftex.def Info: storage/ui/entityList.png used on input line 378.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<storage/ui/entityPanel.png, id=283, 729.47531pt x 380.92313pt>
+<storage/ui/entityPanel.png, id=264, 729.47531pt x 380.92313pt>
 File: storage/ui/entityPanel.png Graphic file (type png)
 
 <use storage/ui/entityPanel.png>
@@ -1067,7 +1099,9 @@ Package pdftex.def Info: storage/ui/entityPanel.png used on input line 387.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[64] <storage/ui/entityPreview.png, id=287, 758.08218pt x 307.90031pt>
+[58] [59 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/ui/entityList.pn
+g> <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/ui/entityPanel.png>]
+<storage/ui/entityPreview.png, id=271, 758.08218pt x 307.90031pt>
 File: storage/ui/entityPreview.png Graphic file (type png)
 
 <use storage/ui/entityPreview.png>
@@ -1079,45 +1113,34 @@ Overfull \hbox (3.23639pt too wide) in paragraph at lines 404--405
  []
 
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [65 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/ui/entityList.png> <
-E:/Repositories/rdfgears.btodorov/ThesisWork/storage/ui/entityPanel.png>]
-
-LaTeX Warning: Reference `problemDefStorage' on page 66 undefined on input line
+LaTeX Warning: Reference `problemDefStorage' on page 60 undefined on input line
  423.
 
-[66 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/ui/entityPreview.png>
-] <storage/eval/before.png, id=294, 627.09282pt x 148.30406pt>
+[60 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/ui/entityPreview.png>
+] <storage/eval/before.png, id=275, 627.09282pt x 148.30406pt>
 File: storage/eval/before.png Graphic file (type png)
 
 <use storage/eval/before.png>
 Package pdftex.def Info: storage/eval/before.png used on input line 429.
 (pdftex.def)             Requested size: 313.54564pt x 74.15184pt.
 
-<storage/eval/entities.png, id=295, 241.65282pt x 209.28188pt>
+<storage/eval/entities.png, id=276, 241.65282pt x 209.28188pt>
 File: storage/eval/entities.png Graphic file (type png)
 
 <use storage/eval/entities.png>
 Package pdftex.def Info: storage/eval/entities.png used on input line 444.
 (pdftex.def)             Requested size: 120.82611pt x 104.64067pt.
- [67 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/eval/before.png> <E:
+ [61 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/eval/before.png> <E:
 /Repositories/rdfgears.btodorov/ThesisWork/storage/eval/entities.png>]
-<storage/eval/after.png, id=300, 498.36188pt x 195.73125pt>
+<storage/eval/after.png, id=281, 498.36188pt x 195.73125pt>
 File: storage/eval/after.png Graphic file (type png)
 
 <use storage/eval/after.png>
 Package pdftex.def Info: storage/eval/after.png used on input line 459.
 (pdftex.def)             Requested size: 249.18033pt x 97.86537pt.
- [68 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/eval/after.png>] [69
-] [70
-
-]
-bibitemlist
-) [71] (E:\Repositories\rdfgears.btodorov\ThesisWork\conclusions.tex [72
+ [62 <E:/Repositories/rdfgears.btodorov/ThesisWork/storage/eval/after.png>]) [6
+3]
+(E:\Repositories\rdfgears.btodorov\ThesisWork\conclusions.tex [64
 
 
 
@@ -1127,21 +1150,24 @@ Overfull \hbox (0.95915pt too wide) in paragraph at lines 30--31
 est of the sys-tem(implemented
  []
 
-) [73] [74]
-No file thesis.bbl.
-(E:\Repositories\rdfgears.btodorov\ThesisWork\appendix.tex) [75
+) [65] [66] (E:\Repositories\rdfgears.btodorov\ThesisWork\thesis.bbl
+bibitemlist
+[67
+
+
+] [68] [69] [70]) [71]
+(E:\Repositories\rdfgears.btodorov\ThesisWork\appendix.tex [72
+
+
+]) [73]
+(E:\Repositories\rdfgears.btodorov\ThesisWork\requirements.tex [74
 
 
 
-]
-(E:\Repositories\rdfgears.btodorov\ThesisWork\requirements.tex [76
-
-
-
-] [77])
-[78]
+] [75])
+[76]
 (E:\Repositories\rdfgears.btodorov\ThesisWork\prioritization-questionare.tex)
-[79
+[77
 
 
 
@@ -1167,22 +1193,22 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 6405 strings out of 494045
- 90492 string characters out of 3148378
- 266752 words of memory out of 3000000
- 9494 multiletter control sequences out of 15000+200000
+ 6494 strings out of 494045
+ 92337 string characters out of 3148378
+ 267613 words of memory out of 3000000
+ 9578 multiletter control sequences out of 15000+200000
  81429 words of font info for 102 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 36i,12n,43p,1317b,358s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 35i,12n,43p,1376b,378s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program File
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
 1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8
 a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program
  Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on thesis.pdf (91 pages, 4507318 bytes).
+Output written on thesis.pdf (89 pages, 4512055 bytes).
 PDF statistics:
- 364 PDF objects out of 1000 (max. 8388607)
+ 357 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  171 words of extra memory for PDF output out of 10000 (max. 10000000)
 

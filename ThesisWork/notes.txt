@@ -1,0 +1,29 @@
+1. Plug-in environment - evaluation by real world scenario(done) and indicate how the situation is now improved
+	- future work manage dependencies between plug-ins
+	- rename Proces... BML section - DONE
+
+2. Plug-in describe SDK - DONE
+
+2. Data management - evaluation cover the plug-in environment integration(before the db has to be created on each deployment, now automatically) 
+DONE
+
+3. Plug-in environment caching mechanism based on distributed caching ??? Future work???
+
+4. Fix/Remove Steackholders - DONE
+
+5. Research objective section
+
+6. Plug-in env replace in fig labels U-Sem with the feature
+
+7. Bibitems
+
+8. Scientists ~ Engineers
+
+9. What are side effects + Background TODOs - DONE
+	
+Introduction:
+
+internet is used a lot -> a lot of personal info -> a lot of fields are interested to gain benefits from that data(eg.)
+-> many engineers provide algorithms for analysis -> apart from the alrogithms the have a lot of over head work -> solution that makes
+engineers more productive by saving them time, efforts and abaling to collaborate with each other.
+	
