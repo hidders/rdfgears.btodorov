@@ -1,64 +1,57 @@
 
 \chapter{Problem definition}
 
-As discussed in the background section the U-Sem paradigm defines how the user modelling services has to be organized by orchestrating specific types of functional components. There is, however, little information about how this services and components are constructed and managed in practice. Currently, the only work done in that direction is the adoption of a workflow management system(RDF Gears) which facilitates the orchestration of components into user modelling services. 
+As discussed in the background section the U-Sem paradigm defines how the user modelling services has to be organized by orchestrating specific types of functional components. The specification, however, does not provide any formal mechanism or guidelines about how this services and components are constructed and managed in practice. Currently, the only work done in that direction is the adoption of a workflow management system (RDF Gears) which facilitates the orchestration of components into user modelling services. 
 
-Discovering the potential of Social media for user modelling \textbf{cite Brusilovsky07} , has led to an increased demand for U-Sem engineers to design and build many user modelling services. As a result engineers are constantly required to implement or adapt variety of functional components that are needed for the new services. Because of the lack of standardized approach for building and managing all these components each engineer is responsible to adopt his own approach. We believe that this process of building modelling services requires a lot of overhead work for engineers and can also potentially lead to increased amount of implementation errors. Therefore, in this work we investigate whether the current situation can be improved by introducing a user modelling server that is designed to support the process of creating and exposing the services to the users so that the overhead work of the scientists is limited and they can focus on the core of their work - the user modelling and analysis algorithms.
+Because of the lack of standardized approach for building and managing all these components every engineer is responsible to adopt his own approach. Additionally, discovering the potential of Social media for user modelling \cite{Brusilovsky07}, has lead to an increased demand for U-Sem engineers to design and build many user modelling services. As a result engineers are constantly required to implement or adapt variety of functional components that are needed for the new services. We believe that the lack of formal approach and tools that support the process results in a lot of overhead work for engineers and can also potentially lead to increased amount of implementation errors. Therefore, in this work we investigate whether the current situation can be improved by introducing a user modelling server that is designed to support the process of creating and exposing the user modelling services to the users so that the overhead work of the engineers is limited and they can focus on the core of their work - the user modelling and analysis algorithms.
 
-In order to be able to provide such system we, first, have to identify how engineers work and what are the tasks that require them to do a lot of overhead work and can be fully or partially automated. Next sections address the process that we used in order to identify the high level features that engineers can benefit most from.
+In order to be able to provide such system we, first, have to identify how engineers work and what are the tasks that require them to do a lot of overhead work and can be fully or partially automated. Next sections describe the approach that we used in order to identify the high level features that engineers can benefit most from.
 
 \section{Requirements gathering}
 
 In this section we aim to elicit the needs of the users and structure them into high-level system features that will later be designed and implemented.
 
-\subsection{Stakeholders}
-
-Stakeholders are the people that are have some kind interest in the project. They are the ones that will be affected by the project and thus they are the people that will be the source for the characteristics of the system we have to build. We identified the following as the main stakeholders of the project:  
-
-\begin{itemize}
-\item Scientists - people that develop algorithms and approaches for user modeling and analysis and allow other scientits and users to access them.
-\item ImReal - system that want to use the services provided by the scientists and has its own requirements
-\item RDFGears - provide the workflow engine and want to reuse some of the things.
-\end{itemize}
-
 \subsection{Interviews}
 
-Once we had identified the stakeholders of the project we started to think how to extract the requirements from them. Literature suggest a wide variety of possible approaches []. However, there is one technique that proves to be really effective and it is the semi structured interviews \cite{Dieste}. In order to perform it we prepared some important questions that we wanted to know and then we did discussions \textbf{TODO}
+Stakeholders are the people that are have some kind interest in the project. They are the ones that will be affected by the project and thus they are the source for identifying the characteristics of the system we have to build. In our case the main stakeholders are the engineers that are already using or will use the U-Sem approach for constructing user modelling services.
+
+Having identified the stakeholders of the system, literature suggests a wide variety of possible approaches for eliciting the requirements \cite{HICKEY04} : interviews, questionnaires, user observation, workshops, brain storming, role playing, etc. 
+At the end, we decided to use the semi-structured interviews technique since it is widely used and it has proved to be effective through the years \cite{Dieste}. 
 
 \subsection{Identified features}
 
-We analysed carefully all the raw information that we gather from the interviews and we identified several high-level features. We presented them to the stakeholders and after some discussions we ended up with the following final features that the system should provide: 
+We analysed carefully all the raw information that was gathered from the interviews and we identified several high-level features. We presented them to the stakeholders and after some discussions we ended up with the following final list of features that the system should provide: 
 
 \begin{itemize}
 
 \item \textbf{Simplified access to social media}
-Scientist base a lot of their analysis on the information provided by users in the social media. However, each social media provides access through a special API. Currently, each user implements a component for retrieving the required data from each type social media. Providing feature that makes available to all scientists flexible components that can be configured to retrieve specific data from the different types of social media is considered a big benefit from the engineers because it will save them considerable time and efforts. They also will not need to know the specific details concerning each of the APIs. 
+Engineers base a lot of their analysis on the information provided by users in the social media. However, each social media provides access through a special API. Currently, each engineers has to implement a component for retrieving the required data from each type of social media. Providing feature that makes available to all scientists flexible components that can be configured to retrieve specific data from the different types of social media is considered a benefit from the engineers because it will save them considerable time and efforts. They also will not need to know the specific details concerning each of the APIs. 
 
 \item \textbf{Plug-in environment}
-Engineers constantly build new services and improve and adapt existing one. Therefore, the system should facilitate the process of extending it by plugging in custom logic such as RDFGears functions and other functional components. Users should be able to manage(add/update/remove) this custom logic runtime(without restarting the system). This process should not affect the work of other users.
+Engineers constantly build new services and improve and adapt existing one. Therefore, engineers will benefit if the system is able to facilitate the process of extending itself by plugging in custom logic such as RDFGears functions and other functional components. Engineers should be able to manage(add/update/remove) this custom logic at runtime (without restarting the system). This process should not affect the work of other users.
 
 \item \textbf{Universal data storage} 
-Many of the engineers build services that need to store various types of data(e.g. intermediate and final results). Currently, they are forced to manually set-up databases and program the components needed for interacting with each type of data. This usually not a trivial task, it requires time and knowledge and therefore, it resembles a big overhead to the engineers. Thus, they can be significantly benefited if the system provides a mechanism that enables storage and retrieval of arbitrary types of data.
+Many of the engineers build services that need to store various types of data(e.g. intermediate and final results). Currently, they are forced to manually set-up databases and program the components needed for interacting with each type of data. This is usually not a trivial task, it requires time and knowledge and therefore, it resembles a big overhead to the engineers. Thus, they can be significantly benefited if the system provides a mechanism that enables storage and retrieval of arbitrary types of data.
 
  
 \item \textbf{Integration with Hadoop}
-The amounts of information that have to be processed in the system can sometimes be huge. Sometimes, it has to be processed by external Hadoop based systems. Currently, engineers have to manually manage the exchange the information to and from the Hadoop systems. Therefore, providing a mechanism that facilitates and standardises the process is also considered as a benefit for some engineers.
+The amount of information that has to be processed in the system can sometimes be huge. Therefore, sometimes, it has to be processed by external Hadoop based systems. Currently, engineers have to manually manage the exchange the information to and from the Hadoop systems. Therefore, providing a mechanism that facilitates and standardises the process is also considered as a benefit for some engineers.
 
 \end{itemize}
 
 \section{Feature prioritization}
 
-Because of the limited scope of this thesis work we are focusing on the features that will bring the most advantage for the engineers. In order, to do have to prioritize the requirements based on the impact they will provide. This process, however, is not trivial since each of the stakeholders has slightly different view on the benefits provided by each of the features that we already identified. Therefore, we performed a research in order to find an approach that can be applied in this situation.
+Because of the limited scope of this thesis work we are focusing on the features that will bring the most advantage for the engineers. In order to do that, we have to prioritize the requirements based on the impact they will provide. This process, however, is not trivial since each of the stakeholders has slightly different view on the benefits provided by each of the features that we already identified. Therefore, we performed a research in order to find an approach that can be applied in this situation.
 
-Requirements prioritization is a relatively old research topic and there are numerous approaches that are available \cite{Moisiadis}. The most popular include Quality Function Deployment (QFD) the Analytical Hierarchy Process(AHP), the cost-value approach proposed by Karlsson, Wiegers' method, as well as a variety of industrial practices such as team voting, etc. However, literature also suggests that there is no perfect solution for this problem and the applicability of each approach depends heavily on the particular situation it is used.
+Requirements prioritization is a relatively old research topic and there are numerous approaches that are currently available \cite{Moisiadis}. The most popular include Quality Function Deployment (QFD), the Analytical Hierarchy Process(AHP), the cost-value approach proposed by Karlsson, Wiegers' method, as well as a variety of industrial practices such as team voting, etc. However, literature also suggests that there is no perfect solution for this problem and the applicability of each approach depends heavily on the particular situation it is used.
 
-For our project, we choose the analytic hierarchy process approach \cite{Lowe90} . This decision was based on the fact that it is especially suitable for prioritizing a small number of requirements\cite{Karlsson} and it is a proven and widely used \cite{Karlsson2}. In literature, as a disadvantage of this approach is considered the fact that it takes no account of interdependencies between requirements \textbf{Lowe90}. However, this issue did not affect the solution because the project high-level features are loosely coupled and they have little dependency between each other. 
+For our project, we choose the analytic hierarchy process approach \cite{Lowe90} . This decision was based on the fact that it is especially suitable for prioritizing a small number of requirements\cite{Karlsson} and it is a proven and widely used \cite{Karlsson2}. In literature, as a disadvantage of this approach is considered the fact that it takes no account of interdependencies between requirements \textbf{Lowe90}. However, this issue is not a problem for our solution because the project high-level features are loosely coupled and they have little dependency between each other. 
 
 
 \subsection{Features prioritization using AHP}
-In the Requirements gathering section we identified 5 high-level requirements(features) that cover the main functionality of the system. In this step we are using the AHP's pairwise comparison method in order to assess the relative value of the candidate requirements. We asked a group of four experienced project members to represent customers views. We instructed them on the process and asked them to perform  pairwise comparisons of the candidate requirements based on their value(importance). Fig.. \textbf{Apendix 1} shows the form that they were asked to fill.
+In the Requirements gathering section we identified 5 high-level requirements(features) that cover the main functionality of the system. In this step we are using the AHP's pairwise comparison method in order to assess the relative value of the candidate requirements. We asked a group of four experienced project members to represent customers views. We instructed them on the process and asked them to perform  pairwise comparisons of the candidate requirements based on their value(importance). \textbf{Apendix 1} shows the form that they were asked to fill.
 
-We let the participants to work alone, defining their own pace. We also allowed them to choose the order of the pair's comparison. Discussions were also allowed. When all participant finished the pairwise comparison, as advised in \cite{Karlsson} we had to make sure that the provided results are consistent. In order to do that we had to calculate the the consistency indices of the pairwise comparisons. According to \cite{Karlsson} values lower than 0.10 are considered acceptable and even values around .12 are commonly achieved in the industry and can also be considered acceptable. The calculation showed that two of the participants has indices higher than .23 which indicates serious inconsistencies \textbf{fff}. Therefore, we asked them to revise their answers and the results afterwards we measured values that are acceptable \textbf{ffff}.
+We let the participants to work alone, defining their own pace. We also allowed them to choose the order of the pair's comparison. Discussions were also allowed. When all participant finished the pairwise comparison, as advised in \cite{Karlsson} we had to make sure that the provided results are consistent. In order to do that we had to calculate the the consistency indices of the pairwise comparisons. According to \cite{Karlsson} values lower than 0.10 are considered acceptable and even values around .12 are commonly achieved in the industry and can also be considered acceptable. The calculation showed that two of the participants have indices higher than .23 which indicates serious inconsistencies (table \ref{tbl:reqInitialConsist}). Therefore, we asked them to revise their answers and the results afterwards we measured values that are acceptable (table \ref{tbl:reqFinalConsist}).
  
  \begin{table}[h!]
   \begin{center}
@@ -70,6 +63,7 @@ We let the participants to work alone, defining their own pace. We also allowed 
     \end{tabular}
   \end{center}
   \caption{The initial consistency ratios for each of the stakeholders.}
+  \label{tbl:reqInitialConsist}
 \end{table}
 
 
@@ -83,14 +77,16 @@ We let the participants to work alone, defining their own pace. We also allowed 
     \end{tabular}
   \end{center}
   \caption{Consistency ratios for each of the stakeholders after refinement.}
+  \label{tbl:reqFinalConsist}
 \end{table}
 
-Once we had achieved satisfying results we calculated the distributions. We outlined the candidate requirements in a diagram and presented the results to the project members. Each requirement's determined value is relative and based on a ratio scale. Therefore, a requirement whose value is calculated as 0.20 is twice as valuable as a requirement with a value of 0.10. Additionally, the sum of the values for all requirements equals 1. This means that a requirement with a value of 0.10 provides 10 percent of the value of all the requirements.
+Once we had achieved satisfying results we calculated the distributions. We outlined the candidate requirements in a diagram (figure \ref{fig:reqPriority}) and presented the results to the project members. Each requirement's determined value is relative and based on a ratio scale. Therefore, a requirement whose value is calculated as 0.20 is twice as valuable as a requirement with a value of 0.10. Additionally, the sum of the values for all requirements equals 1. This means that a requirement with a value of 0.10 provides 10 percent of the value of all the requirements.
 
 \begin{figure}[h!]
   \centering
       \includegraphics{requirements/value_diagram.png}
   \caption{The value distribution of the 5 requirements in the U-Sem project.}
+  \label{fig:reqPriority}
 \end{figure}
 
 
@@ -99,9 +95,9 @@ Finally, based on the provided results from the prioritization and the limited s
 \section{Plug-in Environment}
 \label{sec:problemDefPlugin}
 
-During the initial interviews with scientists that are going to potentially use the system, we reviled that the nature of their work is very dynamic. In their day to day work they are expected to constantly improve and come up with new algorithms and approaches for user modelling. As a result, they are continuously producing new software code that implements these algorithms. After each production cycle, the program code has to be deployed into U-Sem so that it is available for testing, demonstration and evaluation purposes.
+During the initial interviews with the engineers that are going to potentially use the system, we revealed that the nature of their work is very dynamic. In their day to day work they are expected to constantly improve and come up with new algorithms and approaches for user modelling. As a result, they are continuously producing new software code that implements these algorithms. After each production cycle, the program code has to be deployed into U-Sem so that for the purpose of experimentation, it is available for testing, demonstration and evaluation purposes.
 
-We also performed additional interviews with the scientist in order to reveal how this process is currently done, what are the problems they face with it and what are their expectations for the future system. Scientists reported that they have on their disposal only the capabilities of the workflow engine(RDFGears). However, it provides no functionality that enables to plug in custom logic on demand into the system and as a result, scientists are forced to "hardcode" their logic into the source code of the workflow engine. In this way, the software code implementing the algorithms becomes part of the workflow engine. We believe that this approach is error prone and brings a lot of discomfort to the scientists working with the system. The most important disadvantages of this approach include:
+We also performed additional interviews with the engineers in order to reveal how this process is currently done, what are the problems they currently face and cost them a time and efforts, and what are their expectations for the future system. Based on the results from the interviews we concluded that the main problem is that engineers have to "hardcode" the code implementing new components into the source code of the workflow engine (RDF Gears). In this way, the software code implementing the algorithms becomes part of the workflow engine. This approach has a lot of disadvantages, it is error prone and brings a lot of discomfort to the engineers working with the system because:
 
 \begin{itemize}
 
@@ -124,45 +120,45 @@ We also performed additional interviews with the scientist in order to reveal ho
 		
 \end{itemize}
 
-This approach also introduces one big disadvantage from software engineering perspective. The problem lies in the poor modularization of the system. In software engineering, modularization is considered as a key property for improving extensibility, comprehensibility, and reusability in software projects \cite{Parnas}. The most important aspect of a successful modular system is its information hiding capabilities \cite{Srivastava}. In our case, scientists can only rely on the modularization functionality provided by the Java language. However, its information hiding principles are only applied on class level, but not to the level of packages and JAR files. For example, it is not possible to restrict access to certain public classes defined in a package. The absence of such visibility control can easily lead to highly coupled, "spaghetti-like" systems \cite{Eder}. The consequences of this will become more and more clear with the time when the system grows in size, complexity and the number of engineers working on it increases. The most probable consequences include high development costs, low productivity, unmanageable software quality and high risk to move to new technology \cite{Cai}.
+This approach also introduces one disadvantage from software engineering perspective and it concerns the lack of a mechanism for establishing modularization between the implemented components. In software engineering, modularization is considered as a key property for improving extensibility, comprehensibility, and reusability in software projects \cite{Parnas}. The most important aspect of a successful modular system is its information hiding capabilities \cite{Srivastava}. In our case, scientists can only rely on the modularization functionality provided by the Java language. However, its information hiding principles are only applied on class level, but not to the level of packages and JAR files. For example, it is not possible to restrict access to certain public classes defined in a package. The absence of such visibility control can easily lead to highly coupled, "spaghetti-like" systems \cite{Eder}. The consequences of this will become more and more clear with the time when the system grows in size, complexity and the number of engineers working on it increases. The most probable consequences include high development costs, low productivity, unmanageable software quality and high risk to move to new technology \cite{Cai}.
 
-Having all these considerations in mind, we devised a complete set of requirements that presents the functional scenarios(functional requirements) and system qualities(non-functional requirements) that the proposed architecture has to provide. These requirements are also referred to into the evaluation section where we discuss how and to what extend the architecture satisfies each of them.
+\textbf{TODO Transition to the next part of the story}
 
 \section{Data Management}
 \label{sec:problemDefStorage}
 
-Our research showed that many of the services implemented by the engineers require data storage and retrieval in some form. The structure and semantics of the data varies greatly but we managed to classify the data in several groups:
+Our research showed that many of the services implemented by the engineers require data storage and retrieval in some form. The structure and semantics of the data varies greatly but it can be roughly classified in the following groups:
 
 \begin{itemize}
 
-	\item \textit{Raw data} - Engineers reported that most of the analysis and modelling services they devised are based on the social media. Basically, they have to retrieve certain entries(e.g tweets from Twitter \textbf{foot note} ) which are the basis for the analysis. In certain cases engineers have to store this "raw data" locally. Usually, this is as a result of the fact that the retrieving the entities requires time and also the some social media APIs limit the number of entities you can get in certain amount of time \textbf{cite}. This makes the execution of workflows slow(the system has to wait to get the needed entries every time). Therefore, engineers are forced to store these entries an only make sure they are up to data prior to the execution of a workflow.
+	\item \textit{Raw data} - Engineers reported that most of the analysis and modelling services they devised are based on the social media. Basically, they have to retrieve certain entries(e.g tweets from Twitter ) which are the basis for the analysis. In certain cases engineers have to store this "raw data" locally. Usually, this is as a result of the fact that the retrieving the entities requires time and also some social media APIs limit the number of entities you can get in certain amount of time \cite{Cheong09}. This makes the execution of workflows slow(the system has to wait to get the needed entries every time). Therefore, engineers are forced to store these entries locally and only make sure they are up-to-date prior to the execution of a workflow.
 	
 	\item \textit{User provided data} - Some services require information that is not available from the social media and has to be provided by the users of the system. For example, in certain usecases users has to fill in questioners and the results from later analysis is adjusted based on the answers provided by the users. It is infeasible to ask the users for that information every time that is why it has to be stored within the system.
 	
-	\item \textit{Intermediate results} - Some services consist of two phases. The first phase continuously calculates some intermediate representation of the raw data. In the second phase, on user request the final result is calculated based on the intermediate data. For example, \textbf{twinder}. Therefore, between the two phases the intermediate results has to be stored and later retrieved back.
+	\item \textit{Intermediate results} - Some services consist of two phases. The first phase continuously calculates some intermediate representation of the raw data. In the second phase, on user request the final result is calculated based on the intermediate data. One of the examples is the Twinder service \cite{Ke12}. Therefore, between the two phases the intermediate results have to be stored and later retrieved back.
 	
-	\item \textit{Ready user profiles} - Some services require that users has to be able to monitor how the results evolve over time. For example, in e-learning systems users want to be able to see how the knowledge of a certain person has changed after following a certain course and thus measure how helpful the course was for that person. Therefore, every time a service is executed the results has to be stored so that they can be later further analysed.
+	\item \textit{Ready user profiles} - Some services require that users has to be able to monitor how the results evolve over time. For example, in e-learning systems users want to be able to see how the knowledge of a certain person has changed after following a certain course in order to measure how helpful the course was for that person. Therefore, every time a service is executed the results have to be stored so that they can be later further analysed.
 	
 	\item \textit{System data} - Finally, many of the features of the system need to store some kind of information. For example, the multy-user sport has to store all kind information about the users of the system: user names, passwords, privileges, etc. The scheduling feature has to store information about the time each workflow has to be executed. 
 	
 \end{itemize}
 
-Currently, the system does not provide any functionality to support users in defining workflows that require data operations. Each scientist is forced to create custom components that serve the particular requirements. However, we argue that this process wastes a lot of time, suffers from many downsides and problems:
+Currently, the system does not provide any functionality to support users in defining workflows that require data operations. Each scientist is forced to create custom components that serve the particular requirements. However, this process costs a lot of time and efforts, and suffers from many downsides and problems:
 
 \begin{itemize}
-	\item \textit{Knowledge required} - designing and implementing components for dealing with persistent data is not a trivial job. It requires specific type of knowledge(\textbf{database, administration}). Many of the engineers building services have mathematical, statistical background are likely not to have in depth knowledge in the database field. These engineers have to learn this which can cause significant overhead and waste of time. Additionally, the fact that they are not professionals in the field may lead to problems and shortcomings.
+	\item \textit{Knowledge required} - designing and implementing components for dealing with persistent data is not a trivial job. It requires specific type of knowledge(\textbf{database, administration}). Many of the engineers building services have mathematical or statistical backgrounds and are likely not to have in depth knowledge in the database field. In order to be able to build their services they have to acquire this knowledge which can cause significant overhead and waste of time. Additionally, the fact that they are not professionals in the field may lead to problems and shortcomings.
 	
-	\item \textit{Server administration} - Most of the storing solutions require setting up a dedicated database server. These serves has to be hosted somewhere, maintained, backuped, etc. All these require a lot of effort and if every user has to do it, it will result in large amount of duplicated work and overhead. If engineers decide to use a shared database server then appears the question of who is responsible to manage it and ensure its security and privacy.
+	\item \textit{Server administration} - Most of the storing solutions require setting up a dedicated database server. These servers have to be hosted somewhere, maintained, backuped, etc. All these require a lot of effort and if every user has to do it, it will result in large amount of duplicated work and overhead. If engineers decide to use a shared database server then appears the question of who is responsible to manage it and ensure its security and privacy.
 	
-	\item \textit{Dynamic data structure} - It is expected that the structure of the stored data might change over time. When a database with fixed schema is used (like SQL) then every time the structure changes the engineers has to manually connect to the database and apply the changes manually. This can be really annoying, time consuming and error prone. Therefore, automating this process can save time to engineers and reduce the number of mistakes caused by carelessness. 
+	\item \textit{Dynamic data structure} - It is expected that the structure of the stored data might change over time. When a database with fixed schema is used (like most SQL solutions) then every time the structure changes the engineers has to manually connect to the database and apply the changes manually. This can be really annoying, time consuming and error prone. Therefore, automating this process can save time to engineers and reduce the number of mistakes caused by carelessness. 
 	
-	\item \textit{Collaboration} - collaborations between engineers on data level is reported to be quite important and can save them a lot of time. Currently, there are no facilities available to support that requirement. Engineers have to organize this collaborations externally from the system. Additionally, this collaboration is hard to monitor and control.
+	\item \textit{Collaboration} - collaborations between engineers on data level is reported to be quite important and can save them a lot of time. Currently, there are no facilities available to support that requirement. Engineers have to organize this collaborations personally. Additionally, because the collaboration are not integrated in the system they are likely to be hard to monitor and control.
 	
-	\item \textit{Low level queries} - Currently, most services use SQL databases. As a result, users have to deal with sql queries, which is considered as low level language \textbf{cite} and causes some overhead to the engineers especially the ones that are not familiar with it. Therefore users are for. Therefore, introducing some kind of higher level query language can be a big plus.
+	\item \textit{Low level queries} - Currently, most services use SQL databases. As a result, engineers have to build various SQL queries. The SQL query language is considered as low level language \textbf{needs ref} and causes some overhead to the engineers especially the ones that are not familiar with it. Therefore, introducing higher level query language can be a big plus.
 	
-	\item \textit{RGL translation} - Generally available database solutions are not capable to deal with data in the RGL format introduces in RDFGears. Therefore, every single component that deals with persistent data has to translate the RGL values to values compatible with the databases solution and vice versa. Clearly, all this code is redundant and removing this responsibility from the engineers will save them time and efforts so that they can focus their attention to the core of their work.
+	\item \textit{RGL translation} - Generally available database solutions are not capable to deal with data in the RGL format introduced in RDF Gears. Therefore, every single component that deals with persistent data has to translate the RGL values to values compatible with the databases solution and vice versa. Clearly, all this code is redundant and removing this responsibility from the engineers will save them time and efforts so that they can focus their attention to the core of their work.
 	
-	\item \textit{RDFGears and components with side effects} - Components that store data are components that have side affects. Generally, RDFGears is not designed to work with such components and some unexpected behaviour might be expected. Therefore, engineers building components with side effects and are not aware of the way RDFGears operate internally risk to introduce problems that are hard to detect.
+	\item \textit{RDF Gears and components with side effects} - Components that store data are components that have side affects. However, RDF Gears is not designed to work with such components and some unexpected behaviour might be expected. Therefore, engineers building components with side effects and are not aware of the way RDF Gears operate internally risk to introduce problems that are hard to detect.
 	
 \end{itemize}
 
@@ -173,6 +169,8 @@ In this thesis we aim to propose a solution that is capable to overcome these pr
 \textbf{TODO}
 
 \begin{thebibliography}{99}
+
+\bibitem{HICKEY04} ANN M. HICKEY AND ALAN M. DAVIS, A Unified Model of Requirements Elicitation, 2004
 
 \bibitem{Dieste}
 Oscar Dieste, Natalia Juristo, and Forrest Shull, Understanding the Customer: What Do We Know about Requirements Elicitation?
@@ -187,5 +185,9 @@ J Karlsson, C Wohlin, B Regnell - Information and Software Technology, 1998 - El
 Frank Moisiadis, THE FUNDAMENTALS OF PRIORITISING REQUIREMENTS
 
 \bibitem{Lowe90} Roper-Lowe, Gr C and Sharp, JA, The analytic hierarchy process and its application to an information technology decision, 1990
+
+\bibitem{Cheong09} Cheong, Marc and Lee, Vincent, Integrating web-based intelligence retrieval and decision-making from the twitter trends knowledge base, 2009
+
+\bibitem{Ke12} Tao, Ke and Abel, Fabian and Hauff, Claudia and Houben, Geert-Jan, Twinder: a search engine for twitter streams, 2012
 
 \end{thebibliography}
