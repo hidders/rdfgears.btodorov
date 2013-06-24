@@ -26,6 +26,11 @@ Mark Assad, David~J Carmichael, Judy Kay, and Bob Kummerfeld.
   context-aware services.
 \newblock In {\em Pervasive Computing}, pages 55--72. Springer, 2007.
 
+\bibitem{bartlett2009osgi}
+Neil Bartlett.
+\newblock Osgi in practice.
+\newblock {\em Bd (January 11, 2009)}, 2009.
+
 \bibitem{bruneton2006fractal}
 Eric Bruneton, Thierry Coupaye, Matthieu Leclercq, Vivien Qu{\'e}ma, and
   Jean-Bernard Stefani.
@@ -138,6 +143,11 @@ He~Jifeng, Xiaoshan Li, and Zhiming Liu.
 \newblock In {\em Theoretical Aspects of Computing--ICTAC 2005}, pages 70--95.
   Springer, 2005.
 
+\bibitem{joseph1988reliable}
+Thomas~A Joseph and Kenneth~P Birman.
+\newblock Reliable broadcast protocols.
+\newblock Technical report, DTIC Document, 1988.
+
 \bibitem{kaplan2010users}
 Andreas~M Kaplan and Michael Haenlein.
 \newblock Users of the world, unite! the challenges and opportunities of social
@@ -179,6 +189,13 @@ Kung-Kiu Lau and Zheng Wang.
 \newblock {\em Software Engineering, IEEE Transactions on}, 33(10):709--724,
   2007.
 
+\bibitem{le2009dependency}
+Daniel Le~Berre and Pascal Rapicault.
+\newblock Dependency management for the eclipse ecosystem: eclipse p2, metadata
+  and resolution.
+\newblock In {\em Proceedings of the 1st international workshop on Open
+  component ecosystems}, pages 21--30. ACM, 2009.
+
 \bibitem{lev2009scalable}
 Yossi Lev, Victor Luchangco, and Marek Olszewski.
 \newblock Scalable reader-writer locks.
@@ -203,6 +220,11 @@ Bertram Ludascher, Ilkay Altintas, Chad Berkley, Dan Higgins, Efrat Jaeger,
 \newblock {\em Concurrency and Computation: Practice and Experience},
   18(10):1039--1065, 2006.
 
+\bibitem{mcaffer2010eclipse}
+Jeff McAffer, Jean-Michel Lemieux, and Chris Aniszczyk.
+\newblock {\em Eclipse rich client platform}.
+\newblock Addison-Wesley Professional, 2010.
+
 \bibitem{miller1998introduction}
 Eric Miller.
 \newblock An introduction to the resource description framework.
@@ -214,11 +236,6 @@ Frank Moisiadis.
 \newblock The fundamentals of prioritising requirements.
 \newblock In {\em Proc Systems Engineering, Test \& Evaluation Conf, Sydney,
   Australia}, pages 108--119. Citeseer, 2002.
-
-\bibitem{nikolov2009recoverable}
-Vladimir Nikolov, R{\"u}diger Kapitza, and Franz~J Hauck.
-\newblock Recoverable class loaders for a fast restart of java applications.
-\newblock {\em Mobile Networks and Applications}, 14(1):53--64, 2009.
 
 \bibitem{olson2008formal}
 Lars~E Olson, Carl~A Gunter, and P~Madhusudan.
@@ -295,10 +312,21 @@ Nick Rozanski and E{\'o}in Woods.
   viewpoints and perspectives}.
 \newblock Addison-Wesley Professional, 2011.
 
+\bibitem{seacord1999software}
+Robert~C Seacord.
+\newblock Software engineering component repositories.
+\newblock In {\em Proceedings of the International Workshop on Component-Based
+  Software Engineering}, 1999.
+
 \bibitem{maro2011}
 Marojahan Sigiro.
 \newblock Dynamic user interface supporting type analysis for rdfgears.
 \newblock Master's thesis, TU Delft, Netherlands, 2011.
+
+\bibitem{silva2009practical}
+Vladimir Silva.
+\newblock {\em Practical Eclipse Rich Client Platform Projects}.
+\newblock Apress, 2009.
 
 \bibitem{srivastava2008modular}
 Saurabh Srivastava, Michael Hicks, Jeffrey~S Foster, and Patrick Jenkins.
@@ -339,5 +367,16 @@ Eoin Woods and Nick Rozanski.
 \newblock In {\em Software Architecture, 2009 \& European Conference on
   Software Architecture. WICSA/ECSA 2009. Joint Working IEEE/IFIP Conference
   on}, pages 333--336. IEEE, 2009.
+
+\bibitem{wu2005access}
+Jing Wu, Yi~Mu, Jennifer Seberry, and Chun Ruan.
+\newblock Access policy sheet for access control in fine-grained xml.
+\newblock In {\em Embedded and Ubiquitous Computing--EUC 2005 Workshops}, pages
+  1273--1282. Springer, 2005.
+
+\bibitem{zhao2004design}
+Yong-chao ZHAO, Ning Zheng, and Ying-long GE.
+\newblock Design and deploy of the connection pool in java.
+\newblock {\em Application Research of Computers}, 6:077, 2004.
 
 \end{thebibliography}

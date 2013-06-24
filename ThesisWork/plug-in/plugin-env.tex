@@ -43,11 +43,22 @@ This section identifies the main quality scenarios that a successful architectur
 \section{Approach}
 \label{sec:approachPlugin}
 
-This section discusses the currently available approaches and technologies that might be used in order to design a system that fulfils the requirements specified in the previous section. After a detailed investigation of the requirements, we reached the conclusion that the core of the problem lies, firstly, in the poor separation of concerns (modularization of the functionality) and secondly, in the impossibility to manage (add, replace, remove) these concerns while the system is in operation. In order to solve these problems, we investigated the scientific literature to find what are the available approaches and technologies that can help to overcome these problems. Our research relieved that the topic about modularization of software systems is widely discussed and there is even a sub field in software engineering which addresses the problem of building systems out of different components \cite{jifeng2005component}. This sub field is called \textit{Component-based software engineering}. 
+This section discusses the currently available approaches and technologies that might be used in order to design a system that fulfils the requirements specified in the previous section. After a detailed investigation of the requirements, we reached the conclusion that the core of the problem lies, firstly, in the poor separation of concerns (modularization of the functionality) and secondly, in the impossibility to manage (add, replace, remove, monitor) these concerns while the system is in operation. In order to solve these problems, we investigated the scientific literature to find what are the available approaches and technologies that can help to overcome these problems. Our research relieved that the topic about modularization of software systems is widely discussed and there is even a sub field in software engineering which addresses the problem of building systems out of different components: \textit{Component-based software engineering}  \cite{jifeng2005component}. Following this idea we propose an approach for solving the problem by decomposing it into the following sub-problems:
 
-In the next subsection we discuss the basic idea and the advantages that this approach brings. We also discus what features a system needs to provide in order to enable Component-based software engineering. This is known as component model. At the end, we also discuss the state of the art technologies that provide support for Component-based software engineering, enable dynamic management of the components and are useful in the context of U-Sem. 
+\begin{itemize}
+	\item \textit{Modularization and component management} - this problem addresses how the system is modularized into components that can be added removed from the system on demand without affecting its operation.
+	\item \textit{Collaboration between engineers} - enable engineers to collaborate by reusing each others work.
+	\item \textit{Dependencies management} - help engineers to manage the dependencies between components ensuring that the system is in a consistent state.
+	\item \textit{Component construction support} - assist and if possible automate the process of creating components.
+\end{itemize}
 
-\subsection{Component-based software engineering}
+Next subsections address each of these sub-problems presenting the way they are approached and solved. 
+
+\subsection{Modularization and component management}
+
+In this section we discuss the basic idea and the advantages that the \textit{Component-based software engineering} idea brings. We also discus what features a system needs to provide in order to enable Component-based software engineering. This is known as component model. At the end, we also discuss the state of the art technologies that provide support for Component-based software engineering, enable dynamic management of the components and are useful in the context of U-Sem. 
+
+\subsubsection{Component-based software engineering}
 
 Component-based software engineering is based on the idea to construct software systems by selecting appropriate off-the-shelf components and then, assemble them together with a well-defined software architecture \cite{pour1998component}. This software development approach improves on the traditional approach(building application as a single entity) since applications no longer have to be implemented from scratch. Each component can be developed by different developers using different IDEs, languages and different platforms. This can be shown in Figure \ref{fig_cbsd}, where components can be checked out from a component repository, and assembled into the desired software system. This completely complies with the idea behind U-Sem where each scientists is responsible to build only a peace of the system which provides certain service.
 
@@ -62,7 +73,7 @@ Other benefits that Component-based software development brings and we believe U
 
 \textbf{TODO Add refs}
 
-\subsection{Component model}
+\subsubsection{Component model}
 
 Designing the component model of a system provides the specification defining the way that the system can be build by composing different components applying the component-based software engineering approach. More formally, it is the architecture of a system or part of a system that is built by combining different components \cite{cai2000component}. It defines a set of  standards for component implementation, documentation and deployment. Usually, the main components that a component-based software system consists of are \cite{chen2009refinement}:
 
@@ -95,7 +106,7 @@ Designing the component model of a system provides the specification defining th
 \paragraph{Coordinator}
 	is the entity which is responsible to glue together and manage all the components. It is needed because components provide a number of features, but they are not able to activate the functionality themselves. This is the responsibility of the coordinator.
 
-\subsection{State of the art component model implementations}
+\subsubsection{State of the art component model implementations}
 
 In previous sections, we discussed that integrating a component model in the architecture of U-Sem is the scientifically proven approach that promises to solve the design problem and fulfil the requirements of the customers. However, we had to decide whether to design and implement our own custom component model or we can reuse an existing one. Reusing a popular and widely used solution might be beneficial because it is likely it is heavily tested (at least from the engineers using it) and thus provide higher quality. 
 
@@ -114,7 +125,7 @@ Apart form this, there is also another critical concern when choosing component 
 We performed further investigation in order to find what are the current state of the art technologies that satisfy all requirements. It showed that currently there two standards that satisfy our needs: Fractal \cite{bruneton2006fractal} and Open Services Gateway initiative (OSGI) \footnote{OSGi Alliance. http://www.osgi.org}. Both of them seemed quite popular and widely used and therefore we concluded that reusing them is more beneficial than implementing a component model from scratch. For the proposed architecture of U-Sem we chose to use OSGI since our impression is that it provides a simpler way of defining components(no component hierarchies) which will be beneficial for scientists that do not have so in depth knowledge of component-based engineering. OSGI is also widely used \cite{tavares2008gentle} which may suggest that it is well tested and therefore is more stable. The next subsection focuses on how OSGI works and its features that are interesting for the architecture of U-Sem.
 
 
-\subsection{OSGI}
+\subsubsection{OSGI}
 
 Proposed first in 1998, OSGI represents a set of specifications that defines a component model which represents a dynamic component system for Java. These specifications enable a development model where applications are dynamically composed of different independent components. Components can be loaded, updated and deleted on demand without having to restart the system. OSGI defines the main components of the standard component model which are discussed in the previous section as follows:
 
@@ -143,18 +154,35 @@ Since its introduction, the Java language and JVM have been widely used and subj
 
 On top of this, OSGI defines additional permissions that provides full control of the interactions between the components. It provides functionality that enables dependencies at the package level and at the service level to be allowed or prevented. Additionally, management capability from one component to the others can also be restricted \cite{parrend2009security}.
 
+\textbf{TODO user interface for monitoring and installing the plug-ins}
+
 \subsection{Collaboration between users}
 
-Engineers have to be able to collaborate between each other by reusing each others functionality. In order to support this feature we propose the use of a Plug-in repository. It represents a storage location where plug-ins are stored and when needed, they can be retrieved and installed into the system. Scientists build and then publish their plug-ins there so that anyone interested can install and use them. 
+Engineers have to be able to collaborate between each other by reusing each others functionality. In order to support this feature we propose an approach based on the \textit{Component Repository} idea \cite{seacord1999software}. We introduce a Plug-in repository which represents a storage location where plug-ins are stored and when needed, they can be retrieved and installed into the system. Scientists build and then publish their plug-ins there so that anyone interested can install and use them. Literature suggests that this approach is also used in other plug-in based systems like Eclipse \cite{mcaffer2010eclipse}.
 
 By using the Plug-in repository scientists are able to exchange components before they are installed into U-Sem. Alternative approach would have been enable scientists to share already installed components between each other. In this way, whenever a scientist creates a new version or an entirely new component it is installed to U-Sem, shared and then all other scientists are able to use it. However, that approach has one major disadvantage. When a new version of a component is installed then all scientists automatically start to use the new version. The version, though, might introduce a bug or it might not be completely compatible with the previous version. As a result, all other scientists' services and components that are using it are threatened to experience failures. 
 
 Using the Plug-in repository overcomes this problem. When a scientist releases new version of component, other scientists can decide whether or not to immediately adopt the new release. If they decide not to, they can simply continue using the old one. 
 Later, when they decide that are ready for the change, they install and use the new release. The benefit from this approach is that none of the scientists are at the mercy of the others. Changes made to one component do not need to have an immediate affect on other scientists that are using it. Each scientist can decide whether or when to move to the new releases of the components in use.
 
-\subsection{Software development kit}
+\subsection{Dependencies management}
 
-In order to create a plug-in engineers have to create and configure a plug-in project. This process involves setting up all required dependencies and building the required folder structure within the project. From engineers point of view, all these steps can be time consuming especially for new members of the team or for engineers without computer science background. Therefore, in order to automate this process the system provides a special Eclipse based SDK (software development kit) that helps engineers to easily create and set-up the plug-ins. Additionally, often engineers have to create simple one component workflows in order to test a specific component. The SDK automates this process by allowing engineers to create plug-in projects with pre-wired one component workflows. Engineers only have to provide the names of the component and the workflow and put the source code into the Java class of the created component. 
+It is very likely that plug-ins have dependencies between each other. This may be as a result of reusing functionality from other engineer's plug-ins or depending on a plug-in that contains common functionality like extracting data from social media and storing data into a database. Therefore, in order to use one plug-in engineers have to make sure that all its dependent plug-ins are also installed. The problem is that the dependency information is only available on compile time. Once the plug-in is compiled it hard to tell what are its dependencies because this information is packed inside the \textit{Jar} file representing the plug-in. Therefore, engineers are responsible to remember what are the dependencies of the plug-ins they are installing or to refer to the source code. This problem is even more severe when engineers reuse shared plug-ins from the plug-in repository since they do not have access to the source code and therefore, have to contact and communicate the dependencies with the owners of the plug-ins which is an obvious overhead and waste of time. We believe that this approach for dealing with the plug-in dependencies is not effective and will pose a significant overhead for engineers.
+
+Literature suggests that there is an already existing attempt to overcome this problem which is the Eclipse P2 framework \cite{le2009dependency}. It represents a component provisioning system that can be configured to work with any kind of components(not only plug-ins) and proposes the idea of packing components into installable units that define the dependencies between them. Clients of the system can choose to install between the installable units which ensures that all the required components will be installed. The system is designed to be flexible in order to be applicable for a variety of different scenarios. However, as a result it requires a lot of additional work from the engineers in order to set all the installable units up which is a big disadvantage for the U-Sem scenario. Therefore, we propose a simpler approach specifically designed for solving the problem in U-Sem. It is based on the fact that U-Sem is designed to work only with plug-ins and each them already contains information about its dependencies and therefore, the system can automatically read these dependencies and verify if they are all satisfied and the system is consistent. The proposed solution consists of two parts:
+
+\begin{itemize}
+	\item The Plug-in repository is extended so that when a new plug-in is being installed it checks the current configuration and any missing dependent plug-ins are offered for installation as well.
+	\item When engineers open the plug-in monitoring user interface the system notifies for any missing dependencies and proposes their installation from the repository.
+\end{itemize}
+
+
+The main benefit from this approach is that it completely automates the dependency management process and does not require any additional work from the engineers when they are building plug-ins. There is, however, one use-case which requires some manual work. It originates from the fact that in certain cases OSGI also allows plug-ins to depend on Java packages without specifying their source \cite{bartlett2009osgi}. This is not a significant problem for U-Sem since this functionality is only used for plug-ins to refer to the packages which are not encapsulated in plug-ins like the workflow engine. This packages are already part of the plug-in environment and therefore, no action is required. If there is still a future use-case where this functionality is needed engineers are responsible to manage these dependencies manually.
+
+
+\subsection{Plug-in construction support}
+
+In order to create a plug-in engineers have to create and configure a plug-in project. This process involves setting up all required dependencies and building the required folder structure within the project. From engineers point of view, all these steps are considered as an overhead that can be time consuming especially for new members of the team or for engineers without computer science background. Therefore, in order to automate this process the system provides a special Eclipse based SDK (software development kit) which extends the out-of-the-box capabilities of Eclipse providing user interface that assists engineers to easily create and set-up plug-ins for U-Sem. This is achieved by introducing a special \textit{Eclipse Project Template} \cite{silva2009practical} that can automatically create U-Sem plug-ins, set up their folder structure and add the required dependencies. Additionally, often engineers have to create simple one-component workflows in order to test a specific component. Thus, the solution is also automates this process by allowing engineers to create plug-in projects with pre-wired one-component workflows. Engineers only have to provide the names of the component and the workflow in the user interface and put the source code into the Java class dedicated for the created component. 
 
 \textbf{TODO Transition to the next part of the story}
 
@@ -205,7 +233,7 @@ After we have identified the new actors(scientists) and external systems(plug-in
 
 \begin{figure}[h!]
   \centering
-  	\includegraphics[scale=0.7,angle=90]{plug-in/business_processes/CreatePlugInBusinessModel.jpg}
+  	\includegraphics[scale=0.7,angle=270]{plug-in/business_processes/CreatePlugInBusinessModel.jpg}
   \caption{Business model describing the process for creating a new plug-in for U-Sem}
   \label{fig_install_bpm}
 \end{figure}
@@ -218,7 +246,7 @@ As illustrated in the diagram, there are three participants in this process(U-Se
 
 \begin{figure}[h!]
   \centering
-  	\includegraphics[scale=0.7,angle=90]{plug-in/business_processes/InstallPlugInFromRepoBusinessModel.jpg}
+  	\includegraphics[scale=0.7,angle=270]{plug-in/business_processes/InstallPlugInFromRepoBusinessModel.jpg}
   \caption{Business model describing the process for installing a shared plug-in/s to U-Sem}
   \label{fig_repo_bpm}
 \end{figure}
@@ -231,7 +259,7 @@ The process consists of two main phases. First, the scientist contacts the plug-
 
 \begin{figure}[h!]
   \centering
-  	\includegraphics[scale=0.7,angle=90]{plug-in/business_processes/PluginManagementBusinessModel.jpg}
+  	\includegraphics[scale=0.7,angle=270]{plug-in/business_processes/PluginManagementBusinessModel.jpg}
   \caption{Business model describing the process for managing plug-ins in U-Sem}
   \label{fig_admin_bpm}
 \end{figure}
@@ -334,6 +362,10 @@ This component is responsible to provide API which can be used by application la
 
 \item \textit{OSGI Manager} - This component manages the communication with the OSGI framework. It is responsible to start/stop the framework and monitor its life cycle. All needed properties for the framework operation are provided by the \textit{Properties registry} component. The OSGI Manager is also responsible to enforce the security policies by setting up the Security Manager options provided by the \textit{Security policy} component. It also acts as a level of abstraction over the plug-in engine and in case any change in future is required, this is the only component that will be affected. 
 
+Starting an OSGi instance can be a time costly procedure especially when there are a lot of plug-in to be loaded. Therefore, in order to increase the performance of the system with the help of the \textit{OSGi Instance pool} component when an OSGi instance is no longer needed it is not destroyed but cached so that it can be later reused and not created again.
+
+\item \textit{OSGi Instance pool} - based on the connection pool idea \cite{zhao2004design}, this component provides a cache of OSGi instances so that they can be reused when future interactions with the plug-ins are required.
+
 \item \textit{Properties registry} - Keeps track of all common and user related options that are required for the correct operation of the OSGI framework. The main properties this component is responsible to provide are the paths to the plug-in storage space for each user. It has to make sure that this spaces are not overlapping. Additionally, it also provides information about the security policy that has to be applied to a particular user. 
 
 \item \textit{Security policy manager} - This component is responsible to provide access to the security policies of U-Sem which define the operations that the custom code loaded by the framework is allowed to perform.
@@ -355,7 +387,30 @@ This section describes the concurrency structure of U-Sem. We show how functiona
   \label{fig_conc}
 \end{figure}
 
-Figure \ref{fig_conc} illustrates the concurrency organization of U-Sem. The main functionality of the system is situated in the U-Sem process group. All U-Sem processes and all external processes(Plug-in repository) including the Database process operate concurrently. The main processes wait for requests from the user(web browsers and/or other systems). Each request is processed in separate thread depending on its type(workflow or plug-in management related tasks). As a result, multiple client requests can be handled simultaneously. Workflow execution initiated by U-Sem clients and plug-in manipulation by scientists can happen at the same time. However, the two processes does not communicate with each other and thus, the synchronization on the installed plug-ins is achieved throw the storage process. Every time before executing a workflow, the process loads the installed plug-ins into the main memory. This means any changes to the plug-ins during an execution of a workflow will not be applied and thus, the execution will not be disrupted. All changes will take place the next time a workflow is executed.
+Figure \ref{fig_conc} illustrates the concurrency organization of U-Sem. The main functionality of the system is situated in the U-Sem process group. All U-Sem processes and all external processes(Plug-in repository) including the Database process operate concurrently. The main processes wait for requests from the user(web browsers and/or other systems). Each request is processed in separate thread depending on its type(workflow or plug-in management related tasks). As a result, multiple client requests can be handled simultaneously. The main idea behind this design is to separate the workflow and the Plug-in administration functionality into separate processes which enhances loose coupling and, hence, improves maintainability and simplifies upgrades to new versions of the workflow engine. Additionally, if in future there is a need for higher performance the workflow process can be replicated without affecting the plug-in administration functionality. This organization, however, also introduces some problems that have to be solved:
+
+\subsubsection{Problems}
+
+The first problem lies in the fact that plug-in installation (plug-in admin.) and loading of plug-ins (workflow engine) are two actions that are completely independent from each other. Therefore, if the wokrflow engine tries to load the plug-ins when the plug-in admin. is in the middle of installation of plug-ins then the plug-ins may fail to load or load incorrectly. 
+
+Secondly, as discussed in the previous section the system keeps a pool with the OSGi instances so that they can be reused instead of loaded from scratch. However, whenever a plug-in is installed or removed these cached instances become obsolete and have to be discarded. In order to do that, the plug-in admin. has to notify the workflow engine for the change in the plug-ins which is a problem when the two components are in separate processes.
+
+\subsubsection{Solution}
+
+In order to solve the first problem we propose a solution that is based on synchronization between the processes. The solution is based on the \textit{Reader-Writer Lock} idea. It extends mutual exclusion locks by enabling concurrent read access to a shared resource but requires exclusive access for write operations \cite{lev2009scalable}.
+
+Our solution maps to the \textit{Reader-Writer Lock} idea as follows:
+\begin{itemize}
+	\item The shared resource is the plug-in storage of an engineer.
+	\item The workflow engine acts as reader of the shared resource.
+	\item The plug-in administration acts as writer of the shared resource.
+\end{itemize}
+
+As a result, when a change to the plug-ins is needed it is executed exclusively and any components that want to load the plug-ins have to wait until the change is applied. Therefore, the workflow engine is protected against loading the plug-ins while they are inconsistent. This approach also brings a performance benefit since loading plug-ins is not exclusive and can be done simultaneously by many components. 
+
+The standard \textit{Reader-Writer Lock} in Java, however, works only within the virtual machine \footnote{http://docs.oracle.com/}. In our case we have to synchronize entire processes. Our research showed that there are already existing tools that provide this functionality \cite{hernane2012dynamic}. The tool that is used in the proposed solution is Terracotta \footnote{http://terracotta.org/}. It introduces a process that is responsible for the lock and the other processes communicate with it in order to obtain the lock and use the resources.
+
+In order to solve the second problem we extend the architecture by providing mechanism for inter-process communication in order to enable the plug-in admin. to notify all processes for any updates so that they can clean their caches. The general idea is that all components that maintain caches register to receive updates when plug-ins change. Whenever this happens all registered components are notified using a broadcast protocol \cite{joseph1988reliable}. Our research showed that the Terracotta system that we used to solve the first problem also provides implementation of a broadcast protocol. Therefore, when a workflow engine loads the plug-ins it contacts the Terracotta process and registers itself for updates regarding the plug-ins. When an engineer removes or installs a plug-in the plug-in admin. contacts the Terracotta process which then notifies all the registered clients.
 
 \subsection{Deployment View}
 
@@ -369,8 +424,6 @@ This section describes the environment in which the system will be deployed. It 
 \end{figure}
 
 This deployment organization is illustrated on figure \ref{fig:simple_set}. The benefit from this organization is that all components are deployed and run on the same web server, on the same physical machine, and as a result, the costs for maintenance and initial set-up are reduced.
-
-\textbf{TODO describe the distributed cache mechanism}
 
 \section{Implementation}
 \label{sec:implPlugin}
@@ -475,5 +528,3 @@ execution it might fail if methods of the bundle are being executed at that poin
 \end{itemize}
 
 At this point, U-Sem is aimed to be used by scientists from a single organization. Therefore, the components will only be reused within the organization which limits the possibility for any external person adding plug-ins into the system. Therefore, exploitation of the discussed vulnerabilities on purpose is not so likely. Therefore, we believe that this limitations does not pose a significant threat for U-Sem. However, all these vulnerabilities has to be addressed if in future the system is to be extended to enable access from unverified scientists. 
-
-Apart from the inherited limitations from OSGI, another limitation of the architecture comes from the fact that all plug-ins are reloaded before each execution of a workflow. This is done in case the installed plug-ins are changed between two workflow executions. The consequence is the caused delay for reloading the components before each workflow execution. Even though this delay might be considered minute for most scenarios it can cause reduced performance in the case where large number of workflows with short execution time has to be executed in a short amount of time. In future, this limitation can be addressed by establishing communication mechanism between the workfow engine and the plug-in management component. In this way when a change is made to the plug-ins, the workflow engine marks them as dirty and only then it finds a suitable moment to reload and apply the changes. Additionally, \cite{nikolov2009recoverable} also proposes approach for reducing the time needed to reload the components in OSGI.

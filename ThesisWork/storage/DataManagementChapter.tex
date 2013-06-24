@@ -59,9 +59,35 @@ Next subsections explain how each of the sub-problems is approached and solved.
 
 \subsection{Data storage and retrieval}
 
-Section \ref{sec:problemDefStorage} makes clear that users' needs regarding data storage vary greatly and may also change in future. It is hard to predict and define the structure and semantics of all data that engineers might like to store. Therefore, a more generic solution is needed. Users should be able to define the semantics and structure of the data they want to store on demand. This structure has to be able to be adapted over time if/when users' needs change. In this work we refer to each data entry as \textit{entity}, each group of entities that have the same semantics and structure as \textit{entity types} and the information that defines the structure and semantics of each entity type as \textit{entity definition}.
+The main objective of this chapter is to facilitate the data storage process in U-Sem so that engineers can store and retrieve their data without having to bother how and where it is actually stored. Therefore, in order to achieve this we introduce an simplified abstraction layer which hides the actual storage implementation. Engineers only interact with the abstraction layer and they are not concerned about any implementation details. In the next sub-section we discus the proposed abstraction which is followed by presentation of the approach we propose in order to implement it.
 
-All data in RDF Gears is presented in the RGL format and therefore, the intuitive approach is to provide users functionality that enables them to define these entity types in terms of RGL values. Once, these entity types are defined the system should provide components that enable users to perform the needed operations over the data without any need for the users to know how the data is stored internally. In order to achieve that goal we researched if there are existing approaches and technology that can be used.
+\subsubsection{Abstraction}
+
+In order, to simplify the engineers work we introduce an abstraction layer which requires engineers to only configure a set of predefined components for interaction with the data. This components are implemented as RDF Gears components and can be configured only by using the user interface. We introduce the following components which enable users to perform to most popular operations on data:
+
+\begin{itemize}
+	\item \textit{Store} - this component is responsible to store its input data into the database.
+	\item \textit{Update} - this component is responsible to replace existing data or parts of it with the provided input data.
+	\item \textit{Delete} - this component is responsible to remove data identified by the engineer.
+	\item \textit{Query} - this component expects a query as input and is responsible to execute it and provide the results as an output for the component.
+\end{itemize}
+
+There are two issues that concern the usage of these components and have to be further discussed. The first one concerns how the stored data is organized and the second one concerns the query mechanism.
+
+\paragraph{Structure and Semantics of the data}
+Section \ref{sec:problemDefStorage} makes clear that users' needs regarding data storage vary greatly and may also change in future. It is hard to predict and define the structure and semantics of all data that engineers might like to store. Therefore, a more generic solution is needed. Therefore, the solution enables engineers to define the semantics and structure of the data they want to store on demand. This structure has to be able to be adapted over time if/when users' needs change. In this work we refer to each data entry as \textit{entity}, each group of entities that have the same semantics and structure as \textit{entity types} and the information that defines the structure and semantics of each entity type as \textit{entity definition}. All data in RDF Gears is presented in the RGL format and therefore, the intuitive approach is to provide users functionality that enables them to define these entity types in terms of RGL values. 
+
+\paragraph{Querying data}
+
+As specified above querying functionality is needed in order to configure some of the components. The abstraction provides querying language that enables engineers to define queries in terms of predefined entity definitions. There are two types of queries:
+
+\begin{itemize}
+	\item The first type of queries is required by the \textit{Update} and \textit{Delete} components. They provide a mechanism for identification entities or sub-entities that will be updated or removed. It allows engineers to identify them by filtering the entities based on their values.
+	
+	\item The second type of queries enable engineers to retrieve data by filtering, grouping and aggregating the already stored entities.
+\end{itemize}
+
+The specific configuration requirements for the components and the actual query language used, however, greatly depend on the implementation of the feature. Therefore, they are discussed bellow in the section discussing the implementation approach.
 
 \subsubsection{Existing approaches}
 
@@ -99,7 +125,7 @@ The alternative approach that we propose is to map each entity type into separat
     \hline
     RGL & JPA  \\ \hline
     RecordValue and its corresponding ValueRow & Class with multiple properties \textbf{*}  \\ \hline
-    BagValue & Bag  \\ \hline
+    BagValue & Bag pointing to a class representing the values in the BagValue \\ \hline
     BooleanValue & Property of type boolean  \\ \hline
     RDFValue & Property of type string  \\ \hline
 	GraphValue & Property of type string  \\ \hline
@@ -109,9 +135,9 @@ The alternative approach that we propose is to map each entity type into separat
     \label{tbl:rgl2gpa}
 \end{table}
 
-* JPA requires that the root element has to be call and therefore, our solution requires and ensures that the root element of all entity types is a RecordValue. When this value is mapped to a JPA class the name of the class is the name of the EntityType. Any nested RecordValues are mapped to JPA classes named after the name of the property of the ValueRow that points to them directly or indirectly in the case where the RecordValue is wrapped in a BagValue. 
+* JPA requires that the root element is a class and therefore, our solution requires and ensures that the root element of all entity types is a RecordValue. When this value is mapped to a JPA class the name of the class is the name of the entity type. Any nested RecordValues are mapped to JPA classes named after the name of the property of the ValueRow that points to them directly or indirectly in the case where the RecordValue is wrapped in a BagValue.
 
-This approach does not suffer from the problems of the first approach because data is distributed over many tables. However, it exposes several issues. The first thing is that each time the structure of an entity changes the JPA mapping information and the schema of the underling database has to be updated as well. Our solution to this problem is discussed in the next section. The second thing is that JPA requires that each entity has distinct id but RGL does not provide such term. We solve that problem by introducing auto generated ids for each entity which are made transparent to the client system(RDF Gears). Finally, JPA classes must have distinct names. We solve this problem by making sure that each user defined entity type has an unique name, and all record properties have distinct names. In order to make the names of sub-entities(records) distinct we append to the front of their name the full path from the root JPA class separated by "\_".
+This approach does not suffer from the problems of the first approach because data is distributed over many tables. However, it exposes several issues. The first thing is that each time the structure of an entity changes the JPA mapping information and the schema of the underling database has to be updated as well. Our solution to this problem is discussed in the next section. The second thing is that JPA requires that each entity has distinct id but RGL does not provide such term. We solve that problem by introducing an auto generated \textit{id} property for each JPA class which is made transparent to the client system(RDF Gears). Finally, JPA classes must have distinct names. We solve this problem by making sure that each user defined entity type has an unique name, and all record properties have distinct names. In order to make the names of sub-entities(records) distinct we append to the front of their name the full path from the root JPA class separated by "\_".
 
 
 \subsubsection{Virtual entities}
@@ -135,16 +161,29 @@ JPA expects that each entity will have its own class representing it but our ent
  
 \subsubsection{Dynamic entities}
 
-Another problem that has to be addressed concerns the dynamic nature of the entities. In our solution engineers have to be able to update the entity types whenever this is needed. Unfortunately, ORM frameworks are not good in dealing with such things. The problem is that whenever the entity type definitions changes not only the mapping XML file has to change but also the database schema. Hibernate provides a tool for table generation(hibernate.hbm2ddl.auto configuration option) but we were not able to find any documentation specifying how it works and what are its limitations. Additionally, we conducted experiments that reviled that this tool is not suitable for our situation. One of the problems is that when an entity is renamed then new set of tables is generated and the old ones are left behind. Therefore, in order to solve that problem reliably our solution provides functionlity that is responsible to first update the mapping files and secondly update the schema of the database so that it is consistent with the new entity type definition.
+Another problem that has to be addressed concerns the dynamic nature of the entities. In our solution engineers have to be able to update the entity types whenever this is needed. Unfortunately, ORM frameworks are not good in dealing with such things. The problem is that whenever the entity type definitions changes not only the mapping XML file has to change but also the database schema. Hibernate provides a tool for table generation(hibernate.hbm2ddl.auto configuration option) but we were not able to find any documentation specifying how it works and what are its limitations. Additionally, we conducted experiments that reviled that this tool is not suitable for our situation. One of the problems is that when an entity is renamed then new set of tables is generated and the old ones are left behind. Therefore, in order to solve that problem reliably our solution provides functionality that is responsible to first update the mapping files and secondly update the schema of the database so that it is consistent with the new entity type definition. The algorithm for mapping JPA entities to tables in the relational database is the following:
+
+\begin{itemize}
+	\item A JPA class is mapped to able with columns for each atomic property. 
+	\item A JPA property refers to another class then the target class is mapped recursively following the first step but its result table is also extended with an unique foreign key column pointing to the table representing the owner of the property.
+	\item In the case of a JPA bag property referring to another class then the class is mapped recursively following the first step but its result table is also extended with a foreign key column pointing to the table representing the owner of the property.
+\end{itemize}
+ 
+
+\subsubsection{Querying}
+
+The solution also has to provide approach for querying the stored entities. The query language has to be able to, first, allow engineers to write queries that identify entities or sub-entities to be updated or deleted. And, secondly, to enable them to filter, group and aggregate entities. 
+
+In order to solve these requirements, we propose the use of JPQL \cite{linwood2010beginning}. It is a SQL like, high-level query language which omits details about the internal representation of the stored data \cite{linwood2010beginning}. It is the standard query language for JPA entities and is supported by most JPA providers including Hibernate. Its capabilities allow engineers to execute all the needed operations discussed above. Because of the direct mapping from RGL to JPA entities all possible JPQL query operations on the predefined entities are supported. The only exception is the additional \textit{id} field. In order to make it transparent to the users it is named "\$id\$"(hibernate uses this notation to identify service fields) and using this field in queries is forbidden. Additional advantage of using JPQL comes from the fact that it is similar to SQL. In the current situation many of the engineers reported using SQL to implement data retrieval components and therefore, the transition to JPQL is likely to be easier.
 
 
-\subsubsection{Operations}
-Finally, we have to identify how each of the required data manipulation operations is supported. The solution provides RDF Gears components that are responsible to enable the user to configure and execute each type of the supported data operations. The components are also capable to automatically convert the data from RGL to the JPA compatible format and vice versa. The solution provides the following RDF Gears components:
+\subsubsection{RDF Gears Components}
+Finally, we have to define the RDF Gears components that are responsible to enable the user to configure and execute each type of the supported data operations. They are also responsible to automatically convert the data from RGL to the JPA compatible format and vice versa. The solution provides the following RDF Gears components:
 
 \begin{itemize}
 	\item \textit{Insert} - this component is responsible to insert an entity into the database. The user has to provide the name of the entity that has to be stored and the data itself.
 	
-	\item \textit{Query} - this component is responsible to enable engineers to query data. JPA provides JPQL, a special high level query language which omits details about the internal representation of the stored data \cite{linwood2010beginning}. Because of the direct mapping from RGL to JPA entities all possible JPQL query operations on the predefined entities are supported. The only exception is the additional \textit{id} field. In order to make it transparent to the users it is named "\$id\$"(hibernate uses this notation to identify service fields) and using this field in queries is forbidden.
+	\item \textit{Query} - this component is responsible to enable engineers to query data. They have to configure the desired query and provide the required parameters for it.
 	
 	\item \textit{Delete} - this component is responsible to delete data from the database. Normally in JPA delete functionality relies on ids, but since we do not have this in the semantics we provide an alternative approach. In this case, users have to provide a query that selects all entities/sub-entities that have to be deleted. Users are responsible to make sure that the query will produce only the needed results.
 	
@@ -175,7 +214,7 @@ The ability for engineers building workflows to collaborate and reuse each other
 
 \begin{itemize}
 
-	\item \textit{privacy} - sometimes users might not want others to use their data. This might be because of a privacy issues or entities are not designed to be shared. Additionally, engineers might want to limit the access to the data. For example they might only allow others to read the data but not to modify it. Therefore, when the engineer defines an entity he should be able to specify its sharing options which are enforced by the solution.
+	\item \textit{privacy} - sometimes users might not want others to use their data. This might be because of a privacy issues or entities are not designed to be shared. Additionally, engineers might want to limit the access to the data. For example they might only allow others to read the data but not to modify it. Therefore, when the engineer defines an entity he should be able to specify its sharing options which are enforced by the solution. This issue is further discussed in the \textit{Access Control} section below.
 	 
 	\item \textit{semantics and structure of shared data} - the solution can further assist engineers that want to reuse shared data by providing information about its structure and semantics. Implementing such functionality will save them a lot of time since otherwise this information has to be communicated by other means which may take a lot of time.
 	
@@ -185,13 +224,33 @@ The ability for engineers building workflows to collaborate and reuse each other
 
 \subsubsection{Access control}
 
+As mentioned above engineers have to be able to control the access to their data. The storage abstraction discussed in this chapter enables users to insert, update, delete and query data. Therefore, we propose an extension to the abstraction that will enable engineers to also control the execution of these operations on their data by other engineers. The basic idea is that when engineers define their entities they can also specify how their data can be accessed by others.
+
+The hierarchical structure of the entities expressed in RGL is very similar to XML and it can be, indeed, expressed as XML \cite{feliksik2011}. Therefore, adopting an approach used for establishing access control for XML document systems seems to be feasible. Inspired by the work of \cite{wu2005access} we propose a fine grained access control framework for RGL entities. It is based on access control rules that are defined by the engineers that build a particular entity. This rules are responsible to grand access to other engineers for entities or parts of entities. They can be presented as triples G $\times$ O $\times$ R where: 
+\begin{itemize}
+	\item g $\in$ G is the grandee it can be a user or user group that this rule targets.
+	\item o $\in$ O is the object that the rule applies for. It can be entity or parts of entity which as discussed in previous sections are identified by expressions constituting the full path from the root of the entity separated by "\_".  
+	\item r $\in$ R is the operation that is granted: insert, update, delete or query.
+\end{itemize}
+
+Once we have the rules we have to identify the granularity (which components of the entities they can be applied). It can vary from entire entities to the level of basic RGL values. Choosing the entity level of granularity seems to be too sparse since it does not support use-cases where engineers what to share only parts of the entities and protect the rest. On the other hand, providing access control for every single element in an entity is likely to make the user interface too complicated and thus, harder to configure. Therefore, we propose to use an intermediate level of granularity which provides a reasonable flexibility and also can be easily configured and implemented. 
+
+The approach allows engineers to apply the access rules for each entity and  also for all records in the entity hierarchy. If no access rules are specified then the elements are considered private and accessible only by their owner. The access policy for the other element is the access policy defined for the first parent record in the hierarchy or if such does not exist - the policy for the entire entity. In order to save engineers time when the same rules have to be applied for the entire entity hierarchy or parts of it the approach also defines an inheritance mechanism. By default the access rules defined for the entity are inherited for all the entire structure of the entity. Engineers, however, may choose to override these settings for a particular records. When the parent settings are overridden then the new rules are automatically inherited in the sub-hierarchy where the same approach is applied recursively.
+
+
+\paragraph{Implementation approach}
+
 The solution has to be able to enforce the sharing options of the entities and make sure that data is not accessed illegally. Therefore, the solution provides access control functionality that is responsible to enforce this policies. Basically, JPA is not good at doing this, it does not provide any access control functionality out of the box. Therefore, there are two possible places to put the access control logic. 
 
 \begin{itemize}
 	\item \textit{Above JPA} - our solution wraps around the JPA engine and thus, we can control all the requests that it receives. We can provide functionality that validates if the user has the needed permissions to execute that functionality. However, from engineering perspective doing this will be hard since JPA(JPQL) allows engineers to construct relatively complex queries and building a functionality that pareses this queries is not a trivial job to do and significantly increases the risk of security wholes.
 	
-	\item \textit{Database level} - the second option is to make the database enforce the security policies. We think that this approach is much easier because databases already provide well established access control mechanisms \cite{olson2008formal}. The only think that we have do is to translate the security policy of our solution to the database language and set them when an entity is created or modified. As a result, the database will stop the JPA accessing data that it is not authorised to access.
+	\item \textit{Database level} - the second option is to make the database enforce the security policies. We think that this approach is much easier because databases already provide well established access control mechanisms \cite{olson2008formal}. The only think that we have do is to apply the security policy using the database language every time an entity is created or modified. As a result, the database will stop the JPA framework accessing data that it is not authorised to access.
+	
+	
+Most SQL databases like MySQL\footnote{http://www.mysql.com/} enable engineers to define access control rules on table level. The proposed approach in this chapter defines that each entity is mapped to a root database table and each record within the entity hierarchy is also mapped to a distinct table. Therefore, the system must only translate the access control rules of U-Sem to the rules supported by the database.
 \end{itemize}
+
 
 \subsection{Components with side effects in RDF Gears}
 

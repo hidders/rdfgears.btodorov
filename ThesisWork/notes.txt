@@ -1,5 +1,5 @@
 1. Plug-in environment - evaluation by real world scenario(done) and indicate how the situation is now improved
-	- future work manage dependencies between plug-ins
+	- future work manage dependencies between plug-ins -done
 	- rename Proces... BML section - DONE
 
 2. Plug-in describe SDK - DONE
@@ -15,11 +15,17 @@ DONE
 
 6. Plug-in env replace in fig labels U-Sem with the feature
 
-7. Bibitems
+7. Bibitems - DONE
 
 8. Scientists ~ Engineers
 
 9. What are side effects + Background TODOs - DONE
+
+Abstract:
+
+We extend the U-Sem framework by providing a platform that facilitates the work of engineers developing user modeling services 
+following the U-Sem approach.
+
 	
 Introduction:
 
