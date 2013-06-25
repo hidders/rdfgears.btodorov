@@ -125,12 +125,6 @@ Ann~M Hickey and Alan~M Davis.
 \newblock A unified model of requirements elicitation.
 \newblock {\em Journal of Management Information Systems}, 20(4):65--84, 2004.
 
-\bibitem{hui2009supporting}
-Mei Hui, Dawei Jiang, Guoliang Li, and Yuan Zhou.
-\newblock Supporting database applications as a service.
-\newblock In {\em Data Engineering, 2009. ICDE'09. IEEE 25th International
-  Conference on}, pages 832--843. IEEE, 2009.
-
 \bibitem{hull2006taverna}
 Duncan Hull, Katy Wolstencroft, Robert Stevens, Carole Goble, Mathew~R Pocock,
   Peter Li, and Tom Oinn.
@@ -265,6 +259,11 @@ David~Lorge Parnas.
 Pierre Parrend and St{\'e}phane Fr{\'e}not.
 \newblock Security benchmarks of osgi platforms: toward hardened osgi.
 \newblock {\em Software: Practice and Experience}, 39(5):471--499, 2009.
+
+\bibitem{perez2006semantics}
+Jorge P{\'e}rez, Marcelo Arenas, and Claudio Gutierrez.
+\newblock Semantics and complexity of sparql.
+\newblock In {\em The Semantic Web-ISWC 2006}, pages 30--43. Springer, 2006.
 
 \bibitem{pour1998component}
 Gilda Pour.

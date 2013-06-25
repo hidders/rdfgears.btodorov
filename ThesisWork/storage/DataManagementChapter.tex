@@ -50,7 +50,7 @@ This section identifies the main quality scenarios that a successful architectur
 In this chapter we device a framework that is responsible to provide the Data management functionality for U-Sem. By carefully analysing the requirements defined in section \ref{sec:storageReq} we concluded that the problem can be broken down into the following sub-problems:
 \begin{itemize}
 	\item \textit{Data storage and retrieval} - enable RGL oriented workflow engines(in our case RDFGears) to hold their long-term data safely in a database and access it when needed.
-	\item \textit{Multi-tenancy} - enable multiple users to work simultaneously with the solution and enable them to collaborate together in a controlled and secure fashion.
+	\item \textit{Multi-engineer support} - enable multiple engineers to work simultaneously with the solution and enable them to collaborate together in a controlled and secure fashion.
 	\item \textit{RDFGears extension} - ensure and if required extend the workflow engine so that it is able to deal with this new type of functionality correctly and efficiently.
 	\item \textit{Integration with the Plug-in Environment feature} in order to simplify plug-in installation and configuration.
 \end{itemize}
@@ -190,24 +190,18 @@ Finally, we have to define the RDF Gears components that are responsible to enab
 	\item \textit{Update} - this component is responsible to enable engineers to update entities or part of them. Like the delete operation, updates in JPA are also based on ids. So we approach the problem similarly the user writes a query that selects all entities (sub entities) that will be updated. They have to also state the field of the selected entities that has to be updated and provide the values. The system distincts between two types of updates. The first one is replacing the value of a field(simple type, record or bag). The second one is aimed for appending an element to a bag.
 \end{itemize}
 
-\subsection{Multi-tenancy}
-The second main challenge that we have to solve is to enable multiple engineers to work with the solution simultaneously. In literature this is referred to as multi-tenancy. It has significantly increased its popularity in recent years as a results of the advancements in cloud computing and database as a service in particular \cite{hui2009supporting}. 
+\subsection{Multi-engineer support}
 
-Designing the solution we have to take into account the following things: how to organize the data into the database, how to enable collaboration and how to manage access control.
+The second challenge that we have to solve is to enable multiple engineers to work with the solution simultaneously. In order to support that we have to investigate the following issues: how to organize the data into the database, how to enable collaboration and how to manage access control.
 
 \subsubsection{Database Organization}
-There are three main approaches for designing multi-tenant solution \cite{hui2009supporting}:
 
-\begin{itemize}
-	\item \textit{Independent Databases and Independent Database Instances (IDII)} - in this approach users share only the hardware(server). For each user an independent database instance is running. This approach provides good data isolation and security but maintenance cost is significantly increased as a result of the multiple running instances. Additionally, collaboration between engineers is problematic because of the difficulty to execute queries on data that is spread over several databases.  
-	
-	\item \textit{Independent Tables and Shared Database Instances (ITSI)} - in this approach users share the hardware but also the database instance. Each user has private tables(user id is usually appended at the beginning of the table name \cite{hui2009supporting}). This approach reduces the maintenance cost but still the number of tables increases linearly with the number of users. Collaboration is possible but querying data relating to all users he has to be done by uniting the data from the tables of each user. Another disadvantage of this approach is that because the table names are different for each user we also need a separate JPA mapping for each user with increases complexity additionally.
-	
-	\item \textit{Shared Tables and Shared Database Instances (STSI)} - in this approach, all users share the db instances as well as the tables. In this approach the number of tables does not increase when the number of users increase. As a result the maintenance cost is reduced, queering is simplified(no unions required) and JPA mapping is straight forward. However, this approach has some disadvantages. First, engineers are responsible to maintain the required level of isolation between different users(usually a column indicating the owner of the data is required and additional where clause when querying for particular user). Second, tables contain the data for all users which may lead to decrease in performance.
-	
-\end{itemize}
+Designing the solution we considered two possible approaches for establishing the database organization:
 
-Discussing the advantages and disadvantages of all the approaches above, we decided to use the STSI because it is easy to map to JPA, enables collaboration, simplifies querying and is easier to maintain.    
+\paragraph{Independent Databases} - in this approach engineers share only the hardware(server). Each of them operates on an independent database instance. This approach provides good data isolation and security but the set-up and maintenance costs are significantly increased as a result of the multiple database instances. Additionally, collaboration between engineers is problematic because of the difficulty to execute queries on data that resides over several databases.  
+	
+\paragraph{Shared Database} - in this approach, all engineers share the same db instance. This approach seems better for U-Sem because it does not suffer from the data querying problem discussed above and also reduces the set-up and maintenance costs which is one of the main goals of this work. The fact that all data resides in a single database, however, requires the solution to provide strong mechanism that ensures isolation between engineers' data but also define ways for data level interaction which is addressed in the next section.
+
 
 \subsubsection{Collaboration}
 The ability for engineers building workflows to collaborate and reuse each others data is essential \cite{lu2009collaborative}. Choosing STSI organization makes it easy for engineers to work with the data of the others. However, there are several issues that has to be discussed and addressed:
@@ -426,6 +420,9 @@ However, the standard \textit{Reader-Writer Lock} in Java works only within the 
 
 We implemented the proposed architecture in order to evaluate its applicability and capabilities. In this phase we basically implemented the system following the specification discussed in the previous section. Therefore, in this section we are discussing only on the most interesting parts of the implementation of the system.
 
+\subsection{Entity definition storage}
+We implemented the solution to store the entity definitions in the file system as xml files. The structure of these files is defined in a Document Type Definition (DTD) which is presented in Appendix \ref{cha:dtd}. This organizations is based on the format provided in \cite{maro2011} for defining the RGL types of the input ports of RDF Gears components. We extending this format by adding additional elements corresponding to the entity's name, description, owner and the access control rules.
+
 \subsection{Entities definition admin UI}
 In order to implement the endpoints(user interface) we used the jQuery UI, \textbf{Bootstrap and dynamic tree} technologies. The user interface consists of two main panels:
 	\begin{itemize}
@@ -545,9 +542,12 @@ In this section we identify the limitations of the proposed architecture and we 
 
 \item Most of the data manipulation components(except for the "Insert entity" component) require users to enter JPQL query. These queries can get quite complex and as a result users may make some mistakes when writing them. Currently, the solution does not provide any facilities that can validate these queries. Users are notified abut the mistakes only when they try to execute the workflows and they fail. As a result, this process may cost a lot of time to users until they finally end up with the correct queries. Therefore, in future the system might be further improved by introducing functionality for auto-completion and validation of the JPQL queries.
 
+\item Currently, the solution treats the RDF values as literals. However, these values sometimes may contain a lot of information that engineers might also like to query. SPARQL is the main language used for querying RDF data \cite{perez2006semantics} and therefore, extending the currently used JPQL language to support embedded SPARQL queries seems as a promising topic for future research.
+
 \item Currently, the RDF Gears engine does not provide any guarantees for the order of the execution of branches. This is not a problem for components that do not have side effects. However, with the introduction of the new components that interact with the database developing an mechanism to control the execution order of branches within a workflow makes sense and might be a helpful future addition to the solution.
 
 \item The system is currently targeted to be used mainly as a research tool and there are no requirements for supporting large number of users and high loads. However, if the system is to be used in such demanding environment then it might be worth to investigate and if needed improve the performance, scalability and availability properties of the solution. \textbf{maybe propose solutions like L2 cache and high availability db setups}. 
+
 
 \end{itemize}
 

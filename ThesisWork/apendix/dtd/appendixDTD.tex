@@ -1,0 +1,33 @@
+
+\chapter{\label{cha:dtd}Entity definition DTD}
+
+In this appendix we provide the Document Type Definition (DTD) which defines how entity definitions are presented in XML.\\
+
+\lstset{language=XML,basicstyle=\footnotesize\ttfamily,frame=L}
+\begin{lstlisting}
+<!ELEMENT entity (name,description,owner,type)>
+
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT owner (#PCDATA)>
+<!ELEMENT type (field+, accessRules)>
+
+<!ELEMENT field (bag|bool|graph|rdf|record)>
+<!ATTLIST field name CDATA>
+
+<!ELEMENT bag (record)>
+<!ELEMENT bool EMPTY>
+<!ELEMENT graph EMPTY>
+<!ELEMENT rdf EMPTY>
+<!ELEMENT record (field+)>
+
+
+<!ELEMENT accessRules (rule*)>
+<!ATTLIST accessRules inherited CDATA "true">
+
+<!ELEMENT rule EMPTY>
+<!ATTLIST rule target CDATA>
+<!ATTLIST rule operation CDATA>
+\end{lstlisting}
+
+

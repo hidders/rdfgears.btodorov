@@ -27,16 +27,17 @@
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Class diagram illustrating the RGL Values class hierarchy}}{49}
 \contentsline {figure}{\numberline {5.2}{\ignorespaces Layer organization of the feature}}{56}
 \contentsline {figure}{\numberline {5.3}{\ignorespaces Component diagram illustrating the high level functional organization of the feature }}{57}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Functional decomposition of the Entities admin. module}}{59}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Functional decomposition of the Entities admin. module}}{58}
 \contentsline {figure}{\numberline {5.5}{\ignorespaces Functional decomposition of the Entities definition manager module}}{59}
 \contentsline {figure}{\numberline {5.6}{\ignorespaces Functional decomposition of the Entities manipulation manager module}}{60}
 \contentsline {figure}{\numberline {5.7}{\ignorespaces Context diagram of U-Sem }}{61}
 \contentsline {figure}{\numberline {5.8}{\ignorespaces User interface for entity definitions management}}{63}
-\contentsline {figure}{\numberline {5.9}{\ignorespaces User interface for constructing entity definitions}}{64}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces User interface for constructing entity definitions}}{63}
 \contentsline {figure}{\numberline {5.10}{\ignorespaces User interface that provides a quick preview of the entity definitions}}{64}
 \contentsline {figure}{\numberline {5.11}{\ignorespaces Workflow defining the service for building language profiles before the introduction of the feature}}{65}
 \contentsline {figure}{\numberline {5.12}{\ignorespaces The entity definitions needed for building the service for building language profiles}}{66}
 \contentsline {figure}{\numberline {5.13}{\ignorespaces Workflow defining the service for building language profiles after the introduction of the feature}}{66}
+\addvspace {10pt}
 \addvspace {10pt}
 \addvspace {10pt}
 \addvspace {10pt}
