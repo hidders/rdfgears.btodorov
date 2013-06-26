@@ -17,11 +17,11 @@
 \contentsline {figure}{\numberline {4.9}{\ignorespaces Layer organization of U-Sem}}{32}
 \contentsline {figure}{\numberline {4.10}{\ignorespaces Component diagram illustrating the functional organization of U-Sem}}{33}
 \contentsline {figure}{\numberline {4.11}{\ignorespaces Functional decomposition of the \textit {Plug-in admin.} module}}{34}
-\contentsline {figure}{\numberline {4.12}{\ignorespaces Functional decomposition of the \textit {Plug-in access manager} component}}{36}
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Functional decomposition of the \textit {Plug-in access manager} component}}{35}
 \contentsline {figure}{\numberline {4.13}{\ignorespaces Diagram illustrating the concurrency model of U-Sem}}{37}
 \contentsline {figure}{\numberline {4.14}{\ignorespaces Deployment diagram illustrating the simple setup of U-Sem}}{39}
 \contentsline {figure}{\numberline {4.15}{\ignorespaces User interface for plug-in management.}}{40}
-\contentsline {figure}{\numberline {4.16}{\ignorespaces User interface for uploading and installing plug-ins in U-Sem.}}{41}
+\contentsline {figure}{\numberline {4.16}{\ignorespaces User interface for uploading and installing plug-ins in U-Sem.}}{40}
 \contentsline {figure}{\numberline {4.17}{\ignorespaces User interface for browsing and installing plug-ins from the plug-in repository.}}{41}
 \addvspace {10pt}
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Class diagram illustrating the RGL Values class hierarchy}}{49}

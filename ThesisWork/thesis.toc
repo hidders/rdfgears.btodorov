@@ -38,7 +38,7 @@
 \contentsline {subsubsection}{State of the art component model implementations}{21}
 \contentsline {subsubsection}{OSGI}{22}
 \contentsline {paragraph}{Interfaces}{22}
-\contentsline {paragraph}{Components}{23}
+\contentsline {paragraph}{Components}{22}
 \contentsline {paragraph}{Coordinator}{23}
 \contentsline {subsubsection}{Security}{23}
 \contentsline {subsection}{\numberline {4.2.2}Collaboration between users}{24}
@@ -48,10 +48,10 @@
 \contentsline {subsection}{\numberline {4.3.1}Context View}{26}
 \contentsline {paragraph}{Scientists}{27}
 \contentsline {paragraph}{Plug-in repository}{27}
-\contentsline {subsection}{\numberline {4.3.2}Interactions}{28}
+\contentsline {subsection}{\numberline {4.3.2}Interactions}{27}
 \contentsline {subsubsection}{Create U-Sem Plug-in process}{28}
 \contentsline {subsubsection}{Reuse shared plug-ins}{28}
-\contentsline {subsubsection}{Plug-in Management}{29}
+\contentsline {subsubsection}{Plug-in Management}{28}
 \contentsline {subsection}{\numberline {4.3.3}Functional view}{32}
 \contentsline {subsubsection}{High-level component organization}{32}
 \contentsline {subsubsection}{Plug-in admin}{34}
@@ -62,7 +62,7 @@
 \contentsline {subsection}{\numberline {4.3.5}Deployment View}{39}
 \contentsline {section}{\numberline {4.4}Implementation}{39}
 \contentsline {section}{\numberline {4.5}Evaluation}{41}
-\contentsline {subsection}{\numberline {4.5.1}Functional requirements}{42}
+\contentsline {subsection}{\numberline {4.5.1}Functional requirements}{41}
 \contentsline {subsection}{\numberline {4.5.2}Non-functional requirements}{42}
 \contentsline {section}{\numberline {4.6}Limitations and Future Work}{43}
 \contentsline {chapter}{\chapternumberline {5}Data Management}{45}

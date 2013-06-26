@@ -6,11 +6,11 @@
 
 4. Scientists ~ Engineers
 
-
 Abstract:
 
 We extend the U-Sem framework by providing a platform that facilitates the work of engineers developing user modeling services 
 following the U-Sem approach.
+
 
 	
 Introduction:
