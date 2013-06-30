@@ -121,6 +121,11 @@ Li~Gong, Gary~W Ellison, and Mary Dageforde.
   implementation}.
 \newblock Addison-Wesley Professional, 2003.
 
+\bibitem{gray1981transaction}
+Jim Gray et~al.
+\newblock The transaction concept: Virtues and limitations.
+\newblock In {\em VLDB}, volume~81, pages 144--154, 1981.
+
 \bibitem{hernane2012dynamic}
 Soumeya~Leila Hernane, Jens Gustedt, and Mohamed Benyettou.
 \newblock A dynamic distributed algorithm for read write locks.

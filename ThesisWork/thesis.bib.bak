@@ -229,7 +229,7 @@
 @INCOLLECTION{goncalves2010enterprise,
   author = {Goncalves, Antonio},
   title = {Enterprise Java Beans},
-  booktitle = {Beginning Java™ EE 6 Platform with GlassFish™ 3},
+  booktitle = {Beginning Java EE 6 Platform with GlassFish 3},
   publisher = {Springer},
   year = {2010},
   pages = {179--199},

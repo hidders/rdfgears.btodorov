@@ -205,7 +205,7 @@ The ability for engineers building workflows to collaborate and reuse each other
 	 
 	\item \textit{semantics and structure of shared data} - the solution can further assist engineers that want to reuse shared data by providing information about its structure and semantics. Implementing such functionality will save them a lot of time since otherwise this information has to be communicated by other means which may take a lot of time.
 	
-	\item \textit{entities mutation} - introducing the multi tenancy feature introduces the problem with the consistency. By design entities can change and evolve over time. Therefore the system should prevent any inconsistent results produced if the structure changes at the time a workflow is executed. Our solution deals with that problem using transactions. All data operations are executed in transactions which temporary lock the tables for modification. As a result, the changing request will wait for the tables to be released before applying the updates to the database schema.
+	\item \textit{entities mutation} - providing multi-engineer support introduces the problem with the consistency. By design entities can change and evolve over time. Therefore the system should prevent any inconsistent results produced if the structure changes at the time a workflow is executed. Our solution deals with that problem using database transactions \cite{gray1981transaction}. All data operations are executed in transactions which temporary lock the tables for modification. As a result, the changing request will wait for the tables to be released before applying the updates to the database schema.
 \end{itemize}
 
 
@@ -380,7 +380,7 @@ This component is responsible to provide API which can be used by application la
 \begin{figure}[h!]
   \centering
   	\includegraphics[scale=0.5]{storage/functional/concur.png}
-  \caption{Context diagram of U-Sem }
+  \caption{Diagram illustrating the concurrency model of the solution}
   \label{fig:storageConc}
 \end{figure}
 
@@ -403,10 +403,7 @@ Our solution maps to the \textit{Reader-Writer Lock} idea as follows:
 	\item The workflow engine acts as reader of the shared resource.
 	\item The entity administration acts as writer of the shared resource.
 \end{itemize}
-As a result, multiple workflows can be executed simultaneously but when a change to the entities is needed it is executed exclusively. Therefore, the workflow engine is protected against loading the resources while they are inconsistent.
-
-However, the standard \textit{Reader-Writer Lock} in Java works only within the virtual machine \footnote{http://docs.oracle.com/}. In our case we have to synchronize entire processes. Our research showed that there are already existing tools that provide this functionality \cite{hernane2012dynamic}. The tool that is used in the proposed solution is Terracotta \footnote{http://terracotta.org/}. It introduces a process that is responsible for the lock and the other processes communicate with it in order to obtain the lock and use the resources.
-
+As a result, multiple workflows can be executed simultaneously but when a change to the entities is needed it is executed exclusively. Therefore, the workflow engine is protected against loading the resources while they are inconsistent. In order to implement this solution we follow the same approach introduced in Section \ref{sec:pluginConcur}. We make use of the Terracotta \footnote{http://terracotta.org/} server which is responsible for managing the lock. The workflow engine and entity admin. processes communicate with it in order to obtain the lock and use the resources.
 
 \section{Implementation}
 \label{sec:implStorage}
@@ -469,59 +466,21 @@ We implemented the extension of the capabilities by extending some of the classe
 \section{Evaluation} 
 \label{sec:evalStorage}
 
-In section \ref{problemDefStorage} we discussed the issues solving which will theoretically save users time and efforts. In this section we want to evaluate how engineers benefit from the solution in a real world situation. In order to do that, we took an already existing user modelling service, implemented it using the newly proposed solution and at the end, discuss the improvements. 
-
-For the experiment we used the already implemented service for building language profiles based on Twitter. The basic idea of the workflow is to read all tweets for a particular user form the database, infer the languages (and level of knowledge) that the user knows, store the generated profile in the database and finally, provide it as a result of the execution of the service.
-
-\begin{figure}[h!]
-  \centering
-  	\includegraphics[scale=0.5]{storage/eval/before.png}
-  \caption{Workflow defining the service for building language profiles before the introduction of the feature}
-  \label{fig:storageEvalBefore}
-\end{figure}
-
-Figure \ref{fig:storageEvalBefore} shows how the workflow looked like before the introduction of our solution. In order to implement that workflow scientists had to perform the following steps:
-\begin{itemize}
-	\item Install and set-up a database.
-	\item Create the necessary tables manually. This step is required every time the workflow is deployed on a U-Sem system. 
-	\item Implement specific components for queering the tweets and storing the generated profiles and deploy them to the U-Sem system.
-	\item Make the store component return a copy of its input because it has to be part of the main branch otherwise it is optimized by the engine and not executed.
-\end{itemize}
-
-\begin{figure}[h!]
-  \centering
-  	\includegraphics[scale=0.5]{storage/eval/entities.png}
-  \caption{The entity definitions needed for building the service for building language profiles}
-  \label{fig:storageEvalEntities}
-\end{figure}
-
-Figure \ref{fig:storageEvalAfter} shows how the workflow looks like after the introduction of our solution. In order to implement the workflow scientists had to perform the following steps:
-\begin{itemize}
-	\item Define the entity types using the user interface illustrated on Figure \ref{fig:storageEvalEntities}.
-	\item Reuse the components for querying and storing data by only providing the JPQL query and selecting the entity type for storing.
-	\item Indicate the store component to have side effects and put it in a separate branch.
-	\item Pack the workflow and entity types definitions into a plug-in for easy deployment.
-\end{itemize}
-
-\begin{figure}[h!]
-  \centering
-  	\includegraphics[scale=0.5]{storage/eval/after.png}
-  \caption{Workflow defining the service for building language profiles after the introduction of the feature}
-  \label{fig:storageEvalAfter}
-\end{figure}
-
-We believe that using the proposed solution saves a lot of time and efforts to the engineers defining the service for the following reasons:
+After successfully implementing the system, in this section we evaluate whether the system actually solves the problems identified in Section \ref{sec:problemDefStorage}. In order to do the evaluation we, first, performed an experiment presented in Appendix \ref{cha:transf} in which we reconstructed an already existing user modelling service using the new solution and identified the level of improvement it provides. Secondly, we asked engineers to use the new solution to implement real world user modelling services and asked them to comment on the problems the solution is designed to solve. The following is summary of the results of the experiment and the feedback which we received from the engineers engineers:
 
 \begin{itemize}
-	\item No installation and configuration of the database required
-	\item No need to create the database schema manually. It is done automatically by the user interface
-	\item No programming required for implementing storage and query components
-	\item No need to convert RGL values so that they can fit into the database
-	\item Queries are written in JPQL which is a higher level language compared to SQL and queries are likely to be faster and easier to write. Additionally, the user interface that shows the structure of the entities at any time makes writing queries easier (engineers do not have to know it by heart) and prevents mistakes that come from not knowing the structure of the entities. 
-	\item The workflow looks more intuitive because the  \textbf{Store} component can be left in a separate branch and does not have to return a copy of the input data like in the initial situation.
-	\item The workflow can be deployed on a U-Sem system by simply installing the plug-in. No configuration required.
+
+\item Implementing services that require data storage and retrieval no longer requires engineers to set up databases, implement special RDF Gears functional component and the tasks that accompany these processes. Engineers just have to configure the components provided by the solution so that they fit their needs. They reported that this improvement has significantly reduced the time and efforts they spend building such services. It has also reduced the amount of knowledge required so that new engineers can be trained faster.
+
+\item Engineers reported that the solution has also enabled them to easily modify the structure of the data in their services when requirements change. This process is totally automated by the user interface of the solution and engineers no longer have to apply changes manually to the database and the source code of the RDF Gears components.
+
+\item Engineers also reported that the solution has significantly facilitated collaboration between engineers on data level for two reasons. First, using the user interface of the system they can easily understand what are the structure and semantics of the data shared by other engineers without having to personally communicate it. And secondly, when sharing data they can control precisely who can execute what operations on the data. 
+
+\item Finally, engineers reported that because of the extended RDF Gears notation they can now indicate their storage and retrieval components to have side effects. As a result, they no longer have to study the way services are executed by the workflow engine and worry whether their components will be executed correctly. 
+	
 \end{itemize}
 
+Analysing this results we can conclude that we have solved the problems defining the Data Management feature and the designed and implemented system is capable of serving its intended purpose. As most scientific works there is still a place for improvement in this one as well. In next section we discuss possible directions for future work regarding the feature.
 
 \section{Limitations and Future work}
 \label{sec:limitsStorage}

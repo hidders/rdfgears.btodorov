@@ -99,24 +99,25 @@
 \contentsline {subsection}{\numberline {5.4.1}Entity definition storage}{62}{subsection.5.4.1}
 \contentsline {subsection}{\numberline {5.4.2}Entities definition admin UI}{62}{subsection.5.4.2}
 \contentsline {subsection}{\numberline {5.4.3}RDFGeards workflow configuration}{63}{subsection.5.4.3}
-\contentsline {subsection}{\numberline {5.4.4}Extended workflow compiler}{64}{subsection.5.4.4}
-\contentsline {section}{\numberline {5.5}Evaluation}{65}{section.5.5}
-\contentsline {section}{\numberline {5.6}Limitations and Future work}{67}{section.5.6}
-\contentsline {chapter}{\chapternumberline {6}Conclusions and Future Work}{69}{chapter.6}
-\contentsline {section}{\numberline {6.1}Summary}{69}{section.6.1}
-\contentsline {section}{\numberline {6.2}Contributions}{70}{section.6.2}
-\contentsline {section}{\numberline {6.3}Discussions}{70}{section.6.3}
-\contentsline {section}{\numberline {6.4}Future work}{70}{section.6.4}
-\contentsline {chapter}{Bibliography}{73}{section*.49}
-\contentsline {appendix}{\chapternumberline {A}Prioritization questionnaire}{79}{appendix.A}
-\contentsline {appendix}{\chapternumberline {B}Entity definition DTD}{81}{appendix.B}
-\contentsline {appendix}{\chapternumberline {C}U-Sem plug-in environment tutorial}{83}{appendix.C}
-\contentsline {section}{\numberline {C.1}Requirements}{83}{section.C.1}
-\contentsline {section}{\numberline {C.2}Set-up the IDE}{83}{section.C.2}
-\contentsline {subsection}{\numberline {C.2.1}Import the U-Sem core project}{83}{subsection.C.2.1}
-\contentsline {subsection}{\numberline {C.2.2}Install the U-Sem SDK}{83}{subsection.C.2.2}
-\contentsline {section}{\numberline {C.3}Create plug-in}{84}{section.C.3}
-\contentsline {subsection}{\numberline {C.3.1}Step 1 - Create plug-in project}{84}{subsection.C.3.1}
-\contentsline {subsection}{\numberline {C.3.2}Step 2 - Create U-Sem artefacts manually}{84}{subsection.C.3.2}
-\contentsline {subsection}{\numberline {C.3.3}Step 3 - Export the project}{86}{subsection.C.3.3}
-\contentsline {section}{\numberline {C.4}Install plug-ins in U-Sem}{86}{section.C.4}
+\contentsline {subsection}{\numberline {5.4.4}Extended workflow engine}{64}{subsection.5.4.4}
+\contentsline {section}{\numberline {5.5}Evaluation}{64}{section.5.5}
+\contentsline {section}{\numberline {5.6}Limitations and Future work}{65}{section.5.6}
+\contentsline {chapter}{\chapternumberline {6}Conclusions and Future Work}{67}{chapter.6}
+\contentsline {section}{\numberline {6.1}Summary}{67}{section.6.1}
+\contentsline {section}{\numberline {6.2}Contributions}{68}{section.6.2}
+\contentsline {section}{\numberline {6.3}Discussions}{68}{section.6.3}
+\contentsline {section}{\numberline {6.4}Future work}{68}{section.6.4}
+\contentsline {chapter}{Bibliography}{71}{section*.49}
+\contentsline {appendix}{\chapternumberline {A}Prioritization questionnaire}{77}{appendix.A}
+\contentsline {appendix}{\chapternumberline {B}Entity definition DTD}{79}{appendix.B}
+\contentsline {appendix}{\chapternumberline {C}U-Sem plug-in environment tutorial}{81}{appendix.C}
+\contentsline {section}{\numberline {C.1}Requirements}{81}{section.C.1}
+\contentsline {section}{\numberline {C.2}Set-up the IDE}{81}{section.C.2}
+\contentsline {subsection}{\numberline {C.2.1}Import the U-Sem core project}{81}{subsection.C.2.1}
+\contentsline {subsection}{\numberline {C.2.2}Install the U-Sem SDK}{81}{subsection.C.2.2}
+\contentsline {section}{\numberline {C.3}Create plug-in}{82}{section.C.3}
+\contentsline {subsection}{\numberline {C.3.1}Step 1 - Create plug-in project}{82}{subsection.C.3.1}
+\contentsline {subsection}{\numberline {C.3.2}Step 2 - Create U-Sem artefacts manually}{82}{subsection.C.3.2}
+\contentsline {subsection}{\numberline {C.3.3}Step 3 - Export the project}{84}{subsection.C.3.3}
+\contentsline {section}{\numberline {C.4}Install plug-ins in U-Sem}{84}{section.C.4}
+\contentsline {appendix}{\chapternumberline {D}Data Management experiment}{87}{appendix.D}

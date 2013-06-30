@@ -1,0 +1,44 @@
+\BOOKMARK [0][-]{chapter*.1}{Preface}{}% 1
+\BOOKMARK [0][-]{section*.2}{Contents}{}% 2
+\BOOKMARK [0][-]{section*.3}{List of Figures}{}% 3
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 4
+\BOOKMARK [1][-]{section.1.1}{Research goal}{chapter.1}% 5
+\BOOKMARK [1][-]{section.1.2}{Outline}{chapter.1}% 6
+\BOOKMARK [0][-]{chapter.2}{Background}{}% 7
+\BOOKMARK [1][-]{section.2.1}{User Modelling Systems}{chapter.2}% 8
+\BOOKMARK [1][-]{section.2.2}{The U-Sem framework}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.3}{Workflow Management Systems}{chapter.2}% 10
+\BOOKMARK [0][-]{chapter.3}{Problem definition}{}% 11
+\BOOKMARK [1][-]{section.3.1}{High-level Problem}{chapter.3}% 12
+\BOOKMARK [1][-]{section.3.2}{Overhead tasks}{chapter.3}% 13
+\BOOKMARK [1][-]{section.3.3}{Plug-in Environment}{chapter.3}% 14
+\BOOKMARK [1][-]{section.3.4}{Data Management}{chapter.3}% 15
+\BOOKMARK [1][-]{section.3.5}{Conclusion}{chapter.3}% 16
+\BOOKMARK [0][-]{chapter.4}{Plug-in Environment}{}% 17
+\BOOKMARK [1][-]{section.4.1}{Requirements}{chapter.4}% 18
+\BOOKMARK [1][-]{section.4.2}{Approach}{chapter.4}% 19
+\BOOKMARK [1][-]{section.4.3}{Architecture}{chapter.4}% 20
+\BOOKMARK [1][-]{section.4.4}{Implementation}{chapter.4}% 21
+\BOOKMARK [1][-]{section.4.5}{Evaluation}{chapter.4}% 22
+\BOOKMARK [1][-]{section.4.6}{Limitations and Future Work}{chapter.4}% 23
+\BOOKMARK [0][-]{chapter.5}{Data Management}{}% 24
+\BOOKMARK [1][-]{section.5.1}{Requirements}{chapter.5}% 25
+\BOOKMARK [1][-]{section.5.2}{Approach}{chapter.5}% 26
+\BOOKMARK [1][-]{section.5.3}{Architecture}{chapter.5}% 27
+\BOOKMARK [1][-]{section.5.4}{Implementation}{chapter.5}% 28
+\BOOKMARK [1][-]{section.5.5}{Evaluation}{chapter.5}% 29
+\BOOKMARK [1][-]{section.5.6}{Limitations and Future work}{chapter.5}% 30
+\BOOKMARK [0][-]{chapter.6}{Conclusions and Future Work}{}% 31
+\BOOKMARK [1][-]{section.6.1}{Summary}{chapter.6}% 32
+\BOOKMARK [1][-]{section.6.2}{Contributions}{chapter.6}% 33
+\BOOKMARK [1][-]{section.6.3}{Discussions}{chapter.6}% 34
+\BOOKMARK [1][-]{section.6.4}{Future work}{chapter.6}% 35
+\BOOKMARK [0][-]{section*.49}{Bibliography}{}% 36
+\BOOKMARK [0][-]{appendix.A}{Prioritization questionnaire}{}% 37
+\BOOKMARK [0][-]{appendix.B}{Entity definition DTD}{}% 38
+\BOOKMARK [0][-]{appendix.C}{U-Sem plug-in environment tutorial}{}% 39
+\BOOKMARK [1][-]{section.C.1}{Requirements}{appendix.C}% 40
+\BOOKMARK [1][-]{section.C.2}{Set-up the IDE}{appendix.C}% 41
+\BOOKMARK [1][-]{section.C.3}{Create plug-in}{appendix.C}% 42
+\BOOKMARK [1][-]{section.C.4}{Install plug-ins in U-Sem}{appendix.C}% 43
+\BOOKMARK [0][-]{appendix.D}{Data Management experiment}{}% 44
