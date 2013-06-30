@@ -1,18 +1,11 @@
-1. Plug-in environment - evaluation by real world scenario(done) and indicate how the situation is now improved
+1. Research objective section
 
-2. Research objective section
+2. Explain how AHP priority works
 
-3. Plug-in env replace in fig labels U-Sem with the feature
+3. Data management evaluation...
 
-4. Scientists ~ Engineers
+\item \textbf{How to enable engineers to collaborate with each other?}
 
-Abstract:
-
-We extend the U-Sem framework by providing a platform that facilitates the work of engineers developing user modeling services 
-following the U-Sem approach.
-
-
-	
 Introduction:
 
 internet is used a lot -> a lot of personal info -> a lot of fields are interested to gain benefits from that data(eg.)

@@ -1,4 +1,5 @@
 \chapter{Data Management} 
+\label{cha:data}
 
 This chapter proposes a solution to the \textit{Data Management} problem in U-Sem. Section \ref{sec:storageReq} identifies all functional and non-functional requirements that a successful solution must satisfy based on the problems discussed in Section \ref{sec:problemDefStorage}. Section \ref{sec:approachStorage} discusses that state of the art approaches and technologies that  can contribute to solving the problem. Section \ref{sec:architectureStorage} describes the software architecture that we propose in order to solve the problem. Section \ref{sec:implStorage} discusses the implementation that we provide in order to be able to verify the capabilities of the proposed architecture. Section \ref{sec:evalStorage} discusses and verifies whether the proposed solution satisfies all of the requirements. Finally, in section \ref{sec:limitsStorage} we discuss the limitations of the proposed design and suggest aspects in which the design can be improved in the future.
 
@@ -34,14 +35,6 @@ This section identifies the main quality scenarios that a successful architectur
 	
 	\item \textit{Configuration management} - in order to simplify the configuration procedure of the system it should enable engineers to provide all the required configuration information concerning the new types of components within the plug-ins that define them. In this way, apart from the plug-in installation no additional effort is needed in order to use the components.
 	
-\end{itemize}
-
-\section{Challenges}
-\textbf{TODO ?}
-\begin{itemize}
-	\item Multitenant storage with collaboration
-	\item ORM of dynamic entities
-	\item ORM fine grained access control
 \end{itemize}
 
 \section{Approach}
@@ -95,7 +88,7 @@ After rigorous research we did not find any existing solutions that can solve ou
 
 Applying the same approach for our RGL entities seem to completely satisfy our requirements. However, in order to exploit that idea we have two options. The first one is to implement and ORM solution from scratch and the other one is to extend/adapt existing ORM solution so that it is able to deal with the RGL entities. In general, reusing a popular and widely used solution might be beneficial because it is likely it is heavily tested(at least from all the engineers using it) and thus, provide higher quality. 
 
-Our research reviled that the Java Persistence Architecture API (JPA) is the "de facto" leader in the field ORM solutions for Java. It represents a Java specification(JSR 317) for accessing, persisting, and managing data between Java objects / classes and a relational database. Making its way as a major standard has resulted in a lot of the big players in the field providing an implementation of it. The most popular include: Hibernate(JBoss), TopLink (Oracle), EclipseLink(IBM) and openJPA(Apache) \textbf{include footnotes}. 
+Our research reviled that the Java Persistence Architecture API (JPA) is the "de facto" leader in the field ORM solutions for Java. It represents a Java specification(JSR 317) for accessing, persisting, and managing data between Java objects / classes and a relational database. Making its way as a major standard has resulted in a lot of the big players in the field providing an implementation of it. The most popular include: Hibernate(JBoss) \cite{linwood2010beginning}, TopLink (Oracle)\footnote{TopLink - http://www.oracle.com/technetwork/middleware/toplink}, EclipseLink (IBM)\footnote{EclipseLink - http://www.eclipse.org/eclipselink/} and OpenJPA (Apache)\footnote{OpenJPA - http://openjpa.apache.org/}. 
 
 Because of its popularity, widely usage and formal standardization using JPA seems like the best option for our solution. However, in order to be able to use it we have to solve several major problems which are discussed in the next sections.
 
@@ -137,7 +130,7 @@ The alternative approach that we propose is to map each entity type into separat
 
 * JPA requires that the root element is a class and therefore, our solution requires and ensures that the root element of all entity types is a RecordValue. When this value is mapped to a JPA class the name of the class is the name of the entity type. Any nested RecordValues are mapped to JPA classes named after the name of the property of the ValueRow that points to them directly or indirectly in the case where the RecordValue is wrapped in a BagValue.
 
-This approach does not suffer from the problems of the first approach because data is distributed over many tables. However, it exposes several issues. The first thing is that each time the structure of an entity changes the JPA mapping information and the schema of the underling database has to be updated as well. Our solution to this problem is discussed in the next section. The second thing is that JPA requires that each entity has distinct id but RGL does not provide such term. We solve that problem by introducing an auto generated \textit{id} property for each JPA class which is made transparent to the client system(RDF Gears). Finally, JPA classes must have distinct names. We solve this problem by making sure that each user defined entity type has an unique name, and all record properties have distinct names. In order to make the names of sub-entities(records) distinct we append to the front of their name the full path from the root JPA class separated by "\_".
+This approach does not suffer from the problems of the first approach because data is distributed over many tables. However, it exposes several issues. The first thing is that each time the structure of an entity changes the JPA mapping information and the schema of the underling database has to be updated as well. Our solution to this problem is discussed in the next section. The second thing is that JPA requires that each entity has distinct id but RGL does not provide such term. We solve that problem by introducing an auto generated \textit{id} property for each JPA class which is made transparent to the client system (RDF Gears). Finally, JPA classes must have distinct names. We solve this problem by making sure that each user defined entity type has an unique name, and all record properties have distinct names. In order to make the names of sub-entities(records) distinct we append to the front of their name the full path from the root JPA class separated by "\_".
 
 
 \subsubsection{Virtual entities}
@@ -354,7 +347,7 @@ This component is responsible to provide API which can be used by application la
 	
 	\item \textit{DB Schema persister} - this component is responsible to make sure the database schema is always corresponding to the entity definitions. Any time the entities are changed the database schema is updated. Additionally, this component also defines the access permissions for each access table based on what the user creating the entity has specified.
 	
-	\item \textit{Hibernate mappings persister} - this component is responsible to construct the mappings that define how data is mapped and stored in the database. Since we are using Hibernate, this information is created and stored as .hbm files.Any time the entities are changed the mappings are updated.
+	\item \textit{Hibernate mappings persister} - this component is responsible to construct the mappings that define how data is mapped and stored in the database. Since we are using Hibernate, this information is created and stored as "hbm" files.Any time the entities are changed the mappings are updated.
 	
 	\item \textit{Entity definition persister} - this component provides functionality for storing the entity definitions.
 	
@@ -462,7 +455,7 @@ The second feature is the preview panel for entity types. It represents a small 
   \label{fig:storageEntityPreview}
 \end{figure}
 
-\subsection{Extended workflow compiler}
+\subsection{Extended workflow engine}
 
 We implemented the extension of the capabilities by extending some of the classes involved in the feature and keeping the original classes intact. In this way, in case of problem or if needed engineers can easily switch between the two implementations. We extended the following classes:
 
@@ -505,7 +498,7 @@ Figure \ref{fig:storageEvalBefore} shows how the workflow looked like before the
 Figure \ref{fig:storageEvalAfter} shows how the workflow looks like after the introduction of our solution. In order to implement the workflow scientists had to perform the following steps:
 \begin{itemize}
 	\item Define the entity types using the user interface illustrated on Figure \ref{fig:storageEvalEntities}.
-	\item Reuse the components for quering and storing data by only providing the JPQL query and selecting the entity type for storing.
+	\item Reuse the components for querying and storing data by only providing the JPQL query and selecting the entity type for storing.
 	\item Indicate the store component to have side effects and put it in a separate branch.
 	\item Pack the workflow and entity types definitions into a plug-in for easy deployment.
 \end{itemize}
@@ -546,7 +539,7 @@ In this section we identify the limitations of the proposed architecture and we 
 
 \item Currently, the RDF Gears engine does not provide any guarantees for the order of the execution of branches. This is not a problem for components that do not have side effects. However, with the introduction of the new components that interact with the database developing an mechanism to control the execution order of branches within a workflow makes sense and might be a helpful future addition to the solution.
 
-\item The system is currently targeted to be used mainly as a research tool and there are no requirements for supporting large number of users and high loads. However, if the system is to be used in such demanding environment then it might be worth to investigate and if needed improve the performance, scalability and availability properties of the solution. \textbf{maybe propose solutions like L2 cache and high availability db setups}. 
+\item The system is currently targeted to be used mainly as a research tool and there are no requirements for supporting large number of users and high loads. However, if the system is to be used in such demanding environment then it might be worth to investigate and if needed improve the performance, scalability and availability properties of the solution.
 
 
 \end{itemize}

@@ -1,16 +1,26 @@
 
 \chapter{\label{cha:conclusions}Conclusions and Future Work}
 
-This chapter gives an overview of the project's contributions.
+This chapter concludes our research. Section \ref{sec:concSumm} answers the research questions and summarizes our contributions. Section \ref{sec:concDisc} the possible application of the work in other areas than user modelling. Finally Section \ref{sec:concFuture} discusses the possibilities for future work that we have identified.
+
+
+\section{Summary}
+\label{sec:concSumm}
+
+In this thesis we presented the design and implementation of the U-Sem platform. Its main objective is to facilitate the everyday work of engineers building user modelling services based on the U-Sem idea. In order to achieve this objective, we first performed series of interviews in order to understand what are the tasks that engineers face every day and if automated partially of fully can improve the situation. Based on the results of the interviews we compiled a list of features implementing which will solve the problem. Due to the scope of this work we prioritized the features and designed and implemented only the ones that were indicated to bring the most improvement: the plug-in environment and data management features.
+
+For the first feature we proposed and implemented a plug-in architecture based on OSGi which enables engineers to plug their custom RDF Gears function components and the related resources in the system on demand and without disturbing the work of other scientists using the system. We also proposed a mechanism for collaboration between engineers on component level using a plug-in repository. We also designed and implemented a tool that facilitates the process of building plug-ins for the U-Sem platform and another tool that help engineers to manage the dependencies between plug-ins.
+
+For the second feature we proposed and implemented a solution integrated in U-Sem that is capable of supporting the data management tasks in U-Sem. Based on Hibernate, it enables engineers to store, manipulate and perform complex queries on RGL data structures without having to program custom components and be aware of how and where data is stored. We also propose mechanism which enables engineers to collaborate on data level. Finally, we integrate the two features to completely automate the installation and configuration of plug-ins that provide U-Sem services containing data management components.
 
 
 \section{Contributions}
-This thesis provides the following contributions:
 
 The first group of contributions concern the Plug-in environment feature.
 \begin{itemize}
 	\item Design and implementation of the dynamic component model for RDFGears based on OSGi.
 	\item Design and implementation of the plug-in collaboration system.
+	\item plug-in dependencies management
 	\item Design and implementation of a plug-in template that simplifies the creation of U-Sem plug-ins under Eclipse.
 \end{itemize}
 
@@ -23,11 +33,14 @@ The second group concern the Data Management feature.
 \end{itemize}
 
 
-\section{Conclusions}
+\section{Discussions}
+\label{sec:concDisc}
 
-
-\section{Discussion/Reflection}
-Apart for user modelling, the system can also be considered as an extension of RDFGears that can benefit engineers working in other fields \textbf{cite}. Additionally, because the features are designed to be loosely coupled from the rest of the system(implemented as separate sub-systems providing APIs) they may be used to extend and provide the functionality for other workflow engines.
+The evaluation sections in the previous chapters show how the proposed solution actually serves its purpose and facilitates the process of building user modelling services based on U-Sem idea. However, apart from this context, the developments in this work might be also beneficial for other fields. On one hand, the system can also be considered as an extension of RDFGears. Therefore, all engineers using RDF Gears can potentially benefit from this work. On the other hand, we have designed the proposed features to be loosely coupled from the workflow engine by designing them as separate sub-systems providing access through APIs. Therefore, this sub-systems can be easily integrated in other workflow engines and which may also facilitate the work of their users.
 
 \section{Future work}
-The future work can be discussed from two perspectives. The first one addresses how each of the implemented features can be improved in the future. We already discussed these in the sections dedicated for each of the features. From the higher level perspective an obvious future work is the implementation of the other features that engineers indicated to bring important improvements for their everyday job. These features are \textbf{...}
+\label{sec:concFuture}
+
+The possibilities for future work that we have identified can be split into two categories. The first one covers how each of the implemented features can be improved in the future. We already discussed these in the Sections \ref{sec:evalPlugin} and \ref{sec:evalStorage} dedicated for each of the features. 
+
+The second category concerns the U-Sem platform as a whole. In Section \ref{sec:features} we have identified the features providing which will facilitate the work of the engineers. Due to the scope of this work, however, we designed and implemented on the ones that were indicated to be most beneficial. Even though the rest might not provide so much benefits we believe that designing and implementing them can still bring some important improvements for the everyday job of the engineers.

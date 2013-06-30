@@ -56,6 +56,12 @@ Xia Cai, Michael~R Lyu, Kam-Fai Wong, and Roy Ko.
 \newblock In {\em Software Engineering Conference, 2000. APSEC 2000.
   Proceedings. Seventh Asia-Pacific}, pages 372--379. IEEE, 2000.
 
+\bibitem{chan2002quality}
+Lai-Kow Chan and Ming-Lu Wu.
+\newblock Quality function deployment: a literature review.
+\newblock {\em European Journal of Operational Research}, 143(3):463--497,
+  2002.
+
 \bibitem{chen2009refinement}
 Zhenbang Chen, Zhiming Liu, Anders~P Ravn, Volker Stolz, and Naijun Zhan.
 \newblock Refinement and verification in component-based model-driven design.
@@ -91,11 +97,6 @@ Oscar Dieste, Natalia Juristo, and Forrest Shull.
   elicitation?
 \newblock {\em Software, IEEE}, 25(2):11--13, 2008.
 
-\bibitem{eder1994coupling}
-Johann Eder, Gerti Kappel, and Michael Schrefl.
-\newblock Coupling and cohesion in object-oriented systems.
-\newblock {\em Technical Reprot, University of Klagenfurt, Austria}, 1994.
-
 \bibitem{feliksik2011}
 E.Feliksik.
 \newblock Rdf gears, a data integration framework for the semantic web.
@@ -107,6 +108,12 @@ Nicolas Geoffray, Ga{\"e}l Thomas, Gilles Muller, Pierre Parrend, St{\'e}phane
 \newblock I-jvm: a java virtual machine for component isolation in osgi.
 \newblock In {\em Dependable Systems \& Networks, 2009. DSN'09. IEEE/IFIP
   International Conference on}, pages 544--553. IEEE, 2009.
+
+\bibitem{goncalves2010enterprise}
+Antonio Goncalves.
+\newblock Enterprise java beans.
+\newblock In {\em Beginning Java EE 6 Platform with GlassFish 3}, pages
+  179--199. Springer, 2010.
 
 \bibitem{gong2003inside}
 Li~Gong, Gary~W Ellison, and Mary Dageforde.
@@ -250,11 +257,6 @@ Jon Orwant.
 \newblock {\em User Modeling and User-Adapted Interaction}, 4(2):107--130,
   1994.
 
-\bibitem{parnas1972criteria}
-David~Lorge Parnas.
-\newblock On the criteria to be used in decomposing systems into modules.
-\newblock {\em Communications of the ACM}, 15(12):1053--1058, 1972.
-
 \bibitem{parrend2009security}
 Pierre Parrend and St{\'e}phane Fr{\'e}not.
 \newblock Security benchmarks of osgi platforms: toward hardened osgi.
@@ -327,12 +329,6 @@ Vladimir Silva.
 \newblock {\em Practical Eclipse Rich Client Platform Projects}.
 \newblock Apress, 2009.
 
-\bibitem{srivastava2008modular}
-Saurabh Srivastava, Michael Hicks, Jeffrey~S Foster, and Patrick Jenkins.
-\newblock Modular information hiding and type-safe linking for c.
-\newblock {\em Software Engineering, IEEE Transactions on}, 34(3):357--376,
-  2008.
-
 \bibitem{sun2012jvm}
 Mengtao Sun and Gang Tan.
 \newblock Jvm-portable sandboxing of java's native libraries.
@@ -348,6 +344,12 @@ Ke~Tao, Fabian Abel, Claudia Hauff, and Geert-Jan Houben.
 Andre~LC Tavares and Marco~Tulio Valente.
 \newblock A gentle introduction to osgi.
 \newblock {\em ACM SIGSOFT Software Engineering Notes}, 33(5):8, 2008.
+
+\bibitem{vinoski1997corba}
+Steve Vinoski.
+\newblock Corba: Integrating diverse applications within distributed
+  heterogeneous environments.
+\newblock {\em Communications Magazine, IEEE}, 35(2):46--55, 1997.
 
 \bibitem{wahlster1989user}
 Wolfgang Wahlster and Alfred Kobsa.

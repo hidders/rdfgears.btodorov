@@ -1,9 +1,0 @@
-\BOOKMARK [1][-]{section.1}{Requirements}{}% 1
-\BOOKMARK [1][-]{section.2}{Set-up the IDE}{}% 2
-\BOOKMARK [2][-]{subsection.2.1}{Import the U-Sem core project}{section.2}% 3
-\BOOKMARK [2][-]{subsection.2.2}{Install the U-Sem SDK}{section.2}% 4
-\BOOKMARK [1][-]{section.3}{Create plug-in}{}% 5
-\BOOKMARK [2][-]{subsection.3.1}{Step 1 - Create plug-in project}{section.3}% 6
-\BOOKMARK [2][-]{subsection.3.2}{Step 2 - Create U-Sem artefacts manually}{section.3}% 7
-\BOOKMARK [2][-]{subsection.3.3}{Step 3 - Export the project}{section.3}% 8
-\BOOKMARK [1][-]{section.4}{Install plug-ins in U-Sem}{}% 9

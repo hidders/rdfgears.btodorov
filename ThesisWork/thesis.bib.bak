@@ -107,6 +107,19 @@
   timestamp = {2013.06.19}
 }
 
+@ARTICLE{chan2002quality,
+  author = {Chan, Lai-Kow and Wu, Ming-Lu},
+  title = {Quality function deployment: a literature review},
+  journal = {European Journal of Operational Research},
+  year = {2002},
+  volume = {143},
+  pages = {463--497},
+  number = {3},
+  owner = {btodorov},
+  publisher = {Elsevier},
+  timestamp = {2013.06.28}
+}
+
 @ARTICLE{chen2009refinement,
   author = {Chen, Zhenbang and Liu, Zhiming and Ravn, Anders P and Stolz, Volker
 	and Zhan, Naijun},
@@ -211,6 +224,17 @@
   organization = {IEEE},
   owner = {btodorov},
   timestamp = {2013.06.19}
+}
+
+@INCOLLECTION{goncalves2010enterprise,
+  author = {Goncalves, Antonio},
+  title = {Enterprise Java Beans},
+  booktitle = {Beginning Java™ EE 6 Platform with GlassFish™ 3},
+  publisher = {Springer},
+  year = {2010},
+  pages = {179--199},
+  owner = {btodorov},
+  timestamp = {2013.06.28}
 }
 
 @BOOK{gong2003inside,
@@ -526,6 +550,17 @@
   timestamp = {2013.06.19}
 }
 
+@INCOLLECTION{perez2006semantics,
+  author = {P{\'e}rez, Jorge and Arenas, Marcelo and Gutierrez, Claudio},
+  title = {Semantics and Complexity of SPARQL},
+  booktitle = {The Semantic Web-ISWC 2006},
+  publisher = {Springer},
+  year = {2006},
+  pages = {30--43},
+  owner = {btodorov},
+  timestamp = {2013.06.25}
+}
+
 @ARTICLE{parnas1972criteria,
   author = {Parnas, David Lorge},
   title = {On the criteria to be used in decomposing systems into modules},
@@ -647,6 +682,15 @@
   timestamp = {2013.06.22}
 }
 
+@BOOK{sessions1997and,
+  title = {COM and DCOM: Microsoft's vision for distributed objects},
+  publisher = {John Wiley \& Sons, Inc.},
+  year = {1997},
+  author = {Sessions, Roger},
+  owner = {btodorov},
+  timestamp = {2013.06.28}
+}
+
 @MASTERSTHESIS{maro2011,
   author = {Marojahan Sigiro},
   title = {Dynamic User Interface Supporting Type Analysis for RDFGears},
@@ -712,6 +756,20 @@
   owner = {btodorov},
   publisher = {ACM},
   timestamp = {2013.06.19}
+}
+
+@ARTICLE{vinoski1997corba,
+  author = {Vinoski, Steve},
+  title = {CORBA: Integrating diverse applications within distributed heterogeneous
+	environments},
+  journal = {Communications Magazine, IEEE},
+  year = {1997},
+  volume = {35},
+  pages = {46--55},
+  number = {2},
+  owner = {btodorov},
+  publisher = {IEEE},
+  timestamp = {2013.06.28}
 }
 
 @BOOK{wahlster1989user,

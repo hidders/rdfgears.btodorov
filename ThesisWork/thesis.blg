@@ -7,8 +7,7 @@ A level-1 auxiliary file: plug-in/plugin-env.aux
 A level-1 auxiliary file: storage/DataManagementChapter.aux
 A level-1 auxiliary file: conclusions.aux
 The style file: plain.bst
-A level-1 auxiliary file: appendix.aux
-A level-1 auxiliary file: requirements.aux
-A level-1 auxiliary file: prioritization-questionare.aux
+A level-1 auxiliary file: apendix/prioritization/prioritization-questionare.aux
 A level-1 auxiliary file: apendix/dtd/appendixDTD.aux
+A level-1 auxiliary file: apendix/PluginTutorial/UsemPluginTutorial.aux
 Database file #1: thesis.bib
