@@ -3,46 +3,46 @@
 \addvspace {10pt}
 \addvspace {10pt}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {3.1}{\ignorespaces The value distribution of the 5 requirements in the U-Sem project.}}{14}{figure.3.1}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces The value distribution of the 5 requirements in the U-Sem project.}}{15}{figure.3.1}
 \contentsline {figure}{\numberline {3.2}{\ignorespaces State diagram illustrating the scenario where two engineers extend U-Sem simultaneously and the changes made by engineer A are lost. }}{16}{figure.3.2}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Component-based software development \cite {pour1998component} }}{21}{figure.4.1}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Component interfaces }}{22}{figure.4.2}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Components implementing interfaces }}{23}{figure.4.3}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces OSGi Service Registry \cite {tavares2008gentle}}}{24}{figure.4.4}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Context diagram of U-Sem }}{29}{figure.4.5}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Business model describing the process for creating a new plug-in for U-Sem}}{31}{figure.4.6}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Business model describing the process for installing a shared plug-in/s to U-Sem}}{32}{figure.4.7}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Business model describing the process for managing plug-ins in U-Sem}}{33}{figure.4.8}
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Layered organization of the solution}}{34}{figure.4.9}
-\contentsline {figure}{\numberline {4.10}{\ignorespaces Component diagram illustrating the functional organization of the solution}}{35}{figure.4.10}
-\contentsline {figure}{\numberline {4.11}{\ignorespaces Functional decomposition of the \textit {Plug-in admin.} module}}{36}{figure.4.11}
-\contentsline {figure}{\numberline {4.12}{\ignorespaces Functional decomposition of the \textit {Plug-in access manager} component}}{37}{figure.4.12}
-\contentsline {figure}{\numberline {4.13}{\ignorespaces Diagram illustrating the concurrency model of the solution}}{39}{figure.4.13}
-\contentsline {figure}{\numberline {4.14}{\ignorespaces User interface for plug-in management.}}{41}{figure.4.14}
-\contentsline {figure}{\numberline {4.15}{\ignorespaces User interface for uploading and installing plug-ins in U-Sem.}}{42}{figure.4.15}
-\contentsline {figure}{\numberline {4.16}{\ignorespaces User interface for browsing and installing plug-ins from the plug-in repository.}}{42}{figure.4.16}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Component-based software development \cite {pour1998component} }}{23}{figure.4.1}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Component interfaces }}{24}{figure.4.2}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Components implementing interfaces }}{25}{figure.4.3}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces OSGi Service Registry \cite {tavares2008gentle}}}{26}{figure.4.4}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Context diagram of U-Sem }}{31}{figure.4.5}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Business model describing the process for creating a new plug-in for U-Sem}}{33}{figure.4.6}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Business model describing the process for installing a shared plug-in/s to U-Sem}}{34}{figure.4.7}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Business model describing the process for managing plug-ins in U-Sem}}{35}{figure.4.8}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Layered organization of the solution}}{36}{figure.4.9}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Component diagram illustrating the functional organization of the solution}}{37}{figure.4.10}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Functional decomposition of the \textit {Plug-in admin.} module}}{38}{figure.4.11}
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Functional decomposition of the \textit {Plug-in access manager} component}}{39}{figure.4.12}
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Diagram illustrating the concurrency model of the solution}}{41}{figure.4.13}
+\contentsline {figure}{\numberline {4.14}{\ignorespaces User interface for plug-in management.}}{43}{figure.4.14}
+\contentsline {figure}{\numberline {4.15}{\ignorespaces User interface for uploading and installing plug-ins in U-Sem.}}{44}{figure.4.15}
+\contentsline {figure}{\numberline {4.16}{\ignorespaces User interface for browsing and installing plug-ins from the plug-in repository.}}{44}{figure.4.16}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Class diagram illustrating the RGL Values class hierarchy}}{49}{figure.5.1}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Layer organization of the feature}}{56}{figure.5.2}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Component diagram illustrating the high level functional organization of the feature }}{57}{figure.5.3}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Functional decomposition of the Entities admin. module}}{58}{figure.5.4}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Functional decomposition of the Entities definition manager module}}{59}{figure.5.5}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Functional decomposition of the Entities manipulation manager module}}{60}{figure.5.6}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Diagram illustrating the concurrency model of the solution}}{61}{figure.5.7}
-\contentsline {figure}{\numberline {5.8}{\ignorespaces User interface for entity definitions management}}{63}{figure.5.8}
-\contentsline {figure}{\numberline {5.9}{\ignorespaces User interface for constructing entity definitions}}{63}{figure.5.9}
-\contentsline {figure}{\numberline {5.10}{\ignorespaces User interface that provides a quick preview of the entity definitions}}{64}{figure.5.10}
-\addvspace {10pt}
-\addvspace {10pt}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Class diagram illustrating the RGL Values class hierarchy}}{53}{figure.5.1}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Layer organization of the feature}}{60}{figure.5.2}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Component diagram illustrating the high level functional organization of the feature }}{61}{figure.5.3}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Functional decomposition of the Entities admin. module}}{63}{figure.5.4}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Functional decomposition of the Entities Definition Manager module}}{64}{figure.5.5}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Functional decomposition of the Entities Manipulation Manager module}}{65}{figure.5.6}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Diagram illustrating the concurrency model of the solution}}{66}{figure.5.7}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces User interface for entity definitions management}}{67}{figure.5.8}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces User interface for constructing entity definitions}}{68}{figure.5.9}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces User interface that provides a quick preview of the entity definitions}}{69}{figure.5.10}
 \addvspace {10pt}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {C.1}{\ignorespaces Select plug-in template}}{82}{figure.C.1}
-\contentsline {figure}{\numberline {C.2}{\ignorespaces Specify artefact names}}{83}{figure.C.2}
-\contentsline {figure}{\numberline {C.3}{\ignorespaces Structure of the created plug-in}}{83}{figure.C.3}
-\contentsline {figure}{\numberline {C.4}{\ignorespaces U-Sem Plug-ins user interface}}{84}{figure.C.4}
-\contentsline {figure}{\numberline {C.5}{\ignorespaces UI for selecting a plug-in to be installed}}{85}{figure.C.5}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {D.1}{\ignorespaces Workflow defining the service for building language profiles before the introduction of the feature}}{87}{figure.D.1}
-\contentsline {figure}{\numberline {D.2}{\ignorespaces The entity definitions needed for building the service for building language profiles}}{88}{figure.D.2}
-\contentsline {figure}{\numberline {D.3}{\ignorespaces Workflow defining the service for building language profiles after the introduction of the feature}}{88}{figure.D.3}
+\addvspace {10pt}
+\contentsline {figure}{\numberline {C.1}{\ignorespaces Select plug-in template}}{86}{figure.C.1}
+\contentsline {figure}{\numberline {C.2}{\ignorespaces Specify artefact names}}{87}{figure.C.2}
+\contentsline {figure}{\numberline {C.3}{\ignorespaces Structure of the created plug-in}}{87}{figure.C.3}
+\contentsline {figure}{\numberline {C.4}{\ignorespaces U-Sem Plug-ins user interface}}{88}{figure.C.4}
+\contentsline {figure}{\numberline {C.5}{\ignorespaces UI for selecting a plug-in to be installed}}{89}{figure.C.5}
+\addvspace {10pt}
+\contentsline {figure}{\numberline {D.1}{\ignorespaces Workflow defining the service for building language profiles before the introduction of the feature}}{91}{figure.D.1}
+\contentsline {figure}{\numberline {D.2}{\ignorespaces The entity definitions needed for building the service for building language profiles}}{92}{figure.D.2}
+\contentsline {figure}{\numberline {D.3}{\ignorespaces Workflow defining the service for building language profiles after the introduction of the feature}}{92}{figure.D.3}

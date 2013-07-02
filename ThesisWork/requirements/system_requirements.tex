@@ -24,7 +24,7 @@ Having identified the target people we performed the interviews, the results of 
 \subsection{Identified overhead tasks}
 \label{sec:features}
 
-We carefully analysed all the raw information that was gathered from the interviews and we identified several tasks that are requiring engineers to do a lot of overhead work. We presented them to the stakeholders and after some discussions we ended up with the following final list: 
+We carefully analysed all the raw information that was gathered from the interviews and we identified several tasks that require engineers to do a lot of overhead work. We presented them to the stakeholders and after some discussions we ended up with the following final list: 
 
 \begin{itemize}
 
@@ -32,7 +32,7 @@ We carefully analysed all the raw information that was gathered from the intervi
 Engineers base a lot of their analysis on the information provided by users in the social media. However, each social media web site provides access through a special API. Currently, each engineer has to implement a component for retrieving the required data from each type of social media he uses. Engineers report that this require them to invest considerable time and efforts.
 
 \item \textbf{Plug in functional components}
-The nature of engineers work is very dynamic. They are constantly required to build new and improve and adapt existing user modelling services. In order to do that they usually have to create and plug into the system new RDFGears functions and other functional components. Currently this process is done manually and represents major overhead for the engineers.
+The nature of engineers' work is very dynamic. They are constantly required to build new and improve and adapt existing user modelling services. In order to do that they usually have to create and plug into the system new RDF Gears functions and other functional components. Currently this process is done manually and represents major overhead for the engineers.
 
 \item \textbf{Data management} 
 Many of the engineers build services that need to store various types of data(e.g. intermediate and final results). Currently, they are forced to manually set-up databases and program the components needed for interacting with each type of data. This is usually not a trivial task, it requires time and knowledge and therefore, it resembles a big overhead to the engineers.
@@ -50,15 +50,15 @@ Having identified the tasks that engineers find most problematic allows us to re
 
 \subsection{Features prioritization}
 
-Prioritizing the features is not a trivial task because each of the stakeholders has slightly different view on the benefits provided by each of the features that we already identified. Therefore, we performed a research in order to find a suitable approach for dealing with this situation.
+Prioritizing the features is not a trivial task because each of the stakeholders has a slightly different view on the benefits provided by each of the features that we already identified. Therefore, we performed a research in order to find a suitable approach for dealing with this situation.
 
-Requirements prioritization is a relatively old research topic and there are numerous approaches that are currently available \cite{moisiadis2002fundamentals}. The most popular include Quality Function Deployment (QFD) \cite{chan2002quality}, the Analytical Hierarchy Process(AHP) \cite{roper1990analytic} , as well as a variety of industrial practices such as team voting \cite{moisiadis2002fundamentals}, etc. However, literature also suggests that there is no perfect solution for this problem and the applicability of each approach depends heavily on the particular situation it is used.
+Requirements prioritization is a relatively old research topic and there are numerous approaches that are currently available \cite{moisiadis2002fundamentals}. The most popular include Quality Function Deployment (QFD) \cite{chan2002quality}, the Analytical Hierarchy Process(AHP) \cite{roper1990analytic} , as well as a variety of industrial practices such as team voting \cite{moisiadis2002fundamentals}, etc. However, literature also suggests that there is no perfect solution for this problem and the applicability of each approach depends greatly on the particular situation it is used in.
 
 For our project, we choose the analytic hierarchy process approach \cite{roper1990analytic}. This decision was based on the fact that it is especially suitable for prioritizing a small number of requirements\cite{karlsson1997cost} and it is a proven and widely used \cite{karlsson1998evaluation}. In literature, as a disadvantage of this approach is considered the fact that it takes no account of interdependencies between requirements \cite{roper1990analytic}. However, this issue is not a problem for our solution because the project's high-level features that we want to prioritize are loosely coupled and they have little dependency between each other. 
 
 
 \subsubsection{Features prioritization using AHP}
-In the Section \ref{sec:features} we identified 5 high-level requirements(features) that cover the main functionality of the system. In this step we are using the AHP's pairwise comparison method in order to assess the relative value of each of them. We asked a group of four experienced project members which are the main stakeholders for the system to participate. We instructed them on the process and asked them to perform the pairwise comparisons of the candidate requirements based on their value(importance). Appendix \ref{cha:priority} shows the form that they were asked to fill in.
+In the Section \ref{sec:features} we identified five high-level requirements(features) that cover the main functionality of the system. In this step we are using the AHP's pairwise comparison method in order to assess the relative value of each of them. It basically requires the stakeholders to systematically evaluate the importance of each of the features by comparing them to one another two at a time. Then, the AHP converts these evaluations to numerical values which represent the priority of each of the features. In order to perform this process, we instructed the stakeholders on the process and asked them to perform the evaluations by filling in a specially prepared form which is presented in Appendix \ref{cha:priority}.
 
 We let the participants to work alone, defining their own pace. We also allowed them to choose the order of the pair's comparison. Discussions were also allowed. When all participant finished the pairwise comparison, as advised in \cite{karlsson1997cost} we had to make sure that the provided results are consistent. In order to do that we had to calculate the the consistency indices of the pairwise comparisons. According to \cite{karlsson1997cost} values lower than 0.10 are considered acceptable and even values around .12 are commonly achieved in the industry and can also be considered acceptable. The calculation showed that two of the participants have indices higher than .23 which indicates serious inconsistencies (table \ref{tbl:reqInitialConsist}). Therefore, we asked them to revise their answers and the results afterwards measured values that are acceptable (table \ref{tbl:reqFinalConsist}).
  
@@ -89,7 +89,7 @@ We let the participants to work alone, defining their own pace. We also allowed 
   \label{tbl:reqFinalConsist}
 \end{table}
 
-Once we had achieved satisfying results we calculated the distributions and outlined the candidate requirements in a diagram (figure \ref{fig:reqPriority}). Each requirement's determined value is relative and based on a ratio scale. Therefore, a requirement whose value is calculated as 0.20 is twice as valuable as a requirement with a value of 0.10. Additionally, the sum of the values for all requirements equals 1. This means that a requirement with a value of 0.10 provides 10 percent of the value of all the requirements.
+Once we had achieved satisfying results we calculated the distributions and outlined the candidate requirements in a diagram (Figure \ref{fig:reqPriority}). Each requirement's determined value is relative and based on a ratio scale. Therefore, a requirement whose value is calculated as 0.20 is twice as valuable as a requirement with a value of 0.10. Additionally, the sum of the values for all requirements equals 1. This means that a requirement with a value of 0.10 provides 10 percent of the value of all the requirements.
 
 \begin{figure}[h!]
   \centering
@@ -127,7 +127,7 @@ Analysing this process we concluded that it is far from optimal, it is error pro
   \label{fig_vers_prob}
 \end{figure}
 	
-	\item Engineers also reported that following the current process the source code implementing the different services resides in the same project and as a result they have become, over time, tightly coupled between each other. This has made them very hard to be maintained and extended.
+	\item Engineers also reported that following the current process the source code implementing the different functional components resides in the same project and as a result, they have become, over time, tightly coupled between each other. This has made them very hard to be maintained and extended.
 		
 \end{itemize}
 
@@ -137,23 +137,23 @@ We believe that providing a solution that overcomes these problems will signific
 \section{Data Management}
 \label{sec:problemDefStorage}
 
-The interviews that we performed with the engineers showed that many of the services they implement require functional components that provide means for executing data storage and retrieval operations. They reported that the structure and semantics of the data and the particular operations they have to performed on it varies a lot but the main scenarios can be classified in the following groups:
+The interviews that we performed with the engineers showed that many of the services they implement require functional components that provide means for executing data storage and retrieval operations. They reported that the structure and semantics of the data and the particular operations they have to perform on it varies a lot but the main scenarios can be classified in the following groups:
 
 \begin{itemize}
 
-	\item \textit{Raw data} - Engineers reported that most of the analysis and modelling services they devised are based on the social media. Basically, they have to retrieve certain entries(e.g tweets from Twitter ) which are the basis for the user modelling. In certain cases engineers have to store this "raw data" locally. Usually, this is as a result of the fact that retrieving the entities from the social media web sites is time consuming and also some of the APIs limit the number of entities one can get for a certain amount of time \cite{cheong2009integrating}. This makes the execution of workflows slow(the system has to wait to get the needed entries every time). Therefore, engineers are forced to store these entries locally and only make sure they are up-to-date prior to the execution of a workflow.
+	\item \textit{Raw data} - Engineers reported that most of the modelling services they build are based on the social media. Basically, they have to retrieve certain entries (e.g tweets from Twitter ) which are the basis for the user modelling. In certain cases engineers have to store this "raw data" locally. Usually, this is as a result of the fact that retrieving the entities from the social media web sites is time consuming and also some of the APIs limit the number of entities one can get for a certain amount of time \cite{cheong2009integrating}. This makes the execution of workflows slow because the system has to wait to get the needed entries every time. Therefore, engineers are forced to store these entries locally and only make sure they are up-to-date prior to the execution of a workflow.
 	
-	\item \textit{User provided data} - Some services require information that is not available from social media and has to be provided by the users of the system. For example, in certain use-cases users have to fill in questioners so that the results from future user modelling are adjusted based on the answers provided by the users. It is infeasible to ask the users for that information every time that is why it has to be stored within the system.
+	\item \textit{User provided data} - Some services require information that is not available from social media and has to be provided by the users of the system. For example, in certain use-cases users have to fill in questioners so that the results from future user modelling are adjusted based on the answers provided by the users. It is infeasible to ask the users for that information every time the service is executed and that is why it has to be stored within the system.
 	
-	\item \textit{Intermediate results} - Some services consist of two phases. The first phase continuously calculates some intermediate representation of the raw data. In the second phase, on user request the final result is calculated based on the intermediate data. One such example is the Twinder service \cite{tao2012twinder}. Therefore, between the two phases the intermediate results have to be stored and later retrieved back.
+	\item \textit{Intermediate results} - Some services consist of two phases. The first phase continuously calculates some intermediate representation of the raw data. In the second phase, on user request the final result is calculated based on the intermediate data. One such example is the Twinder service \cite{tao2012twinder}. Therefore, between the two phases, the intermediate results have to be stored and later retrieved back.
 	
-	\item \textit{Ready user profiles} - Some services require that users are able to monitor how the results evolve over time. For example, in e-learning systems users want to be able to see how the knowledge of a certain person has changed after following a certain course in order to measure how helpful the course was for that person. Therefore, every time a service is executed the results have to be stored so that they can be further analysed later.
+	\item \textit{User profiles} - Some services require that users are able to monitor how the generated user profiles evolve over time. For example, in e-learning systems users want to be able to see how the knowledge of a certain person has changed after following a certain course in order to measure how helpful the course was for that person. Therefore, every time a service is executed the results have to be stored so that they can be further analysed later.
 	
 	\item \textit{System data} - Finally, many of the features of the system need to store some kind of information. For example, the user authentication functionality has to store all kind information about the users of the system: user names, passwords, privileges, etc. The scheduling feature has to store information about the time at which each service has to be executed. 
 	
 \end{itemize}
 
-Clearly, there are a lot of scenarios that require data storage and retrieval operations and currently, the system does not provide any means to support engineers in defining workflows that require such operations. Each engineer is responsible to set up a database server and create custom RDG Gears components that serve the particular needs. However, this process requires a lot of time and efforts, and suffers from many downsides and problems:
+Clearly, there are a lot of scenarios that require data storage and retrieval operations and currently, the system does not provide any means to support engineers in defining workflows that require such operations. Each engineer is responsible to set up a database server and create custom RDF Gears components that serve the particular needs. However, this process requires a lot of time and efforts, and suffers from many downsides and problems:
 
 \begin{itemize}
 	\item \textit{Knowledge required} - designing and implementing components for dealing with persistent data is not a trivial job and requires specific type of knowledge. Many of the engineers building services have mathematical or statistical backgrounds and are likely not to have in depth knowledge in the database field. In order to be able to build their services they have to acquire this knowledge which can cause significant overhead and waste of time. Additionally, the fact that they are not professionals in the field may lead to problems and shortcomings.
@@ -162,11 +162,11 @@ Clearly, there are a lot of scenarios that require data storage and retrieval op
 	
 	\item \textit{Dynamic data structure} - It is expected that the structure of the stored data might change over time. When a database with fixed schema is used (like most SQL solutions) then every time the structure changes the engineers have to connect to the database and apply the changes manually. This task is likely to be annoying, time consuming and even error prone for some engineers. Therefore, automating this process can save time to engineers and reduce the number of mistakes caused by carelessness. 
 	
-	\item \textit{Collaboration} - collaborations between engineers on data level is reported to be quite important and can save them a lot of time. Currently, there are no facilities available to support that requirement. Engineers have to organize this collaborations personally. Additionally, because the collaboration are not integrated in the system they are likely to be hard to monitor and control.
+	\item \textit{Collaboration} - collaborations between engineers on data level is reported to be quite important and can save them a lot of time. Currently, there are no facilities available to support that requirement. Engineers have to organize this collaborations personally. Additionally, because the collaborations are not integrated in the system they are likely to be hard to monitor and control.
 	
-	\item \textit{RGL translation} - Generally available database solutions are not capable to deal with data in the RGL format introduced in RDF Gears. Therefore, every single component that deals with persistent data has to translate the RGL values to values compatible with the databases solution and vice versa. Clearly, all this code is redundant and removing this responsibility from the engineers will save them time and efforts so that they can focus their attention to the core of their work.
+	\item \textit{RGL translation} - Generally available database solutions are not capable to deal with data in the RGL format introduced in RDF Gears. Therefore, every single component that deals with persistent data has to translate the RGL values to values compatible with the database solution and vice versa. Clearly, all this code is redundant and removing this responsibility from the engineers will save them time and efforts so that they can focus their attention to the core of their work.
 	
-	\item \textit{RDF Gears and components with side effects} - Components that store data are components that have side affects. However, RDF Gears is not designed to work with such components and some unexpected behaviour might be expected. Therefore, engineers building components with side effects that are not aware of the way RDF Gears operate internally risk to introduce problems that may be also hard to detect.
+	\item \textit{RDF Gears and components with side effects} - Components that store data are components that have side affects. However, as discussed in Section \ref{sec:backRDFGears} RDF Gears is not designed to work with such components and some unexpected behaviour might be expected. Therefore, engineers building components with side effects that are not aware of the way RDF Gears operate internally risk to introduce problems that may be also hard to detect.
 	
 \end{itemize}
 

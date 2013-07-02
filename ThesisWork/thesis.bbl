@@ -26,7 +26,7 @@ Mark Assad, David~J Carmichael, Judy Kay, and Bob Kummerfeld.
   context-aware services.
 \newblock In {\em Pervasive Computing}, pages 55--72. Springer, 2007.
 
-\bibitem{bartlett2009osgi}
+\bibitem{bartlett2009OSGi}
 Neil Bartlett.
 \newblock Osgi in practice.
 \newblock {\em Bd (January 11, 2009)}, 2009.
@@ -323,6 +323,11 @@ Robert~C Seacord.
 \newblock Software engineering component repositories.
 \newblock In {\em Proceedings of the International Workshop on Component-Based
   Software Engineering}, 1999.
+
+\bibitem{sessions1997and}
+Roger Sessions.
+\newblock {\em COM and DCOM: Microsoft's vision for distributed objects}.
+\newblock John Wiley \& Sons, Inc., 1997.
 
 \bibitem{maro2011}
 Marojahan Sigiro.

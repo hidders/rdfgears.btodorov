@@ -246,6 +246,17 @@
   timestamp = {2013.06.19}
 }
 
+@INPROCEEDINGS{gray1981transaction,
+  author = {Gray, Jim and others},
+  title = {The transaction concept: Virtues and limitations},
+  booktitle = {VLDB},
+  year = {1981},
+  volume = {81},
+  pages = {144--154},
+  owner = {btodorov},
+  timestamp = {2013.06.30}
+}
+
 @INPROCEEDINGS{hernane2012dynamic,
   author = {Hernane, Soumeya Leila and Gustedt, Jens and Benyettou, Mohamed},
   title = {A Dynamic Distributed Algorithm for Read Write Locks},

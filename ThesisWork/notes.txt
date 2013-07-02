@@ -1,8 +1,7 @@
 1. Research objective section
 
-2. Explain how AHP priority works
+2. Conclusion
 
-3. Data management evaluation...
 
 \item \textbf{How to enable engineers to collaborate with each other?}
 
