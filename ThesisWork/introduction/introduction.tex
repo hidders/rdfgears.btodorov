@@ -16,20 +16,20 @@ The research presented in this thesis was coordinated at TU Delft as part of ong
 
 \textit{\textbf{Research goal:} Design and implement a platform that facilitates the work of engineers building user modelling services following the U-Sem approach}\\
 
-In order to understand the problem and achieve the research goal, there are some questions that need to be answered: What is the current process for building user modelling services following the U-Sem approach? Which are the tasks that currently require engineers to invest a lot of time and efforts in? Which of these tasks are most beneficial to be facilitated? 
+In order to understand the problem and achieve the research goal, there are some questions that need to be answered: What is the current process for building user modelling services following the U-Sem approach? Which are the tasks in this process that currently require engineers to invest a lot of time and efforts in? Which of these tasks are most beneficial to be facilitated? 
 
-Based on the answers of these questions covered in Chapter \ref{cha:problemDef} we formulated a set of sub-goals which lead to achieving the research goal posed in this thesis:
+Based on the answers of these questions covered in Chapter \ref{cha:problemDef} we rephrased the research goal as extending the currently used system (RDF Gears) which facilitates the service orchestration task so that it also facilitates the other critical tasks involved in the process of building U-Sem services. Based on that, we formulated a set of sub-goals which lead to achieving the research goal posed in this thesis:
 
 \begin{enumerate}
-\item \textbf{Enable engineers to extend and modify the system without affecting the work of others using it.}
-With extending and modifying the system we mean that engineers should be able to add, replace or remove programming entities (e.g. Java classes) and the accompanying runtime resources on demand.
+\item \textbf{Enable engineers to add and remove functional components to/from the system on demand without affecting the work of others using it.}
+Functional components are the building blocks of the user modelling services. They are defined in the form of programming entities (e.g. Java classes) and the accompanying runtime resources.
 
-\item \textbf{Enable engineers to process long-term data transparently without being aware of where and how it is actually stored.}
-Processing long-term data implies that engineers are able to store, update, delete and query stored data.
+\item \textbf{Enable engineers to create and process persistent data transparently without being aware of where and how it is actually stored.}
+Processing persistent data implies that engineers are able to update, delete and query stored data.
 
 \end{enumerate}
 
-This goals also defined the steps that we took to achieve our main research goal. Next section presents the outline of this work.
+These goals have also defined the steps that we took to achieve our main research goal. Next section presents the outline of this work.
 
 
 \section{Outline}
