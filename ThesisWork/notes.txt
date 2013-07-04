@@ -1,13 +1,15 @@
-1. Research objective section
+Evaluation summary:
 
-2. Conclusion
+In order to evaluate whether this goal is achieved we performed experiments and asked engineers to test the proposed solution in real 
+world scenarios. The results presented in Sections ... confirmed that the solution actually facilitates the process of building 
+U-Sem services by redusing the number of overhead tasks that engineers have to perform enabling them to focus on the core of their work. 
+It saves them time, efforts and also reduces the amount of knowlege required in order to work with the system which also facilitates 
+the process of training new engineers. The results also revealed that the solution additionally improves the performance of 
+engineers by enabling them to collaborate effectively with each other. Therefore, we are confident that we have achieved the research goal 
+and the proposed solution actually serves its purpose.
 
 
-\item \textbf{How to enable engineers to collaborate with each other?}
 
-Introduction:
+------------------------------------------------
 
-internet is used a lot -> a lot of personal info -> a lot of fields are interested to gain benefits from that data(eg.)
--> many engineers provide algorithms for analysis -> apart from the alrogithms the have a lot of over head work -> solution that makes
-engineers more productive by saving them time, efforts and abaling to collaborate with each other.
-	
+The evaluations presented in Sections ... are based on experiments that we performed and the feedback from the test group using the new solution .
