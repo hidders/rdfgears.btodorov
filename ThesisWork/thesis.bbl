@@ -132,6 +132,11 @@ Soumeya~Leila Hernane, Jens Gustedt, and Mohamed Benyettou.
 \newblock In {\em Parallel, Distributed and Network-Based Processing (PDP),
   2012 20th Euromicro International Conference on}, pages 180--184. IEEE, 2012.
 
+\bibitem{hevner2004design}
+Alan~R Hevner, Salvatore~T March, Jinsoo Park, and Sudha Ram.
+\newblock Design science in information systems research.
+\newblock {\em MIS quarterly}, 28(1):75--105, 2004.
+
 \bibitem{hickey2004unified}
 Ann~M Hickey and Alan~M Davis.
 \newblock A unified model of requirements elicitation.
@@ -354,6 +359,11 @@ Ke~Tao, Fabian Abel, Claudia Hauff, and Geert-Jan Houben.
 Andre~LC Tavares and Marco~Tulio Valente.
 \newblock A gentle introduction to osgi.
 \newblock {\em ACM SIGSOFT Software Engineering Notes}, 33(5):8, 2008.
+
+\bibitem{verschuren2005evaluation}
+Piet Verschuren and Rob Hartog.
+\newblock Evaluation in design-oriented research.
+\newblock {\em Quality and Quantity}, 39(6):733--762, 2005.
 
 \bibitem{vinoski1997corba}
 Steve Vinoski.

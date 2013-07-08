@@ -269,6 +269,20 @@
   timestamp = {2013.06.19}
 }
 
+@ARTICLE{hevner2004design,
+  author = {Hevner, Alan R and March, Salvatore T and Park, Jinsoo and Ram, Sudha},
+  title = {Design science in information systems research},
+  journal = {MIS quarterly},
+  year = {2004},
+  volume = {28},
+  pages = {75--105},
+  number = {1},
+  owner = {btodorov},
+  publisher = {Society for Information Management and The Management Information
+	Systems Research Center},
+  timestamp = {2013.07.08}
+}
+
 @ARTICLE{hickey2004unified,
   author = {Hickey, Ann M and Davis, Alan M},
   title = {A unified model of requirements elicitation},
@@ -681,6 +695,19 @@
   author = {Rozanski, Nick and Woods, E{\'o}in},
   owner = {btodorov},
   timestamp = {2013.06.19}
+}
+
+@ARTICLE{sandhu1994access,
+  author = {Sandhu, Ravi S and Samarati, Pierangela},
+  title = {Access control: principle and practice},
+  journal = {Communications Magazine, IEEE},
+  year = {1994},
+  volume = {32},
+  pages = {40--48},
+  number = {9},
+  owner = {btodorov},
+  publisher = {IEEE},
+  timestamp = {2013.07.02}
 }
 
 @INPROCEEDINGS{seacord1999software,
