@@ -6,7 +6,7 @@ In this tutorial we demonstrate how to create and deploy U-Sem plug-ins.
 \section{Requirements}
 
 \begin{itemize}
-	\item U-Sem - installed and running
+	\item U-Sem platform - installed and running
 	\item Eclipse IDE ($>=$ 3.7 Indigo). We recommend using the \textit{Eclipse for RCP and RAP Developers} package - \url{http://www.eclipse.org/downloads/}
 	\item U-Sem SDK for Eclipse - \url{https://code.google.com/p/rdfgears/}
 \end{itemize}
@@ -17,7 +17,7 @@ Before being able to start developing plug-ins for U-Sem we have to set up the I
 
 \subsection{Import the U-Sem core project}
 
-Plug-ins normally depend on functionality provided by the U-Sem project and therefore, in order to be able to compile them correctly we need to import the U-Sem project into the IDE. Currently, all dependencies are contained in the \textbf{rdfgears-core} sub-project and thus, importing only it is enough. For more information on importing existing projects in eclipse read the \textit{Importing existing projects} section in Eclipse documentation(\url{http://help.eclipse.org/juno}).
+Plug-ins normally depend on functionality provided by the U-Sem project and therefore, in order to be able to compile them correctly we need to import the U-Sem project into the IDE. Currently, all dependencies are contained in the \textbf{rdfgears-core} sub-project and thus, importing only it is enough. For more information on importing existing projects in eclipse read the \textit{Importing existing projects} section in Eclipse documentation (\url{http://help.eclipse.org/juno}).
 
 \subsection{Install the U-Sem SDK}
 U-Sem comes with SDK that helps engineers to easily create plug-ins. It provides project template which creates and automatically makes all necessary configurations for a plug-in project. In order to install it copy the SDK jar file to the \textit{dropins} folder of Eclipse and start/restart the IDE. 
@@ -62,8 +62,8 @@ U-Sem comes with SDK that helps engineers to easily create plug-ins. It provides
 Engineers can also add U-Sem artefacts (functions, workflows) manually. In order to do that, the following steps has to be performed:
 
 \begin{enumerate}
-	\item \textbf{Create artefacts} - Engineers have to create the desired U-Sem functions and workflows following the specification(\url{https://code.google.com/p/rdfgears/wiki/Creating_cstom_functions}). The produced files has to be added to the plug-in project.
-	\item \textbf{Register the artefacts} - The already produced artefacts has to be registered so that the engine knows about their existence. The registration is done in the \textit{start} method of the \textit{Activator} java class:
+	\item \textbf{Create artefacts} - Engineers have to create the desired U-Sem functions and workflows following the specification (\url{https://code.google.com/p/rdfgears/wiki/Creating_cstom_functions}). The produced files have to be added to the plug-in project.
+	\item \textbf{Register the artefacts} - The already produced artefacts have to be registered so that the engine knows about their existence. The registration is done in the \textit{start} method of the \textit{Activator} java class:
 	\begin{itemize}
 	
 		\item In order to register functions the following code has to be included:
@@ -86,13 +86,13 @@ context.registerService(WorkflowTemplate.class,
 		Where \textit{$<xml>$} is the path to the xml file describing the workflow.
 		
 	\end{itemize}
-	\item \textbf{Configure plug-in export} -  Before exporting the plug-in make sure all resource files (xml, etc.) will be included. More information on how to do that can be found under the \textit{Plug-in Build} section in Eclipse documentation(\url{http://help.eclipse.org/juno}).
+	\item \textbf{Configure plug-in export} -  Before exporting the plug-in make sure all resource files (xml, etc.) will be included. More information on how to do that can be found under the \textit{Plug-in Build} section in Eclipse documentation (\url{http://help.eclipse.org/juno}).
 	
 	
 \end{enumerate}
 
 \subsection{Step 3 - Export the project}
-Once the plug-in is ready then it has to be exported into a jar file so that it can be later deployed to the U-Sem platform. Eclipse provides wizard that completely automates this process. It is accessible under \textit{File/Export/Deployable plug-ins and fragments}. More information about it can be found under the \textit{Plug-in Export} section in Eclipse documentation(\url{http://help.eclipse.org/juno}).
+Once the plug-in is ready then it has to be exported into a jar file so that it can be later deployed to the U-Sem platform. Eclipse provides wizard that completely automates this process. It is accessible under \textit{File/Export/Deployable plug-ins and fragments}. More information about it can be found under the \textit{Plug-in Export} section in Eclipse documentation (\url{http://help.eclipse.org/juno}).
 
 \section{Install plug-ins in U-Sem}
 

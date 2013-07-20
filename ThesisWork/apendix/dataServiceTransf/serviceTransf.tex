@@ -12,7 +12,7 @@ For the experiment we used the already implemented service for building language
   \label{fig:storageEvalBefore}
 \end{figure}
 
-Figure \ref{fig:storageEvalBefore} shows how the workflow looked like before the introduction of our solution. In order to implement that workflow scientists had to perform the following steps:
+Figure \ref{fig:storageEvalBefore} shows how the workflow looked like before the introduction of our solution. In order to implement that workflow engineers had to perform the following steps:
 \begin{itemize}
 	\item Install and set-up a database.
 	\item Create the necessary tables manually. This step is required every time the workflow is deployed on a U-Sem system. 
@@ -27,7 +27,7 @@ Figure \ref{fig:storageEvalBefore} shows how the workflow looked like before the
   \label{fig:storageEvalEntities}
 \end{figure}
 
-Figure \ref{fig:storageEvalAfter} shows how the workflow looks like after the introduction of our solution. In order to implement the workflow scientists had to perform the following steps:
+Figure \ref{fig:storageEvalAfter} shows how the workflow looks like after the introduction of our solution. In order to implement the workflow engineers had to perform the following steps:
 \begin{itemize}
 	\item Define the entity types using the user interface illustrated on Figure \ref{fig:storageEvalEntities}.
 	\item Reuse the components for querying and storing data by only providing the required JPQL query and selecting the entity type for storing.
@@ -45,7 +45,7 @@ Figure \ref{fig:storageEvalAfter} shows how the workflow looks like after the in
 We can conclude that using the proposed solution provided the following advantages compared to the initial situation:
 
 \begin{itemize}
-	\item No installation and configuration of database required.
+	\item No installation and configuration of a database is required.
 	\item No need to create the database schema manually. It is done automatically by the user interface.
 	\item No programming required for implementing storage and query components.
 	\item No need to convert RGL values so that they can fit into the database.

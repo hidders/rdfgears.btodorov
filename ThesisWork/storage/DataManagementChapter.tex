@@ -1,12 +1,12 @@
 \chapter{Data Management} 
 \label{cha:data}
 
-This chapter proposes a solution to the \textit{Data Management} problem in U-Sem. Section \ref{sec:storageReq} identifies all functional and non-functional requirements that a successful solution must satisfy based on the problems discussed in Section \ref{sec:problemDefStorage}. Section \ref{sec:approachStorage} discusses that state of the art approaches and technologies that  can contribute to solving the problem. Section \ref{sec:architectureStorage} describes the software architecture that we propose in order to solve the problem. In Section \ref{sec:implStorage} we discuss the implementation that we provide in order to be able to verify the capabilities of the proposed architecture. Section \ref{sec:evalStorage} evaluates whether the proposed solution solves all of the defined problems. Finally, in section \ref{sec:limitsStorage} we discuss the limitations of the proposed design and suggest aspects in which the solution can be improved in the future.
+This chapter proposes a solution to the \textit{Data Management} problem in U-Sem. Section \ref{sec:storageReq} identifies all functional and non-functional requirements that a successful solution must satisfy based on the problems discussed in Section \ref{sec:problemDefStorage}. Section \ref{sec:approachStorage} discusses the approach that we propose in order to solve the problem. Following that approach in Section \ref{sec:architectureStorage} we present the software architecture of the solution. In Section \ref{sec:implStorage} we discuss the implementation that we provide in order to be able to verify the capabilities of the proposed architecture. Section \ref{sec:evalStorage} evaluates whether the proposed solution solves all of the defined problems. Finally, in section \ref{sec:limitsStorage} we discuss the limitations of the proposed design and suggest aspects in which the solution can be improved in the future.
 
 \section{Requirements}
 \label{sec:storageReq}
 
-Having all concerns discussed in Section \ref{sec:problemDefStorage} in mind, we devised a complete set of requirements that present the functional scenarios (functional requirements) and system qualities (non-functional requirements) that the proposed architecture has to provide.
+Considering all concerns discussed in Section \ref{sec:problemDefStorage}, we devised a complete set of requirements that present the functional scenarios (functional requirements) and system qualities (non-functional requirements) that the proposed architecture has to provide.
 
 \subsection{Functional Scenarios}
 In this section we formally identify the functional requirements which define the main interactions between the engineers and the system. Each scenario is marked with a code at the beginning which is used for easier identification during the verification and evaluation phase.
@@ -86,11 +86,11 @@ The specific configuration requirements for the components and the actual query 
 
 After rigorous research we did not find any existing solutions that can solve our requirements. However, we found that Object/Relational Mapping (ORM) frameworks provide similar functionality to what we are looking for. Basically, they provide a methodology and mechanism for object-oriented systems to hold their long-term data (expressed as programming objects) in a relational database and later have it back to objects when it is needed \cite{o2008object}. ORM frameworks provide a level of abstraction over the process of storing data and in this way users can interact with the data in the form of objects and they are not required to know details about the underling representation of the data. 
 
-Applying a similar approach for our RGL entities seems to satisfy our requirements. In order to exploit that idea we have two options. The first one is to implement and ORM solution from scratch and the other one is to extend/adapt existing ORM solution so that it is able to deal with RGL entities. In general, reusing a popular and widely used solution seems to be the better option because it is likely to be heavily tested (at least from all the engineers using it) and thus, provide higher quality. 
+Applying a similar approach for our RGL entities seems to satisfy our requirements. In order to exploit that idea we have two options. The first one is to implement and ORM solution from scratch and the other one is to extend/adapt existing ORM solution so that it is able to deal with RGL entities. In general, reusing a popular and widely used solution seems to be the better option because it is likely to be extensively tested (at least from all the engineers using it) and thus, provide higher quality. 
 
 Our research revealed that the Java Persistence Architecture API (JPA) is the "de facto" leader in the field ORM solutions for Java. It represents a Java specification (JSR 317) for accessing, persisting, and managing data between Java objects/classes and a relational database. Making its way as a major standard has resulted in a lot of the big players in the field providing an implementation of it. The most popular include: Hibernate (JBoss) \cite{linwood2010beginning}, TopLink (Oracle)\footnote{TopLink - http://www.oracle.com/technetwork/middleware/toplink}, EclipseLink (IBM)\footnote{EclipseLink - http://www.eclipse.org/eclipselink/} and OpenJPA (Apache)\footnote{OpenJPA - http://openjpa.apache.org/}. 
 
-Because of its popularity, widely usage and formal standardization using JPA seems like the best option for our solution. JPA basically requires engineers to provide mapping logic that states how the Java objects are mapped to the relational database. Having this mapping logic, the framework completely automates the process of storing and retrieving the Java objects to and form the database. In order to be able to integrate JPA in our solution we have to answer the following questions: how to represent RGL entities as Java objects?; how to map these objects to the database?; how to support changes in the entity definitions?; how to execute queries on the stored entities? The answers to these questions are presented in next sections.
+Because of its popularity, widely usage and formal standardization using JPA seems like the best option for our solution. JPA basically requires engineers to provide mapping logic that states how the Java objects are mapped to the relational database. Having this mapping logic, the framework completely automates the process of storing and retrieving the Java objects to and form the database. In order to be able to integrate JPA in our solution we have to answer the following questions: How to represent RGL entities as Java objects?; How to map these objects to the database?; How to support changes in the entity definitions?; How to execute queries on the stored entities? The answers to these questions are presented in next sections.
 
 
 \subsubsection{Model RGL entities in terms of JPA}
@@ -155,7 +155,7 @@ JPA expects that each entity will have its own Java class representing it but ou
  
 \subsubsection{Support for entity definition changes}
 
-Another problem that has to be addressed concerns the dynamic nature of the entities. In our solution engineers have to be able to update the entity types whenever this is needed. Unfortunately, ORM frameworks are not good in dealing with such things. The problem is that whenever the entity type definitions changes not only the mapping XML file has to change but also the database schema. Hibernate provides a tool for table generation(hibernate.hbm2ddl.auto configuration option) but we were not able to find any documentation specifying how it works and what are its limitations. Additionally, we conducted experiments that reviled that this tool is not suitable for our situation. One of the problems is that when an entity is renamed then new set of tables is generated and the old ones are left behind. Therefore, in order to solve that problem reliably our solution provides functionality that is responsible to first update the mapping files and secondly update the schema of the database so that it is consistent with the new entity type definition. The algorithm for mapping JPA entities to tables in the relational database is the following:
+Another problem that has to be addressed concerns the dynamic nature of the entities. In our solution engineers have to be able to update the entity types whenever this is needed. Unfortunately, ORM frameworks are not good in dealing with such things. The problem is that whenever the entity type definitions changes not only the mapping XML file has to change but also the database schema. Hibernate provides a tool for table generation (hibernate.hbm2ddl.auto configuration option) but we were not able to find any documentation specifying how it works and what are its limitations. Additionally, we conducted experiments that reviled that this tool is not suitable for our situation. One of the problems is that when an entity is renamed then new set of tables is generated and the old ones are left behind. Therefore, in order to solve that problem reliably our solution provides functionality that is responsible to first update the mapping files and secondly update the schema of the database so that it is consistent with the new entity type definition. The algorithm for mapping JPA entities to tables in the relational database is the following:
 
 \begin{itemize}
 	\item A JPA class is mapped to a table with columns for each atomic property. 
@@ -172,7 +172,7 @@ In order to solve these requirements, we propose the use of JPQL \cite{linwood20
 
 
 \subsubsection{RDF Gears Components}
-Finally, we have to define the RDF Gears components that are responsible to enable the engineer to configure and execute each type of the supported data operations. They are also responsible to automatically convert the data from RGL to the JPA compatible format and vice versa. The solution provides the following RDF Gears components:
+Finally, we have to define the RDF Gears components that are responsible to enable engineers to configure and execute each type of the supported data operations. They are also responsible to automatically convert the data from RGL to the JPA compatible format and vice versa. The solution provides the following RDF Gears components:
 
 \begin{itemize}
 	\item \textit{Insert} - this component is responsible to insert an entity into the database. Engineers have to provide the name of the entity that has to be stored and the data itself.
@@ -220,7 +220,7 @@ As mentioned above engineers have to be able to control the access to their data
 
 The hierarchical structure of the entities expressed in RGL is very similar to XML and it can be, indeed, expressed as XML \cite{feliksik2011}. Therefore, adopting an approach used for establishing access control for XML document systems seems to be feasible. Inspired by the work of \cite{wu2005access} we propose a fine grained access control framework for RGL entities. It is based on access control rules that are defined by the engineers that build a particular entity. This rules are responsible to grand access to other engineers for entities or parts of entities. They can be presented as triples G $\times$ O $\times$ R where: 
 \begin{itemize}
-	\item g $\in$ G is the grandee it can be a user or user group that this rule targets.
+	\item g $\in$ G is the grandee. It can be a user or user group that the rule targets.
 	\item o $\in$ O is the object that the rule applies for. It can be entity or parts of entity which as discussed in previous sections are identified by expressions constituting the full path from the root of the entity separated by "\_".  
 	\item r $\in$ R is the operation that is granted: insert, update, delete or query.
 \end{itemize}
@@ -232,12 +232,12 @@ The approach allows engineers to apply the access rules for each entity and  als
 
 \paragraph{Implementation approach}
 
-The solution has to be able to enforce the sharing policy of the entities and make sure that data is not accessed illegally. Therefore, the solution provides access control functionality that is responsible to enforce this policies. Basically, JPA is not good at doing this, it does not provide any access control functionality out of the box. Therefore, there are two possible places to put the access control logic. 
+The solution has to be able to enforce the sharing policy of the entities and make sure that data is not accessed illegally. Therefore, the solution provides access control functionality that is responsible to enforce these policies. Generally, JPA is not good at doing this since it does not provide any access control functionality out-of-the-box. Therefore, there are two possible places to put the access control logic. 
 
 \begin{itemize}
-	\item \textit{Above JPA} - our solution wraps around the JPA engine and thus, we can control all the requests that it receives. We can provide functionality that validates if the user has the needed permissions to execute that functionality. However, from engineering perspective doing this will be hard since JPA (JPQL) allows engineers to construct relatively complex queries and building a functionality that pareses these queries is not a trivial job to do and significantly increases the risk of security wholes.
+	\item \textit{Above JPA} - our solution wraps around the JPA engine and thus, we can control all the requests that it receives. We can provide functionality that validates if the user has the needed permissions to execute these requests. However, from engineering perspective doing this will be hard since JPA (JPQL) allows engineers to construct relatively complex queries and building functionality that pareses these queries is not a trivial job to do and significantly increases the risk of security wholes.
 	
-	\item \textit{Database level} - the second option is to make the database enforce the security policies. We think that this approach is much easier because databases already provide well established access control mechanisms \cite{olson2008formal}. The only think that we have do is to apply the security policy using the database language every time an entity is created or modified. As a result, the database will stop the JPA framework accessing data that it is not authorised to access.
+	\item \textit{Database level} - the second option is to make the database enforce the security policies. We believe that this approach is much easier because databases already provide well established access control mechanisms \cite{olson2008formal}. The only thing that we have do is to apply the security policy using the database language every time an entity is created or modified. As a result, the database will prevent the JPA framework from accessing data that it is not authorised to access.
 	
 	
 Most SQL databases like MySQL\footnote{MySQL - http://www.mysql.com/} enable engineers to define access control rules on table level. The proposed approach in this chapter defines that each entity is mapped to a database table and each record within the entity hierarchy is also mapped to a distinct table. Therefore, the system must only translate the access control rules of U-Sem to the rules supported by the database.
@@ -308,17 +308,17 @@ This section describes the internal structure of the layers and identifies the h
 	
 	\item \textit{Database} - Relational database that is responsible to store and provide access to the actual data.
 	
-	\item \textit{Entity Definition Manager} - this component is responsible to provide an API which enables high level components to manipulate entity definitions. It is responsible to handle the storage the entity definitions, create the mappings that state how the data is mapped to the database and also prepare the database (create required tables and set access permissions) for working with the defined entities. Further decomposition of this component is provided in the next sections.
+	\item \textit{Entity Definition Manager} - this component is responsible to provide an API which enables high level components to manipulate entity definitions. It is responsible to handle the storage of the entity definitions, create the mappings that state how the data is mapped to the database and also prepare the database (create required tables and set access permissions) for working with the defined entities. Further decomposition of this component is provided in the next sections.
 		
 	\item \textit{Entity Manipulation Manager} - this component is responsible to provide the functionality needed for manipulating data based on the previously created entity definitions. It provides an API which enables high level components to perform storing, updating, deleting and querying of data. Further decomposition of this component is provided in the next sections.
 	
 	\item \textit{Entities Admin.} - responsible to provide the system`s endpoints (user interface) that enable engineers to define and manage their entities. Further decomposition of this component is provided in the next section.
 
-	\item \textit{Workflow Engine} - uses the APIs provided by the \textit{Entity Definition Manager} and the \textit{Entity Manipulation Manager} to enable engineers define data entities and create services that manipulate persistent data. During the workflow configuration phase it uses the APIs in order to obtain the list of already defined entities (their structure and their semantics) assisting engineers to easily define workflows that require data manipulation. During the workflow execution phase it uses the APIs to execute the defined data operations.
+	\item \textit{Workflow Engine} - uses the APIs provided by the \textit{Entity Definition Manager} and the \textit{Entity Manipulation Manager} to enable engineers create services that manipulate persistent data. During the workflow configuration phase it uses the APIs in order to obtain the list of already defined entities (their structure and their semantics) assisting engineers to easily define workflows that require data manipulation. During the workflow execution phase it uses the APIs to execute the defined data operations.
 \end{itemize}
 
 \subsubsection{Entities administration}
-This section defines the functional decomposition of the Entities administration component which is illustrated on figure \ref{fig:storageFuncAdmin}. It consists of the following components:
+This section defines the functional decomposition of the Entities administration component which is illustrated on Figure \ref{fig:storageFuncAdmin}. It consists of the following components:
 
 \begin{figure}[h!]
   \centering
@@ -387,7 +387,7 @@ This component is responsible to provide API which can be used by presentation l
 
 This section describes the concurrency structure of the feature. We show how functional elements map to concurrency units (processes, process groups and threads) in order to clearly identify the parts of the system that can work concurrently. We also show how this parallel execution is coordinated and controlled.
 
-Figure \ref{fig:storageConc} illustrates the concurrency organization. The main functionality of the system is situated in the U-Sem process group. All U-Sem processes including the storage processes operate concurrently. Workflow configuration and execution initiated by U-Sem clients and entity management by engineers can happen at the same time. This organization makes the solution flexible because if needed the \textit{Workflow engine} process can be replicated independently from the \textit{Administration}. However, this organization also introduces some problems that have to be solved.
+Figure \ref{fig:storageConc} illustrates the concurrency organization. The main functionality of the system is situated in the U-Sem process group. All U-Sem processes including the storage processes operate concurrently. Workflow configuration and execution initiated by U-Sem clients and entity management by engineers can happen at the same time. This organization makes the solution flexible because if needed the \textit{Workflow engine} process can be replicated independently from the \textit{Entities Administration}. However, this organization also introduces some problems that have to be solved.
 
 \begin{figure}[h!]
   \centering
@@ -397,21 +397,21 @@ Figure \ref{fig:storageConc} illustrates the concurrency organization. The main 
 \end{figure}
 
 \subsubsection{Problems}
-Firstly, if the workflow engine is the middle of execution and the structure of the database is changed, then the workflow may fail unexpectedly and cause problems that are hard to detect and reproduce. 
+Firstly, if the workflow engine is in the middle of workflow execution and the structure of the database is changed, then it may fail unexpectedly and cause problems that are hard to detect and reproduce. 
 
 Secondly, every time the required resources for the data store interaction (entity definitions and mappings) are loaded the system has to make sure they are consistent with each other and also with the underling structure (schema) of the database. A problem can occur if the resources are loaded and modified simultaneously. It may happen that some of the files are loaded before the modification and others afterwards. This inconsistency can also lead to problems that are hard to detect and reproduce.
 
 \subsubsection{Solution}
 
-In order to solve the problems we propose a solution that is based on synchronization between the processes. The solution is based on the \textit{Reader-Writer Lock} idea \cite{lev2009scalable} discussed in Section \ref{sec:pluginConcur}. It maps to out problems as follows:
+In order to solve the problems we propose a solution that is based on synchronization between the processes. The solution is based on the \textit{Reader-Writer Lock} idea \cite{lev2009scalable} discussed in Section \ref{sec:pluginConcur}. It can be mapped to our organization as follows:
 
 \begin{itemize}
-	\item The shared resource is the combination of the entity definitions, mapping and the database schema.
+	\item The shared resource is the combination of the entity definitions, mappings and the database schema.
 	\item The workflow engine acts as reader of the shared resource.
 	\item The entity administration acts as writer of the shared resource.
 \end{itemize}
 
-As a result, multiple workflows can be executed simultaneously but when a change to the entities is needed it is executed exclusively. Therefore, the workflow engine is protected against loading the resources while they are inconsistent. In order to implement this solution we follow the same approach introduced in Section \ref{sec:pluginConcur} and use the already introduced Terracotta server which is responsible to provide the locking mechanism. The workflow engine and entity admin. processes communicate with it in order to obtain the lock and use the resources.
+As a result, multiple workflows can be executed simultaneously (read) but when a change to the entities is needed (write) it is executed exclusively. Therefore, the workflow engine is protected against loading the resources while they are inconsistent. In order to implement this solution we follow the same approach introduced in Section \ref{sec:pluginConcur} and use the already introduced Terracotta server which is responsible to provide the locking mechanism. The workflow engine and entity admin. processes communicate with it in order to obtain the lock and use the resources.
 
 \section{Implementation}
 \label{sec:implStorage}
@@ -419,13 +419,13 @@ As a result, multiple workflows can be executed simultaneously but when a change
 We implemented the proposed architecture in order to evaluate its applicability and capabilities. In this phase we basically implemented the system following the specification discussed in the previous section. Therefore, in this section we are discussing only on the most interesting parts of the implementation of the system.
 
 \subsection{Entity definition storage}
-We implemented the solution to store the entity definitions in the file system as xml files. The structure of these files is defined in a Document Type Definition (DTD) which is presented in Appendix \ref{cha:dtd}. It is based on the format provided in \cite{maro2011} for defining the RGL types of the input ports of RDF Gears components. We extended this format by adding additional elements corresponding to the entity's name, description, owner and the access control rules.
+We implemented the solution to store the entity definitions in the file system as XML files. The structure of these files is defined in a Document Type Definition (DTD) which is presented in Appendix \ref{cha:dtd}. It is based on the format provided in \cite{maro2011} for defining the RGL types of the input ports of RDF Gears components. We extended this format by adding additional elements corresponding to the entity's name, description, owner and the access control rules.
 
 \subsection{Entities definition admin UI}
 In order to implement the endpoints we used the jQuery UI\footnote{jQuery - http://jqueryui.com/} and Bootstrap\footnote{Bootstrap - http://twitter.github.com/bootstrap/} user interface technologies. The user interface consists of two main panels:
 	\begin{itemize}
 	
-		\item \textit{Entities list} - Illustrated on Figure \ref{fig:storageEntityList}, this is the initial view exposed to the engineer. It provides a list of available entity definitions and enables engineers to create, update and delete entity definitions.
+		\item \textit{Entities list} - Illustrated on Figure \ref{fig:storageEntityList}, this is the initial view exposed to the engineer. It provides a list of all available entity definitions and also enables engineers to create, update and delete entity definitions.
 		
 \begin{figure}[h!]
   \centering
@@ -462,12 +462,12 @@ The second feature is the preview panel for entity types. It represents a small 
 
 \subsection{Extended workflow engine}
 
-We incorporated the new workflow optimization and execution logic in RDF Gears by extending some of the classes involved in the process. In this way we kept the original classes almost intact. As a result, in case of a problem or if needed engineers can easily switch between the two implementations. We extended the following classes:
+We incorporated the new workflow optimization and execution logic in RDF Gears by extending some of the classes involved in the process. In this way we kept the original classes almost intact. As a result, in case of a problem or if needed, engineers can easily switch between the two implementations. We extended the following classes:
 
 \begin{itemize}
 	\item \textit{WorkflowNode} - the newly created class is responsible to act as a wrapper around the output node of the workflow. When executed it triggers the execution of not only the output node but also all the nodes with side effects defined in the workflow. The result of the execution is still the result of the execution of the output node. In this way we make sure that all nodes with side affects are executed as expected from the engineer. The already existing cashing mechanism discussed in Section \ref{sec:backRDFGears} ensures that each component is executed at most once which prevents any duplicate executions of components.
 	
-	\item \textit{WorkflowLoader} - the new child class extends the implementation in two directions. Firstly, when the workflow is compiled the resulted data structure contains not only the components needed for the execution of the output node but also the components with the side effects and their dependent components. Secondly, the output node implementations is replaced by the extended WorkflowNode, containing references to the output node and all nodes with side effects.
+	\item \textit{WorkflowLoader} - the new child class extends the implementation in two directions. Firstly, when the workflow is compiled the resulted data structure contains not only the components needed for the execution of the output node but also the components with side effects and the components they depend on. Secondly, the output node implementation is replaced by the extended WorkflowNode, containing references to the output node and all nodes with side effects.
 \end{itemize}
 
 
@@ -478,7 +478,7 @@ After successfully implementing the system, in this section we evaluate whether 
 
 \begin{itemize}
 
-\item Implementing services that require data storage and retrieval no longer requires engineers to set up databases, implement special RDF Gears functional components and the tasks that accompany these processes. Engineers just have to configure the components provided by the solution so that they fit their needs. They reported that this improvement has significantly reduced the time and efforts they spend building such services. It has also reduced the amount of knowledge required so that new engineers can be trained faster.
+\item Implementing services that require data storage and retrieval no longer requires engineers to set up databases, implement special RDF Gears functional components and the tasks that accompany these processes. Engineers just have to configure the components provided by the solution so that they fit their needs. They reported that this improvement has significantly reduced the time and efforts they spend building such services. It has also reduced the amount of knowledge required which facilitates the process of training new engineers.
 
 \item Engineers reported that the solution has also enabled them to easily modify the structure of the data in their services when requirements change. This process is totally automated by the user interface of the solution and engineers no longer have to apply changes manually to the database and the source code of the RDF Gears components.
 
@@ -488,23 +488,23 @@ After successfully implementing the system, in this section we evaluate whether 
 	
 \end{itemize}
 
-Analysing this results we can conclude that we have solved the problems defining the Data Management feature and the designed and implemented system is capable of serving its intended purpose. As in most scientific works, however, there is still some place for improvement in this one as well. In next section we discuss possible directions for future work regarding the feature.
+Analysing these results we can conclude that we have solved the problems defining the Data Management feature and the designed and implemented system is capable of serving its intended purpose. As in most scientific works, however, there is still some place for improvement in this one as well. In next section we discuss possible directions for future work regarding the feature.
 
 \section{Limitations and Future work}
 \label{sec:limitsStorage}
 
-In this section we identify the limitations of the proposed architecture and we also suggest approaches that can be used to overcome these limitation in the future. We have identified the following items:
+In this section we identify the limitations of the proposed architecture and we also suggest approaches that can be used to overcome these limitation in future. We have identified the following items:
 
 \begin{itemize}
 \item One of the limitations that our approach introduces is the way semantics of data are defined. Currently, engineers can describe them only in text form (in the description field). The way entities are described is left to the engineer, there are no automated mechanisms that manage or assist the process. Therefore, more sophisticated (formal) approach for describing semantics of entities might be beneficial.
 
-\item The aim of this feature is to simplify the work with persistent data in U-Sem. However, introducing this abstraction over the storage functionality we have also reduced its flexibility to some extend. One of the side effects is the inflexibility in terms of transactions management. In the current situation engineers do not have any means to manage the database transactions and they are tied to the way the engine is configured. Currently, our research showed that this is not a problem but in future some engineers might need to have the power to control the transactions to the database. Therefore, introducing a mechanism that can enable that efficiently might be an interesting research topic.
+\item The aim of this feature is to simplify the work with persistent data in U-Sem. However, by introducing this abstraction over the storage functionality we have also reduced its flexibility to some extend. One of the side effects is the inflexibility in terms of transactions management. In the current situation engineers do not have any means to manage the database transactions and they are tied to the way the engine is configured. Currently, our research showed that this is not a problem but in future some engineers might need to have the power to control the transactions to the database. Therefore, introducing a mechanism that can enable that efficiently might be an interesting research topic.
 
 \item Most of the data manipulation components (except for the "Insert" component) require engineers to provide JPQL queries. These queries can get quite complex and as a result engineers may make some mistakes when writing them. Currently, the solution does not provide any facilities that can validate these queries. Engineers realize their mistakes only when they try to execute the workflows and they fail. As a result, it may take a lot of time until they finally end up with the correct queries. Therefore, in future the system might be further improved by introducing functionality for auto-completion and validation of the JPQL queries.
 
 \item Currently, the solution treats the RDF values as literals. However, these values sometimes may contain a lot of information that engineers might also like to query. SPARQL is the main language used for querying RDF data \cite{perez2006semantics} and therefore, extending the currently used JPQL language to support embedded SPARQL queries seems as a promising topic for future research.
 
-\item Currently, the RDF Gears engine does not provide any guarantees for the order of the execution of branches. This is not a problem for components that do not have side effects. However, with the introduction of the new components that interact with the database developing a mechanism to control the execution order of branches within a workflow makes sense and might be a helpful future addition to the solution.
+\item Currently, the RDF Gears engine does not provide any guarantees for the order of the execution of branches. This is not a problem for components that do not have side effects. However, with the introduction of the new components, developing a mechanism to control the execution order of branches within a workflow makes sense and might be a helpful future addition to the solution.
 
 \item The system is currently targeted to be used mainly as a research tool and there are no requirements for supporting large number of users and high loads. However, if the system is to be used in such a demanding environment then it might be worth to investigate and if needed improve the performance, scalability and availability properties of the solution.
 
