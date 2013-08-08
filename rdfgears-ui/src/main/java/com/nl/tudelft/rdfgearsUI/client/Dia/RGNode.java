@@ -1,7 +1,11 @@
 package com.nl.tudelft.rdfgearsUI.client.Dia;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Observable;
+import java.util.Observer;
+import java.util.Set;
 
 import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.dom.client.Element;
@@ -81,7 +85,10 @@ public class RGNode extends Node{
 				//else is when we open a workflow graph
 				
 				//Log.debug("toXml :" + toXml(XMLParser.createDocument()).toString());
-				canvas.updateNodeDrawingState(getId(), NodeDrawingState.DONE);
+				
+				//check if there are elements that are still loading
+				if(elementsInProcess.isEmpty())
+				    canvas.updateNodeDrawingState(getId(), NodeDrawingState.DONE);
 			}
 			  
 		  });

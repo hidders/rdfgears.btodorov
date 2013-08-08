@@ -40,10 +40,14 @@
   </dependencyManagement>
   <modules>
     <module>rdfgears-core</module>
-	<module>usem-plugin</module>
+	<module>pluginManagement/usem-plugin</module>
+	<module>pluginManagement/usem-plugin-ui</module>
     <module>rdfgears-plugins</module>
-    <module>rdfgears-cli</module>
+  <!--  <module>rdfgears-cli</module>-->
 	<module>rdfgears-ui</module>
-    <module>rdfgears-rest</module>
+    <module>rdfgears-rest</module> 
+	<module>datamanagement/datamanagement</module>
+	<module>datamanagement/datamanagement-ui</module>
+	<module>u-sem</module>
   </modules>
 </project>

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import nl.tudelft.rdfgears.engine.Engine;
 import nl.tudelft.rdfgears.engine.Optimizer;
 import nl.tudelft.rdfgears.engine.WorkflowLoader;
+import nl.tudelft.rdfgears.engine.side_effects.WorkflowLoaderSE;
 import nl.tudelft.rdfgears.rgl.datamodel.type.RDFType;
 import nl.tudelft.rdfgears.rgl.datamodel.type.RGLType;
 import nl.tudelft.rdfgears.rgl.datamodel.value.RGLValue;
@@ -58,7 +59,7 @@ public class WorkflowRequest {
 				throw new RuntimeException("workflowId not available as attribute"); 	
 			}
 			
-			workflow = WorkflowLoader.loadWorkflow(workflowId);
+			workflow = WorkflowLoaderSE.loadWorkflow(workflowId);
 		}
 	}
 	

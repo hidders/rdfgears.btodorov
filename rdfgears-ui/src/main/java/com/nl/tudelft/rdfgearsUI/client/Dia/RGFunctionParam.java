@@ -4,9 +4,12 @@
  */
 package com.nl.tudelft.rdfgearsUI.client.Dia;
 
-import com.allen_sauer.gwt.log.client.Log;
+import java.util.Observable;
+
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.DOM;
+import com.google.web.bindery.event.shared.EventBus;
+import com.google.web.bindery.event.shared.SimpleEventBus;
 
 enum RGFunctionParamType {
 	STRING, //text box
@@ -15,7 +18,8 @@ enum RGFunctionParamType {
 	INPUT_FIELDS, //fields with input port
 	LIST, //drop down box.. from specific source
 	QUERY, //text and supported by query editor
-	CONSTANT //constant variable
+	CONSTANT, //constant variable
+	BOOLEAN
 }
 /*
  * type -> value
@@ -26,7 +30,7 @@ enum RGFunctionParamType {
  * input_fields: [id1]:[value];[id2]:[value];..:..
  * text   : [value]
  */
-public abstract class RGFunctionParam {
+public abstract class RGFunctionParam extends SimpleEventBus{
 	public String pId;
 	public RGFunctionParamType pType;
 	public String pLabel;

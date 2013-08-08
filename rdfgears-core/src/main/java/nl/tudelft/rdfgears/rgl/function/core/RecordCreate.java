@@ -28,7 +28,7 @@ public class RecordCreate extends NNRCFunction {
 	public void initialize(Map<String, String> config) {
 		
 		/* configure the required inputs based on the ';' separated list of field names */
-		String fieldsStr = config.get("fields");
+		String fieldsStr = config.get("bindVariables");
 		String[] split = fieldsStr.split(";");
 		for (int i=0; i<split.length; i++){
 			if (split[i].length()>0)

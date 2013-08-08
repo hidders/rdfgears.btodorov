@@ -46,6 +46,7 @@ public class RGWorkflowInputNode extends Node{
 	public void draw(RGCanvas canvas) {
 		super.setCanvas(canvas);
 		Element c = canvas.getElement(); 
+		header.setClassName("inputNode");
 		c.appendChild(root);/*element has to be added to the canvas then can be manipulated*/
 		
 		/*Manipulate content using DOM API*/

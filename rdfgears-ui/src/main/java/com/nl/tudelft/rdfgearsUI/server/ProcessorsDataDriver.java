@@ -36,7 +36,7 @@ public class ProcessorsDataDriver {
 			}
 		}
 		
-		return "<error> processor not found !!: "+ configurationDataDriver.getDataDir().getAbsolutePath() + "/processors/" + filePath + ".xml" +"</error>";
+		return "<error> processor not found !!: "+ configurationDataDriver.getBasePath() + "/data/processors/" + filePath + ".xml" +"</error>";
 	}
 	
 	public String getOperatorDirContent(){

@@ -29,6 +29,11 @@ import nl.tudelft.rdfgears.rgl.function.core.RecordCreate;
 import nl.tudelft.rdfgears.rgl.function.core.RecordJoin;
 import nl.tudelft.rdfgears.rgl.function.core.RecordProject;
 import nl.tudelft.rdfgears.rgl.function.core.RecordUnion;
+import nl.tudelft.rdfgears.rgl.function.entitystore.EntityDeleteFunction;
+import nl.tudelft.rdfgears.rgl.function.entitystore.EntityInsertChildFunction;
+import nl.tudelft.rdfgears.rgl.function.entitystore.EntityQueryFunction;
+import nl.tudelft.rdfgears.rgl.function.entitystore.EntityStoreFunction;
+import nl.tudelft.rdfgears.rgl.function.entitystore.EntityUpdateFunction;
 import nl.tudelft.rdfgears.rgl.function.obsolete.BagTopFunction;
 import nl.tudelft.rdfgears.rgl.function.sparql.SPARQLFunction;
 import nl.tudelft.rdfgears.rgl.workflow.ConstantProcessor;
@@ -38,7 +43,6 @@ import nl.tudelft.rdfgears.rgl.workflow.Workflow;
 import nl.tudelft.rdfgears.rgl.workflow.WorkflowNode;
 import nl.tudelft.rdfgears.util.ValueParser;
 import nl.tudelft.rdfgears.util.XMLUtil;
-import nl.tudelft.wis.usem.plugin.access_management.PluginAccessManager;
 import nl.tudelft.wis.usem.plugin.access_management.PluginAccessManagerFactory;
 
 import org.apache.xerces.parsers.DOMParser;
@@ -97,7 +101,8 @@ public class WorkflowLoader {
 
 		try {
 
-			load();
+			WorkflowNode output = load();
+			setWorkflow(output);
 		} catch (WorkflowLoadingException e) {
 			e.setWorkflowName(workflowId);
 			throw (e);
@@ -122,7 +127,7 @@ public class WorkflowLoader {
 		return this.workflow;
 	}
 
-	public void load() throws CircularWorkflowException,
+	protected WorkflowNode load() throws CircularWorkflowException,
 			WorkflowLoadingException {
 		loadWorkflowXMLDocument();
 		buildingWorkflow = new Workflow();
@@ -153,19 +158,24 @@ public class WorkflowLoader {
 																		// added
 			}
 		}
+		
+		return getNode(outputNodeId);
+	}
 
-		buildingWorkflow.setOutputProcessor(getNode(outputNodeId));
-		// AbstractProcessor outputProducer =
-		// createProcessorFromElement(outputProcElem);
-		// workflow.setOutputProducer(outputProducer);
+	protected void setWorkflow(WorkflowNode outputProcessor)
+		throws WorkflowLoadingException {
+	    buildingWorkflow.setOutputProcessor(outputProcessor);
+	    // AbstractProcessor outputProducer =
+	    // createProcessorFromElement(outputProcElem);
+	    // workflow.setOutputProducer(outputProducer);
 
-		/* we made it, no exceptions */
-		workflow = buildingWorkflow;
+	    /* we made it, no exceptions */
+	    workflow = buildingWorkflow;
 
-		workflow.setID(this.workflowId);
+	    workflow.setID(this.workflowId);
 
-		workflow.setName(getWorkflowName());
-		workflow.setDescription(getWorkflowDescription());
+	    workflow.setName(getWorkflowName());
+	    workflow.setDescription(getWorkflowDescription());
 	}
 
 	/**
@@ -174,7 +184,7 @@ public class WorkflowLoader {
 	 * @param nodeId
 	 * @throws WorkflowLoadingException
 	 */
-	private void recursivelyLinkInputs(String nodeId)
+	protected void recursivelyLinkInputs(String nodeId)
 			throws WorkflowLoadingException {
 		WorkflowNode node = getNode(nodeId);
 		if (inputsConfigured.contains(node)) {
@@ -248,7 +258,7 @@ public class WorkflowLoader {
 	 * @return
 	 * @throws WorkflowLoadingException
 	 */
-	private WorkflowNode getNode(String id) throws WorkflowLoadingException {
+	protected WorkflowNode getNode(String id) throws WorkflowLoadingException {
 		assert (id != null);
 		WorkflowNode node = nodeMap.get(id);
 		if (node == null) {
@@ -519,7 +529,7 @@ public class WorkflowLoader {
 		 * That not nice!
 		 */
 		map.put("select-top-scorer", BagTopFunction.class);
-
+		
 		/*
 		 * Two different versions are not really needed, as they are both
 		 * implemented in SPARQLFunction. But in the UI they are different.
@@ -530,6 +540,11 @@ public class WorkflowLoader {
 		 */
 		map.put("sparql", SPARQLFunction.class);
 		map.put("sparql-endpoint", SPARQLFunction.class);
+		map.put("storeEntity", EntityStoreFunction.class);
+		map.put("entityQuery", EntityQueryFunction.class);
+		map.put("entityDelete", EntityDeleteFunction.class);
+		map.put("entityUpdate", EntityUpdateFunction.class);
+		map.put("entityInsertChild", EntityInsertChildFunction.class);
 		map.put("if", IfThenElseFunction.class);
 		return map;
 	}
@@ -626,5 +641,8 @@ public class WorkflowLoader {
 		}
 		return inputNameList;
 	}
-
+	
+	protected Document getXmlDoc() {
+	    return xmlDoc;
+	}
 }
